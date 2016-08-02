@@ -114,13 +114,35 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " remove trailing whitespace
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
+" map goyovim
+nnoremap <silent> <leader>z :Goyo<cr>
+
+" }}}
+
+
+" Section goyovim {{{
+
 " goyo vim config
 let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
 
-" }}}
+"}}}
+
+
+" Section syntastic {{{
+
+" Syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=1
+
+"}}}
 
 
 " Section CtrlP {{{
@@ -139,44 +161,22 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" TypeScript
-Plug 'https://github.com/leafgarland/typescript-vim.git'
-
-" Group dependencies, vim-snippets depends on ultisnips
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
+Plug 'junegunn/vim-github-dashboard'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 Plug 'junegunn/goyo.vim'
-Plug 'altercation/vim-colors-solarized'
-" Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
 Plug 'stevearc/vim-arduino'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'chriskempson/base16-vim'
 Plug 'rakr/vim-two-firewatch'
 Plug 'fxn/vim-monochrome'
-" Plug 'dracula/vim'
-" Plug 'https://bitbucket.org/johannes/arduino-vim-syntax'
-" Plug 'jplaut/vim-arduino-ino'
-" Plug '4Evergreen4/vim-hardy'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -201,24 +201,23 @@ syntax enable               " enable syntax processing
 
 
 if has('gui_running')
-    let g:hybrid_custom_term_colors = 1
+
     set background=dark
     let g:two_firewatch_italics=1
-
 
     " awesome colorscheme
     colorscheme two-firewatch
     let g:airline_theme='twofirewatch'
-    " colorscheme dracula
+
     set guioptions -=m          " no menubar
     set guioptions-=T           " no toolbar
     set guioptions-=r           " no scrollbar
 
     " set lines=60 columns=108 linespace=0
-    " set guifont=Fantasque\ Sans\ Mono\ 16
 
     set guifont=Iosevka\ Term\ 16
 else
+    " awesome colorscheme
     colorscheme monochrome
 endif
 " }}}
