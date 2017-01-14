@@ -215,7 +215,12 @@ if has('gui_running')
 
     " set lines=60 columns=108 linespace=0
 
-    set guifont=Iosevka\ Term\ 16
+    if has("gui_win32")
+        set guifont=Iosevka_Term_Medium:h16:cANSI:qDRAFT
+    else
+        set guifont=Iosevka\ Term\ 16
+    endif
+
 else
     " awesome colorscheme
     colorscheme monochrome
