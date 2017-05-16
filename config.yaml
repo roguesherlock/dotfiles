@@ -1,0 +1,23 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+dotfiles:
+  d_fish:
+    dst: ~/.config/fish
+    src: config/fish
+  d_omf:
+    dst: ~/.config/omf
+    src: config/omf
+  f_tmux.conf:
+    dst: ~/.tmux.conf
+    src: tmux.conf
+  f_vimrc:
+    dst: ~/.vimrc
+    src: vimrc
+profiles:
+  electron:
+  - f_vimrc
+  - d_fish
+  - d_omf
+  - f_tmux.conf
