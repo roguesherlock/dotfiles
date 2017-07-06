@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# rofi with flags for my PC.
+#
+# Created by 0xelectron
+#
+
+rofi -show run \
+     -font "${font:-Roboto 10}" \
+     -separator-style none \
+     -scrollbar-width 0 \
+     -location 2 \
+     -yoffset 360 \
+     -lines 10 \
+     -width 20 \
+     -bw 0 \

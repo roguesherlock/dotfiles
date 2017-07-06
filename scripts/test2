@@ -1,0 +1,29 @@
+#!/bin/python3
+
+import forecastio, re
+api_key = "3668bacc9231864059251240ce13381d"
+lon = 23.188418
+lat = 72.578970
+
+forecast = forecastio.load_forecast(api_key, lat, lon)
+byHour = forecast.hourly()
+current = forecast.currently()
+if "." ==  byHour.summary[-1]:
+	byHour.summary = byHour.summary[:-1]
+if "throughout" in byHour.summary:
+	later = [match.start() for match in re.finditer(r'throughout', byHour.summary)]
+	byHour.summary = byHour.summary[:later[0]]
+if "later" in byHour.summary:
+	later = [match.start() for match in re.finditer(r'later', byHour.summary)]
+	byHour.summary = byHour.summary[:later[0]]
+if "and" in byHour.summary:
+	later = [match.start() for match in re.finditer(r'and', byHour.summary)]
+	byHour.summary = byHour.summary[:later[0]]
+if "," in byHour.summary:
+	later = [match.start() for match in re.finditer(r',', byHour.summary)]
+	byHour.summary = byHour.summary[:later[0]]
+if "starting" in byHour.summary:
+	later = [match.start() for match in re.finditer(r'starting', byHour.summary)]
+	byHour.summary = byHour.summary[:later[0]]
+print("Now: " + current.summary +", "+ str(int(current.temperature)) + " °F" + " | Later: " + byHour.summary)
+

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# Change pulseaudio volume and send a notification.
+#
+# Created by Dylan Araps. Modified by 0xelectron
+#
+# Depends on: amixer, libnotify (patched with id support)
+case "$1" in
+    "up")   amixer -q sset Master 5%+ ;;
+    "down") amixer -q sset Master 5%- ;;
+    "mute") amixer -q sset Master toggle ;;
+    *) printf "%s\n" "Usage: ./vol up, ./vol down"; exit ;;
+esac
+
+#current_vol="$(amixer sget Master | grep -o -E "[[:digit:]]+%")"
+
+# The '-r' flag is from a patched version of 'libnotify'.
+# '-r' lets you replace notifications using the same id.
+#notify-send -t 1 "Volume: ${current_vol/$'\n'*}"

@@ -1,0 +1,34 @@
+! Xft settings
+!
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! Set the font
+URxvt.font: xft:Fantasque Sans Mono:size=12
+URxvt.boldFont: xft:Fantasque Sans Mono:size=12
+URxvt.letterSpace:0 
+
+! Disable scrollbar
+URxvt.scrollBar: false
+
+! Set terminal padding
+URxvt.internalBorder: 15 
+
+! Enables copy/paste with Ctrl-Shift-C/V
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.perl-ext-common: default,clipboard
+
+! Enable cursor underline
+URxvt*cursorUnderline: true
+
+! Rofi
+rofi.opacity: 10
+rofi.font: Fantasque Sans Mono 12
