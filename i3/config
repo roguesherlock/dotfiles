@@ -111,8 +111,11 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Assign Applications with specific workspace
-#assign [class="google-chrome"] $workspace2
-
+assign [class="google-chrome"] $workspace2
+assign [class="nautilus"] $workspace5
+assign [class="tixati"] $workspace6
+assign [class="slack"] $workspace7
+assign [class="mpv"] $workspace9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -153,17 +156,17 @@ for_window [class=".*"] title_format "<span font='Roboto 8'></span>"
 #for_window [class="^.*"] border pixel 0
 
 # Gaps Config
-# gaps inner 15 
-# gaps outer 3 
+# gaps inner 15
+# gaps outer 3
 smart_borders on
 gaps inner 15
-gaps outer 5 
+gaps outer 5
 
 # Screenshot
 bindsym	$mod+p exec --no-startup-id "${HOME}/.config/scripts/scr &"
 
 # File manager
-bindsym $mod+e exec "thunar"
+bindsym $mod+e exec "nautilus"
 
 # Volume Controls
 bindsym $mod+comma exec --no-startup-id "${HOME}/.config/scripts/vol down &"
@@ -197,4 +200,5 @@ exec --no-startup-id xautolock -time 5 -locker "${HOME}/.config/scripts/i3lock-b
 
 # Start chrome on workspace 2 and terminal on workspace 1
 # Google chrome always opens in the last workspace
-#exec --no-startup-id i3-msg "workspace 1; exec urxvt; workspace 2; exec google-chrome-stable; workspace 1;" 
+# exec --no-startup-id i3-msg "workspace 1; exec urxvt; workspace 2; exec google-chrome-stable; workspace 1;"
+exec --no-startup-id i3-msg "workspace 2; exec google-chrome-stable; workspace t;"

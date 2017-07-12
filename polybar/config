@@ -71,13 +71,13 @@ wrapping-scroll = false
 ; Default: false
 index-sort = true
 
-; Set the scroll cycle direction 
+; Set the scroll cycle direction
 ; Default: true
 reverse-scroll = false
 
-; Use fuzzy (partial) matching on labels when assigning 
+; Use fuzzy (partial) matching on labels when assigning
 ; icons to workspaces
-; Example: code;♚ will apply the icon to all workspaces 
+; Example: code;♚ will apply the icon to all workspaces
 ; containing 'code' in the label
 ; Default: false
 ;fuzzy-match = false
@@ -91,7 +91,13 @@ format = <label-state> <label-mode>
 ; NOTE: The label needs to match the name of the i3 workspace
 ws-icon-0 = 1;
 ws-icon-1 = 2;
-ws-icon-2 = 3;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7= 8;
+ws-icon-8 = 9;
 ws-icon-default = 
 
 ; Available tokens:
@@ -119,7 +125,7 @@ label-focused-padding = ${variables.padding}
 ;   %index%
 ; Default: %icon%  %name%
 label-unfocused = %index%
-label-unfocused-padding = ${variables.padding} 
+label-unfocused-padding = ${variables.padding}
 
 ; Available tokens:
 ;   %name%
@@ -157,7 +163,7 @@ format = <label> <ramp-coreload>
 label = CPU
 
 ramp-coreload-0 = ▁
-ramp-coreload-0-font = 2 
+ramp-coreload-0-font = 2
 ramp-coreload-0-foreground = ${colors.color12}
 ramp-coreload-1 = ▂
 ramp-coreload-1-font = 2
@@ -178,7 +184,7 @@ ramp-coreload-6 = ▇
 ramp-coreload-6-font = 2
 ramp-coreload-6-foreground = ${colors.color5}
 ramp-coreload-7 = █
-ramp-coreload-7-font = 2 
+ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = ${colors.color5}
 
 
@@ -211,7 +217,7 @@ type = internal/network
 interface = enp3s0
 interval = 3.0
 
-label-connected =  
+label-connected = 
 label-disconnected = 
 label-disconnected-foreground = ${colors.foreground}
 
@@ -282,7 +288,7 @@ type = custom/menu
 
 format-padding = ${variables.padding}
 
-label-open =  
+label-open = 
 label-close = 
 label-separator = " - "
 
