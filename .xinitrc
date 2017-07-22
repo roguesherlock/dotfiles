@@ -35,6 +35,9 @@
 #fi
 #
 
+# load nvidia settings
+nvidia-settings --load-config-only &
+
 # Merge Xresources
 xrdb -merge "${HOME}/.Xresources"
 
