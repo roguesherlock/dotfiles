@@ -9,15 +9,15 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
 ! Set the font
-URxvt.font: xft:Fantasque Sans Mono:size=12
-URxvt.boldFont: xft:Fantasque Sans Mono:size=12
-URxvt.letterSpace:0 
+URxvt.font: xft:PragmataPro:size=12
+URxvt.boldFont: xft:PragmataPro:weight=Bold:size=12
+URxvt.letterSpace:0
 
 ! Disable scrollbar
 URxvt.scrollBar: false
 
 ! Set terminal padding
-URxvt.internalBorder: 15 
+URxvt.internalBorder: 15
 
 ! Enables copy/paste with Ctrl-Shift-C/V
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
@@ -31,4 +31,4 @@ URxvt*cursorUnderline: true
 
 ! Rofi
 rofi.opacity: 10
-rofi.font: Fantasque Sans Mono 12
+/* rofi.font: Pragmata Pro 12 */
