@@ -11,7 +11,7 @@ status --is-interactive; and . (pyenv virtualenv-init -|psub)
 
 # Pywal
 # Import colorscheme from 'wal'
-wal -r &
+# wal -r &
 
 # Start X at login
 if status --is-login
