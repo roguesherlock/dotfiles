@@ -12,17 +12,17 @@ source "${HOME}/.cache/wal/colors.sh"
 
 # Update dunst to reflect pywall colors
 reload_dunst() {
-    killall -q dunst && \
-        dunst \
-            -lb "$color0" \
-            -nb "$color0" \
-            -cb "$color0" \
-            -lf "$color15" \
-            -bf "$color15" \
-            -cf "$color15" \
-            -nf "$color15" \
-            -fn "${DUNST_FONT:- Roboto 10}" \
-            -geometry "${DUNST_SIZES:-300x30-40+70}" &
+    killall -wq dunst
+    dunst \
+        -lb "$color0" \
+        -nb "$color0" \
+        -cb "$color0" \
+        -lf "$color15" \
+        -bf "$color15" \
+        -cf "$color15" \
+        -nf "$color15" \
+        -fn "${DUNST_FONT:- Roboto 11}" \
+        -geometry "${DUNST_SIZES:-300x30-40+70}" &
 }
 
 # Restart polybar
@@ -32,7 +32,7 @@ set_bar() {
 
 # Update gtk theme to reflect pywall colors inspired from following script:
 # https://github.com/himidori/linux_cfgs/blob/master/gengtk
-# You'll also need to install oomox and acyl for it to work. Also, should be 
+# You'll also need to install oomox and acyl for it to work. Also, should be
 # in path
 # https://github.com/actionless/oomox
 # https://github.com/neeasade/acyl

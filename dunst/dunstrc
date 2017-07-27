@@ -7,7 +7,7 @@
 
 [global]
     # Font
-    font = "Pragmata Pro 10"
+    font = "Roboto 11"
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>
     #   <i>italic</i>
