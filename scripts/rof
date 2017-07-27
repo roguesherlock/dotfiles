@@ -6,7 +6,7 @@
 #
 
 rofi -show run \
-     -font "${font:-Pragmata Pro 10}" \
+     -font "${font:-Roboto 12}" \
      -separator-style none \
      -scrollbar-width 0 \
      -location 2 \
