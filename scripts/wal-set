@@ -26,9 +26,9 @@ reload_dunst() {
 }
 
 # Restart polybar
-set_bar() {
-    ${HOME}/.config/scripts/polybar.sh 2>/dev/null &
-}
+# set_bar() {
+    # ${HOME}/.config/scripts/polybar.sh 2>/dev/null &
+# }
 
 # Update gtk theme to reflect pywall colors inspired from following script:
 # https://github.com/himidori/linux_cfgs/blob/master/gengtk
@@ -80,7 +80,7 @@ HEREDOC
 
 main() {
     reload_dunst &
-    set_bar &
+    # set_bar &
     set_gtk &
 }
 

@@ -3,12 +3,9 @@
 # Created by 0xelectron
 #
 
-# Terminate already running bar instances
-killall -qw polybar
-
-# Wait until the processes have been shut down
-while pgrep -x polybar >/dev/null; do sleep 1; done
-
-# Launch Top bar
-polybar top &
-#polybar bottom &
+# launch polybar if not already running
+is_running=$(pgrep -x polybar)
+if [ $? -eq 1 ]
+then
+    polybar -rq top &
+fi
