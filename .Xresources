@@ -1,6 +1,6 @@
 ! Xft settings
 !
-Xft.dpi: 101 
+Xft.dpi: 101
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
@@ -8,10 +8,13 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
+! Terminal name
+URxvt.termName: xterm-256color
+
 ! Set the font
 URxvt.font: xft:PragmataPro:size=12
 URxvt.boldFont: xft:PragmataPro:weight=Bold:size=12
-URxvt.letterSpace:0
+URxvt.letterSpace:-1
 
 ! Disable scrollbar
 URxvt.scrollBar: false
