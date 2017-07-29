@@ -196,10 +196,9 @@ bindsym $mod+shift+w exec --no-startup-id wal -i "${HOME}/photos" -o "${HOME}/.c
 
 # Startup
 #exec --no-startup-id wal -r -o "${HOME}/.config/scripts/wal-set"
-exec_always --no-startup-id "${HOME}/.config/scripts/polybar.sh"
 exec --no-startup-id xautolock -time 5 -locker "${HOME}/.config/scripts/i3lock-blur.sh"
 
 # Start chrome on workspace 2
-exec --no-startup-id exec google-chrome-stable
+exec --no-startup-id google-chrome-stable
 # Google chrome always opens in the last workspace
 # exec --no-startup-id i3-msg "workspace 1; exec urxvt; workspace 2; exec google-chrome-stable; workspace 1;"
