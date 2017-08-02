@@ -7,7 +7,7 @@
 # Depends on: imagemagick, libnotify (patched with id support)
 
 # Screenshot directory
-scr_dir="${HOME}/photos/screenshots"
+scr_dir="${HOME}/screenshots"
 mkdir -p "$scr_dir" || { printf "%s\n" "Error: Couldn't create screenshot directory"; exit; }
 
 # Use printf to store the current date/time as variables.
