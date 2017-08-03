@@ -116,6 +116,7 @@ assign [class="Nautilus"] workspace $workspace5
 assign [class="Tixati"] workspace $workspace6
 assign [class="Uget-gtk"] workspace $workspace6
 assign [class="Slack"] workspace $workspace7
+assign [class="MuPDF"] workspace $workspace8
 assign [class="mpv"] workspace $workspace9
 
 # reload the configuration file
@@ -196,7 +197,7 @@ bindsym $mod+shift+w exec --no-startup-id wal -i "${HOME}/photos" -o "${HOME}/.c
 
 # Startup
 #exec --no-startup-id wal -r -o "${HOME}/.config/scripts/wal-set"
-exec --no-startup-id xautolock -time 5 -locker "${HOME}/.config/scripts/i3lock-blur.sh"
+exec --no-startup-id xautolock -detectsleep -time 5 -locker "${HOME}/.config/scripts/i3lock-blur.sh"
 
 # Start chrome on workspace 2
 exec --no-startup-id google-chrome-stable
