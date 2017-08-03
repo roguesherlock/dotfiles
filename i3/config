@@ -118,6 +118,7 @@ assign [class="Uget-gtk"] workspace $workspace6
 assign [class="Slack"] workspace $workspace7
 assign [class="MuPDF"] workspace $workspace8
 assign [class="mpv"] workspace $workspace9
+assign [class="jetbrains-studio-canary"] workspace $workspace10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
