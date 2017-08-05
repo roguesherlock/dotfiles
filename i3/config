@@ -111,7 +111,7 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Assign Applications with specific workspace
-assign [class="Code"] workspace $workspace1                     # visual studio code
+assign [class="Code"] workspace $workspace1
 assign [class="Google-chrome"] workspace $workspace2
 assign [class="jetbrains-studio-canary"] workspace $workspace4
 assign [class="Nautilus"] workspace $workspace5
