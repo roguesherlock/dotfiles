@@ -1,30 +1,14 @@
 # dotfiles
-My dotfiles for i3, fish, polybar, dunst, etc.
-
-
-
-**[Screenshots](http://imgur.com/gallery/iQVZk)**
-
-![scrot](http://i.imgur.com/rAbmhz6.png)
+My dotfiles for `macOS High Sierra 10.13.2 (17C88)`
 
 
 
 ## Setup
 
-- Application Launcher: `rofi`
-- Bar: `polybar`
-- Compositor: `compton`
-- Icons: `Luv icons`
-- Music Player: `Google Play Music Web`
-- Notifications: `dunst`
 - Shell: `fish`
-- Terminal Emulator: `urxvt`
-- Text Editor: `vim`
-- Theme: `Paper`
-- Video Player: `mpv`
-- Web Browser: `Google Chrome`
-- Window Manager: `i3-gaps`
-- Linux Distribution: `Arch Linux`
+- Text Editor: `vim` `vscode`
+- IDE: `Xcode`
+- Video Player: `IINA`
 
 
 
