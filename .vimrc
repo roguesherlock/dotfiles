@@ -185,7 +185,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nightsense/seabird'
-Plug 'nightsense/night-and-day'
+" Plug 'nightsense/night-and-day'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'
 
@@ -224,11 +224,11 @@ syntax enable               " enable syntax processing
 
 if has('gui_running')
 
-    " colorscheme seagull
+    colorscheme seagull
 
     " select colorscheme depending on the time of day
-    let g:nd_day_theme = 'seagull'
-    let g:nd_night_theme = 'petrel'
+    " let g:nd_day_theme = 'seagull'
+    " let g:nd_night_theme = 'petrel'
 
     set guioptions -=m           " no menubar
     set guioptions -=T           " no toolbar
@@ -236,11 +236,7 @@ if has('gui_running')
 
     " set lines=60 columns=108 linespace=0
 
-    if has("gui_win32")
-        set guifont=Fantasque_Sans_Mono_Regular:h16:cANSI:qDRAFT
-    else
-        set guifont=Fantasque\ Sans\ Mono\ 16
-    endif
+    set guifont=Fira\ Code\ 13
 
 endif
 " else

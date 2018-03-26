@@ -1,11 +1,11 @@
 # dotfiles
-My dotfiles for `macOS High Sierra 10.13.2 (17C88)`
+My dotfiles for `macOS High Sierra 10.13.3 (17D47)`
 
 
 
 ## Setup
 
-- Shell: `fish`
+- Shell: `bash`
 - Text Editor: `vim` `vscode`
 - IDE: `Xcode`
 - Video Player: `IINA`

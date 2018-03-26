@@ -1,0 +1,15 @@
+{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 13,
+    "workbench.colorTheme": "Solarized Light",
+    "editor.fontLigatures": true,
+    "window.menuBarVisibility": "toggle",
+    "files.trimTrailingWhitespace": true,
+    "editor.multiCursorModifier": "alt",
+    "nightswitch.dayTheme": "Solarized Light",
+    "nightswitch.nightTheme": "Solarized Dark",
+    "nightswitch.geolocation": true,
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false
+}

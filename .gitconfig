@@ -1,0 +1,9 @@
+[gpg]
+	program = /usr/local/MacGPG2/bin/gpg2
+[user]
+	signingkey = CECA5EA0
+	name = akash
+	mail = pomalakash@gmail.com
+	email = pomalakash@gmail.com
+[commit]
+	gpgsign = true
