@@ -1,15 +1,88 @@
 {
     "editor.fontFamily": "Fira Code",
-    "editor.fontSize": 13,
-    "workbench.colorTheme": "Solarized Light",
+    "editor.fontSize": 14,
+    "workbench.colorTheme": "seabird - grey gull",
     "editor.fontLigatures": true,
     "window.menuBarVisibility": "toggle",
     "files.trimTrailingWhitespace": true,
     "editor.multiCursorModifier": "alt",
-    "nightswitch.dayTheme": "Solarized Light",
-    "nightswitch.nightTheme": "Solarized Dark",
+    "nightswitch.dayTheme": "seabird - grey gull",
+    "nightswitch.nightTheme": "seabird - storm petrel",
     "nightswitch.geolocation": true,
     "files.autoSave": "afterDelay",
     "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
+    "python.linting.enabled": false,
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j","k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>","d"],
+            "after": ["d", "d"]
+        },
+        // remove highlights
+        {
+            "before":["<leader>", "<space>"],
+            "after":[],
+            "commands": [
+                {
+                    "command": ":nohl"
+                }
+            ]
+        },
+        // save
+        {
+            "before":["<leader>", "w"],
+            "after":[],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        // zen mode
+        {
+            "before":["<leader>", "z"],
+            "after":[],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleZenMode",
+                    "args": []
+                }
+            ]
+        },
+        // command palette
+        {
+            "before": [":"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "vim.leader": ",",
+    "vim.handleKeys":{
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "workbench.iconTheme": "ayu"
 }
