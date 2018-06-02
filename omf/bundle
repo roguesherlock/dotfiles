@@ -1,0 +1,4 @@
+package pyenv
+package sudope
+theme default
+theme robbyrussell

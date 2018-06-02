@@ -1,4 +1,3 @@
-
 " Section Misc {{{
 set laststatus=2
 " }}}
@@ -48,6 +47,23 @@ set foldmethod=indent   " fold based on indent level
 
 " Section Movement {{{
 
+" mouse is annoying in this land
+set mouse=r
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+
+" resize using arrows keys instead
+nnoremap <Left> :vertical resize -1<CR>
+nnoremap <Right> :vertical resize +1<CR>
+nnoremap <Up> :resize -1<CR>
+nnoremap <Down> :resize +1<CR>
+
+" Disable arrow keys completely in Insert Mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
@@ -76,9 +92,9 @@ inoremap jk <esc>
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
-" edit vimrc/zshrc and load vimrc bindings
+" edit vimrc/fish and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>ef :vsp ~/.config/omf/init.fish<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " save session
@@ -87,8 +103,16 @@ nnoremap <leader>s :mksession<CR>
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-" open ag.vim
-nnoremap <leader>a :Ag
+" open CtrlP
+map <leader>j :CtrlP<CR>
+
+" Vim Grepper shortcuts
+
+" search in entire project
+nnoremap <Leader>fp :Grepper<Space>-query<Space>
+" search in entire buffer
+nnoremap <Leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space>
+
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -123,11 +147,6 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-" Syntastic
-map <leader>lc :lclose<cr>
-
-" }}}
-
 
 " Section goyovim {{{
 
@@ -135,21 +154,6 @@ map <leader>lc :lclose<cr>
 let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
-
-"}}}
-
-
-" Section syntastic {{{
-
-" Syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=1
 
 "}}}
 
@@ -166,28 +170,61 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " }}}
 
 
+" Section Vim Sneak {{{
+
+" Vim Sneak settings
+
+let g:sneak#s_next = 1
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+
+" }}}
+
+
+" Section IndentLine {{{
+
+" Vim IndentLine settings
+
+let g:indentLine_enabled = 1
+let g:indentLine_char = "⟩"
+
+" }}}
+
+
 " Section VimPlug Config {{{
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-github-dashboard'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/syntastic'
-Plug 'vim-airline/vim-airline'
+Plug 'junegunn/vim-easy-align'  " everything to do with alignments
+Plug 'junegunn/vim-github-dashboard'    " shows github  events
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " sidebar
+
+Plug 'tpope/vim-fugitive'       " git wrapper
+Plug 'tpope/vim-surround'       " allow operations on surroundings({''}) in pairs
+Plug 'tpope/vim-commentary'     " comments
+Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }    " fuzzy finder
+Plug 'vim-airline/vim-airline'  " status bar
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'valloric/youcompleteme'
-Plug 'junegunn/goyo.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'nightsense/seabird'
-" Plug 'nightsense/night-and-day'
-Plug 'xolox/vim-colorscheme-switcher'
-Plug 'xolox/vim-misc'
+Plug 'junegunn/goyo.vim'        " distraction free mode
+Plug 'mhinz/vim-grepper'        " search in files
+Plug 'christoomey/vim-tmux-navigator'   " bindings for navigation when launch from tmux 
+Plug 'nathanaelkane/vim-indent-guides'  " indent guides
+Plug 'airblade/vim-gitgutter'   " shows git diff for each line and other goodies
+Plug 'Shougo/denite.nvim'       " unite interfaces
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " auto complete
+" Plug 'valloric/youcompleteme'     " autocomplete
+" Plug 'scrooloose/syntastic'     " linter
+Plug 'w0rp/ale'     " linter
+Plug 'justinmk/vim-sneak'       " efficient moving around
+Plug 'Yggdroot/indentLine'      " indent guides
+
+" Themes
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -208,9 +245,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Section Vim Airline Config {{{
 
-
-" airline theme
-let g:airline_theme='sol'
+let g:airline#extensions#tabline#enabled=1
 
 " airline fonts
 let g:airline_powerline_fonts = 1
@@ -224,72 +259,22 @@ syntax enable               " enable syntax processing
 
 if has('gui_running')
 
-    colorscheme seagull
-
-    " select colorscheme depending on the time of day
-    " let g:nd_day_theme = 'seagull'
-    " let g:nd_night_theme = 'petrel'
-
     set guioptions -=m           " no menubar
     set guioptions -=T           " no toolbar
     set guioptions -=r           " no scrollbar
 
-    " set lines=60 columns=108 linespace=0
+    set lines=60 columns=108 linespace=0
 
-    set guifont=Fira\ Code\ 13
+    set guifont=Fira\ Code\ 14
 
-endif
-" else
-"     " awesome colorscheme
-"     colorscheme seagull
-"     set t_Co=16
-" endif
-" }}}
-
-
-" Section Tmux {{{
-
-" allows cursor change in tmux mode
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    " awesome colorscheme
+    set termguicolors
 endif
 
+color Dracula
+
 " }}}
-
-
-" Section Autogroups {{{
-
-" augroup configgroup
-"     autocmd!
-"     autocmd VimEnter * highlight clear SignColumn
-"     autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
-"                 \:call <SID>StripTrailingWhitespaces()
-"     autocmd FileType java setlocal noexpandtab
-"     autocmd FileType java setlocal list
-"     autocmd FileType java setlocal listchars=tab:+\ ,eol:-
-"     autocmd FileType java setlocal formatprg=par\ -w80\ -T4
-"     autocmd FileType php setlocal expandtab
-"     autocmd FileType php setlocal list
-"     autocmd FileType php setlocal listchars=tab:+\ ,eol:-
-"     autocmd FileType php setlocal formatprg=par\ -w80\ -T4
-"     autocmd FileType ruby setlocal tabstop=2
-"     autocmd FileType ruby setlocal shiftwidth=2
-"     autocmd FileType ruby setlocal softtabstop=2
-"     autocmd FileType ruby setlocal commentstring=#\ %s
-"     autocmd FileType python setlocal commentstring=#\ %s
-"     autocmd BufEnter *.cls setlocal filetype=java
-"     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
-"     autocmd BufEnter Makefile setlocal noexpandtab
-"     autocmd BufEnter *.sh setlocal tabstop=2
-"     autocmd BufEnter *.sh setlocal shiftwidth=2
-"     autocmd BufEnter *.sh setlocal softtabstop=2
-" augroup END
-
-" " }}}
 
 
 " Section Backups {{{
@@ -301,15 +286,6 @@ endif
     set writebackup
 
 " }}}
-
-
-" Section Arduino {{{
-"     nnoremap <buffer> <leader>am :ArduinoVerify<CR>
-"     nnoremap <buffer> <leader>au :ArduinoUpload<CR>
-"     nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
-"     nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
-"     nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>
-" " }}}
 
 
 " Section Custom Functions {{{
@@ -328,6 +304,7 @@ endif
 
 
 " toggle between number and relativenumber
+
 function! ToggleNumber()
     if(&relativenumber == 1)
         set norelativenumber
@@ -337,17 +314,6 @@ function! ToggleNumber()
     endif
 endfunc
 
-" strips trailing whitespace at the end of files. this
-" is called on buffer write in the autogroup above.
-function! <SID>StripTrailingWhitespaces()
-    " save last search & cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunction
 
 " }}}
 
@@ -357,3 +323,4 @@ set foldlevel=0
 set modelines=1
 
 " vim:foldmethod=marker:foldlevel=0
+
