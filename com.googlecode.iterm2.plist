@@ -230,7 +230,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Developer/dotfiles</string>
+	<string>~/Developer/dotfiles/iterm-dracula</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -265,13 +265,13 @@
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>2049 113 445 77 0 0 2560 1057 </string>
+	<string>1188 335 940 311 0 0 2560 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>254 537 796 473 0 0 2560 1057 </string>
+	<string>527 476 918 512 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 80 2560 977 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>388 274 665 452 0 0 2560 1057 </string>
+	<string>0 530 825 527 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>364 84 665 452 0 0 2560 1057 </string>
 	<key>New Bookmarks</key>
@@ -457,6 +457,8 @@
 			<false/>
 			<key>Blur</key>
 			<true/>
+			<key>Blur Radius</key>
+			<real>0.10000000000000001</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -846,7 +848,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FiraCode-Retina 14</string>
+			<string>FiraCode-Retina 16</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -900,7 +902,7 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
-			<true/>
+			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
@@ -1553,6 +1555,10 @@
 	<string>734F860F-E748-40BB-8400-6F8B2E8716F7</string>
 	<key>NoSyncLastTipTime</key>
 	<real>549593404.39112604</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>

@@ -1,4 +1,5 @@
-set -x EDITOR nvim
+test -z "$TMUX"; and exec tmux 
+set -gx EDITOR "nvim"
 
 # aliases
 alias vi='nvim'
