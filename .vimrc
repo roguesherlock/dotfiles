@@ -49,7 +49,6 @@ set foldmethod=indent   " fold based on indent level
 
 " mouse is annoying in this land
 set mouse=r
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 
 " resize using arrows keys instead
@@ -99,6 +98,9 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " save session
 nnoremap <leader>s :mksession<CR>
+
+" Vim Indent guide
+nnoremap <leader>ig :IndentLinesToggle<CR>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -158,6 +160,17 @@ let g:goyo_margin_bottom = 2
 "}}}
 
 
+" Section deoplete {{{
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"}}}
+
+
+" Section ale {{{
+let g:airline#extensions#ale#enabled = 1
+"}}}
+
+
 " Section CtrlP {{{
 
 " CtrlP settings
@@ -189,8 +202,8 @@ omap F <Plug>Sneak_F
 
 " Vim IndentLine settings
 
-let g:indentLine_enabled = 1
-let g:indentLine_char = "⟩"
+let g:indentLine_enabled = 0
+let g:indentLine_char = ">"
 
 " }}}
 
@@ -211,7 +224,7 @@ Plug 'vim-airline/vim-airline'  " status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'        " distraction free mode
 Plug 'mhinz/vim-grepper'        " search in files
-Plug 'christoomey/vim-tmux-navigator'   " bindings for navigation when launch from tmux 
+Plug 'christoomey/vim-tmux-navigator'   " bindings for navigation when launch from tmux
 Plug 'nathanaelkane/vim-indent-guides'  " indent guides
 Plug 'airblade/vim-gitgutter'   " shows git diff for each line and other goodies
 Plug 'Shougo/denite.nvim'       " unite interfaces
@@ -265,7 +278,7 @@ if has('gui_running')
 
     set lines=60 columns=108 linespace=0
 
-    set guifont=Fira\ Code\ 14
+    set guifont=Fira\ Code\ 16
 
 else
     " awesome colorscheme
