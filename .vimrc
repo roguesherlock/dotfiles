@@ -1,5 +1,7 @@
 " Section Misc {{{
 set laststatus=2
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_silent = 1  " do not display the auto-save notification
 " }}}
 
 
@@ -167,6 +169,10 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 
 " Section ale {{{
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\}
+let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 "}}}
 
@@ -234,6 +240,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " auto complete
 Plug 'w0rp/ale'     " linter
 Plug 'justinmk/vim-sneak'       " efficient moving around
 Plug 'Yggdroot/indentLine'      " indent guides
+Plug '907th/vim-auto-save'      " autosave files
+Plug 'mattn/emmet-vim/'         " html css 
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
