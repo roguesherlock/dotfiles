@@ -1,16 +1,13 @@
-code --install-extension HookyQR.beautify
-code --install-extension bbrakenhoff.seabird
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension eamodio.gitlens
-code --install-extension eg2.tslint
-code --install-extension esbenp.prettier-vscode
-code --install-extension gharveymn.nightswitch
-code --install-extension joelday.docthis
-code --install-extension kumar-harsh.graphql-for-vscode
-code --install-extension mechatroner.rainbow-csv
-code --install-extension ms-python.python
-code --install-extension ms-vscode.cpptools
-code --install-extension ms-vscode.Go
-code --install-extension teabyii.ayu
-code --install-extension vscodevim.vim
-code --install-extension wix.vscode-import-cost
+dbaeumer.vscode-eslint
+dracula-theme.theme-dracula
+eamodio.gitlens
+eg2.tslint
+esbenp.prettier-vscode
+HookyQR.beautify
+joelday.docthis
+kumar-harsh.graphql-for-vscode
+mechatroner.rainbow-csv
+ms-python.python
+ms-vscode.cpptools
+ms-vscode.Go
+wix.vscode-import-cost

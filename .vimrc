@@ -125,8 +125,8 @@ map <leader>pp :setlocal paste!<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+map <leader>tm :tabmove<cr>
+map <leader>t<leader> :tabnext<cr>
 
 " Fast saving
 nmap <leader>w :w!<cr>
