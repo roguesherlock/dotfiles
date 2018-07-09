@@ -230,8 +230,10 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Developer/dotfiles/iterm-dracula</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 448}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
@@ -266,12 +268,14 @@
 	<true/>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1188 335 940 311 0 0 2560 1057 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>970 518 620 392 0 0 2560 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>527 476 918 512 0 0 2560 1057 </string>
+	<string>527 437 918 512 0 0 2560 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 80 2560 977 0 0 2560 1057 </string>
+	<string>1498 323 825 527 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 530 825 527 0 0 2560 1057 </string>
+	<string>5 80 2560 977 0 0 2560 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>364 84 665 452 0 0 2560 1057 </string>
 	<key>New Bookmarks</key>
@@ -1554,7 +1558,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>734F860F-E748-40BB-8400-6F8B2E8716F7</string>
 	<key>NoSyncLastTipTime</key>
-	<real>549593404.39112604</real>
+	<real>552707789.13550496</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1563,12 +1567,29 @@
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>549006353.09436798</real>
+	<key>NoSyncTipsDisabled</key>
+	<true/>
 	<key>NoSyncTipsToNotShow</key>
 	<array>
 		<string>000</string>
 		<string>0000</string>
 		<string>0001</string>
 		<string>0002</string>
+		<string>0003</string>
+		<string>0004</string>
+		<string>0005</string>
+		<string>0006</string>
+		<string>0007</string>
+		<string>0008</string>
+		<string>0009</string>
+		<string>0010</string>
+		<string>0011</string>
+		<string>0012</string>
+		<string>0013</string>
+		<string>0014</string>
+		<string>0015</string>
+		<string>0016</string>
+		<string>0017</string>
 	</array>
 	<key>PointerActions</key>
 	<dict>
@@ -1607,6 +1628,8 @@
 	<string>/Users/akash/Developer/dotfiles</string>
 	<key>QuitWhenAllWindowsClosed</key>
 	<false/>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -1616,12 +1639,14 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-06-02T18:29:17Z</date>
+	<date>2018-07-08T01:56:30Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.1.7</string>
 </dict>
 </plist>
