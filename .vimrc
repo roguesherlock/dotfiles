@@ -241,11 +241,11 @@ Plug 'w0rp/ale'     " linter
 Plug 'justinmk/vim-sneak'       " efficient moving around
 Plug 'Yggdroot/indentLine'      " indent guides
 Plug '907th/vim-auto-save'      " autosave files
-Plug 'mattn/emmet-vim/'         " html css 
+Plug 'mattn/emmet-vim/'         " html css
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
-Plug 'dracula/vim'
+Plug 'dracula/vim', {'as':'dracula'}
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -293,7 +293,7 @@ else
     set termguicolors
 endif
 
-color Dracula
+color dracula
 
 " }}}
 

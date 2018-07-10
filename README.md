@@ -1,15 +1,13 @@
 # dotfiles
-My dotfiles for `macOS High Sierra 10.13.3 (17D47)`
+My dotfiles for `Arch Linux`
 
 
 
 ## Setup
 
-- Shell: `bash`
+- Shell: `fish`
 - Text Editor: `vim` `vscode`
-- IDE: `Xcode`
-- Video Player: `IINA`
-
+- DE: `Gnome 3`
 
 
 ## Installation

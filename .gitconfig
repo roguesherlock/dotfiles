@@ -1,7 +1,7 @@
 [gpg]
-	program = /usr/local/MacGPG2/bin/gpg2
+	program = /usr/bin/gpg
 [user]
-	signingkey = CECA5EA0
+	signingkey = 045DB97EA2B6D9A5A2DCCB5A0DF1C351CECA5EA0 
 	name = akash
 	mail = pomalakash@gmail.com
 	email = pomalakash@gmail.com
