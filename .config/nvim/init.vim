@@ -216,7 +216,7 @@ let g:indentLine_char = ">"
 
 " Section VimPlug Config {{{
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'junegunn/vim-easy-align'  " everything to do with alignments
 Plug 'junegunn/vim-github-dashboard'    " shows github  events
@@ -249,6 +249,7 @@ Plug 'othree/html5.vim'
 " Themes
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim', {'as':'dracula'}
+Plug 'mhartington/oceanic-next'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -269,7 +270,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Section Vim Airline Config {{{
 
-let g:airline_theme='sol'
+" let g:airline_theme='dracula'
 
 let g:airline#extensions#tabline#enabled=1
 
