@@ -1,0 +1,13 @@
+# Copy this file to "~/.config/systemd/user"
+[Unit]
+Description=setting up some things on boot.
+
+[Service]
+Type=oneshot
+Environment="DISPLAY=:1"
+Environment="XAUTHORITY=%h/.Xauthority"
+ExecStart=%h/Developer/dotfiles/scripts/takecareofit.sh
+StandardOutput=journal
+
+[Install]
+WantedBy=graphical.target
