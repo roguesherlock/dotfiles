@@ -1,13 +1,12 @@
 # dotfiles
-My dotfiles for `macOS High Sierra 10.13.3 (17D47)`
+My dotfiles for `macOS High Sierra 10.13.6 (17G65)`
 
 
 
 ## Setup
 
-- Shell: `bash`
-- Text Editor: `vim` `vscode`
-- IDE: `Xcode`
+- Shell: `fish`
+- Editor: `vim`
 - Video Player: `IINA`
 
 
@@ -15,7 +14,7 @@ My dotfiles for `macOS High Sierra 10.13.3 (17D47)`
 ## Installation
 
 1. Inspect dotfiles.
-2. Find cool thing.
-3. Add cool thing to your dotfiles.
+2. Find a cool thing. 😎
+3. Add it to your dotfiles. 😉
 
 

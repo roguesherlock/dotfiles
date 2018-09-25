@@ -1,5 +1,5 @@
 [gpg]
-	program = /usr/local/MacGPG2/bin/gpg2
+	program = /usr/local/bin/gpg
 [user]
 	signingkey = CECA5EA0
 	name = akash

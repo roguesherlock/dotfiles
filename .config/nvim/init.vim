@@ -1,7 +1,11 @@
 " Section Misc {{{
 set laststatus=2
 let g:auto_save = 1  " enable AutoSave on Vim startup
+
 let g:auto_save_silent = 1  " do not display the auto-save notification
+
+" ESC key comes out of terminal mode when in terminal
+tnoremap <Esc> <C-\><C-n>
 " }}}
 
 
@@ -95,7 +99,7 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " edit vimrc/fish and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>ef :vsp ~/.config/omf/init.fish<CR>
+nnoremap <leader>ef :vsp ~/.config/fish/config.fish<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " save session
@@ -151,6 +155,19 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
+" Easier buffer switching
+nnoremap <Leader>l :ls<CR>:b
+nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
 
 " Section goyovim {{{
 
@@ -163,8 +180,8 @@ let g:goyo_margin_bottom = 2
 
 
 " Section deoplete {{{
-" let g:deoplete#enable_at_startup = 1
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "}}}
 
 
@@ -216,39 +233,65 @@ let g:indentLine_char = ">"
 
 " Section VimPlug Config {{{
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'junegunn/vim-easy-align'  " everything to do with alignments
-Plug 'junegunn/vim-github-dashboard'    " shows github  events
+Plug 'junegunn/vim-easy-align'              " everything to do with alignments
+Plug 'junegunn/vim-github-dashboard'        " shows github  events
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " sidebar
 
-Plug 'tpope/vim-fugitive'       " git wrapper
-Plug 'tpope/vim-surround'       " allow operations on surroundings({''}) in pairs
-Plug 'tpope/vim-commentary'     " comments
+Plug 'tpope/vim-fugitive'                   " git wrapper
+Plug 'tpope/vim-surround'                   " allow operations on surroundings({''}) in pairs
+Plug 'tpope/vim-commentary'                 " comments
 Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }    " fuzzy finder
-Plug 'vim-airline/vim-airline'  " status bar
+Plug 'vim-airline/vim-airline'              " status bar
 Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/goyo.vim'        " distraction free mode
-Plug 'mhinz/vim-grepper'        " search in files
-Plug 'christoomey/vim-tmux-navigator'   " bindings for navigation when launch from tmux
-Plug 'nathanaelkane/vim-indent-guides'  " indent guides
-Plug 'airblade/vim-gitgutter'   " shows git diff for each line and other goodies
-Plug 'Shougo/denite.nvim'       " unite interfaces
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " auto complete
-" Plug 'valloric/youcompleteme'     " autocomplete
-" Plug 'scrooloose/syntastic'     " linter
-Plug 'w0rp/ale'     " linter
-Plug 'justinmk/vim-sneak'       " efficient moving around
-Plug 'Yggdroot/indentLine'      " indent guides
-Plug '907th/vim-auto-save'      " autosave files
-Plug 'mattn/emmet-vim/'         " html css
+Plug 'junegunn/goyo.vim'                    " distraction free mode
+Plug 'mhinz/vim-grepper'                    " search in files
+Plug 'christoomey/vim-tmux-navigator'       " bindings for navigation when launch from tmux
+Plug 'nathanaelkane/vim-indent-guides'      " indent guides
+Plug 'airblade/vim-gitgutter'               " shows git diff for each line and other goodies
+Plug 'Shougo/denite.nvim'                   " unite interfaces
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " auto complete
+" Plug 'valloric/youcompleteme'             " autocomplete
+" Plug 'scrooloose/syntastic'               " linter
+Plug 'w0rp/ale'                             " linter
+Plug 'justinmk/vim-sneak'                   " efficient moving around
+Plug 'Yggdroot/indentLine'                  " indent guides
+Plug '907th/vim-auto-save'                  " autosave files
+Plug 'mattn/emmet-vim/'                     " html css
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+Plug 'SirVer/ultisnips'                    " Autocomplete snippets
+Plug 'honza/vim-snippets'                  " LOADS of snippets
+Plug 'danro/rename.vim'                    " Easy file renaming
+Plug 'Lokaltog/vim-easymotion'             " Easily move around text
+Plug 'ConradIrwin/vim-bracketed-paste'     " No more se paste
+Plug 'Raimondi/delimitMate'                " Autoclose parens and quotes
+Plug 'plasticboy/vim-markdown'             " Markdown highlighting
+Plug 'AndrewRadev/splitjoin.vim'           " gJ and gS to join and split blocks
+Plug 'AndrewRadev/linediff.vim'            " Diff 2 blocks of text
+Plug 'terryma/vim-expand-region'           " Expand(v)/shrink(C-v) vis selection
+Plug 'shinokada/dragvisuals.vim'           " Drag visual selections
+Plug 'nixon/vim-vmath'                     " Math summary for visual selections
+Plug 'Yggdroot/indentLine'                 " Shows vertical indentation lines
+Plug 'jeetsukumaran/vim-indentwise'        " Movements using indentation
+Plug 'Elzr/Vim-json'                       " Fine grained syntax highlighting for JSON
+Plug 'haya14busa/incsearch.vim'            " Incremental searches
+Plug 'zerowidth/vim-copy-as-rtf'           " Copy syntax highlighted text
+Plug 'isRuslan/vim-es6'                    " Syntax and snippets for ES6
+Plug 'pangloss/vim-javascript'             " Syntax highlighting for JS
+Plug 'neomake/neomake'                     " Async filetype make for neovim
+Plug 'janko-m/vim-test'                    " Async tests
 
 " Themes
-Plug 'altercation/vim-colors-solarized'
-Plug 'dracula/vim'
+" Plug 'dracula/vim', {'as':'dracula'}
+" Plug 'nightsense/snow'
+Plug 'morhetz/gruvbox'
+" Plug 'nightsense/seabird'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -269,13 +312,19 @@ nmap ga <Plug>(EasyAlign)
 
 " Section Vim Airline Config {{{
 
-let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='gruvbox'
 
 " airline fonts
 let g:airline_powerline_fonts = 1
 
 " }}}
 
+" Section UltiSnips {{{
+" Use tab for snippet expansion
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" }}}
 
 " Section Colors and GUI config {{{
 
@@ -289,14 +338,21 @@ if has('gui_running')
 
     set lines=60 columns=108 linespace=0
 
-    set guifont=Fira\ Code\ 16
+    set guifont=Fira\ Code\ Retina\ 16
 
-else
-    " awesome colorscheme
+endif
+
+if (has("termguicolors"))
     set termguicolors
 endif
 
-color Dracula
+"Draw a dark grey ruler at 80 chars
+set colorcolumn=80
+highlight ColorColumn ctermbg=234
+
+set background=dark
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 " }}}
 
@@ -326,7 +382,6 @@ color Dracula
 " endfunction
 " setl statusline=%!b:MyStatusLine()
 
-
 " toggle between number and relativenumber
 
 function! ToggleNumber()
@@ -338,7 +393,6 @@ function! ToggleNumber()
     endif
 endfunc
 
-
 " }}}
 
 
@@ -347,4 +401,5 @@ set foldlevel=0
 set modelines=1
 
 " vim:foldmethod=marker:foldlevel=0
+
 
