@@ -1,6 +1,5 @@
 # dotfiles
-My dotfiles for `macOS High Sierra 10.13.6 (17G65)`
-
+My dotfiles for `macOS Mojave 10.14 (18A391)`
 
 
 ## Setup

@@ -286,6 +286,7 @@ Plug 'isRuslan/vim-es6'                    " Syntax and snippets for ES6
 Plug 'pangloss/vim-javascript'             " Syntax highlighting for JS
 Plug 'neomake/neomake'                     " Async filetype make for neovim
 Plug 'janko-m/vim-test'                    " Async tests
+Plug 'mhinz/vim-startify'                  " Awesome Start Screen
 
 " Themes
 " Plug 'dracula/vim', {'as':'dracula'}
