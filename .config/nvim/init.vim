@@ -1,19 +1,47 @@
 " Section Misc {{{
-set laststatus=2
-let g:auto_save = 1  " enable AutoSave on Vim startup
 
-let g:auto_save_silent = 1  " do not display the auto-save notification
+set laststatus=2
+set autoread                " Autoread when a file is changed from the outside
+
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+
+" Remove delay after pressing escape and clearing the visual selection
+set timeoutlen=1000 ttimeoutlen=0
+
+" Turn on spellcheck in markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 " ESC key comes out of terminal mode when in terminal
 tnoremap <Esc> <C-\><C-n>
+
+" Incremental search
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Use tab to jump to closing/opening matches
+"nnoremap <tab> %
+
+" " Jump to end or beginning in insert mode
+" inoremap <C-Right> <esc>A
+" inoremap <C-Left> <esc>I
 " }}}
 
 
 " Section Spaces and Tabs {{{
+
 set tabstop=2           " number of visual spaces per TAB
 set softtabstop=2       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
 set shiftwidth=2        " when indenting with '>', use 4 spaces
+
+" Show symbols for tabs and trailing whitespace
+set list!
+set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
 
 " }}}
 
@@ -103,7 +131,8 @@ nnoremap <leader>ef :vsp ~/.config/fish/config.fish<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " save session
-nnoremap <leader>s :mksession<CR>
+nnoremap <leader>s :ToggleWorkspace<CR>
+
 
 " Vim Indent guide
 nnoremap <leader>ig :IndentLinesToggle<CR>
@@ -169,6 +198,17 @@ nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 
+" }}}
+
+
+" Section Worspace {{{
+
+" vim-workspace config
+let g:workspace_autosave_always = 1
+
+"}}}
+
+
 " Section goyovim {{{
 
 " goyo vim config
@@ -180,17 +220,21 @@ let g:goyo_margin_bottom = 2
 
 
 " Section deoplete {{{
+"
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 "}}}
 
 
 " Section ale {{{
+
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \}
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
+
 "}}}
 
 
@@ -226,19 +270,24 @@ omap F <Plug>Sneak_F
 " Vim IndentLine settings
 
 let g:indentLine_enabled = 0
-let g:indentLine_char = ">"
+" let g:indentLine_char = ">"
 
 " }}}
 
 
 " Section VimPlug Config {{{
 
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'junegunn/vim-easy-align'              " everything to do with alignments
 Plug 'junegunn/vim-github-dashboard'        " shows github  events
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " sidebar
-
 Plug 'tpope/vim-fugitive'                   " git wrapper
 Plug 'tpope/vim-surround'                   " allow operations on surroundings({''}) in pairs
 Plug 'tpope/vim-commentary'                 " comments
@@ -247,46 +296,42 @@ Plug 'vim-airline/vim-airline'              " status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'                    " distraction free mode
 Plug 'mhinz/vim-grepper'                    " search in files
-Plug 'christoomey/vim-tmux-navigator'       " bindings for navigation when launch from tmux
-Plug 'nathanaelkane/vim-indent-guides'      " indent guides
 Plug 'airblade/vim-gitgutter'               " shows git diff for each line and other goodies
-Plug 'Shougo/denite.nvim'                   " unite interfaces
+" Plug 'Shougo/denite.nvim'                   " unite interfaces
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " auto complete
-" Plug 'valloric/youcompleteme'             " autocomplete
-" Plug 'scrooloose/syntastic'               " linter
-Plug 'w0rp/ale'                             " linter
 Plug 'justinmk/vim-sneak'                   " efficient moving around
-Plug 'Yggdroot/indentLine'                  " indent guides
 Plug '907th/vim-auto-save'                  " autosave files
 Plug 'mattn/emmet-vim/'                     " html css
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'othree/yajs.vim'
-Plug 'othree/html5.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'elixir-editors/vim-elixir'
-Plug 'slashmili/alchemist.vim'
-Plug 'SirVer/ultisnips'                    " Autocomplete snippets
-Plug 'honza/vim-snippets'                  " LOADS of snippets
-Plug 'danro/rename.vim'                    " Easy file renaming
-Plug 'Lokaltog/vim-easymotion'             " Easily move around text
-Plug 'ConradIrwin/vim-bracketed-paste'     " No more se paste
-Plug 'Raimondi/delimitMate'                " Autoclose parens and quotes
-Plug 'plasticboy/vim-markdown'             " Markdown highlighting
-Plug 'AndrewRadev/splitjoin.vim'           " gJ and gS to join and split blocks
-Plug 'AndrewRadev/linediff.vim'            " Diff 2 blocks of text
-Plug 'terryma/vim-expand-region'           " Expand(v)/shrink(C-v) vis selection
-Plug 'shinokada/dragvisuals.vim'           " Drag visual selections
-Plug 'nixon/vim-vmath'                     " Math summary for visual selections
-Plug 'Yggdroot/indentLine'                 " Shows vertical indentation lines
-Plug 'jeetsukumaran/vim-indentwise'        " Movements using indentation
-Plug 'Elzr/Vim-json'                       " Fine grained syntax highlighting for JSON
-Plug 'haya14busa/incsearch.vim'            " Incremental searches
-Plug 'zerowidth/vim-copy-as-rtf'           " Copy syntax highlighted text
-Plug 'isRuslan/vim-es6'                    " Syntax and snippets for ES6
-Plug 'pangloss/vim-javascript'             " Syntax highlighting for JS
-Plug 'neomake/neomake'                     " Async filetype make for neovim
-Plug 'janko-m/vim-test'                    " Async tests
-Plug 'mhinz/vim-startify'                  " Awesome Start Screen
+Plug 'HerringtonDarkholme/yats.vim'         " typesscript syntax
+Plug 'othree/yajs.vim'                      " javascript syntax
+Plug 'othree/html5.vim'                     " html
+Plug 'rizzatti/dash.vim'                    " Dash
+Plug 'elixir-editors/vim-elixir'            " elixir
+" Plug 'slashmili/alchemist.vim'              " elixir
+Plug 'SirVer/ultisnips'                     " Autocomplete snippets
+Plug 'honza/vim-snippets'                   " LOADS of snippets
+Plug 'danro/rename.vim'                     " Easy file renaming
+Plug 'Lokaltog/vim-easymotion'              " Easily move around text
+Plug 'ConradIrwin/vim-bracketed-paste'      " No more se paste
+Plug 'Raimondi/delimitMate'                 " Autoclose parens and quotes
+Plug 'plasticboy/vim-markdown'              " Markdown highlighting
+Plug 'AndrewRadev/splitjoin.vim'            " gJ and gS to join and split blocks
+Plug 'AndrewRadev/linediff.vim'             " Diff 2 blocks of text
+Plug 'terryma/vim-expand-region'            " Expand(v)/shrink(C-v) vis selection
+Plug 'shinokada/dragvisuals.vim'            " Drag visual selections
+Plug 'nixon/vim-vmath'                      " Math summary for visual selections
+Plug 'Yggdroot/indentLine'                  " Shows vertical indentation lines
+Plug 'jeetsukumaran/vim-indentwise'         " Movements using indentation
+Plug 'Elzr/Vim-json'                        " Fine grained syntax highlighting for JSON
+Plug 'haya14busa/incsearch.vim'             " Incremental searches
+Plug 'zerowidth/vim-copy-as-rtf'            " Copy syntax highlighted text
+Plug 'isRuslan/vim-es6'                     " Syntax and snippets for ES6
+Plug 'pangloss/vim-javascript'              " Syntax highlighting for JS
+Plug 'neomake/neomake'                      " Async filetype make for neovim
+Plug 'janko-m/vim-test'                     " Async tests
+Plug 'mhinz/vim-startify'                   " Awesome Start Screen
+Plug 'thaerkh/vim-workspace'                " Workspace
+Plug 'ervandew/supertab'                    " For Tab Completion
 
 " Themes
 " Plug 'dracula/vim', {'as':'dracula'}
@@ -320,12 +365,14 @@ let g:airline_powerline_fonts = 1
 
 " }}}
 
+
 " Section UltiSnips {{{
 " Use tab for snippet expansion
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+" let g:UltiSnipsExpandTrigger="<Tab>"
+" let g:UltiSnipsJumpForwardTrigger="<Tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 " }}}
+
 
 " Section Colors and GUI config {{{
 
