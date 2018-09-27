@@ -298,6 +298,7 @@ Plug 'junegunn/goyo.vim'                    " distraction free mode
 Plug 'mhinz/vim-grepper'                    " search in files
 Plug 'airblade/vim-gitgutter'               " shows git diff for each line and other goodies
 " Plug 'Shougo/denite.nvim'                   " unite interfaces
+Plug 'christoomey/vim-tmux-navigator'       " bindings for navigation when launch from tmux
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " auto complete
 Plug 'justinmk/vim-sneak'                   " efficient moving around
 Plug '907th/vim-auto-save'                  " autosave files
