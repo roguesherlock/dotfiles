@@ -18,6 +18,7 @@ tnoremap <Esc> <C-\><C-n>
 " Incremental search
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
+set ignorecase
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
@@ -48,7 +49,7 @@ set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
 
 " Section UI Config {{{
 
-set number              " show line numbers
+set relativenumber number " show relative line numbers
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
@@ -125,6 +126,9 @@ inoremap jk <esc>
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
 
+" quit vim
+nnoremap <leader>qq :wqa<cr>
+
 " edit vimrc/fish and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ef :vsp ~/.config/fish/config.fish<CR>
@@ -145,11 +149,19 @@ map <leader>j :CtrlP<CR>
 
 " Vim Grepper shortcuts
 
-" search in entire project
-nnoremap <Leader>fp :Grepper<Space>-query<Space>
-" search in entire buffer
-nnoremap <Leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space>
+" " search in entire project
+" nnoremap <Leader>fp :Grepper<Space>-query<Space>
+" " search in entire buffer
+" nnoremap <Leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space>
 
+" search in entire project
+nnoremap <leader>fp :Grepper -tool git<cr>
+nnoremap <leader>fP :Grepper -tool ag<cr>
+" search in entire buffer
+nnoremap <leader>fb :Grepper -tool git -buffers<cr>
+nnoremap <leader>fP :Grepper -tool ag -buffers<cr>
+" Start searching the word under the cursor
+nnoremap <leader>f* :Grepper -tool ag -cword -noprompt<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -244,7 +256,8 @@ let g:airline#extensions#ale#enabled = 1
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" Do not clear ctrlp cache when vim exits
+" let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " }}}
@@ -262,6 +275,14 @@ xmap F <Plug>Sneak_F
 omap f <Plug>Sneak_f
 omap F <Plug>Sneak_F
 
+" }}}
+
+
+" Section Vim Grepper {{{
+
+" Vim Grepper settings
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
 " }}}
 
 
@@ -450,5 +471,3 @@ set foldlevel=0
 set modelines=1
 
 " vim:foldmethod=marker:foldlevel=0
-
-
