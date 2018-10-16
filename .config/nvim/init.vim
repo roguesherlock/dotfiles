@@ -3,6 +3,9 @@
 set laststatus=2
 set autoread                " Autoread when a file is changed from the outside
 
+set nocompatible
+filetype plugin on
+
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
@@ -171,7 +174,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove<cr>
-map <leader>t<leader> :tabnext<cr>
+map <leader>t<Leader> :tabnext<cr>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -197,9 +200,9 @@ noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
 " Easier buffer switching
-nnoremap <Leader>l :ls<CR>:b
-nnoremap <Leader>b :bp<CR>
-nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>bl :ls<CR>:b
+nnoremap <Leader><Tab> :bn<CR>
+nnoremap <Leader><S-Tab> :bp<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
 nnoremap <Leader>3 :3b<CR>
@@ -210,6 +213,44 @@ nnoremap <Leader>7 :7b<CR>
 nnoremap <Leader>8 :8b<CR>
 nnoremap <Leader>9 :9b<CR>
 
+" Turn on limelight
+nnoremap <Leader>ll <Plug>(Limelight)
+
+" Toggle Ditto
+nnoremap <leader>di <Plug>ToggleDitto
+
+
+
+" }}}
+
+" Section Vim Pencil {{{
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+augroup END
+
+" }}}
+
+" Section Ditto {{{
+
+" Use autocmds to check your text automatically and keep the highlighting
+" up to date (easier):
+au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
+
+" If you don't want the autocmds, you can also use an operator to check
+" specific parts of your text:
+" vmap <leader>d <Plug>Ditto	       " Call Ditto on visual selection
+" nmap <leader>d <Plug>Ditto	       " Call Ditto on operator movement
+
+nmap =d <Plug>DittoNext                " Jump to the next word
+nmap -d <Plug>DittoPrev                " Jump to the previous word
+nmap +d <Plug>DittoGood                " Ignore the word under the cursor
+nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
+nmap ]d <Plug>DittoMore                " Show the next matches
+nmap [d <Plug>DittoLess                " Show the previous matches
+
 " }}}
 
 
@@ -217,6 +258,7 @@ nnoremap <Leader>9 :9b<CR>
 
 " vim-workspace config
 let g:workspace_autosave_always = 1
+let g:workspace_autosave_ignore = ['gitcommit', '*.vim']
 
 "}}}
 
@@ -228,13 +270,17 @@ let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 
+" enable limelight
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 "}}}
 
 
 " Section deoplete {{{
 "
 let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "}}}
 
@@ -254,11 +300,11 @@ let g:airline#extensions#ale#enabled = 1
 
 " CtrlP settings
 let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
 " Do not clear ctrlp cache when vim exits
 " let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" If none of the default markers (.git .hg .svn .bzr _darcs) are present in a project
+let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'mix.exs', 'setup.py', 'package.json']
 
 " }}}
 
@@ -336,6 +382,7 @@ Plug 'danro/rename.vim'                     " Easy file renaming
 Plug 'Lokaltog/vim-easymotion'              " Easily move around text
 Plug 'ConradIrwin/vim-bracketed-paste'      " No more se paste
 Plug 'Raimondi/delimitMate'                 " Autoclose parens and quotes
+Plug 'godlygeek/tabular'                    " align texts
 Plug 'plasticboy/vim-markdown'              " Markdown highlighting
 Plug 'AndrewRadev/splitjoin.vim'            " gJ and gS to join and split blocks
 Plug 'AndrewRadev/linediff.vim'             " Diff 2 blocks of text
@@ -354,6 +401,13 @@ Plug 'janko-m/vim-test'                     " Async tests
 Plug 'mhinz/vim-startify'                   " Awesome Start Screen
 Plug 'thaerkh/vim-workspace'                " Workspace
 Plug 'ervandew/supertab'                    " For Tab Completion
+" Text editing related
+Plug 'reedes/vim-pencil'                    " For normal text editing
+Plug 'tpope/vim-abolish'                    " bunch of cool commands to work with words
+Plug 'dbmrq/vim-ditto'                      " highlight repeated words
+Plug 'tommcdo/vim-exchange'                 " Easy text exchange operator
+Plug 'junegunn/limelight.vim'               " Hyperfocus-writing.
+
 
 " Themes
 " Plug 'dracula/vim', {'as':'dracula'}
@@ -390,9 +444,9 @@ let g:airline_powerline_fonts = 1
 
 " Section UltiSnips {{{
 " Use tab for snippet expansion
-" let g:UltiSnipsExpandTrigger="<Tab>"
-" let g:UltiSnipsJumpForwardTrigger="<Tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 " }}}
 
 
@@ -469,5 +523,3 @@ endfunc
 set foldmethod=marker
 set foldlevel=0
 set modelines=1
-
-" vim:foldmethod=marker:foldlevel=0
