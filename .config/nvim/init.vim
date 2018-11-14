@@ -52,7 +52,8 @@ set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
 
 " Section UI Config {{{
 
-set relativenumber number " show relative line numbers
+" set relativenumber number " show relative line numbers
+set number              " show line numbers
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
@@ -201,8 +202,10 @@ noremap <Leader>P "+p
 
 " Easier buffer switching
 nnoremap <Leader>bl :ls<CR>:b
-nnoremap <Leader><Tab> :bn<CR>
-nnoremap <Leader><S-Tab> :bp<CR>
+nnoremap <Leader>bc :bd<CR>
+nnoremap <Leader><Leader> <C-^>
+nnoremap <Leader><S-Tab> :bn<CR>
+nnoremap <Leader><Tab> :bp<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
 nnoremap <Leader>3 :3b<CR>
@@ -280,7 +283,7 @@ autocmd! User GoyoLeave Limelight!
 " Section deoplete {{{
 "
 let g:deoplete#enable_at_startup = 1
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "}}}
 
@@ -304,7 +307,7 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 " let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " If none of the default markers (.git .hg .svn .bzr _darcs) are present in a project
-let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'mix.exs', 'setup.py', 'package.json']
+" let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'mix.exs', 'setup.py', 'package.json']
 
 " }}}
 
@@ -407,6 +410,7 @@ Plug 'tpope/vim-abolish'                    " bunch of cool commands to work wit
 Plug 'dbmrq/vim-ditto'                      " highlight repeated words
 Plug 'tommcdo/vim-exchange'                 " Easy text exchange operator
 Plug 'junegunn/limelight.vim'               " Hyperfocus-writing.
+Plug 'brooth/far.vim'                       " Search and Replace
 
 
 " Themes
