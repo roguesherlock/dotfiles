@@ -33,6 +33,14 @@ nnoremap N Nzzzv
 " " Jump to end or beginning in insert mode
 " inoremap <C-Right> <esc>A
 " inoremap <C-Left> <esc>I
+
+" Maintain undo history between sessions
+set undofile
+if !isdirectory("~/.vim/undodir")
+    silent call mkdir("~/.vim/undodir", "p")
+endif
+set undodir=~/.vim/undodir
+
 " }}}
 
 
@@ -139,7 +147,7 @@ nnoremap <leader>ef :vsp ~/.config/fish/config.fish<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " save session
-nnoremap <leader>s :ToggleWorkspace<CR>
+nnoremap <leader>sw :ToggleWorkspace<CR>
 
 
 " Vim Indent guide
@@ -222,9 +230,26 @@ nnoremap <Leader>ll <Plug>(Limelight)
 " Toggle Ditto
 nnoremap <leader>di <Plug>ToggleDitto
 
+" Vim Motion
+nnoremap <Leader>m <Plug>(easymotion-prefix)
 
+" <Leader>f{char} to move to {char}
+map  <Leader>mf <Plug>(easymotion-bd-f)
+nmap <Leader>mf <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap ms <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>mL <Plug>(easymotion-bd-jk)
+nmap <Leader>mL <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>mw <Plug>(easymotion-bd-w)
+nmap <Leader>mw <Plug>(easymotion-overwin-w)
 
 " }}}
+
 
 " Section Vim Pencil {{{
 
@@ -235,6 +260,7 @@ augroup pencil
 augroup END
 
 " }}}
+
 
 " Section Ditto {{{
 
@@ -411,7 +437,8 @@ Plug 'dbmrq/vim-ditto'                      " highlight repeated words
 Plug 'tommcdo/vim-exchange'                 " Easy text exchange operator
 Plug 'junegunn/limelight.vim'               " Hyperfocus-writing.
 Plug 'brooth/far.vim'                       " Search and Replace
-
+Plug 'sjl/gundo.vim'                        " Undo Visualizer
+Plug 'tpope/vim-repeat'                     " Advanced repeat (think '.' repeat for complex operations)
 
 " Themes
 " Plug 'dracula/vim', {'as':'dracula'}
