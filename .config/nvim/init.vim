@@ -283,11 +283,14 @@ nmap [d <Plug>DittoLess                " Show the previous matches
 " }}}
 
 
-" Section Worspace {{{
+" Section Vim Workspace {{{
 
-" vim-workspace config
 let g:workspace_autosave_always = 1
 let g:workspace_autosave_ignore = ['gitcommit', '*.vim']
+if !isdirectory("~/.vim/sessions")
+    silent call mkdir("~/.vim/sessions", "p")
+endif
+let g:workspace_session_directory = '~/.vim/sessions/'
 
 "}}}
 
