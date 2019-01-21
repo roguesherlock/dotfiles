@@ -36,8 +36,8 @@ nnoremap N Nzzzv
 
 " Maintain undo history between sessions
 set undofile
-if !isdirectory("~/.vim/undodir")
-    silent call mkdir("~/.vim/undodir", "p")
+if !isdirectory($HOME . "/.vim/undodir")
+    silent call mkdir($HOME . "/.vim/undodir", "p")
 endif
 set undodir=~/.vim/undodir
 
@@ -287,10 +287,10 @@ nmap [d <Plug>DittoLess                " Show the previous matches
 
 let g:workspace_autosave_always = 1
 let g:workspace_autosave_ignore = ['gitcommit', '*.vim']
-if !isdirectory("~/.vim/sessions")
-    silent call mkdir("~/.vim/sessions", "p")
+if !isdirectory($HOME . "/.vim/sessions")
+    silent call mkdir($HOME . "/.vim/sessions", "p")
 endif
-let g:workspace_session_directory = '~/.vim/sessions/'
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
 "}}}
 
