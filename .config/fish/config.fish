@@ -7,6 +7,8 @@ alias pg='ping www.google.com'
 alias gl='git log --oneline --graph --all --decorate'
 alias gc='git checkout'
 alias gp='git pull'
+alias afk='fish ~/.sleep'
+alias back='fish ~/.wakeup'
 # fetch word definition from vocabulary.com.
 # uses vcbl by @rahilwazir. To install, do
 # go get github.com/atomicnumber1/vcbl
