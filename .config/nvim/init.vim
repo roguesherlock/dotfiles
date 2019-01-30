@@ -241,8 +241,8 @@ nmap <Leader>mf <Plug>(easymotion-overwin-f)
 nmap ms <Plug>(easymotion-overwin-f2)
 
 " Move to line
-map <Leader>mL <Plug>(easymotion-bd-jk)
-nmap <Leader>mL <Plug>(easymotion-overwin-line)
+map <Leader>ml <Plug>(easymotion-bd-jk)
+nmap <Leader>ml <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>mw <Plug>(easymotion-bd-w)
