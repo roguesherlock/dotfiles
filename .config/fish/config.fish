@@ -17,6 +17,9 @@ alias wtfis='vcbl --desc both'
 # add go binaries to path
 set PATH /Users/akash/go/bin/ $PATH
 
+# add bunch of fish functions
+source ~/.config/fish/functions/fish_functions.fish
+
 eval (direnv hook fish)
 
 
