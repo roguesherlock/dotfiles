@@ -1,13 +1,7 @@
 #!/usr/local/bin/fish
 
-if test -e /tmp/signed_out
-  set me_status (cat /tmp/signed_out)
-else
-  echo 0 > /tmp/signed_out
-end
-
 set day (date +"%a")
-if test $day = "Sun" -o $day = "Sat" -o $me_status = 1
+if test $day = "Sun" -o $day = "Sat"
   exit 0
 end
 # wait for wifi

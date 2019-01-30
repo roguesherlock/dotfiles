@@ -11,5 +11,4 @@ end
 function gn
   slack_presence "signing out, good night."
   slack_presence "afk :afk:" --set-status
-  echo 1 > /tmp/signed_out
 end
