@@ -12,3 +12,7 @@ function gn
   slack_presence "signing out, good night."
   slack_presence "afk :afk:" --set-status
 end
+
+function host
+  curl -F "file=@"(ls $argv[1]) "https://file.io/"
+end
