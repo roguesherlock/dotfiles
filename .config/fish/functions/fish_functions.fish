@@ -16,3 +16,11 @@ end
 function host
   curl -F "file=@"(ls $argv[1]) "https://file.io/"
 end
+
+function ignore
+  echo 1 > /tmp/ignore
+end
+
+function dontignore
+  echo 0 > /tmp/ignore
+end
