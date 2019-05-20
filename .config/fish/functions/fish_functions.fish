@@ -18,9 +18,9 @@ function host
 end
 
 function ignore
-  echo 1 > /tmp/ignore
+  echo 1 > ~/.ignore
 end
 
 function dontignore
-  echo 0 > /tmp/ignore
+  echo 0 > ~/.ignore
 end

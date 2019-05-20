@@ -1,7 +1,7 @@
 #!/usr/local/bin/fish
 
-touch /tmp/ignore
-set ignore (cat /tmp/ignore)
+touch ~/.ignore
+set ignore (cat ~/.ignore)
 set day (date +"%a")
 if test $day = "Sun" -o $day = "Sat" -o $ignore != 0
   exit 0
