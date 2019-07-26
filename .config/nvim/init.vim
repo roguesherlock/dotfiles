@@ -41,6 +41,8 @@ if !isdirectory($HOME . "/.vim/undodir")
 endif
 set undodir=~/.vim/undodir
 
+autocmd BufRead,BufNewFile *.vue setfiletype html
+
 " }}}
 
 
@@ -248,6 +250,8 @@ nmap <Leader>ml <Plug>(easymotion-overwin-line)
 map  <Leader>mw <Plug>(easymotion-bd-w)
 nmap <Leader>mw <Plug>(easymotion-overwin-w)
 
+autocmd FileType python nnoremap <buffer> <leader>ap :call flake8#Flake8()<CR>
+
 " }}}
 
 
@@ -335,9 +339,11 @@ let g:airline#extensions#ale#enabled = 1
 let g:ctrlp_match_window = 'bottom,order:ttb'
 " Do not clear ctrlp cache when vim exits
 " let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -l --ignore node_modules --nocolor -g ""'
 " If none of the default markers (.git .hg .svn .bzr _darcs) are present in a project
 " let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', 'mix.exs', 'setup.py', 'package.json']
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+
 
 " }}}
 
@@ -443,6 +449,8 @@ Plug 'junegunn/limelight.vim'               " Hyperfocus-writing.
 Plug 'brooth/far.vim'                       " Search and Replace
 Plug 'sjl/gundo.vim'                        " Undo Visualizer
 Plug 'tpope/vim-repeat'                     " Advanced repeat (think '.' repeat for complex operations)
+Plug 'nvie/vim-flake8'                      " python static syntax & style checker
+" Plug 'posva/vim-vue'                        " Vue
 
 " Themes
 " Plug 'dracula/vim', {'as':'dracula'}
