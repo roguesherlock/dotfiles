@@ -28,4 +28,20 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/icu4c/sbin" $fish_user_paths
 
-export LC_ALL=en_US.UTF-8
+set -x LC_ALL en_US.UTF-8
+
+
+# On macOS, the default number of file descriptors is far too low ('256').
+# That would cause Docker to run out of available file handles, so let's
+# bump it up.
+ulimit -n 2048
+
+# Some operations with 'docker-compose' can take awhile without output
+# (such as running tests). 'docker-compose' has a default timeout of
+# 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
+set -x COMPOSE_HTTP_TIMEOUT 300
+
+# Since 'docker-compose' will now be working across multiple repositories,
+# we'll export a ENV variable that it can read to figure out where all our
+# repos are checked out at.
+set -x REPO_DIR ~/Developer
