@@ -9,6 +9,10 @@ alias gc='git checkout'
 alias gp='git pull'
 alias afk='fish ~/Developer/dotfiles/scripts/slack_presence/afk.fish'
 alias back='fish ~/Developer/dotfiles/scripts/slack_presence/back.fish'
+alias flush_dns='sudo dscacheutil -flushcache; and sudo killall -HUP mDNSResponder'
+alias build_augusta='./create_client.py augusta; and docker-compose -f clients-augusta.yml -p augusta build'
+alias start_augusta='docker-compose -f clients-augusta.yml -p augusta up -d'
+alias stop_augusta='docker-compose -f clients-augusta.yml -p augusta down'
 # fetch word definition from vocabulary.com.
 # uses vcbl by @rahilwazir. To install, do
 # go get github.com/atomicnumber1/vcbl

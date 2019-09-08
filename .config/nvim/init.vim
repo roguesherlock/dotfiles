@@ -493,6 +493,11 @@ let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 " }}}
 
 
+" Section Nerdtree {{{
+let NERDTreeIgnore = ['\.pyc$']
+" }}}
+
+
 " Section Colors and GUI config {{{
 
 syntax enable               " enable syntax processing
