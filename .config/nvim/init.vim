@@ -252,6 +252,7 @@ nmap <Leader>mw <Plug>(easymotion-overwin-w)
 
 autocmd FileType python nnoremap <buffer> <leader>ap :call flake8#Flake8()<CR>
 
+
 " }}}
 
 
@@ -451,6 +452,7 @@ Plug 'sjl/gundo.vim'                        " Undo Visualizer
 Plug 'tpope/vim-repeat'                     " Advanced repeat (think '.' repeat for complex operations)
 Plug 'nvie/vim-flake8'                      " python static syntax & style checker
 " Plug 'posva/vim-vue'                        " Vue
+Plug 'hauleth/vim-backscratch'              " Vim Scratchpad
 
 " Themes
 " Plug 'dracula/vim', {'as':'dracula'}
