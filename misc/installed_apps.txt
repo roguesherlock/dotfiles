@@ -1,0 +1,44 @@
+1Password 7.app
+Amphetamine.app
+Authy Desktop.app
+Clocker.app
+Contexts.app
+Dark Mode for Safari.app
+Dash.app
+Discord.app
+Docker.app
+Download Shuttle.app
+Figma.app
+Firefox.app
+Flux.app
+GPG Keychain.app
+GarageBand.app
+Google Chrome.app
+IINA.app
+Jumpcut.app
+Karabiner-Elements.app
+Karabiner-EventViewer.app
+Keynote.app
+Kindle.app
+NetNewsWire.app
+NightOwl.app
+Notion.app
+Numbers.app
+Pages.app
+Pocket.app
+Postman.app
+ProtonVPN.app
+Safari.app
+Sequel Pro.app
+Slack.app
+Spotify.app
+Steam.app
+There.app
+ToothFairy.app
+Transmission.app
+Twitter.app
+VLC.app
+Visual Studio Code.app
+Xcode.app
+iTerm.app
+zoom.us.app
