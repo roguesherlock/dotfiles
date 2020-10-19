@@ -20,6 +20,7 @@ alias wtfis='vcbl --desc both'
 
 # add go binaries to path
 set PATH /Users/akash/go/bin/ $PATH
+set PATH ~/.composer/vendor/bin $PATH
 
 # add bunch of fish functions
 source ~/.config/fish/functions/fish_functions.fish
@@ -27,7 +28,7 @@ source ~/.config/fish/functions/fish_functions.fish
 eval (direnv hook fish)
 
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
 
 set -g fish_user_paths "/usr/local/opt/icu4c/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/icu4c/sbin" $fish_user_paths
@@ -49,3 +50,4 @@ set -x COMPOSE_HTTP_TIMEOUT 300
 # we'll export a ENV variable that it can read to figure out where all our
 # repos are checked out at.
 set -x REPO_DIR ~/Developer
+status --is-interactive; and source (rbenv init -|psub)
