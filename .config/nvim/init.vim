@@ -41,7 +41,7 @@ if !isdirectory($HOME . "/.vim/undodir")
 endif
 set undodir=~/.vim/undodir
 
-autocmd BufRead,BufNewFile *.vue setfiletype html
+" autocmd BufRead,BufNewFile *.vue setfiletype html
 
 " }}}
 
@@ -326,7 +326,10 @@ inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " Section ale {{{
 
 let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier', 'eslint'],
+\   'typescript': ['prettier', 'eslint'],
+\   'html': ['prettier'],
 \}
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
@@ -392,6 +395,8 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'dense-analysis/ale'
+
 Plug 'junegunn/vim-easy-align'              " everything to do with alignments
 Plug 'junegunn/vim-github-dashboard'        " shows github  events
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " sidebar
@@ -415,8 +420,9 @@ Plug 'othree/yajs.vim'                      " javascript syntax
 Plug 'othree/html5.vim'                     " html
 Plug 'rizzatti/dash.vim'                    " Dash
 Plug 'elixir-editors/vim-elixir'            " elixir
-" Plug 'slashmili/alchemist.vim'              " elixir
+Plug 'slashmili/alchemist.vim'              " elixir
 Plug 'SirVer/ultisnips'                     " Autocomplete snippets
+Plug 'mlaursen/vim-react-snippets'
 Plug 'honza/vim-snippets'                   " LOADS of snippets
 Plug 'danro/rename.vim'                     " Easy file renaming
 Plug 'Lokaltog/vim-easymotion'              " Easily move around text
@@ -427,7 +433,7 @@ Plug 'plasticboy/vim-markdown'              " Markdown highlighting
 Plug 'AndrewRadev/splitjoin.vim'            " gJ and gS to join and split blocks
 Plug 'AndrewRadev/linediff.vim'             " Diff 2 blocks of text
 Plug 'terryma/vim-expand-region'            " Expand(v)/shrink(C-v) vis selection
-Plug 'shinokada/dragvisuals.vim'            " Drag visual selections
+" Plug 'shinokada/dragvisuals.vim'            " Drag visual selections
 Plug 'nixon/vim-vmath'                      " Math summary for visual selections
 Plug 'Yggdroot/indentLine'                  " Shows vertical indentation lines
 Plug 'jeetsukumaran/vim-indentwise'         " Movements using indentation
@@ -451,14 +457,21 @@ Plug 'brooth/far.vim'                       " Search and Replace
 Plug 'sjl/gundo.vim'                        " Undo Visualizer
 Plug 'tpope/vim-repeat'                     " Advanced repeat (think '.' repeat for complex operations)
 Plug 'nvie/vim-flake8'                      " python static syntax & style checker
-" Plug 'posva/vim-vue'                        " Vue
-Plug 'hauleth/vim-backscratch'              " Vim Scratchpad
+Plug 'posva/vim-vue'                        " Vue
+Plug 'leafOfTree/vim-vue-plugin'
+Plug 'ap/vim-css-color'                     " Css colors
+Plug 'leafgarland/typescript-vim'           " Typescript syntax
+Plug 'peitalin/vim-jsx-typescript'
+" Plug 'hauleth/vim-backscratch'            " Vim Scratchpad
+Plug 'Quramy/tsuquyomi'                     " Typescript stuff
+Plug 'tpope/vim-rails'                      " Ruby on Rails
+Plug 'vim-ruby/vim-ruby'                    " Ruby
 
 " Themes
-" Plug 'dracula/vim', {'as':'dracula'}
-" Plug 'nightsense/snow'
+Plug 'dracula/vim', {'as':'dracula'}
+Plug 'nightsense/snow'
 Plug 'morhetz/gruvbox'
-" Plug 'nightsense/seabird'
+Plug 'rakr/vim-one'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -525,8 +538,13 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=234
 
 set background=dark
-let g:gruvbox_italic=1
-colorscheme gruvbox
+" let g:lightline = { 'colorscheme': 'snow_dark' }
+" let g:gruvbox_italic=1
+
+let g:one_allow_italics = 1 " I love italic for comments
+let g:airline_theme='one'
+
+colorscheme one
 
 " }}}
 
