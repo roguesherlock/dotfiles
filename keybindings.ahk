@@ -111,6 +111,11 @@ Return
 Send, ^f
 Return
 
+; Find, find next
+#+f::
+Send, ^+f
+Return
+
 #g::
 Send, ^g
 Return
@@ -163,3 +168,13 @@ $!7::Send ^7
 $!8::Send ^8
 $!9::Send ^9
 $!0::Send ^0
+
+#p::
+    if WinActive("ahk_exe code.exe")
+        Send ^p
+    return
+
+#+p::
+    if WinActive("ahk_exe code.exe")
+        Send ^+p
+    return
