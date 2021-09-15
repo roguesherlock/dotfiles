@@ -178,3 +178,14 @@ $!0::Send ^0
     if WinActive("ahk_exe code.exe")
         Send ^+p
     return
+
+; Media Control Shortcuts
+;
+;-----------------------------------------------------------------------------------------------
+#NoTrayIcon
+#F12::Send {Volume_Up}
+#F11::Send {Volume_Down}
+#F10::Send {Volume_Mute}
+#F9::Send {Media_Next}
+#F8::Send {Media_Play_Pause}
+#F7::Send {Media_Prev}
