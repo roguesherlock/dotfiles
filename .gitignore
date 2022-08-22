@@ -1,1 +1,5 @@
 .DS_Store
+.config/fish/fish_variables
+.config/fish/conf.d
+.config/fish/functions
+.config/fish/completions
