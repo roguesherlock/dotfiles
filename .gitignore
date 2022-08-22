@@ -4,3 +4,4 @@
 .config/fish/functions
 .config/fish/completions
 .config/karabiner/automatic_backups/
+.config/nvim/plugin/packer_compiled.lua
