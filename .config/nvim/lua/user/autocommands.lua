@@ -44,3 +44,15 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
   end,
 })
+
+--[[ Autosave ]]
+vim.cmd [[ autocmd TextChanged,FocusLost,BufEnter,ModeChanged * silent update ]]
+
+
+-- Create directory on save if it doesn't exist
+--[[ vim.api.nvim_create_autocmd('BufWritePre', { ]]
+--[[   group = vim.api.nvim_create_augroup('auto_create_dir', { clear = true }), ]]
+--[[   callback = function(ctx) ]]
+--[[     vim.fn.mkdir(vim.fn.fnamemodify(ctx.file, ':p:h'), 'p') ]]
+--[[   end ]]
+--[[ }) ]]
