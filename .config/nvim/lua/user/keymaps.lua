@@ -27,6 +27,7 @@ nmap("<C-h>", "<C-w>h")
 
 --save
 nmap("<leader>w", ":w<CR>")
+nmap("<d-s>", ":w<CR>")
 
 -- Resize with arrows
 nmap("<Left>", ":vertical resize -1<CR>")
@@ -50,6 +51,9 @@ nmap("<S-q>", "<cmd>Bdelete!<CR>")
 
 nmap('n', 'nzzzv')
 nmap('N','Nzzzv')
+
+nmap('<leader>mv', ':edit $MYVIMRC<cr>')
+nmap('<leader>sv',':source $MYVIMRC<cr>')
 
 -- space open/closes folds
 -- nmap("<space>", "za")
@@ -88,7 +92,7 @@ nmap('<Leader>Y', '"+y')
 nmap('<Leader>P', '"+p')
 
 -- Easier buffer switching
-nmap('<Leader>bl', ':ls<CR>:b')
+--[[ nmap('<Leader>bl', ':ls<CR>:b') ]]
 nmap('<Leader>bc', ':bd<CR>')
 nmap('<Leader><Leader>', '<C-^>')
 nmap('<Leader><S-Tab>', ':bn<CR>')
@@ -122,8 +126,14 @@ vmap(">", ">gv")
 -- NvimTree
 nmap( "<leader>e", ":NvimTreeToggle<CR>")
 
+-- Zen mode
+nmap("<leader>z", ":lua require('zen-mode').toggle()<CR>")
+
 -- Telescope
-nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+nmap('<leader>j', '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>')
+nmap('<leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+nmap('<leader>bl', '<cmd>lua require("telescope.builtin").buffers()<cr>')
+nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>')
 nmap('<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
 nmap('<leader>fp', '<cmd>lua require("telescope").extensions.project.project{}<CR>')
 nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
@@ -134,7 +144,7 @@ nmap('<leader>fc', '<cmd>lua require("telescope.builtin").commands()<cr>')
 nmap('<leader>fj', '<cmd>lua require("telescope.builtin").jumplist()<cr>')
 
 -- Git
-nmap("<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>")
+--[[ nmap("<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>") ]]
 
 -- Comment
 -- nmap("<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>")

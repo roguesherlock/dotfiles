@@ -90,7 +90,7 @@ return packer.startup(function(use)
 
   -- Telescope
   use { "nvim-telescope/telescope.nvim" }
-  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" } -- c port fzf
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "arch -arm64 make" } -- c port fzf
   use { "nvim-telescope/telescope-project.nvim" }
   use { "nvim-telescope/telescope-file-browser.nvim" } -- file browser
   use { "nvim-telescope/telescope-ui-select.nvim" }

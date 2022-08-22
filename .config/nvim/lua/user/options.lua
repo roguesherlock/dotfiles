@@ -1,4 +1,3 @@
-vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
@@ -19,12 +18,11 @@ vim.opt.termguicolors = true                    -- set term gui colors (most ter
 vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true                         -- enable persistent undo
 vim.opt.updatetime = 300                        -- faster completion (4000ms default)
-vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.opt.expandtab = true                        -- convert tabs to spaces
+vim.g.expandtab = true                          -- convert tabs to spaces
 vim.opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2                             -- insert 2 spaces for a tab
 vim.opt.cursorline = true                       -- highlight the current line
-vim.opt.relativenumber = true                           -- set numbered lines
+vim.opt.relativenumber = true                   -- set numbered lines
 vim.opt.laststatus = 3
 vim.opt.showcmd = false
 vim.opt.ruler = false
@@ -38,3 +36,21 @@ vim.opt.fillchars.eob=" "
 vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
+vim.opt.autoread = true													-- Autoread when a file is changed from the outside
+
+
+-- backups
+vim.opt.backup = true
+vim.opt.backupdir = "~/.nvim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp"
+vim.opt.backupskip = "/tmp/*,/private/tmp/*"
+vim.opt.directory = "~/.nvim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp"
+vim.opt.writebackup = true
+
+
+-- Maintain undo history between sessions
+vim.opt.undofile = true
+vim.opt.undodir="/var/tmp"
+
+-- Show symbols for tabs and trailing whitespace
+vim.opt.list = true
+vim.opt.listchars="tab:▸ ,trail:•,extends:»,precedes:«"

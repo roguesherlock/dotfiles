@@ -20,12 +20,16 @@ telescope.setup {
         ["<Up>"] = actions.cycle_history_prev,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        ["<ESC>"] = actions.close,
       },
     },
 
     pickers = {
       find_files = {
         theme = "dropdown",
+        i = {
+          ["<ESC>"] = actions.close,
+        },
       },
       live_grep = {
         theme = "dropdown",
@@ -69,7 +73,7 @@ telescope.setup {
       },
       project = {
         base_dirs = {
-          {'~/Developer', max_depth = 2},
+          {'~/Developer', max_depth = 3},
         },
         hidden_files = true, -- default: false
         theme = "dropdown"
@@ -80,4 +84,4 @@ telescope.setup {
 }
 
 
-telescope.load_extension('fzf', 'file-browser', 'ui-select', 'project', 'frecency')
+telescope.load_extension('fzf', 'file_browser', 'ui-select', 'project', 'frecency')
