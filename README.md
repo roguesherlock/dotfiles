@@ -1,12 +1,12 @@
 # dotfiles
-My dotfiles for `macOS Mojave 10.14 (18A391)`
+My dotfiles for `macOS Monterey 12.5 (21G72)`
 
 
 ## Setup
 
 - Shell: `fish`
-- Editor: `vim`
-- Video Player: `IINA`
+- Editor: `neovim`
+- Terminal Emulator: `alacirtty`
 
 
 
