@@ -3,3 +3,4 @@
 .config/fish/conf.d
 .config/fish/functions
 .config/fish/completions
+.config/karabiner/automatic_backups/
