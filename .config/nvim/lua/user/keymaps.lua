@@ -107,8 +107,6 @@ nmap('<Leader>7', ':7b<CR>')
 nmap('<Leader>8', ':8b<CR>')
 nmap('<Leader>9', ':9b<CR>')
 
--- toggle ignore case
-nmap('<leader>ic', ':set ignorecase<CR>')
 
 
 -- Insert --
