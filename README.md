@@ -17,3 +17,7 @@ My dotfiles for `macOS Monterey 12.5 (21G72)`
 3. Add it to your dotfiles. 😉
 
 
+## Note
+
+- DO NOT RUN `install.sh` directly on your machine. It'll overwrite your own files.
+
