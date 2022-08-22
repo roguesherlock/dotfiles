@@ -26,3 +26,8 @@ font:
 window:
   decorations: none
   startup_mode: Maximized
+
+key_bindings:
+  - { key: Q,              mods: Command,                    action: None                  }
+  - { key: W,              mods: Command,                    action: None                  }
+
