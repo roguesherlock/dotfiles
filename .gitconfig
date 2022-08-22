@@ -6,3 +6,5 @@
   email = aakash@hey.com
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = main
