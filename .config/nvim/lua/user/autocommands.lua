@@ -46,7 +46,21 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 })
 
 --[[ Autosave ]]
-vim.cmd [[ autocmd TextChanged,FocusLost,BufEnter,ModeChanged * silent update ]]
+vim.api.nvim_create_autocmd({ "TextChanged", "FocusLost", "BufEnter", "InsertLeave" }, {
+  pattern = { "*" },
+  callback = function()
+		vim.cmd [[ silent! update ]]
+  end,
+})
+
+--local function write_buf_timer()
+--    vim.fn.timer_start(1000, function()
+--        vim.api.nvim_command([[ silent! update ]])
+--    end)
+--end
+--
+--vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = write_buf_timer })
+
 
 
 -- Create directory on save if it doesn't exist
