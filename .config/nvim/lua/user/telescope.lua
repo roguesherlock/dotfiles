@@ -11,7 +11,7 @@ telescope.setup {
     -- prompt_prefix = " ",
     prompt_prefix = "🔍 ",
     selection_caret = "→ ",
-    path_display = { "smart" },
+    path_display = { "absolute" },
     file_ignore_patterns = { ".git/", "node_modules" },
     hidden_files = true,
 

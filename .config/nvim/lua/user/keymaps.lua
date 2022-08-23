@@ -128,7 +128,7 @@ nmap( "<leader>e", ":NvimTreeToggle<CR>")
 nmap("<leader>z", ":lua require('zen-mode').toggle()<CR>")
 
 -- Telescope
-nmap('<leader>j', '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>')
+nmap('<leader>j', '<cmd>lua require("telescope.builtin").git_files(require("telescope.themes").get_dropdown({ previewer = false, show_untracked = true }))<cr>')
 nmap('<leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
 nmap('<leader>bl', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>')
@@ -142,7 +142,7 @@ nmap('<leader>fc', '<cmd>lua require("telescope.builtin").commands()<cr>')
 nmap('<leader>fj', '<cmd>lua require("telescope.builtin").jumplist()<cr>')
 
 -- Git
---[[ nmap("<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>") ]]
+nmap("<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>")
 
 -- Comment
 -- nmap("<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>")
