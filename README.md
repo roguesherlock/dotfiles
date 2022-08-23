@@ -6,7 +6,7 @@ My dotfiles for `macOS Monterey 12.5 (21G72)`
 
 - Shell: `fish`
 - Editor: `neovim`
-- Terminal Emulator: `alacirtty`
+- Terminal Emulator: `iTerm2`
 
 
 
