@@ -61,8 +61,7 @@ return packer.startup(function(use)
   use { "folke/tokyonight.nvim" }
   use { "lunarvim/darkplus.nvim" }
   use { "dracula/vim", as = "dracula" }
-	use { "gruvbox-community/gruvbox", as = "gruvbox" }
-
+  use { "gruvbox-community/gruvbox", as = "gruvbox" }
 
   -- cmp plugins
   use { "hrsh7th/nvim-cmp" } -- The completion plugin

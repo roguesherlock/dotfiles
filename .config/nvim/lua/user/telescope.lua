@@ -13,6 +13,7 @@ telescope.setup {
     selection_caret = "→ ",
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
+    hidden_files = true,
 
     mappings = {
       i = {

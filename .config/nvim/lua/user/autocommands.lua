@@ -49,9 +49,18 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 vim.api.nvim_create_autocmd({ "TextChanged", "FocusLost", "BufEnter", "InsertLeave" }, {
   pattern = { "*" },
   callback = function()
-		vim.cmd [[ silent! update ]]
+    vim.cmd [[ silent! update ]]
   end,
 })
+
+--[[ AutoFormat ]]
+--[[ vim.api.nvim_create_autocmd({ "BufWritePre" }, { ]]
+--[[   pattern = { "*" }, ]]
+--[[   callback = function() ]]
+--[[     vim.lsp.buf.formatting_sync({}, {}, {'null-ls'}) ]]
+--[[   end ]]
+--[[ }) ]]
+--[[]]
 
 --local function write_buf_timer()
 --    vim.fn.timer_start(1000, function()
