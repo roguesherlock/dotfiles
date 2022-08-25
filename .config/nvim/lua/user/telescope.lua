@@ -95,4 +95,4 @@ telescope.setup {
 }
 
 
-telescope.load_extension('fzf', 'file_browser', 'ui-select', 'project', 'frecency')
+telescope.load_extension('fzf', 'file_browser', 'ui-select', 'project', 'frecency', 'harpoon')

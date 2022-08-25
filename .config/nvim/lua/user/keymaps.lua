@@ -52,8 +52,6 @@ vmap("<c-j>", ":m .+<CR>==")
 -- Clear highlights
 nmap("<leader><space>", "<cmd>nohlsearch<CR>")
 
--- Close buffers
-nmap("<S-q>", "<cmd>Bdelete!<CR>")
 
 nmap('n', 'nzzzv')
 nmap('N','Nzzzv')
@@ -77,6 +75,7 @@ vmap("p", '"_dP')
 
 -- quit vim
 nmap('<leader>qq', ':wqall<cr>')
+nmap("<C-S-q>", "<cmd>q<CR>")
 
 -- Toggle paste mode on and off
 nmap('<leader>pp', ':setlocal paste!<cr>')
@@ -101,7 +100,8 @@ nmap('<Leader>P', '"+p')
 
 -- Easier buffer switching
 --[[ nmap('<Leader>bl', ':ls<CR>:b') ]]
-nmap('<Leader>bc', ':bd<CR>')
+nmap("<leader>bc", "<cmd>Bdelete!<CR>")
+nmap("<S-q>", "<cmd>Bdelete!<CR>")
 nmap('<Leader><Leader>', '<C-^>')
 nmap('<Leader><S-Tab>', ':bn<CR>')
 nmap('<Leader><Tab>', ':bp<CR>')
@@ -116,6 +116,8 @@ nmap('<Leader>8', ':8b<CR>')
 nmap('<Leader>9', ':9b<CR>')
 
 
+-- diffview
+nmap('<leader>dv', '<cmd>DiffviewOpen<cr>')
 
 -- Insert --
 -- Press jk fast to enter
@@ -142,13 +144,22 @@ nmap('<leader><TAB>', '<cmd>lua require("telescope.builtin").buffers(require("te
 nmap('<leader>bl', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>')
 nmap('<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
-nmap('<leader>fp', '<cmd>lua require("telescope").extensions.project.project{}<CR>')
+nmap('<leader>fp', '<cmd>Telescope projects<cr>')
 nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
 nmap('<leader>fk', '<cmd>lua require("telescope.builtin").keymaps()<cr>')
-nmap('<leader>fm', '<cmd>lua require("telescope.builtin").marks()<cr>')
+--[[ nmap('<leader>fm', '<cmd>lua require("telescope.builtin").marks()<cr>') ]]
+nmap('<leader>fm', ':Telescope harpoon marks<cr>');
 nmap('<leader>fc', '<cmd>lua require("telescope.builtin").commands()<cr>')
 nmap('<leader>fj', '<cmd>lua require("telescope.builtin").jumplist()<cr>')
+
+-- harpoon
+nmap('<leader>ma', ':lua require("harpoon.mark").add_file()<cr>');
+nmap('<leader>mc', ':lua require("harpoon.mark").clear_all()<cr>');
+nmap('<leader>ml', ':Telescope harpoon marks<cr>');
+
+-- set the split window sizes to be equal
+nmap('<leader>se', '<cmd>FocusEqualise<cr>')
 
 -- Git
 nmap("<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>")

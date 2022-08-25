@@ -98,6 +98,7 @@ return packer.startup(function(use)
   -- curl wrapper for nvim
   use {
     "NTBBloodbath/rest.nvim",
+    opt = true,
     config = function()
       require("rest-nvim").setup()
     end,
@@ -186,7 +187,7 @@ return packer.startup(function(use)
   }
 
   -- sort lines
-  use 'christoomey/vim-sort-motion'
+  --[[ use 'christoomey/vim-sort-motion' ]]
 
   -- auto rename html
   use "windwp/nvim-ts-autotag"
