@@ -14,6 +14,16 @@ telescope.setup {
     path_display = { "absolute" },
     file_ignore_patterns = { ".git/", "node_modules" },
     hidden_files = true,
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+    },
 
     mappings = {
       i = {

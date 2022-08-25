@@ -24,6 +24,12 @@ nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
 nmap("<C-h>", "<C-w>h")
 
+-- move windows around
+nmap("<C-S-j>", "<C-w>J")
+nmap("<C-S-k>", "<C-w>K")
+nmap("<C-S-l>", "<C-w>L")
+nmap("<C-S-h>", "<C-w>H")
+
 
 --save
 nmap("<leader>w", ":w<CR>")
@@ -36,8 +42,8 @@ nmap("<Up>", ":resize -1<CR>")
 nmap("<Down>", ":resize +1<CR>")
 
 -- Navigate buffers
-nmap("<S-l>", ":bnext<CR>")
-nmap("<S-h>", ":bprevious<CR>")
+--[[ nmap("<S-l>", ":bnext<CR>") ]]
+--[[ nmap("<S-h>", ":bprevious<CR>") ]]
 
 -- move text up and down
 vmap("<c-k>", ":m .=<CR>==")
@@ -70,7 +76,7 @@ nmap('E', '$')
 vmap("p", '"_dP')
 
 -- quit vim
-nmap('<leader>qq', ':wqa<cr>')
+nmap('<leader>qq', ':wqall<cr>')
 
 -- Toggle paste mode on and off
 nmap('<leader>pp', ':setlocal paste!<cr>')
@@ -80,7 +86,9 @@ nmap('<leader>tn', ':tabnew<cr>')
 nmap('<leader>to', ':tabonly<cr>')
 nmap('<leader>tc', ':tabclose<cr>')
 nmap('<leader>tm', ':tabmove<cr>')
-nmap('<leader>t<Leader>', ':tabnext<cr>')
+nmap('<leader>t<Leader>', ':tabnext #<cr>')
+nmap('<s-l>', ':tabnext<cr>')
+nmap('<s-h>', ':tabprev<cr>')
 
 -- remove trailing whitespace
 nmap('<Leader>rtw', ':%s/\\s\\+$//e<CR>')
@@ -130,6 +138,7 @@ nmap("<leader>z", ":lua require('zen-mode').toggle()<CR>")
 -- Telescope
 nmap('<leader>j', '<cmd>lua require("telescope.builtin").git_files(require("telescope.themes").get_dropdown({ previewer = false, show_untracked = true }))<cr>')
 nmap('<leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+nmap('<leader><TAB>', '<cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false, initial_mode = "normal" }))<cr>')
 nmap('<leader>bl', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>')
 nmap('<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>')

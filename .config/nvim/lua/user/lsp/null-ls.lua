@@ -23,8 +23,13 @@ null_ls.setup {
                 callback = function()
                     -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
                     --[[ vim.lsp.buf.format({ bufnr = bufnr })  ]]
-                    vim.lsp.buf.formatting_sync()
-                end,
+                  --[[ local status, _result = pcall(vim.lsp.buf.format, { bufnr = bufnr }) ]]
+                  local status, _result = pcall(vim.lsp.buf.formatting_sync)
+                  if not status then
+                    print("Couldn't format file")
+                    return
+                  end
+                end
             })
         end
     end,
