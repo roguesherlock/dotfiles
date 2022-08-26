@@ -19,10 +19,10 @@ local kind_icons = {
 	Text = "",
 	Method = "",
 	Function = "",
-	Constructor = "",
-	Field = "",
+	Constructor = "",
+	Field = "",
 	Keyword = "",
-	Variable = "",
+	Variable = "",
 	Class = "",
 	Interface = "",
 	Module = "",
@@ -37,7 +37,7 @@ local kind_icons = {
 	Folder = "",
 	EnumMember = "",
 	Constant = "",
-	Struct = "",
+	Struct = "פּ",
 	Event = "",
 	Operator = "",
 	TypeParameter = "",
@@ -98,12 +98,13 @@ cmp.setup({
 		format = function(entry, vim_item)
 			vim_item.kind = kind_icons[vim_item.kind]
 			vim_item.menu = ({
-				nvim_lsp = "",
-				nvim_lua = "",
-				luasnip = "",
-				buffer = "",
-				path = "",
-				emoji = "",
+				copilot = "[🤖]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[api]",
+				luasnip = "[snip]",
+				buffer = "[buf]",
+				path = "[path]",
+				emoji = "[emoji]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -125,6 +126,7 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	experimental = {
+		native_menu = false,
 		ghost_text = true,
 	},
 })
