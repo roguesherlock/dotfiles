@@ -52,6 +52,7 @@ return packer.startup(function(use)
   use { "moll/vim-bbye" }
   use { "nvim-lualine/lualine.nvim" }
   use { "akinsho/toggleterm.nvim" }
+  --[[ use { "numToStr/FTerm.nvim" } ]]
   use { "ahmedkhalf/project.nvim" }
   use { "lewis6991/impatient.nvim" }
   use { "lukas-reineke/indent-blankline.nvim" }
@@ -61,7 +62,13 @@ return packer.startup(function(use)
   use { "folke/tokyonight.nvim" }
   use { "lunarvim/darkplus.nvim" }
   use { "dracula/vim", as = "dracula" }
-  use { "gruvbox-community/gruvbox", as = "gruvbox" }
+  -- use { "gruvbox-community/gruvbox", as = "gruvbox" }
+  -- use { "morhetz/gruvbox" }
+  use { "ellisonleao/gruvbox.nvim" }
+  --[[ use { "projekt0n/github-nvim-theme" } ]]
+  use { "B4mbus/oxocarbon-lua.nvim" }
+  --[[ use { "shaunsingh/oxocarbon.nvim", run = "./install.sh" } ]]
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- cmp plugins
   use { "hrsh7th/nvim-cmp" } -- The completion plugin

@@ -74,11 +74,15 @@ nmap('E', '$')
 vmap("p", '"_dP')
 
 -- quit vim
-nmap('<leader>qq', ':wqall<cr>')
+nmap('<leader>qq', '<cmd>wqall<cr>')
 nmap("<C-S-q>", "<cmd>q<CR>")
 
 -- Toggle paste mode on and off
 nmap('<leader>pp', ':setlocal paste!<cr>')
+
+-- Toggle terminal
+--[[ nmap('<c-\\>', '<CMD>lua require("FTerm").toggle()<CR>') ]]
+--[[ tmap('<c-\\>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>') ]]
 
 -- Useful mappings for managing tabs
 nmap('<leader>tn', ':tabnew<cr>')
@@ -93,10 +97,6 @@ nmap('<s-h>', ':tabprev<cr>')
 nmap('<Leader>rtw', ':%s/\\s\\+$//e<CR>')
 
 -- Copy-Paste
-nmap('<Leader>y', '"*y')
-nmap('<Leader>p', '"*p')
-nmap('<Leader>Y', '"+y')
-nmap('<Leader>P', '"+p')
 
 -- Easier buffer switching
 --[[ nmap('<Leader>bl', ':ls<CR>:b') ]]

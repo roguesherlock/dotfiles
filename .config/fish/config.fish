@@ -22,7 +22,7 @@ if status is-interactive
 
     # Bun
     set -Ux BUN_INSTALL "/Users/akash/.bun"
-    set -px --path PATH "/Users/akash/.bun/bin" "/Users/akash/.local/bin"
+    set -px --path PATH "/Users/akash/.bun/bin" "/Users/akash/.local/bin" "/Users/akash/.cargo/bin" 
 end
 export GPG_TTY=(tty)
 
