@@ -139,12 +139,13 @@ nmap("<leader>z", ":lua require('zen-mode').toggle()<CR>")
 
 -- Telescope
 nmap('<leader>j', '<cmd>lua require("telescope.builtin").git_files(require("telescope.themes").get_dropdown({ previewer = false, show_untracked = true }))<cr>')
-nmap('<leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+nmap('<leader>g', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>')
 nmap('<leader><TAB>', '<cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false, initial_mode = "normal" }))<cr>')
 nmap('<leader>bl', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({ previewer = false }))<cr>')
 nmap('<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
-nmap('<leader>fp', '<cmd>Telescope projects<cr>')
+nmap('<leader>fp', '<cmd>lua require("telescope").extensions.project.project{}<cr>')
+--[[ nmap('<leader>fp', '<cmd>Telescope projects<cr>') ]]
 nmap('<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap('<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
 nmap('<leader>fk', '<cmd>lua require("telescope.builtin").keymaps()<cr>')

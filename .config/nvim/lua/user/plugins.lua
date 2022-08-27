@@ -101,6 +101,8 @@ return packer.startup(function(use)
   use { "nvim-telescope/telescope-file-browser.nvim" } -- file browser
   use { "nvim-telescope/telescope-ui-select.nvim" }
   use { "nvim-telescope/telescope-frecency.nvim" } -- intelligent prioritization when selecting files from your editing history.
+  use { "nvim-telescope/telescope-live-grep-args.nvim" }
+  use { "kkharji/sqlite.lua" }
 
   -- curl wrapper for nvim
   use {
