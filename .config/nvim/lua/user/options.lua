@@ -37,19 +37,6 @@ vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.opt.autoread = true -- Autoread when a file is changed from the outside
-
-
--- backups
--- vim.opt.backup = true
--- vim.opt.backupdir = "~/.nvim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp"
--- vim.opt.backupskip = "/tmp/*,/private/tmp/*"
--- vim.opt.directory = "~/.nvim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp"
--- vim.opt.writebackup = true
-
--- Maintain undo history between sessions
--- vim.opt.undofile = true
--- vim.opt.undodir="/var/tmp"
-
 -- Show symbols for tabs and trailing whitespace
 vim.opt.list = true
 vim.opt.listchars = "tab:▸ ,trail:•,extends:»,precedes:«"

@@ -103,11 +103,8 @@ local function maybe_load_workspace()
 		end
 	end
 end
-vim.api.nvim_create_autocmd(
-	{ "VimEnter" },
-	{
-		group = vim.api.nvim_create_augroup("auto_load_workspace", { clear = true }),
-		nested = true,
-		callback = maybe_load_workspace,
-	}
-)
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+	group = vim.api.nvim_create_augroup("auto_load_workspace", { clear = true }),
+	nested = true,
+	callback = maybe_load_workspace,
+})
