@@ -183,11 +183,6 @@ _G.packer_plugins = {
     path = "/Users/akash/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
     url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
-  harpoon = {
-    loaded = true,
-    path = "/Users/akash/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/ThePrimeagen/harpoon"
-  },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/Users/akash/.local/share/nvim/site/pack/packer/start/impatient.nvim",
@@ -311,6 +306,11 @@ _G.packer_plugins = {
     path = "/Users/akash/.local/share/nvim/site/pack/packer/opt/rest.nvim",
     url = "https://github.com/NTBBloodbath/rest.nvim"
   },
+  ["sessions.nvim"] = {
+    loaded = true,
+    path = "/Users/akash/.local/share/nvim/site/pack/packer/start/sessions.nvim",
+    url = "https://github.com/natecraddock/sessions.nvim"
+  },
   ["sqlite.lua"] = {
     loaded = true,
     path = "/Users/akash/.local/share/nvim/site/pack/packer/start/sqlite.lua",
@@ -415,6 +415,11 @@ _G.packer_plugins = {
     path = "/Users/akash/.local/share/nvim/site/pack/packer/opt/vim-dispatch",
     url = "https://github.com/tpope/vim-dispatch"
   },
+  ["vim-enfocado"] = {
+    loaded = true,
+    path = "/Users/akash/.local/share/nvim/site/pack/packer/start/vim-enfocado",
+    url = "https://github.com/wuelnerdotexe/vim-enfocado"
+  },
   ["vim-illuminate"] = {
     loaded = true,
     path = "/Users/akash/.local/share/nvim/site/pack/packer/start/vim-illuminate",
@@ -424,11 +429,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/akash/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
-  },
-  ["vim-sleuth"] = {
-    loaded = true,
-    path = "/Users/akash/.local/share/nvim/site/pack/packer/start/vim-sleuth",
-    url = "https://github.com/tpope/vim-sleuth"
   },
   ["vim-surround"] = {
     loaded = true,
@@ -451,6 +451,11 @@ _G.packer_plugins = {
     path = "/Users/akash/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
   },
+  ["workspaces.nvim"] = {
+    loaded = true,
+    path = "/Users/akash/.local/share/nvim/site/pack/packer/start/workspaces.nvim",
+    url = "https://github.com/natecraddock/workspaces.nvim"
+  },
   ["zen-mode.nvim"] = {
     loaded = true,
     path = "/Users/akash/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
@@ -459,14 +464,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
--- Config for: nvim-treesitter-textsubjects
-time([[Config for nvim-treesitter-textsubjects]], true)
-try_loadstring("\27LJ\2\nä\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\17textsubjects\1\0\0\fkeymaps\1\0\3\6;!textsubjects-container-outer\ai;!textsubjects-container-inner\6.\23textsubjects-smart\1\0\2\19prev_selection\6,\venable\2\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter-textsubjects")
-time([[Config for nvim-treesitter-textsubjects]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
@@ -475,13 +472,21 @@ time([[Config for trouble.nvim]], false)
 time([[Config for focus.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\nfocus\frequire\0", "config", "focus.nvim")
 time([[Config for focus.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: nvim-treesitter-textsubjects
+time([[Config for nvim-treesitter-textsubjects]], true)
+try_loadstring("\27LJ\2\nä\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\3\0005\4\4\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\17textsubjects\1\0\0\fkeymaps\1\0\3\6;!textsubjects-container-outer\ai;!textsubjects-container-inner\6.\23textsubjects-smart\1\0\2\19prev_selection\6,\venable\2\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter-textsubjects")
+time([[Config for nvim-treesitter-textsubjects]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NarrowWindow lua require("packer.load")({'NrrwRgn'}, { cmd = "NarrowWindow", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Make lua require("packer.load")({'vim-dispatch'}, { cmd = "Make", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NarrowRegion lua require("packer.load")({'NrrwRgn'}, { cmd = "NarrowRegion", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Dispatch lua require("packer.load")({'vim-dispatch'}, { cmd = "Dispatch", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Make lua require("packer.load")({'vim-dispatch'}, { cmd = "Make", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 if should_profile then save_profiles() end

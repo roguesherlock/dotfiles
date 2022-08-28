@@ -1,10 +1,11 @@
 --[[ local colorscheme = "dracula" ]]
 --[[ vim.g.tokyonight_style = "night" ]]
---[[ local colorscheme = "tokyonight" ]]
+--[[ vim.g.enfocado_style = "neon" -- Available: `nature` or `neon`. ]]
+--[[ local colorscheme = "enfocado" ]]
 --[[]]
 --[[ local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme) ]]
 --[[ if not status_ok then ]]
---[[   return ]]
+--[[ 	return ]]
 --[[ end ]]
 
 vim.g.catppuccin_flavour = "macchiato"
@@ -20,7 +21,7 @@ require("catppuccin").setup({
 	term_colors = false,
 	compile = {
 		enabled = true,
-		path = vim.fn.stdpath "cache" .. "/catppuccin",
+		path = vim.fn.stdpath("cache") .. "/catppuccin",
 	},
 	styles = {
 		comments = { "italic" },
@@ -105,5 +106,5 @@ require("catppuccin").setup({
 })
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
-  return
+	return
 end
