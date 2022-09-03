@@ -6,18 +6,24 @@ mkdir ~/Developer
 
 git clone https://github.com/roguesherlock/dotfiles.git ~/Developer/dotfiles
 
+#fish
+mkdir ~/.config/fish/ -p
+ln -sF ~/Developer/dotfiles/.config/fish/themes ~/.config/fish/themes
+ln -sF ~/Developer/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
+ln -sF ~/Developer/dotfiles/.config/fish/fish_plugins ~/.config/fish/fish_plugins
+
 # tmux
 ln -sf ~/Developer/dotfiles/.tmux.conf ~/.tmux.conf
 
 # vimrc
 ln -sf ~/Developer/dotfiles/.vimrc ~/.vimrc
 
-mkdir .ssh
 # ssh
+mkdir .ssh
 ln -sf ~/Developer/dotfiles/.ssh/config ~/.ssh/config
 
-mkdir .gnupg
 # gnupg
+mkdir .gnupg
 ln -sf ~/Developer/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 ln -sf ~/Developer/dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 

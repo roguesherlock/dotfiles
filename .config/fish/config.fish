@@ -1,5 +1,5 @@
-# test -z "$TMUX"; and exec tmux
 if status is-interactive
+		test -z "$TMUX"; and exec tmux
     # Commands to run in interactive sessions can go here
 
     # aliases
@@ -12,6 +12,18 @@ if status is-interactive
     alias yt="yt-dlp "
     alias ytb="yt-dlp -f 'bv+ba/b' "
     alias yta="yt-dlp -f 'ba' -S 'ext' "
+		alias ls "ls -p -G"
+		alias la "ls -A"
+		alias ll "ls -l"
+		alias lla "ll -A"
+		alias g git
+		command -qv nvim && alias vim nvim
+		if type -q exa
+			alias ll "exa -l -g --icons"
+			alias lla "ll -a"
+		end
+
+		set -gx EDITOR nvim
 
     # add bunch of fish functions
     source ~/.config/fish/functions/fish_functions.fish
@@ -23,6 +35,9 @@ if status is-interactive
     # Bun
     set -Ux BUN_INSTALL "/Users/akash/.bun"
     set -px --path PATH "/Users/akash/.bun/bin" "/Users/akash/.local/bin" "/Users/akash/.cargo/bin" 
+
+		# themes
+		source ~/.config/fish/themes/terafox.fish
 end
 export GPG_TTY=(tty)
 

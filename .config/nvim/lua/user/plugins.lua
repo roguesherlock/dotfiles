@@ -70,6 +70,9 @@ return packer.startup(function(use)
 	--[[ use { "shaunsingh/oxocarbon.nvim", run = "./install.sh" } ]]
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "wuelnerdotexe/vim-enfocado" })
+	use({ "tjdevries/colorbuddy.nvim" })
+	use({ "svrana/neosolarized.nvim" })
+	use({ "EdenEast/nightfox.nvim" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -119,16 +122,16 @@ return packer.startup(function(use)
 	})
 
 	-- Lua
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
+	--[[ use({ ]]
+	--[[ 	"folke/which-key.nvim", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("which-key").setup({ ]]
+	--[[ 			-- your configuration comes here ]]
+	--[[ 			-- or leave it empty to use the default settings ]]
+	--[[ 			-- refer to the configuration section below ]]
+	--[[ 		}) ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter" })
