@@ -1,5 +1,5 @@
 if status is-interactive
-		test -z "$TMUX"; and exec tmux
+		# test -z "$TMUX"; and exec tmux
     # Commands to run in interactive sessions can go here
 
     # aliases
@@ -34,7 +34,15 @@ if status is-interactive
 
     # Bun
     set -Ux BUN_INSTALL "/Users/akash/.bun"
-    set -px --path PATH "/Users/akash/.bun/bin" "/Users/akash/.local/bin" "/Users/akash/.cargo/bin" 
+    set -U fish_user_paths "/Users/akash/.bun/bin" "/Users/akash/.local/bin" "/Users/akash/.cargo/bin" $fish_user_paths
+
+		# pyenv
+		set -Ux PYENV_ROOT $HOME/.pyenv
+		set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+
+		# poetry
+		set -Ux POETRY_HOME $HOME/.poetry
+		set -U fisher_user_paths $HOME/.poetry/bin $fish_user_paths
 
 		# themes
 		source ~/.config/fish/themes/terafox.fish
@@ -53,4 +61,6 @@ ulimit -n 2048
 # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
 set -x COMPOSE_HTTP_TIMEOUT 300
 
+# pyenv
+pyenv init - | source
 
