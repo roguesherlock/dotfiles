@@ -46,6 +46,29 @@ local function maybe_create_session()
 	end
 end
 
+local M = {}
+
+M.maybe_load_workspace = function()
+	local cwd = vim.fn.getcwd()
+	local status, workspaces = pcall(require, "workspaces")
+	if not status then
+		return
+	end
+	local gitcommit = vim.fn.expand("%")
+	if string.find(gitcommit, "COMMIT_EDITMSG") then
+		return
+	end
+
+	local workspaces_list = workspaces.get()
+	for _, workspace in ipairs(workspaces_list) do
+		if string.find(workspace.path, cwd) then
+			workspaces.open(workspace.name)
+			return
+		end
+	end
+end
+vim.cmd([[ command! WorkspacesLoad lua require("user.workspace").maybe_load_workspace() ]])
+
 workspaces.setup({
 	hooks = {
 		add = maybe_create_session,
@@ -62,3 +85,5 @@ if not telescope_status_ok then
 	return
 end
 telescope.load_extension("workspaces")
+
+return M

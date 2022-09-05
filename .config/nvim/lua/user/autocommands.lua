@@ -88,23 +88,14 @@ vim.api.nvim_create_autocmd({ "TextChanged", "FocusLost", "BufEnter", "InsertLea
 --[[]]
 --[[ 	:source ~/.config/nvim/secret.vim ]]
 --[[ 	:rshada! ~/.local/state/nvim/shada/secret.shada ]]
-
-local function maybe_load_workspace()
-	local cwd = vim.fn.getcwd()
-	local status, workspaces = pcall(require, "workspaces")
-	if not status then
-		return
-	end
-	local workspaces_list = workspaces.get()
-	for _, workspace in ipairs(workspaces_list) do
-		if string.find(workspace.path, cwd) then
-			workspaces.open(workspace.name)
-			return
-		end
-	end
+local status, workspaces = pcall(require, "user.workspace")
+if not status then
+	workspaces = {
+		maybe_load_workspace = function() end,
+	}
 end
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	group = vim.api.nvim_create_augroup("auto_load_workspace", { clear = true }),
 	nested = true,
-	callback = maybe_load_workspace,
+	callback = workspaces.maybe_load_workspace,
 })

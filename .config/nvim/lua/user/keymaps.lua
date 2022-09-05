@@ -98,6 +98,7 @@ nmap("<Leader>rtw", ":%s/\\s\\+$//e<CR>")
 
 -- Easier buffer switching
 --[[ nmap('<Leader>bl', ':ls<CR>:b') ]]
+nmap("<leader>bqq", "<cmd>:%bd|e#<CR>")
 nmap("<leader>bc", "<cmd>Bdelete!<CR>")
 nmap("<S-q>", "<cmd>Bdelete!<CR>")
 nmap("<Leader><Leader>", "<C-^>")
@@ -199,6 +200,7 @@ nmap("gR", "<cmd>Trouble lsp_references<cr>")
 
 -- workspaces
 nmap("<leader>sw", "<cmd>WorkspacesAdd<cr>")
+nmap("<leader>lw", "<cmd>WorkspacesLoad<cr>")
 
 -- ESC key comes out of terminal mode when in terminal
 tmap("<Esc>", "<C-\\><C-n>")
