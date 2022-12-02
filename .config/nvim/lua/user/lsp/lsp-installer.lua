@@ -19,7 +19,8 @@ local servers = {
   "jsonls",
   "yamlls",
   "volar",
-  "tailwindcss"
+  "tailwindcss",
+	"gopls"
 }
 
 mason.setup()
