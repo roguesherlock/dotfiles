@@ -42,7 +42,7 @@ if status is-interactive
 
 		# poetry
 		set -Ux POETRY_HOME $HOME/.poetry
-		set -U fisher_user_paths $HOME/.poetry/bin $fish_user_paths
+		set -U fish_user_paths $HOME/.poetry/bin $fish_user_paths
 
 		# themes
 		source ~/.config/fish/themes/terafox.fish
@@ -63,4 +63,10 @@ set -x COMPOSE_HTTP_TIMEOUT 300
 
 # pyenv
 pyenv init - | source
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /Users/akash/opt/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
 
