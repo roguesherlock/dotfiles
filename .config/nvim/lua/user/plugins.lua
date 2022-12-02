@@ -61,6 +61,10 @@ return packer.startup(function(use)
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim" })
 	use({ "lunarvim/darkplus.nvim" })
+	use({ "lunarvim/onedarker.nvim" })
+	use({ "lunarvim/horizon.nvim" })
+	use({ "lunarvim/synthwave84.nvim" })
+	use({ "navarasu/onedark.nvim" })
 	use({ "dracula/vim", as = "dracula" })
 	-- use { "gruvbox-community/gruvbox", as = "gruvbox" }
 	-- use { "morhetz/gruvbox" }
