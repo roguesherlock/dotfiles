@@ -45,7 +45,7 @@ if status is-interactive
 		set -U fish_user_paths $HOME/.poetry/bin $fish_user_paths
 
 		# themes
-		source ~/.config/fish/themes/terafox.fish
+		# source ~/.config/fish/themes/terafox.fish
 end
 export GPG_TTY=(tty)
 
@@ -64,9 +64,12 @@ set -x COMPOSE_HTTP_TIMEOUT 300
 # pyenv
 pyenv init - | source
 
+# successor to nvm
+set -gx FNM_LOGLEVEL "quiet";
+fnm env --use-on-cd | source
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /Users/akash/opt/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# eval /Users/akash/opt/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
