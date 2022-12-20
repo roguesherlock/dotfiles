@@ -61,22 +61,6 @@ return packer.startup(function(use)
 	-- Colorschemes
 	use({ "folke/tokyonight.nvim" })
 	use({ "lunarvim/darkplus.nvim" })
-	use({ "lunarvim/onedarker.nvim" })
-	use({ "lunarvim/horizon.nvim" })
-	use({ "lunarvim/synthwave84.nvim" })
-	use({ "navarasu/onedark.nvim" })
-	use({ "dracula/vim", as = "dracula" })
-	-- use { "gruvbox-community/gruvbox", as = "gruvbox" }
-	-- use { "morhetz/gruvbox" }
-	use({ "ellisonleao/gruvbox.nvim" })
-	--[[ use { "projekt0n/github-nvim-theme" } ]]
-	use({ "B4mbus/oxocarbon-lua.nvim" })
-	--[[ use { "shaunsingh/oxocarbon.nvim", run = "./install.sh" } ]]
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use({ "wuelnerdotexe/vim-enfocado" })
-	use({ "tjdevries/colorbuddy.nvim" })
-	use({ "svrana/neosolarized.nvim" })
-	use({ "EdenEast/nightfox.nvim" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
@@ -152,10 +136,10 @@ return packer.startup(function(use)
 	use({ "tpope/vim-surround" })
 	--[[ use({ "tpope/vim-sleuth" }) ]]
 	-- Advanced repeat (think "." repeat for complex operations)
-	use({ "tpope/vim-repeat" })
-	use({ "tpope/vim-abolish" }) -- Cool things with words!
-	use({ "tpope/vim-characterize" })
-	use({ "tpope/vim-dispatch", cmd = { "Dispatch", "Make" } })
+	--[[ use({ "tpope/vim-repeat" }) ]]
+	--[[ use({ "tpope/vim-abolish" }) -- Cool things with words! ]]
+	--[[ use({ "tpope/vim-characterize" }) ]]
+	--[[ use({ "tpope/vim-dispatch", cmd = { "Dispatch", "Make" } }) ]]
 
 	-- diff view
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
@@ -179,7 +163,7 @@ return packer.startup(function(use)
 	})
 
 	-- Crazy good box drawing
-	use("gyim/vim-boxdraw")
+	--[[ use("gyim/vim-boxdraw") ]]
 
 	-- A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
 	use({
