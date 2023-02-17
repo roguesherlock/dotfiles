@@ -34,8 +34,8 @@ null_ls.setup({
 		end
 	end,
 	sources = {
-		formatting.prettier,
-		--[[ formatting.prettierd, ]]
+		--[[ formatting.prettier, ]]
+		formatting.prettierd,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		formatting.google_java_format,

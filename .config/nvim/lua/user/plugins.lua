@@ -100,6 +100,9 @@ return packer.startup(function(use)
 	use({ "natecraddock/workspaces.nvim" })
 	use({ "natecraddock/sessions.nvim" })
 
+	--undo tree
+	use("mbbill/undotree")
+
 	-- curl wrapper for nvim
 	use({
 		"NTBBloodbath/rest.nvim",

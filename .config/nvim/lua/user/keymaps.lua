@@ -24,6 +24,8 @@ nmap("<C-k>", "<C-w>k")
 nmap("<C-l>", "<C-w>l")
 nmap("<C-h>", "<C-w>h")
 
+nmap("Q", "<nop>")
+
 -- move windows around
 nmap("<C-S-j>", "<C-w>J")
 nmap("<C-S-k>", "<C-w>K")
@@ -35,10 +37,10 @@ nmap("<leader>w", ":w<CR>")
 nmap("<d-s>", ":w<CR>")
 
 -- Resize with arrows
-nmap("<Left>", ":vertical resize -1<CR>")
-nmap("<Right>", ":vertical resize +1<CR>")
-nmap("<Up>", ":resize -1<CR>")
-nmap("<Down>", ":resize +1<CR>")
+nmap("<C-Left>", ":vertical resize -1<CR>")
+nmap("<C-Right>", ":vertical resize +1<CR>")
+nmap("<C-Up>", ":resize -1<CR>")
+nmap("<C-Down>", ":resize +1<CR>")
 
 -- Navigate buffers
 --[[ nmap("<S-l>", ":bnext<CR>") ]]
@@ -48,8 +50,15 @@ nmap("<Down>", ":resize +1<CR>")
 vmap("<c-k>", ":m .=<CR>==")
 vmap("<c-j>", ":m .+<CR>==")
 
+vmap("J", ":m '>+1<CR>gv=gv")
+vmap("K", ":m '<-2<CR>gv=gv")
+
 -- Clear highlights
 nmap("<leader><space>", "<cmd>nohlsearch<CR>")
+
+nmap("J", "mzJ`z")
+nmap("<C-d>", "<C-d>zz")
+nmap("<C-u>", "<C-u>zz")
 
 nmap("n", "nzzzv")
 nmap("N", "Nzzzv")
@@ -70,6 +79,7 @@ nmap("E", "$")
 
 -- Better paste
 vmap("p", '"_dP')
+xmap("<leader>p", [["_dP]])
 
 -- quit vim
 nmap("<leader>qq", "<cmd>wqall<cr>")
@@ -103,7 +113,7 @@ nmap("<leader>bc", "<cmd>Bdelete!<CR>")
 nmap("<S-q>", "<cmd>Bdelete!<CR>")
 nmap("<Leader><Leader>", "<C-^>")
 nmap("<Leader><S-Tab>", ":bn<CR>")
-nmap("<Leader><Tab>", ":bp<CR>")
+--[[ nmap("<Leader><Tab>", ":bp<CR>") ]]
 nmap("<Leader>1", ":1b<CR>")
 nmap("<Leader>2", ":2b<CR>")
 nmap("<Leader>3", ":3b<CR>")
@@ -143,7 +153,7 @@ nmap(
 nmap("<leader>g", '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>')
 nmap(
 	"<leader><TAB>",
-	'<cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false, initial_mode = "normal" }))<cr>'
+	'<cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))<cr>'
 )
 nmap("<leader>bl", '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nmap(
