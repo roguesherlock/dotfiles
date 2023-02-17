@@ -46,6 +46,9 @@ if status is-interactive
 
 		# themes
 		# source ~/.config/fish/themes/terafox.fish
+
+		# New Hey
+		alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md && echo ---\ndate:\ (date +"%Y-%m-%d")\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
 end
 export GPG_TTY=(tty)
 
