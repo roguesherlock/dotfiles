@@ -48,7 +48,21 @@ if status is-interactive
 		# source ~/.config/fish/themes/terafox.fish
 
 		# New Hey
-		alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md && echo ---\ndate:\ (date +"%Y-%m-%d")\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
+		# alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date -I).md && echo ---\ndate:\ (date -I)\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
+		function new_hey
+			if test -z $argv[1]
+				set filename (date -I).md
+			else
+				set filename $argv[1].md
+			end
+			set filepath "$HOME/Developer/aaakash.xyz/src/content/heys/$filename"
+			if test -f $filepath
+				echo "File $filepath already exists"
+				return
+			end
+			touch $filepath # Create file with default value if empty
+			echo "File $filepath created" # Print message
+		end
 end
 export GPG_TTY=(tty)
 
