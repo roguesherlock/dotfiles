@@ -51,16 +51,18 @@ if status is-interactive
 		# alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date -I).md && echo ---\ndate:\ (date -I)\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
 		function new_hey
 			if test -z $argv[1]
-				set filename (date -I).md
+				set date (date -I)
 			else
-				set filename $argv[1].md
+				set date $argv[1]
 			end
+			set filename "$date.md"
 			set filepath "$HOME/Developer/aaakash.xyz/src/content/heys/$filename"
 			if test -f $filepath
 				echo "File $filepath already exists"
 				return
 			end
 			touch $filepath # Create file with default value if empty
+			echo ---\ndate: $date\n--- > $filepath # Add frontmatter
 			echo "File $filepath created" # Print message
 		end
 end
