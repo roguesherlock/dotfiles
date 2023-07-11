@@ -30,7 +30,9 @@ if status is-interactive
 
     eval (direnv hook fish)
 
-    test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+		if test "$TERM_PROGRAM" != "WarpTerminal"
+			test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+		end
 
     # Bun
     set -Ux BUN_INSTALL "/Users/akash/.bun"
