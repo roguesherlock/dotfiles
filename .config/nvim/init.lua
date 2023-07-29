@@ -1,3 +1,4 @@
+vim.g.mapleader = ","
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -17,28 +18,11 @@ if not status_ok then
   return
 end
 
-require("lazy").setup("user.plugins")
-require "user.options"
-require "user.keymaps"
-require "user.autocommands"
-require "user.colorscheme"
-require "user.cmp"
-require "user.telescope"
-require "user.treesitter"
-require "user.autopairs"
-require "user.comment"
-require "user.gitsigns"
-require "user.nvim-tree"
--- require "user.bufferline"
-require "user.lualine"
-require "user.toggleterm"
-require "user.project"
-require "user.impatient"
-require "user.illuminate"
-require "user.indentline"
-require "user.alpha"
-require "user.leap"
--- require "user.lsp"
--- require "user.dap"
-require "user.diffview"
-require "user.workspace"
+if vim.fn.exists("g:vscode") then
+  require("lazy").setup("vscode.plugins")
+  require("vscode.keymaps")
+else
+  require("lazy").setup("plugins")
+  require "user.keymaps"
+end
+

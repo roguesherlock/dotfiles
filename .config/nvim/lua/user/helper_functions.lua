@@ -1,12 +1,12 @@
 function map(mode, shortcut, command, opts)
-  local options = { noremap = true }
+  local options = {
+    noremap = true
+  }
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
   vim.api.nvim_set_keymap(mode, shortcut, command, options)
 end
-
-
 
 function tmap(shortcut, command, opts)
   map("t", shortcut, command, opts)
@@ -26,4 +26,8 @@ end
 
 function xmap(shortcut, command, opts)
   map("x", shortcut, command, opts)
+end
+
+function omap(shortcut, command, opts)
+  map("o", shortcut, command, opts)
 end
