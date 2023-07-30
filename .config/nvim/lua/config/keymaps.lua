@@ -71,6 +71,9 @@ nmap("<Leader>9", ":tabnext 9<cr>")
 -- nmap("<s-l>", ":tabnext<cr>")
 -- nmap("<s-h>", ":tabprev<cr>")
 
+-- Reload config leader-ui-reload-config
+nmap("<leader>urc", ":source $MYVIMRC<cr>")
+
 -- Toggle theme
 nmap("<leader>tt", ":lua vim.o.background = vim.o.background == 'light' and 'dark' or 'light'<CR>")
 
