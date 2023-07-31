@@ -40,3 +40,6 @@ ln -sF ~/Developer/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner
 
 #nvim
 ln -sF ~/Developer/dotfiles/.config/nvim ~/.config/nvim
+
+#wezterm
+ln -sF ~/Developer/dotfiles/.config/wezterm ~/.config/wezterm
