@@ -1,5 +1,8 @@
 -- Pull in the wezterm API
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
+
+local colors = require("lua/rose-pine").colors()
+local window_frame = require("lua/rose-pine").window_frame()
 
 -- This table will hold the configuration.
 local config = {}
@@ -7,27 +10,30 @@ local config = {}
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-  config = wezterm.config_builder()
+	config = wezterm.config_builder()
 end
 
 config.font_size = 14.0
 config.line_height = 1.2
 
-local appearance = wezterm.gui.get_appearance()
-if appearance:find "Dark" then
-  -- config.color_scheme = "Catppuccin Frappe"
-  config.color_scheme = "GruvboxDark"
-else
-  -- config.color_scheme = "Catppuccin Latte"
-  config.color_scheme = "Gruvbox Light"
-end
+config.colors = colors
+config.window_frame = window_frame
+
+-- local appearance = wezterm.gui.get_appearance()
+-- if appearance:find "Dark" then
+--   -- config.color_scheme = "Catppuccin Frappe"
+--   config.color_scheme = "GruvboxDark"
+-- else
+--   -- config.color_scheme = "Catppuccin Latte"
+--   config.color_scheme = "Gruvbox Light"
+-- end
 
 config.window_decorations = "RESIZE"
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 config.adjust_window_size_when_changing_font_size = false
 
