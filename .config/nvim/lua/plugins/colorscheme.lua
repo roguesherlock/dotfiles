@@ -1,3 +1,11 @@
+-- https://github.com/jascha030/macos-nvim-dark-mode
+local os_is_dark = function()
+	return (vim.call(
+		"system",
+		[[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
+	)):find("dark") ~= nil
+end
+
 return {
 	-- add gruvbox
 	{
@@ -31,10 +39,14 @@ return {
 	-- Configure LazyVim to load gruvbox
 	{
 		"LazyVim/LazyVim",
-		opts = {
-			-- colorscheme = "gruvbox"
-			-- colorscheme = "catppuccin"
-			colorscheme = "rose-pine",
-		},
+		opts = function(_, opts)
+			opts.colorscheme = "rose-pine"
+			-- if os_is_dark() then
+			-- 	vim.o.background = "dark"
+			-- else
+			-- 	vim.o.background = "light"
+			-- end
+			-- return opts
+		end,
 	},
 }
