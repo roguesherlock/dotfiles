@@ -80,25 +80,27 @@ nmap("<leader>urc", ":source $MYVIMRC<cr>", { desc = "Reload config" })
 -- Toggle theme
 nmap(
 	"<leader>tt",
-	":lua vim.o.background = vim.o.background == 'light' and 'dark' or 'light'<CR>",
+	"<cmd>lua vim.o.background = vim.o.background == 'light' and 'dark' or 'light'<CR>",
 	{ desc = "Toggle theme" }
 )
 
 -- Zen mode
-nmap("<leader>z", ":lua require('zen-mode').toggle()<CR>", { desc = "Toggle zen mode" })
+nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle zen mode" })
 
 -- Telescope --
-nmap(
-	"<leader>j",
-	'<cmd>lua require("telescope.builtin").git_files(require("telescope.themes").get_dropdown({ previewer = false, show_untracked = true }))<cr>',
-	{ desc = "Find files in git repo" }
-)
-nmap(
-	"<leader>,",
-	'<cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))<cr>',
-	{ desc = "Find buffers" }
-)
-nmap("<leader><tab>", '<cmd>lua require("telescope.builtin").buffers()<cr>', { desc = "Find buffers (with preview)" })
+-- nmap(
+-- 	"<leader>j",
+-- 	'<cmd>lua require("telescope.builtin").git_files(require("telescope.themes").get_dropdown({ previewer = false, show_untracked = true }))<cr>',
+-- 	{ desc = "Find files in git repo" }
+-- )
+-- nmap(
+-- 	"<leader>,",
+-- 	'<cmd>lua require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))<cr>',
+-- 	{ desc = "Find buffers" }
+-- )
+-- nmap("<leader><tab>", '<cmd>lua require("telescope.builtin").buffers()<cr>', { desc = "Find buffers (with preview)" })
+-- nmap("<leader><leader>", "<cmd>Telescope buffers show_all_buffers=true<cr>", { desc = "Switch Buffer" })
+
 nmap(
 	"<leader>sl",
 	'<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>',
@@ -109,6 +111,7 @@ nmap(
 nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
 nmap("<leader>mc", '<cmd>lua require("harpoon.mark").clear_all()<cr>', { desc = "Clear all harpoon marks" })
 nmap("<leader>mn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
+nmap("<leader>m<leader>", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
 nmap("<leader>mp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', { desc = "Navigate to previous harpoon mark" })
 nmap("<leader>ml", "<cmd>Telescope harpoon marks<cr>", { desc = "List harpoon marks" })
 nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { desc = "Open terminal with harpoon" }) -- goes to the first tmux window
