@@ -1,4 +1,5 @@
 --  TODO: add dark mode detection
+--
 -- https://github.com/jascha030/macos-nvim-dark-mode
 -- local os_is_dark = function()
 -- 	return (vim.call(
@@ -8,13 +9,32 @@
 -- end
 
 return {
-	-- add gruvbox
+	-- gruvbox
 	{
 		"ellisonleao/gruvbox.nvim",
 	},
+
+	--nightfox
+	{ "EdenEast/nightfox.nvim" },
+
+	-- github
+	{
+		"projekt0n/github-nvim-theme",
+		-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		-- priority = 1000, -- make sure to load this before all the other start plugins
+		-- config = function()
+		-- 	require("github-theme").setup({
+		-- 		-- ...
+		-- 	})
+		-- end,
+	},
+
+	-- rose-pine
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require("rose-pine").setup({
 				highlight_groups = {
@@ -25,6 +45,8 @@ return {
 			})
 		end,
 	},
+
+	-- kanagawa
 	{
 		"rebelot/kanagawa.nvim",
 		overrides = function(colors)
@@ -37,7 +59,7 @@ return {
 		end,
 	},
 
-	-- Configure LazyVim to load gruvbox
+	-- Configure LazyVim to load 
 	{
 		"LazyVim/LazyVim",
 		opts = function(_, opts)
