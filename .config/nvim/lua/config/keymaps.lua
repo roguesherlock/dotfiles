@@ -122,7 +122,7 @@ nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { des
 -- Insert --
 -- Press jk fast to enter
 imap("jk", "<ESC>", { desc = "Exit insert mode" })
-imap("fd", "<ESC>", { desc = "Exit insert mode" })
+-- imap("fd", "<ESC>", { desc = "Exit insert mode" })
 
 -- Visual --
 
