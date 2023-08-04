@@ -1,8 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	opts = {
-		ensure_installed = {
-			"astro",
-		},
-	},
+	opts = function(_, opts)
+		if type(opts.ensure_installed) == "table" then
+			vim.list_extend(opts.ensure_installed, { "astro", "vue", "php" })
+		end
+	end,
 }

@@ -59,7 +59,7 @@ return {
 		end,
 	},
 
-	-- Configure LazyVim to load 
+	-- Configure LazyVim to load colorscheme
 	{
 		"LazyVim/LazyVim",
 		opts = function(_, opts)
