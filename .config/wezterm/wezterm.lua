@@ -1,9 +1,11 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
-local colors = require("lua/rose-pine").colors()
-local window_frame = require("lua/rose-pine").window_frame()
+-- local colors = require("lua/rose-pine").colors()
+-- local window_frame = require("lua/rose-pine").window_frame()
 
+local colors = require("lua/everforest").colors()
+local window_frame = require("lua/everforest").window_frame()
 -- This table will hold the configuration.
 local config = {}
 
