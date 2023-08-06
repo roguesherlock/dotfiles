@@ -26,7 +26,7 @@ return {
 		-- priority = 1000, -- make sure to load this before all the other start plugins
 		-- config = function()
 		-- 	require("github-theme").setup({
-		-- 		-- ...
+		-- 		options = {},
 		-- 	})
 		-- end,
 	},
@@ -65,7 +65,8 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = function(_, opts)
-			opts.colorscheme = "everforest"
+			opts.colorscheme = "catppuccin"
+			-- opts.colorscheme = "everforest"
 			-- if os_is_dark() then
 			-- 	vim.o.background = "dark"
 			-- else

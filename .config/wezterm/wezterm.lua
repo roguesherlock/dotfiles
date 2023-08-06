@@ -4,8 +4,8 @@ local wezterm = require("wezterm")
 -- local colors = require("lua/rose-pine").colors()
 -- local window_frame = require("lua/rose-pine").window_frame()
 
-local colors = require("lua/everforest").colors()
-local window_frame = require("lua/everforest").window_frame()
+-- local colors = require("lua/everforest").colors()
+-- local window_frame = require("lua/everforest").window_frame()
 -- This table will hold the configuration.
 local config = {}
 
@@ -18,8 +18,9 @@ end
 config.font_size = 14.0
 config.line_height = 1.2
 
-config.colors = colors
-config.window_frame = window_frame
+-- config.colors = colors
+-- config.window_frame = window_frame
+config.color_scheme = "Catppuccin Mocha"
 
 -- local appearance = wezterm.gui.get_appearance()
 -- if appearance:find "Dark" then
