@@ -31,10 +31,10 @@ local function xmap(shortcut, command, opts)
 	map("x", shortcut, command, opts)
 end
 
-nmap("<leader>ww", ":w<CR>", { desc = "Save file" })
+nmap("<leader>w", ":w<CR>", { desc = "Save file" })
 nmap("<D-s>", ":w<CR>", { desc = "Save file" })
 
-nmap("<leader>w<leader>", "<C-W>p", { desc = "Switch to previous window" })
+-- nmap("<leader>w<leader>", "<C-W>p", { desc = "Switch to previous window" })
 
 -- Resize with arrows
 -- LazyVim already has these mappings
@@ -122,7 +122,7 @@ nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { des
 -- Insert --
 -- Press jk fast to enter
 imap("jk", "<ESC>", { desc = "Exit insert mode" })
--- imap("fd", "<ESC>", { desc = "Exit insert mode" })
+imap("fd", "<ESC>", { desc = "Exit insert mode" })
 
 -- Visual --
 
