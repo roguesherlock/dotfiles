@@ -31,11 +31,11 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item({
           behavior = cmp.SelectBehavior.Insert
         }),
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), {
+        ["<C-p>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), {
           "i",
           "c"
         }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), {
+        ["<C-n>"] = cmp.mapping(cmp.mapping.scroll_docs(1), {
           "i",
           "c"
         }),
@@ -44,28 +44,6 @@ return {
           "c"
         }),
         ["<C-e>"] = cmp.mapping({
-          i = cmp.mapping.abort(),
-          c = cmp.mapping.close()
-        }),
-        ["<D-k>"] = cmp.mapping.select_prev_item({
-          behavior = cmp.SelectBehavior.Insert
-        }),
-        ["<D-j>"] = cmp.mapping.select_next_item({
-          behavior = cmp.SelectBehavior.Insert
-        }),
-        ["<D-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), {
-          "i",
-          "c"
-        }),
-        ["<D-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), {
-          "i",
-          "c"
-        }),
-        ["<D-Space>"] = cmp.mapping(cmp.mapping.complete(), {
-          "i",
-          "c"
-        }),
-        ["<D-e>"] = cmp.mapping({
           i = cmp.mapping.abort(),
           c = cmp.mapping.close()
         }),
