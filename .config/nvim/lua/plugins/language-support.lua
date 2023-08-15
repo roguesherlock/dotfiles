@@ -9,6 +9,7 @@ return {
 					"intelephense",
 					"prettier",
 					"emmet-language-server",
+					"prisma-language-server",
 				})
 			end
 		end,
@@ -20,7 +21,7 @@ return {
 				enable = true,
 			}
 			if type(opts.ensure_installed) == "table" then
-				vim.list_extend(opts.ensure_installed, { "astro", "vue", "php" })
+				vim.list_extend(opts.ensure_installed, { "astro", "vue", "php", "prisma" })
 			end
 		end,
 	},
