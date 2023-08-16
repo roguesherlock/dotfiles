@@ -17,6 +17,12 @@ return {
 					require("telescope").load_extension("harpoon")
 				end,
 			},
+			{
+				"danielfalk/smart-open.nvim",
+				config = function()
+					require("telescope").load_extension("smart_open")
+				end,
+			},
 		},
 		opts = {
 			defaults = {
@@ -30,6 +36,14 @@ return {
 						["<D-k>"] = actions.move_selection_previous,
 						["<ESC>"] = actions.close,
 					},
+				},
+			},
+			pickers = {
+				find_files = {
+					theme = "ivy",
+				},
+				smart_open = {
+					theme = "ivy",
 				},
 			},
 			extensions = {
@@ -49,6 +63,9 @@ return {
 					},
 					hidden_files = true, -- default: false
 					theme = "dropdown",
+				},
+				smart_open = {
+					theme = "ivy",
 				},
 			},
 		},

@@ -75,7 +75,7 @@ nmap("<Leader>9", ":tabnext 9<cr>", { desc = "Switch to tab 9" })
 -- nmap("<s-h>", ":tabprev<cr>")
 
 -- Reload config leader-ui-reload-config
-nmap("<leader>urc", ":source $MYVIMRC<cr>", { desc = "Reload config" })
+-- nmap("<leader>urc", ":source $MYVIMRC<cr>", { desc = "Reload config" })
 
 -- Toggle theme
 nmap(
@@ -100,12 +100,9 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 -- )
 -- nmap("<leader><tab>", '<cmd>lua require("telescope.builtin").buffers()<cr>', { desc = "Find buffers (with preview)" })
 -- nmap("<leader><leader>", "<cmd>Telescope buffers show_all_buffers=true<cr>", { desc = "Switch Buffer" })
-
-nmap(
-	"<leader>sl",
-	'<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>',
-	{ desc = "Live grep args" }
-)
+nmap("<leader><space>", "<cmd> Telescope smart_open theme=ivy <cr>", { desc = "Find Files" })
+nmap("<leader>fb", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
+nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 
 -- harpoon
 nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
