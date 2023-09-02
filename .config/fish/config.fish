@@ -87,7 +87,7 @@ pyenv init - | source
 
 # successor to nvm
 set -gx FNM_LOGLEVEL "quiet";
-fnm env --use-on-cd | source
+fnm env --use-on-cd --resolve-engines | source
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
