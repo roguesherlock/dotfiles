@@ -1,0 +1,177 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "mongodb/brew"
+tap "planetscale/tap"
+tap "surrealdb/tap"
+tap "wez/wezterm"
+tap "yt-dlp/taps"
+brew "little-cms2"
+brew "webp"
+brew "jpeg-xl"
+brew "aom"
+brew "apr-util"
+brew "python@3.11"
+brew "awscli"
+brew "freetype"
+brew "glib"
+brew "openssl@1.1"
+brew "python@3.9"
+brew "libssh2"
+brew "rtmpdump"
+brew "curl"
+brew "freetds"
+brew "gd"
+brew "krb5"
+brew "libzip"
+brew "php", restart_service: true
+brew "composer"
+brew "direnv"
+brew "dnsmasq", restart_service: true
+brew "erlang"
+brew "elixir"
+brew "exa"
+brew "exiftool"
+brew "libevent"
+brew "p11-kit"
+brew "unbound", restart_service: true
+brew "gnutls"
+brew "harfbuzz"
+brew "openjpeg"
+brew "leptonica"
+brew "libass"
+brew "pango"
+brew "srt"
+brew "tesseract"
+brew "ffmpeg"
+brew "fish"
+brew "fnm"
+brew "fzf"
+brew "gh"
+brew "gnupg"
+brew "go"
+brew "hyperfine"
+brew "lazygit"
+brew "libfido2"
+brew "mackup"
+brew "mailhog", restart_service: true
+brew "mas"
+brew "mysql", restart_service: true
+brew "neovim"
+brew "nginx", restart_service: true
+brew "oha"
+brew "openjdk"
+brew "php@8.1"
+brew "pinentry-mac"
+brew "pnpm"
+brew "ripgrep"
+brew "ruby"
+brew "tmux"
+brew "planetscale/tap/pscale"
+brew "yt-dlp/taps/yt-dlp"
+cask "font-inter"
+cask "font-jetbrains-mono"
+cask "font-symbols-only-nerd-font"
+cask "hammerspoon"
+cask "hot"
+cask "iina"
+cask "raycast"
+cask "shortcat"
+cask "sloth"
+cask "wezterm"
+mas "AdGuard for Safari", id: 1440147259
+mas "Agenda", id: 1287445660
+mas "Amphetamine", id: 937984704
+mas "Craft", id: 1487937127
+mas "Drafts", id: 1435957248
+mas "Endel", id: 1346247457
+mas "Flighty", id: 1358823008
+mas "GarageBand", id: 682658836
+mas "Ghostery – Privacy Ad Blocker", id: 1436953057
+mas "Hand Mirror", id: 1502839586
+mas "Hush", id: 1544743900
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Klack", id: 6446206067
+mas "Muse", id: 1501563902
+mas "Noir", id: 1592917505
+mas "Numbers", id: 409203825
+mas "One Thing", id: 1604176982
+mas "Pages", id: 409201541
+mas "Portal", id: 1436994560
+mas "rcmd", id: 1596283165
+mas "Sequel Ace", id: 1518036000
+mas "Slack", id: 803453959
+mas "SponsorBlock for YouTube - Skip Sponsorships", id: 1573461917
+mas "TestFlight", id: 899247664
+mas "The Unarchiver", id: 425424353
+mas "Things", id: 904280696
+mas "Tripsy", id: 1429967544
+mas "Universe", id: 1211437633
+mas "VisBug", id: 1538509686
+mas "WhatsApp", id: 1147396723
+mas "Xcode", id: 497799835
+vscode "antfu.browse-lite"
+vscode "antfu.file-nesting"
+vscode "antfu.goto-alias"
+vscode "antfu.iconify"
+vscode "antfu.theme-vitesse"
+vscode "antfu.unocss"
+vscode "antfu.vite"
+vscode "astro-build.astro-vscode"
+vscode "asvetliakov.vscode-neovim"
+vscode "bmewburn.vscode-intelephense-client"
+vscode "bradlc.vscode-tailwindcss"
+vscode "Catppuccin.catppuccin-vsc"
+vscode "Codeium.codeium"
+vscode "dbaeumer.vscode-eslint"
+vscode "denoland.vscode-deno"
+vscode "doggy8088.quicktype-refresh"
+vscode "dracula-theme.theme-dracula"
+vscode "eamodio.gitlens"
+vscode "enkia.tokyo-night"
+vscode "esbenp.prettier-vscode"
+vscode "figma.figma-vscode-extension"
+vscode "formulahendry.auto-rename-tag"
+vscode "GitHub.codespaces"
+vscode "GitHub.copilot"
+vscode "GitHub.copilot-chat"
+vscode "GitHub.copilot-labs"
+vscode "GitHub.github-vscode-theme"
+vscode "GitHub.remotehub"
+vscode "github.vscode-github-actions"
+vscode "GitHub.vscode-pull-request-github"
+vscode "golang.go"
+vscode "GrapeCity.gc-excelviewer"
+vscode "humao.rest-client"
+vscode "JakeBecker.elixir-ls"
+vscode "metaphore.kanagawa-vscode-color-theme"
+vscode "miguelsolorio.symbols"
+vscode "ms-vscode.azure-repos"
+vscode "ms-vscode.cpptools"
+vscode "ms-vscode.live-server"
+vscode "ms-vscode.remote-repositories"
+vscode "mtxr.sqltools"
+vscode "mvllow.rose-pine"
+vscode "onecentlin.laravel-blade"
+vscode "pflannery.vscode-versionlens"
+vscode "phoenixframework.phoenix"
+vscode "pmndrs.pmndrs"
+vscode "Prisma.prisma"
+vscode "qezhu.gitlink"
+vscode "qufiwefefwoyn.kanagawa"
+vscode "quicktype.quicktype"
+vscode "RLNT.keep-a-changelog"
+vscode "sourcegraph.cody-ai"
+vscode "usernamehw.errorlens"
+vscode "VisualStudioExptTeam.intellicode-api-usage-examples"
+vscode "vscodevim.vim"
+vscode "Vue.volar"
+vscode "Vue.vscode-typescript-vue-plugin"
+vscode "WallabyJs.console-ninja"
+vscode "will-stone.plastic"
+vscode "yinfei.luahelper"
+vscode "yoavbls.pretty-ts-errors"
+vscode "znck.grammarly"
