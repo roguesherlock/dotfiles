@@ -43,3 +43,6 @@ ln -sF ~/Developer/dotfiles/.config/nvim ~/.config/nvim
 
 #wezterm
 ln -sF ~/Developer/dotfiles/.config/wezterm ~/.config/wezterm
+
+#kitty
+ln -sF ~/Developer/dotfiles/.config/kitty ~/.config/kitty
