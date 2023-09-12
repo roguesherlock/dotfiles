@@ -10,56 +10,62 @@
 
 return {
 	-- gruvbox
-	{
-		"ellisonleao/gruvbox.nvim",
-	},
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- },
 
-	{ "sainnhe/everforest" },
+	-- { "sainnhe/everforest" },
 
 	--nightfox
-	{ "EdenEast/nightfox.nvim" },
+	-- { "EdenEast/nightfox.nvim" },
 
 	-- github
 	{
 		"projekt0n/github-nvim-theme",
 		-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		-- priority = 1000, -- make sure to load this before all the other start plugins
-		-- config = function()
-		-- 	require("github-theme").setup({
-		-- 		options = {},
-		-- 	})
-		-- end,
-	},
-
-	-- rose-pine
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		-- priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
-			require("rose-pine").setup({
-				highlight_groups = {
-					IndentBlanklineChar = { fg = "highlight_low" },
-					IndentBlanklineContextChar = { fg = "highlight_high" },
-					IndentBlanklineContextStart = { sp = "highlight_high" },
+			require("github-theme").setup({
+				options = {
+					styles = {
+						comments = "italic",
+						keywords = "bold",
+						types = "italic,bold",
+					},
 				},
 			})
 		end,
 	},
 
+	-- rose-pine
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	-- 	-- priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		require("rose-pine").setup({
+	-- 			highlight_groups = {
+	-- 				IndentBlanklineChar = { fg = "highlight_low" },
+	-- 				IndentBlanklineContextChar = { fg = "highlight_high" },
+	-- 				IndentBlanklineContextStart = { sp = "highlight_high" },
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
+
 	-- kanagawa
-	{
-		"rebelot/kanagawa.nvim",
-		overrides = function(colors)
-			local theme = colors.theme
-			return {
-				IndentBlanklineChar = { fg = theme.ui.bg_p1 },
-				IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
-				IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
-			}
-		end,
-	},
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	overrides = function(colors)
+	-- 		local theme = colors.theme
+	-- 		return {
+	-- 			IndentBlanklineChar = { fg = theme.ui.bg_p1 },
+	-- 			IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
+	-- 			IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
+	-- 		}
+	-- 	end,
+	-- },
 
 	-- Configure LazyVim to load colorscheme
 	{
