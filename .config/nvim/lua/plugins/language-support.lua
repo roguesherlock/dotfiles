@@ -7,7 +7,6 @@ return {
 					"astro-language-server",
 					"vue-language-server",
 					"intelephense",
-					"prettier",
 					"emmet-language-server",
 					"prisma-language-server",
 				})
