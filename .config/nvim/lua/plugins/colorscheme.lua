@@ -12,30 +12,55 @@ return {
 	-- gruvbox
 	-- {
 	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	config = function()
+	-- 		require("gruvbox").setup({
+	-- 			contrast = "soft",
+	-- 		})
+	-- 	end,
 	-- },
 
+	-- everforest
 	-- { "sainnhe/everforest" },
-
-	--nightfox
-	-- { "EdenEast/nightfox.nvim" },
-
-	-- github
 	{
-		"projekt0n/github-nvim-theme",
-		-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		-- priority = 1000, -- make sure to load this before all the other start plugins
+		"neanias/everforest-nvim",
+		version = false,
+		lazy = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		-- Optional; default configuration will be used if setup isn't called.
 		config = function()
-			require("github-theme").setup({
-				options = {
-					styles = {
-						comments = "italic",
-						keywords = "bold",
-						types = "italic,bold",
-					},
-				},
+			require("everforest").setup({
+				-- Your config here
+				background = "hard",
+				italics = true,
 			})
 		end,
 	},
+
+	-- -- nightfox
+	-- { "EdenEast/nightfox.nvim" },
+	--
+	-- -- onedark
+	-- {
+	-- 	"navarasu/onedark.nvim",
+	-- },
+
+	-- github
+	-- {
+	-- 	"projekt0n/github-nvim-theme",
+	-- 	-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	-- 	-- priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		require("github-theme").setup({
+	-- 			options = {
+	-- 				styles = {
+	-- 					comments = "italic",
+	-- 					keywords = "bold",
+	-- 					types = "italic,bold",
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- rose-pine
 	-- {
@@ -71,8 +96,7 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = function(_, opts)
-			opts.colorscheme = "catppuccin"
-			-- opts.colorscheme = "everforest"
+			opts.colorscheme = "everforest"
 			-- if os_is_dark() then
 			-- 	vim.o.background = "dark"
 			-- else
