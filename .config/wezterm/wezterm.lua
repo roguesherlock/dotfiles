@@ -20,7 +20,8 @@ config.line_height = 1.2
 
 -- config.colors = colors
 -- config.window_frame = window_frame
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Everforest Dark (Gogh)"
+config.font_size = 15.0
 
 -- local appearance = wezterm.gui.get_appearance()
 -- if appearance:find "Dark" then
