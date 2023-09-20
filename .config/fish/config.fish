@@ -14,6 +14,10 @@ if status is-interactive
     alias yta="yt-dlp -f 'ba' -S 'ext' "
     alias g git
     command -qv nvim && alias vim nvim
+    if type -q kitty
+        alias icat="kitty +kitten icat"
+        alias s="kitty +kitten ssh"
+    end
     if type -q exa
         alias ls "exa --icons --classify"
         alias ll "exa --icons --header --long --git --classify"
