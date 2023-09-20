@@ -9,6 +9,9 @@
 -- end
 
 return {
+	-- {
+	-- 	"mikesmithgh/gruvsquirrel.nvim",
+	-- },
 	-- gruvbox
 	-- {
 	-- 	"ellisonleao/gruvbox.nvim",

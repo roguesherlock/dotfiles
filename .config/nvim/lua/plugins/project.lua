@@ -9,8 +9,8 @@ return {
 		dependencies = { "nvim-telescope/telescope.nvim", "Shatur/neovim-session-manager" },
 		priority = 100,
 		keys = {
-			{ "<leader>fP", "<Cmd>Telescope neovim-project discover<CR>", desc = "All Projects" },
-			{ "<leader>fp", "<Cmd>Telescope neovim-project history<CR>", desc = "Recent Projects" },
+			{ "<leader>fp", "<Cmd>Telescope neovim-project discover<CR>", desc = "All Projects" },
+			{ "<leader>fP", "<Cmd>Telescope neovim-project history<CR>", desc = "Recent Projects" },
 		},
 	},
 	{
