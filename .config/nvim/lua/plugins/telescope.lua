@@ -49,6 +49,78 @@ return {
 				buffers = {
 					theme = "ivy",
 				},
+				git_files = {
+					theme = "ivy",
+				},
+				live_grep = {
+					theme = "ivy",
+				},
+				files = {
+					theme = "ivy",
+				},
+				harpoon = {
+					theme = "ivy",
+				},
+				grep_string = {
+					theme = "ivy",
+				},
+				oldfiles = {
+					theme = "ivy",
+				},
+				git_commits = {
+					theme = "ivy",
+				},
+				git_status = {
+					theme = "ivy",
+				},
+				registers = {
+					theme = "ivy",
+				},
+				autocommands = {
+					theme = "ivy",
+				},
+				current_buffer_fuzzy_find = {
+					theme = "ivy",
+				},
+				command_history = {
+					theme = "ivy",
+				},
+				commands = {
+					theme = "ivy",
+				},
+				diagnostics = {
+					theme = "ivy",
+				},
+				help_tags = {
+					theme = "ivy",
+				},
+				highlights = {
+					theme = "ivy",
+				},
+				keymaps = {
+					theme = "ivy",
+				},
+				man_pages = {
+					theme = "ivy",
+				},
+				marks = {
+					theme = "ivy",
+				},
+				vim_options = {
+					theme = "ivy",
+				},
+				resume = {
+					theme = "ivy",
+				},
+				colorscheme = {
+					theme = "ivy",
+				},
+				lsp_document_symbols = {
+					theme = "ivy",
+				},
+				lsp_dynamic_workspace_symbols = {
+					theme = "ivy",
+				},
 			},
 			extensions = {
 				fzf = {
