@@ -8,7 +8,7 @@ local function map(mode, shortcut, command, opts)
 	if opts then
 		options = vim.tbl_extend("force", options, opts)
 	end
-	vim.api.nvim_set_keymap(mode, shortcut, command, options)
+	vim.keymap.set(mode, shortcut, command, options)
 end
 
 local function tmap(shortcut, command, opts)
@@ -103,9 +103,9 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 -- )
 -- nmap("<leader><tab>", '<cmd>lua require("telescope.builtin").buffers()<cr>', { desc = "Find buffers (with preview)" })
 -- nmap("<leader><leader>", "<cmd>Telescope buffers show_all_buffers=true<cr>", { desc = "Switch Buffer" })
-nmap("<leader><space>", "<cmd> Telescope smart_open theme=ivy <cr>", { desc = "Find Files" })
-nmap("<leader>fb", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
-nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
+-- nmap("<leader><space>", "<cmd> Telescope smart_open theme=ivy <cr>", { desc = "Find Files" })
+-- nmap("<leader>fb", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
+-- nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 
 -- harpoon
 nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
