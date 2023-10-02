@@ -46,6 +46,9 @@ return {
 				smart_open = {
 					theme = "ivy",
 				},
+				buffers = {
+					theme = "ivy",
+				},
 			},
 			extensions = {
 				fzf = {
