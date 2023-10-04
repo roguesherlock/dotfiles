@@ -25,6 +25,9 @@ return {
 				end,
 			},
 		},
+		keys = {
+			{ "<leader><space>", "<cmd>Telescope smart_open theme=ivy<cr>", desc = "Find Files (smart_open)" },
+		},
 		opts = {
 			defaults = {
 				mappings = {
@@ -138,9 +141,11 @@ return {
 						},
 					},
 					hidden_files = true, -- default: false
-					theme = "dropdown",
+					theme = "ivy",
 				},
 				smart_open = {
+					show_scores = false,
+					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules" },
 					theme = "ivy",
 				},
 			},
