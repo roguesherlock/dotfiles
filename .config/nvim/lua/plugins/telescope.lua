@@ -34,6 +34,8 @@ return {
 					i = {
 						["<Down>"] = actions.cycle_history_next,
 						["<Up>"] = actions.cycle_history_prev,
+						["<C-n>"] = actions.preview_scrolling_down,
+						["<C-p>"] = actions.preview_scrolling_up,
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 						["<D-j>"] = actions.move_selection_next,
