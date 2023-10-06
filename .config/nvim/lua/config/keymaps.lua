@@ -36,13 +36,6 @@ nmap("<D-s>", ":w<CR>", { desc = "Save file" })
 
 -- nmap("<leader>w<leader>", "<C-W>p", { desc = "Switch to previous window" })
 
--- Resize with arrows
--- LazyVim already has these mappings
--- nmap("<C-Left>", ":vertical resize -1<CR>")
--- nmap("<C-Right>", ":vertical resize +1<CR>")
--- nmap("<C-Up>", ":resize -1<CR>")
--- nmap("<C-Down>", ":resize +1<CR>")
-
 nmap("J", "mzJ`z", { desc = "Delete line and join with next line" })
 
 -- cursor should stay centered while scrolling
@@ -108,6 +101,7 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 -- nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 
 -- harpoon
+-- harpoon maybe causing freeze, have to debug more
 -- nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
 -- nmap("<leader>mc", '<cmd>lua require("harpoon.mark").clear_all()<cr>', { desc = "Clear all harpoon marks" })
 -- nmap("<leader>mn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })

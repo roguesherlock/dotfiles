@@ -6,7 +6,7 @@ return {
 		keys[#keys + 1] =
 			{ "<leader>.", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
 		keys[#keys + 1] = {
-			"<leader>.<leader>",
+			"<leader>/",
 			function()
 				vim.lsp.buf.code_action({
 					context = {

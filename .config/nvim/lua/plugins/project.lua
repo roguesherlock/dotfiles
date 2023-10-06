@@ -7,6 +7,7 @@ return {
 			},
 		},
 		dependencies = { "nvim-telescope/telescope.nvim", "Shatur/neovim-session-manager" },
+		lazy = false,
 		priority = 100,
 		keys = {
 			{ "<leader>fp", "<Cmd>Telescope neovim-project discover theme=ivy<CR>", desc = "All Projects" },
