@@ -1,16 +1,14 @@
 return {
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      window = {
-        position = "right"
-      },
-      mappings = {
-        ["<space>"] = {
-          "toggle_node",
-          nowait = false -- disable `nowait` if you have existing combos starting with this char that you want to use
-        }
-      }
-    }
-  }
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		opts = {
+			window = {
+				position = "right",
+				fuzzy_finder_mappings = {
+					["<C-j>"] = "move_cursor_down",
+					["<C-k>"] = "move_cursor_up",
+				},
+			},
+		},
+	},
 }
