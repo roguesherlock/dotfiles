@@ -108,13 +108,13 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 -- nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 
 -- harpoon
-nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
-nmap("<leader>mc", '<cmd>lua require("harpoon.mark").clear_all()<cr>', { desc = "Clear all harpoon marks" })
-nmap("<leader>mn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
-nmap("<leader>m<leader>", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
-nmap("<leader>mp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', { desc = "Navigate to previous harpoon mark" })
-nmap("<leader>ml", "<cmd>Telescope harpoon marks<cr>", { desc = "List harpoon marks" })
-nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { desc = "Open terminal with harpoon" }) -- goes to the first tmux window
+-- nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
+-- nmap("<leader>mc", '<cmd>lua require("harpoon.mark").clear_all()<cr>', { desc = "Clear all harpoon marks" })
+-- nmap("<leader>mn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
+-- nmap("<leader>m<leader>", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
+-- nmap("<leader>mp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', { desc = "Navigate to previous harpoon mark" })
+-- nmap("<leader>ml", "<cmd>Telescope harpoon marks<cr>", { desc = "List harpoon marks" })
+-- nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { desc = "Open terminal with harpoon" }) -- goes to the first tmux window
 
 -- nmap("<leader>mc", "<cmd>delmarks A-Z0-9<cr>")
 -- nmap("<leader>ml", '<cmd>lua require("telescope.builtin").marks()<cr>')
