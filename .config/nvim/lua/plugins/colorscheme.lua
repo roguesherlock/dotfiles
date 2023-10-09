@@ -53,6 +53,7 @@ return {
 				-- Your config here
 				background = "hard",
 				italics = true,
+				everforest_transparent_background = 2,
 			})
 		end,
 	},
