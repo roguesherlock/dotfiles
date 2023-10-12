@@ -10,6 +10,14 @@
 
 return {
 	-- {
+	-- 	"bluz71/vim-nightfly-guicolors",
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		-- load the colorscheme here
+	-- 		-- vim.cmd([[colorscheme nightfly]])
+	-- 	end,
+	-- },
+	-- {
 	-- 	"mikesmithgh/gruvsquirrel.nvim",
 	-- },
 	-- gruvbox
@@ -53,7 +61,7 @@ return {
 				-- Your config here
 				background = "hard",
 				italics = true,
-				everforest_transparent_background = 2,
+				transparent_background_level = 2,
 			})
 		end,
 	},
@@ -92,11 +100,11 @@ return {
 	-- 	-- priority = 1000, -- make sure to load this before all the other start plugins
 	-- 	config = function()
 	-- 		require("rose-pine").setup({
-	-- 			highlight_groups = {
-	-- 				IndentBlanklineChar = { fg = "highlight_low" },
-	-- 				IndentBlanklineContextChar = { fg = "highlight_high" },
-	-- 				IndentBlanklineContextStart = { sp = "highlight_high" },
-	-- 			},
+	-- 			-- highlight_groups = {
+	-- 			-- 	IndentBlanklineChar = { fg = "highlight_low" },
+	-- 			-- 	IndentBlanklineContextChar = { fg = "highlight_high" },
+	-- 			-- 	IndentBlanklineContextStart = { sp = "highlight_high" },
+	-- 			-- },
 	-- 		})
 	-- 	end,
 	-- },
