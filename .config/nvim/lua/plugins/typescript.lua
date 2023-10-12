@@ -4,7 +4,7 @@ return {
 		config = true,
 		cmd = "TSC",
 		keys = {
-			{ "<leader>tc", "<cmd>TSC<cr>", desc = "Type-check" },
+			{ "<leader>ctc", "<cmd>TSC<cr>", desc = "Type-check" },
 		},
 	},
 }
