@@ -18,15 +18,28 @@ return {
 			{ "<leader>fP", "<Cmd>Telescope neovim-project history theme=ivy<CR>", desc = "Recent Projects" },
 		},
 	},
+	-- {
+	-- 	"goolord/alpha-nvim",
+	-- 	optional = true,
+	-- 	opts = function(_, dashboard)
+	-- 		local button =
+	-- 			dashboard.button("p", " " .. " Projects", ":Telescope neovim-project discover theme=ivy <CR>")
+	-- 		button.opts.hl = "AlphaButtons"
+	-- 		button.opts.hl_shortcut = "AlphaShortcut"
+	-- 		table.insert(dashboard.section.buttons.val, 4, button)
+	-- 	end,
+	-- },
 	{
-		"goolord/alpha-nvim",
+		"glepnir/dashboard-nvim",
 		optional = true,
-		opts = function(_, dashboard)
-			local button =
-				dashboard.button("p", " " .. " Projects", ":Telescope neovim-project discover theme=ivy <CR>")
-			button.opts.hl = "AlphaButtons"
-			button.opts.hl_shortcut = "AlphaShortcut"
-			table.insert(dashboard.section.buttons.val, 4, button)
+		opts = function(_, opts)
+			local projects = {
+				action = ":Telescope neovim-project discover theme=ivy <CR>",
+				desc = " Projects",
+				icon = " ",
+				key = "p",
+			}
+			table.insert(opts.config.center, 3, projects)
 		end,
 	},
 }
