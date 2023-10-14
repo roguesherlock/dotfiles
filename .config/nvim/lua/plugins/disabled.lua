@@ -7,8 +7,8 @@ return {
 		"rcarriga/nvim-notify",
 		enabled = false,
 	},
-	{
-		"folke/persistence.nvim",
-		enabled = false,
-	},
+	-- {
+	-- 	"folke/persistence.nvim",
+	-- 	enabled = false,
+	-- },
 }
