@@ -4,23 +4,30 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			-- TODO: these two maybe causing the freeze. have to debut
-			-- {
-			-- 	"nvim-telescope/telescope-fzf-native.nvim",
-			-- 	-- build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-			-- 	build = "make",
-			-- 	config = function()
-			-- 		require("telescope").load_extension("fzf")
-			-- 	end,
-			-- },
-			-- {
-			-- 	"ThePrimeagen/harpoon",
-			-- 	config = function()
-			-- 		require("telescope").load_extension("harpoon")
-			-- 	end,
-			-- },
+			{
+				"ThePrimeagen/harpoon",
+				config = function()
+					require("telescope").load_extension("harpoon")
+				end,
+			},
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+				config = function()
+					require("telescope").load_extension("fzf")
+				end,
+			},
+			{
+				"axkirillov/hbac.nvim",
+				config = function()
+					require("hbac").setup()
+				end,
+			},
 			{
 				"danielfalk/smart-open.nvim",
+				dependencies = {
+					"kkharji/sqlite.lua",
+				},
 				config = function()
 					require("telescope").load_extension("smart_open")
 				end,
@@ -48,21 +55,27 @@ return {
 			pickers = {
 				find_files = {
 					theme = "ivy",
+					sort_mru = true,
 				},
 				smart_open = {
 					theme = "ivy",
+					sort_mru = true,
 				},
 				buffers = {
 					theme = "ivy",
+					sort_mru = true,
 				},
 				git_files = {
 					theme = "ivy",
+					sort_mru = true,
 				},
 				live_grep = {
 					theme = "ivy",
+					sort_mru = true,
 				},
 				files = {
 					theme = "ivy",
+					sort_mru = true,
 				},
 				harpoon = {
 					theme = "ivy",
@@ -138,6 +151,7 @@ return {
 					override_file_sorter = true, -- override the file sorter
 					case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 					-- the default case_mode is "smart_case"
+					sort_lastused = true,
 				},
 				project = {
 					base_dirs = {
@@ -153,6 +167,7 @@ return {
 					show_scores = false,
 					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules" },
 					theme = "ivy",
+					cwd_only = true,
 				},
 			},
 		},

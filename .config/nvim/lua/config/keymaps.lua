@@ -54,18 +54,15 @@ nmap("<leader>tm", ":tabmove<cr>", { desc = "Move tab" })
 nmap("<leader>t<Leader>", ":tabnext #<cr>", { desc = "Switch to last tab" })
 nmap("<leader>tl", ":tabnext<cr>", { desc = "Switch to next tab" })
 nmap("<leader>th", ":tabprev<cr>", { desc = "Switch to previous tab" })
-nmap("<Leader>1", ":tabnext 1<cr>", { desc = "Switch to tab 1" })
-nmap("<Leader>2", ":tabnext 2<cr>", { desc = "Switch to tab 2" })
-nmap("<Leader>3", ":tabnext 3<cr>", { desc = "Switch to tab 3" })
-nmap("<Leader>4", ":tabnext 4<cr>", { desc = "Switch to tab 4" })
-nmap("<Leader>5", ":tabnext 5<cr>", { desc = "Switch to tab 5" })
-nmap("<Leader>6", ":tabnext 6<cr>", { desc = "Switch to tab 6" })
-nmap("<Leader>7", ":tabnext 7<cr>", { desc = "Switch to tab 7" })
-nmap("<Leader>8", ":tabnext 8<cr>", { desc = "Switch to tab 8" })
-nmap("<Leader>9", ":tabnext 9<cr>", { desc = "Switch to tab 9" })
--- lazyvim uses this for moving between buffers instead which I quite like. need to find a better mapping. For now, tl and th would do
--- nmap("<s-l>", ":tabnext<cr>")
--- nmap("<s-h>", ":tabprev<cr>")
+-- nmap("<Leader>1", ":tabnext 1<cr>", { desc = "Switch to tab 1" })
+-- nmap("<Leader>2", ":tabnext 2<cr>", { desc = "Switch to tab 2" })
+-- nmap("<Leader>3", ":tabnext 3<cr>", { desc = "Switch to tab 3" })
+-- nmap("<Leader>4", ":tabnext 4<cr>", { desc = "Switch to tab 4" })
+-- nmap("<Leader>5", ":tabnext 5<cr>", { desc = "Switch to tab 5" })
+-- nmap("<Leader>6", ":tabnext 6<cr>", { desc = "Switch to tab 6" })
+-- nmap("<Leader>7", ":tabnext 7<cr>", { desc = "Switch to tab 7" })
+-- nmap("<Leader>8", ":tabnext 8<cr>", { desc = "Switch to tab 8" })
+-- nmap("<Leader>9", ":tabnext 9<cr>", { desc = "Switch to tab 9" })
 
 -- Reload config leader-ui-reload-config
 -- nmap("<leader>urc", ":source $MYVIMRC<cr>", { desc = "Reload config" })
@@ -102,16 +99,26 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 
 -- harpoon
 -- harpoon maybe causing freeze, have to debug more
--- nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
--- nmap("<leader>mc", '<cmd>lua require("harpoon.mark").clear_all()<cr>', { desc = "Clear all harpoon marks" })
--- nmap("<leader>mn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
--- nmap("<leader>m<leader>", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
--- nmap("<leader>mp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', { desc = "Navigate to previous harpoon mark" })
--- nmap("<leader>ml", "<cmd>Telescope harpoon marks<cr>", { desc = "List harpoon marks" })
--- nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { desc = "Open terminal with harpoon" }) -- goes to the first tmux window
+nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
+nmap("<leader>mc", '<cmd>lua require("harpoon.mark").clear_all()<cr>', { desc = "Clear all harpoon marks" })
+nmap("<leader>mn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
+nmap("<leader>m<leader>", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
+nmap("<leader>mp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', { desc = "Navigate to previous harpoon mark" })
+nmap("<leader>ml", "<cmd>Telescope harpoon marks<cr>", { desc = "List harpoon marks" })
+nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { desc = "Open terminal with harpoon" }) -- goes to the first tmux window
+nmap("<Leader>1", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>', { desc = "Switch to harpoon mark 1" })
+nmap("<Leader>2", '<cmd>lua require("harpoon.ui").nav_file(2)<cr>', { desc = "Switch to harpoon mark 2" })
+nmap("<Leader>3", '<cmd>lua require("harpoon.ui").nav_file(3)<cr>', { desc = "Switch to harpoon mark 3" })
+nmap("<Leader>4", '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', { desc = "Switch to harpoon mark 4" })
+nmap("<Leader>5", '<cmd>lua require("harpoon.ui").nav_file(5)<cr>', { desc = "Switch to harpoon mark 5" })
+nmap("<Leader>6", '<cmd>lua require("harpoon.ui").nav_file(6)<cr>', { desc = "Switch to harpoon mark 6" })
+nmap("<Leader>7", '<cmd>lua require("harpoon.ui").nav_file(7)<cr>', { desc = "Switch to harpoon mark 7" })
+nmap("<Leader>8", '<cmd>lua require("harpoon.ui").nav_file(8)<cr>', { desc = "Switch to harpoon mark 8" })
+nmap("<Leader>9", '<cmd>lua require("harpoon.ui").nav_file(9)<cr>', { desc = "Switch to harpoon mark 9" })
+nmap("<Leader>0", '<cmd>lua require("harpoon.ui").nav_file(10)<cr>', { desc = "Switch to harpoon mark 10" })
 
--- nmap("<leader>mc", "<cmd>delmarks A-Z0-9<cr>")
--- nmap("<leader>ml", '<cmd>lua require("telescope.builtin").marks()<cr>')
+nmap("<leader>mc", "<cmd>delmarks A-Z0-9<cr>")
+nmap("<leader>ml", '<cmd>lua require("telescope.builtin").marks()<cr>')
 
 -- Insert --
 -- Press jk fast to enter
