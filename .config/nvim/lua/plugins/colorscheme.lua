@@ -67,7 +67,20 @@ return {
 	},
 
 	-- nightfox
-	-- { "EdenEast/nightfox.nvim" },
+	-- {
+	-- 	"EdenEast/nightfox.nvim",
+	-- 	config = function()
+	-- 		require("nightfox").setup({
+	-- 			options = {
+	-- 				transparent = true,
+	-- 				styles = {
+	-- 					comments = "italic",
+	-- 					keywords = "bold",
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- onedark
 	-- {
@@ -121,7 +134,6 @@ return {
 	-- 		}
 	-- 	end,
 	-- },
-
 	-- Configure LazyVim to load colorscheme
 	{
 		"LazyVim/LazyVim",
