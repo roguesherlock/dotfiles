@@ -10,13 +10,14 @@ return {
 					require("telescope").load_extension("harpoon")
 				end,
 			},
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				config = function()
-					require("telescope").load_extension("fzf")
-				end,
-			},
+			-- already included by lazy
+			-- {
+			-- 	"nvim-telescope/telescope-fzf-native.nvim",
+			-- 	build = "make",
+			-- 	config = function()
+			-- 		require("telescope").load_extension("fzf")
+			-- 	end,
+			-- },
 			{
 				"axkirillov/hbac.nvim",
 				config = function()
@@ -141,6 +142,72 @@ return {
 					theme = "ivy",
 				},
 				yank_history = {
+					theme = "ivy",
+				},
+				lsp_implementations = {
+					theme = "ivy",
+				},
+				lsp_definitions = {
+					theme = "ivy",
+				},
+				tags = {
+					theme = "ivy",
+				},
+				search_history = {
+					theme = "ivy",
+				},
+				quickfix = {
+					theme = "ivy",
+				},
+				quickfixhistory = {
+					theme = "ivy",
+				},
+				loclist = {
+					theme = "ivy",
+				},
+				jumplist = {
+					theme = "ivy",
+				},
+				spell_suggest = {
+					theme = "ivy",
+				},
+				filetypes = {
+					theme = "ivy",
+				},
+				current_buffer_tags = {
+					theme = "ivy",
+				},
+				pickers = {
+					theme = "ivy",
+				},
+				lsp_references = {
+					theme = "ivy",
+				},
+				lsp_incoming_calls = {
+					theme = "ivy",
+				},
+				lsp_outgoing_calls = {
+					theme = "ivy",
+				},
+				lsp_workspace_symbols = {
+					theme = "ivy",
+				},
+				lsp_type_definitions = {
+					theme = "ivy",
+				},
+				git_bcommits = {
+					theme = "ivy",
+				},
+				git_bcommits_range = {
+					theme = "ivy",
+				},
+				git_branches = {
+					theme = "ivy",
+				},
+				git_stash = {
+					theme = "ivy",
+				},
+				treesitter = {
 					theme = "ivy",
 				},
 			},
