@@ -35,7 +35,11 @@ return {
 			},
 		},
 		keys = {
-			{ "<leader><space>", "<cmd>Telescope smart_open theme=ivy<cr>", desc = "Find Files (smart_open)" },
+			{
+				"<leader><space>",
+				"<cmd>Telescope smart_open theme=ivy cwd_only=true<cr>",
+				desc = "Find Files (smart_open)",
+			},
 		},
 		opts = {
 			defaults = {
@@ -57,6 +61,7 @@ return {
 				find_files = {
 					theme = "ivy",
 					sort_mru = true,
+					sort_lastused = true,
 				},
 				smart_open = {
 					theme = "ivy",
@@ -65,18 +70,22 @@ return {
 				buffers = {
 					theme = "ivy",
 					sort_mru = true,
+					sort_lastused = true,
 				},
 				git_files = {
 					theme = "ivy",
 					sort_mru = true,
+					sort_lastused = true,
 				},
 				live_grep = {
 					theme = "ivy",
 					sort_mru = true,
+					sort_lastused = true,
 				},
 				files = {
 					theme = "ivy",
 					sort_mru = true,
+					sort_lastused = true,
 				},
 				harpoon = {
 					theme = "ivy",
@@ -230,6 +239,7 @@ return {
 					hidden_files = true, -- default: false
 					theme = "ivy",
 				},
+				-- TODO: this doesn't work. maybe neeed to load the extension after telescope is loaded?
 				smart_open = {
 					show_scores = false,
 					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules" },
