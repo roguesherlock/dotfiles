@@ -3,7 +3,7 @@
 -- Add any additional autocmds here
 -- [[ Autosave ]] --
 vim.api.nvim_create_autocmd({
-  "TextChanged",
+  -- "TextChanged",
   "FocusLost",
   "BufEnter",
   -- "InsertLeave"
