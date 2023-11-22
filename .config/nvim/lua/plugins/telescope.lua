@@ -1,4 +1,11 @@
 local actions = require("telescope.actions")
+local transform_mod = require("telescope.actions.mt").transform_mod
+
+local extraActions = transform_mod({
+	open_qflist = function()
+		require("trouble").toggle("quickfix")
+	end,
+})
 
 return {
 	{
@@ -54,6 +61,8 @@ return {
 						["<D-j>"] = actions.move_selection_next,
 						["<D-k>"] = actions.move_selection_previous,
 						["<ESC>"] = actions.close,
+						["<C-q>"] = actions.send_to_qflist + extraActions.open_qflist,
+						["<M-q>"] = actions.send_selected_to_qflist + extraActions.open_qflist,
 					},
 				},
 			},

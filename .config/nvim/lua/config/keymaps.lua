@@ -137,3 +137,6 @@ imap("fd", "<ESC>", { desc = "Exit insert mode" })
 
 -- Terminal --
 -- tmap("<Esc>", "<C-\\><C-n>")
+
+-- Trouble --
+nmap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Toggle trouble quickfix list" })
