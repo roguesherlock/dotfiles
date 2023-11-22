@@ -39,35 +39,35 @@ return {
 	-- 		})
 	-- 	end,
 	-- },
-	{
-		"rose-pine/neovim",
-		lazy = false,
-		name = "rose-pine",
-		opts = {
-			variant = "auto",
-			dark_variant = "moon",
-			disable_background = true,
-			disable_float_background = true,
-			disable_italics = true,
-			highlight_groups = {
-				FloatBorder = { fg = "subtle", bg = "none" },
-				TelescopeBorder = { fg = "subtle", bg = "none" },
-				TelescopeNormal = { fg = "none" },
-				TelescopePromptNormal = { bg = "none" },
-				TelescopeResultsNormal = { fg = "subtle", bg = "none" },
-				TelescopeSelection = { fg = "text", bg = "text", blend = 10 },
-				TelescopeSelectionCaret = { fg = "base", bg = "text" },
-				Cursor = { fg = "base", bg = "text" },
-				ColorColumn = { bg = "rose" },
-				CursorLine = { bg = "text", blend = 30 },
-				StatusLine = { fg = "love", bg = "love", blend = 10 },
-				StatusLineNC = { fg = "subtle", bg = "surface" },
-				GitSignsAdd = { fg = "iris", bg = "none" },
-				GitSignsChange = { fg = "foam", bg = "none" },
-				GitSignsDelete = { fg = "rose", bg = "none" },
-			},
-		},
-	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	lazy = false,
+	-- 	name = "rose-pine",
+	-- 	opts = {
+	-- 		variant = "auto",
+	-- 		dark_variant = "moon",
+	-- 		disable_background = true,
+	-- 		disable_float_background = true,
+	-- 		disable_italics = true,
+	-- 		highlight_groups = {
+	-- 			FloatBorder = { fg = "subtle", bg = "none" },
+	-- 			TelescopeBorder = { fg = "subtle", bg = "none" },
+	-- 			TelescopeNormal = { fg = "none" },
+	-- 			TelescopePromptNormal = { bg = "none" },
+	-- 			TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+	-- 			TelescopeSelection = { fg = "text", bg = "text", blend = 10 },
+	-- 			TelescopeSelectionCaret = { fg = "base", bg = "text" },
+	-- 			Cursor = { fg = "base", bg = "text" },
+	-- 			ColorColumn = { bg = "rose" },
+	-- 			CursorLine = { bg = "text", blend = 30 },
+	-- 			StatusLine = { fg = "love", bg = "love", blend = 10 },
+	-- 			StatusLineNC = { fg = "subtle", bg = "surface" },
+	-- 			GitSignsAdd = { fg = "iris", bg = "none" },
+	-- 			GitSignsChange = { fg = "foam", bg = "none" },
+	-- 			GitSignsDelete = { fg = "rose", bg = "none" },
+	-- 		},
+	-- 	},
+	-- },
 
 	{
 		"sainnhe/gruvbox-material",
@@ -94,7 +94,7 @@ return {
 				configuration.colors_override
 			)
 
-			vim.cmd.colorscheme("gruvbox-material")
+			-- vim.cmd.colorscheme("gruvbox-material")
 
 			local highlights_groups = {
 				FoldColumn = { bg = "none" },
@@ -243,17 +243,28 @@ return {
 	-- 		end,
 	-- 	},
 	-- },
-	-- Configure LazyVim to load colorscheme
 	-- {
-	-- 	"LazyVim/LazyVim",
-	-- 	opts = function(_, opts)
-	-- 		opts.colorscheme = "gruvbox-material"
-	-- 		-- if os_is_dark() then
-	-- 		-- 	vim.o.background = "dark"
-	-- 		-- else
-	-- 		-- 	vim.o.background = "light"
-	-- 		-- end
-	-- 		-- return opts
+	-- 	"craftzdog/solarized-osaka.nvim",
+	-- 	branch = "osaka",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	opts = function()
+	-- 		return {
+	-- 			transparent = true,
+	-- 		}
 	-- 	end,
 	-- },
+	-- Configure LazyVim to load colorscheme
+	{
+		"LazyVim/LazyVim",
+		opts = function(_, opts)
+			opts.colorscheme = "gruvbox-material"
+			-- if os_is_dark() then
+			-- 	vim.o.background = "dark"
+			-- else
+			-- 	vim.o.background = "light"
+			-- end
+			-- return opts
+		end,
+	},
 }
