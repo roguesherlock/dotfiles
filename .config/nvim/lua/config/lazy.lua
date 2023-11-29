@@ -13,6 +13,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
+-- TODO: things to fix
+-- 1. remove enter to insert completion item. Always use tab
 require("lazy").setup({
 	spec = {
 		-- add LazyVim and import its plugins
