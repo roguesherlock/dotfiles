@@ -46,3 +46,7 @@ ln -sF ~/Developer/dotfiles/.config/wezterm ~/.config/wezterm
 
 #kitty
 ln -sF ~/Developer/dotfiles/.config/kitty ~/.config/kitty
+
+#lazygit
+ln -sF ~/Developer/dotfiles/.config/lazygit ~/.config/lazygit
+ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml

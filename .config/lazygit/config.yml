@@ -1,0 +1,5 @@
+keybinding:
+  universal:
+    scrollUpMain-alt2: "<c-p>" # main panel scroll up
+    scrollDownMain-alt2: "<c-n>" # main panel scroll down
+    createPatchOptionsMenu: "<c-P>"
