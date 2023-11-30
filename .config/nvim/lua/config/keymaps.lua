@@ -140,3 +140,6 @@ imap("fd", "<ESC>", { desc = "Exit insert mode" })
 
 -- Trouble --
 nmap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Toggle trouble quickfix list" })
+
+-- Fold --
+nmap("<space>", "za", { desc = "Toggle fold" })
