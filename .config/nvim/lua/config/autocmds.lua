@@ -3,16 +3,16 @@
 -- Add any additional autocmds here
 -- [[ Autosave ]] --
 vim.api.nvim_create_autocmd({
-  -- "TextChanged",
-  "FocusLost",
-  "BufEnter",
-  -- "InsertLeave"
+	-- "TextChanged",
+	"FocusLost",
+	"BufEnter",
+	"BufLeave",
+	-- "InsertLeave"
 }, {
-  pattern = {
-    "*"
-  },
-  callback = function()
-    vim.cmd([[ silent! update ]])
-  end
+	pattern = {
+		"*",
+	},
+	callback = function()
+		vim.cmd([[ silent! update ]])
+	end,
 })
-
