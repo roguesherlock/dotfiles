@@ -35,8 +35,7 @@ mkdir ~/.config/alacritty/ -p
 ln -sF ~/Developer/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 #karabinner
-mkdir ~/.config/karabiner/
-ln -sF ~/Developer/dotfiles/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+ln -sF ~/Developer/dotfiles/.config/karabiner ~/.config/karabiner
 
 #nvim
 ln -sF ~/Developer/dotfiles/.config/nvim ~/.config/nvim
