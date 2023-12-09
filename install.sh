@@ -49,3 +49,7 @@ ln -sF ~/Developer/dotfiles/.config/kitty ~/.config/kitty
 #lazygit
 ln -sF ~/Developer/dotfiles/.config/lazygit ~/.config/lazygit
 ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+
+# rtx
+mkdir ~/.config/rtx/ -p
+ln -sF ~/Developer/dotfiles/.config/rtx/config.toml ~/.config/rtx/config.toml

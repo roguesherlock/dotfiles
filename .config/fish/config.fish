@@ -30,7 +30,16 @@ if status is-interactive
     # add bunch of fish functions
     source ~/.config/fish/functions/fish_functions.fish
 
-    eval (direnv hook fish)
+    # successor to nvm
+    set -gx FNM_LOGLEVEL quiet
+    fnm env --use-on-cd --resolve-engines | source
+
+    direnv hook fish | source
+    rtx activate fish | source
+
+    # Setting PATH for Python 3.12
+    # The original version is saved in /Users/akash/.config/fish/config.fish.pysave
+    set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
 
     if test "$TERM_PROGRAM" != WarpTerminal
         test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
@@ -71,7 +80,3 @@ ulimit -n 2048
 # (such as running tests). 'docker-compose' has a default timeout of
 # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
 set -x COMPOSE_HTTP_TIMEOUT 300
-
-# successor to nvm
-set -gx FNM_LOGLEVEL quiet
-fnm env --use-on-cd --resolve-engines | source
