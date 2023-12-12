@@ -73,8 +73,8 @@ return {
 	{
 		"sainnhe/gruvbox-material",
 		name = "gruvbox-material",
-		lazy = false,
-		priority = 1000,
+		-- lazy = false,
+		-- priority = 1000,
 		config = function()
 			vim.g.gruvbox_material_better_performance = 1
 			-- Fonts
@@ -125,31 +125,37 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"ramojus/mellifluous.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = {
-	-- 		color_set = "mountain",
-	-- 		transparent_background = {
-	-- 			enabled = true,
-	-- 			floating_windows = true,
-	-- 			telescope = true,
-	-- 			file_tree = true,
-	-- 			cursor_line = true,
-	-- 			status_line = false,
-	-- 		},
-	-- 	},
-	-- },
-	-- { "savq/melange-nvim" },
+	{
+		"ramojus/mellifluous.nvim",
+		-- lazy = false,
+		-- priority = 1000,
+		opts = {
+			color_set = "mountain",
+			transparent_background = {
+				enabled = true,
+				floating_windows = true,
+				telescope = true,
+				file_tree = true,
+				cursor_line = true,
+				status_line = false,
+			},
+		},
+	},
+	{ "savq/melange-nvim" },
 	-- { "nyoom-engineering/oxocarbon.nvim" },
-	-- {
-	-- 	"mcchrish/zenbones.nvim",
-	-- 	-- Optionally install Lush. Allows for more configuration or extending the colorscheme
-	-- 	-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-	-- 	-- In Vim, compat mode is turned on as Lush only works in Neovim.
-	-- 	dependencies = { "rktjmp/lush.nvim" },
-	-- },
+	{
+		"mcchrish/zenbones.nvim",
+		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
+		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+		-- In Vim, compat mode is turned on as Lush only works in Neovim.
+		dependencies = { "rktjmp/lush.nvim" },
+		config = function()
+			vim.g.zenwritten = {
+				darkness = "warm",
+				transparent_background = true,
+			}
+		end,
+	},
 	--
 	-- everforest
 	-- {
@@ -260,7 +266,8 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = function(_, opts)
-			opts.colorscheme = "gruvbox-material"
+			-- opts.colorscheme = "gruvbox-material"
+			opts.colorscheme = "zenwritten"
 			-- opts.colorscheme = "mellifluous"
 			-- if os_is_dark() then
 			-- 	vim.o.background = "dark"
