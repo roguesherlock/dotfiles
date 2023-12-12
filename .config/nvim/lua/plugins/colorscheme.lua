@@ -1,12 +1,30 @@
 --  TODO: add dark mode detection
 --
 -- https://github.com/jascha030/macos-nvim-dark-mode
--- local os_is_dark = function()
--- 	return (vim.call(
--- 		"system",
--- 		[[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
--- 	)):find("dark") ~= nil
--- end
+local os_is_dark = function()
+	return (vim.fn.system(
+		[[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
+	)):find("dark") ~= nil
+end
+
+local set_from_os = function()
+	if os_is_dark() then
+		vim.o.background = "dark"
+	else
+		vim.o.background = "light"
+	end
+end
+
+local init = function()
+	set_from_os()
+
+	vim.api.nvim_create_autocmd("Signal", {
+		pattern = "*",
+		callback = function()
+			set_from_os()
+		end,
+	})
+end
 
 return {
 	-- {
@@ -268,6 +286,7 @@ return {
 		opts = function(_, opts)
 			-- opts.colorscheme = "gruvbox-material"
 			opts.colorscheme = "zenwritten"
+			init()
 			-- opts.colorscheme = "mellifluous"
 			-- if os_is_dark() then
 			-- 	vim.o.background = "dark"

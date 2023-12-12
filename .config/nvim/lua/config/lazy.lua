@@ -68,7 +68,6 @@ require("lazy").setup({
 	install = {
 		colorscheme = {
 			"tokyonight",
-			"neanias/everforest-nvim",
 		},
 	},
 	checker = {
