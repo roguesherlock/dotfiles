@@ -16,6 +16,8 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 -- TODO: things to fix
 -- 1. remove enter to insert completion item. Always use tab
 -- 2. scroll with ctrl+n/p in completion hover
+-- 3. scroll with ctrl+n/p in telescope and lsp hover
+-- 4. auto switch theme to light/dark based on macos appearance
 require("lazy").setup({
 	spec = {
 		-- add LazyVim and import its plugins
