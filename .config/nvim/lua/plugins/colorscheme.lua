@@ -13,6 +13,7 @@ local set_from_os = function()
 	else
 		vim.o.background = "light"
 	end
+	vim.cmd.colorscheme(vim.g.colors_name)
 end
 
 local init = function()
@@ -92,7 +93,7 @@ return {
 		"sainnhe/gruvbox-material",
 		name = "gruvbox-material",
 		-- lazy = false,
-		-- priority = 1000,
+		priority = 1000,
 		config = function()
 			vim.g.gruvbox_material_better_performance = 1
 			-- Fonts
@@ -146,7 +147,7 @@ return {
 	{
 		"ramojus/mellifluous.nvim",
 		-- lazy = false,
-		-- priority = 1000,
+		priority = 1000,
 		opts = {
 			color_set = "mountain",
 			transparent_background = {
@@ -159,9 +160,14 @@ return {
 			},
 		},
 	},
-	{ "savq/melange-nvim" },
+	{
+		priority = 1000,
+		"savq/melange-nvim",
+	},
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	{
+		lazy = false,
+		priority = 1000,
 		"mcchrish/zenbones.nvim",
 		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
 		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1

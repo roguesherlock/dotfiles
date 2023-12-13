@@ -68,11 +68,16 @@ nmap("<leader>th", ":tabprev<cr>", { desc = "Switch to previous tab" })
 -- nmap("<leader>urc", ":source $MYVIMRC<cr>", { desc = "Reload config" })
 
 -- Toggle theme
-nmap(
-	"<leader>tt",
-	"<cmd>lua vim.o.background = vim.o.background == 'light' and 'dark' or 'light'<CR>",
-	{ desc = "Toggle theme" }
-)
+nmap("<leader>tt", function()
+	local is_light = vim.o.background == "light"
+	if is_light then
+		vim.o.background = "dark"
+	else
+		vim.o.background = "light"
+	end
+	vim.o.termguicolors = true
+	vim.cmd.colorscheme(vim.g.colors_name)
+end, { desc = "Toggle theme" })
 
 -- Term
 nmap("<c-/>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
