@@ -144,24 +144,23 @@ return {
 		end,
 	},
 
+	{
+		"ramojus/mellifluous.nvim",
+		-- lazy = false,
+		priority = 1000,
+		opts = {
+			color_set = "mountain",
+			transparent_background = {
+				enabled = true,
+				floating_windows = true,
+				telescope = true,
+				file_tree = true,
+				cursor_line = true,
+				status_line = false,
+			},
+		},
+	},
 	-- {
-	-- 	"ramojus/mellifluous.nvim",
-	-- 	-- lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = {
-	-- 		color_set = "mountain",
-	-- 		transparent_background = {
-	-- 			enabled = true,
-	-- 			floating_windows = true,
-	-- 			telescope = true,
-	-- 			file_tree = true,
-	-- 			cursor_line = true,
-	-- 			status_line = false,
-	-- 		},
-	-- 	},
-	-- },
-	-- {
-	-- 	priority = 1000,
 	-- 	"savq/melange-nvim",
 	-- },
 	-- { "nyoom-engineering/oxocarbon.nvim" },
@@ -293,9 +292,9 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = function(_, opts)
-			opts.colorscheme = "gruvbox-material"
+			opts.colorscheme = "mellifluous"
 			-- opts.colorscheme = "zenwritten"
-			-- init()
+			init()
 			-- opts.colorscheme = "mellifluous"
 			-- if os_is_dark() then
 			-- 	vim.o.background = "dark"
