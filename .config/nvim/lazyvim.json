@@ -1,7 +1,7 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.copilot",
-    "lazyvim.plugins.extras.coding.yanky",
+    "lazyvim.plugins.extras.editor.leap",
     "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.elixir",
