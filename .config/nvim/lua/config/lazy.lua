@@ -89,3 +89,33 @@ require("lazy").setup({
 		},
 	},
 })
+
+-- TODO: auto switch theme to light/dark based on macos appearance
+-- https://github.com/jascha030/macos-nvim-dark-mode
+local os_is_dark = function()
+	return (vim.fn.system(
+		[[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
+	)):find("dark") ~= nil
+end
+
+local set_from_os = function()
+	if os_is_dark() then
+		vim.o.background = "dark"
+	else
+		vim.o.background = "light"
+	end
+	vim.cmd.colorscheme("melange")
+end
+
+local init = function()
+	set_from_os()
+
+	vim.api.nvim_create_autocmd("Signal", {
+		pattern = "*",
+		callback = function()
+			set_from_os()
+		end,
+	})
+end
+
+init()

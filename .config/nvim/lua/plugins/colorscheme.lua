@@ -1,32 +1,3 @@
---  TODO: add dark mode detection
---
--- https://github.com/jascha030/macos-nvim-dark-mode
-local os_is_dark = function()
-	return (vim.fn.system(
-		[[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
-	)):find("dark") ~= nil
-end
-
-local set_from_os = function()
-	if os_is_dark() then
-		vim.o.background = "dark"
-	else
-		vim.o.background = "light"
-	end
-	vim.cmd.colorscheme(vim.g.colors_name)
-end
-
-local init = function()
-	set_from_os()
-
-	vim.api.nvim_create_autocmd("Signal", {
-		pattern = "*",
-		callback = function()
-			set_from_os()
-		end,
-	})
-end
-
 return {
 	-- {
 	-- 	"bluz71/vim-nightfly-guicolors",
@@ -162,6 +133,8 @@ return {
 		},
 	},
 	{
+		lazy = false,
+		priority = 1000,
 		"savq/melange-nvim",
 	},
 	-- { "nyoom-engineering/oxocarbon.nvim" },
@@ -293,11 +266,11 @@ return {
 	-- 	end,
 	-- },
 	-- Configure LazyVim to load colorscheme
-	{
-		"LazyVim/LazyVim",
-		opts = function(_, opts)
-			opts.colorscheme = "melange"
-			-- init()
-		end,
-	},
+	-- {
+	-- 	"LazyVim/LazyVim",
+	-- 	opts = function(_, opts)
+	-- 		opts.colorscheme = "melange"
+	-- 		-- init()
+	-- 	end,
+	-- },
 }
