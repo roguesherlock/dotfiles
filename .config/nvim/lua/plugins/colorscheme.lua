@@ -149,7 +149,8 @@ return {
 		-- lazy = false,
 		priority = 1000,
 		opts = {
-			color_set = "mountain",
+			-- color_set = "mountain",
+			color_set = "mellifluous",
 			transparent_background = {
 				enabled = true,
 				floating_windows = true,
@@ -164,24 +165,27 @@ return {
 	-- 	"savq/melange-nvim",
 	-- },
 	-- { "nyoom-engineering/oxocarbon.nvim" },
-	-- {
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	"mcchrish/zenbones.nvim",
-	-- 	-- Optionally install Lush. Allows for more configuration or extending the colorscheme
-	-- 	-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-	-- 	-- In Vim, compat mode is turned on as Lush only works in Neovim.
-	-- 	dependencies = { "rktjmp/lush.nvim" },
-	-- 	config = function()
-	-- 		vim.g.zenwritten = {
-	-- 			lightness = "bright",
-	-- 			darkness = "warm",
-	-- 			lighten_non_text = 25,
-	-- 			lighten_comments = 28,
-	-- 			transparent_background = true,
-	-- 		}
-	-- 	end,
-	-- },
+	{
+		lazy = false,
+		priority = 1000,
+		"mcchrish/zenbones.nvim",
+		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
+		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+		-- In Vim, compat mode is turned on as Lush only works in Neovim.
+		dependencies = { "rktjmp/lush.nvim" },
+		config = function()
+			vim.g.zenbones = {
+				transparent_background = true,
+			}
+			vim.g.zenwritten = {
+				lightness = "bright",
+				darkness = "warm",
+				lighten_non_text = 25,
+				lighten_comments = 28,
+				transparent_background = true,
+			}
+		end,
+	},
 	--
 	-- everforest
 	-- {
