@@ -28,6 +28,7 @@
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "9453e3d6cd2ca45d96e20f343e8f1b927364b630" },
   "mason.nvim": { "branch": "main", "commit": "41e75af1f578e55ba050c863587cffde3556ffa6" },
+  "melange-nvim": { "branch": "master", "commit": "ca3444c8e5002ee5ab6f077660317f869c7b6a36" },
   "mellifluous.nvim": { "branch": "main", "commit": "255ca5326477f315e64a9ff0af03e033f4dd7ae8" },
   "mini.ai": { "branch": "main", "commit": "c28f7d7348f27425a180b1b7dcaa77651f8b71ee" },
   "mini.bufremove": { "branch": "main", "commit": "f53c7f27e36009fe61563c11cde154b94a0e5b94" },

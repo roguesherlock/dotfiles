@@ -146,24 +146,24 @@ return {
 
 	{
 		"ramojus/mellifluous.nvim",
-		-- lazy = false,
+		lazy = false,
 		priority = 1000,
 		opts = {
-			-- color_set = "mountain",
 			color_set = "mellifluous",
-			transparent_background = {
-				enabled = true,
-				floating_windows = true,
-				telescope = true,
-				file_tree = true,
-				cursor_line = true,
-				status_line = false,
-			},
+			-- color_set = "mountain",
+			-- transparent_background = {
+			-- 	enabled = true,
+			-- 	floating_windows = true,
+			-- 	telescope = true,
+			-- 	file_tree = true,
+			-- 	cursor_line = true,
+			-- 	status_line = false,
+			-- },
 		},
 	},
-	-- {
-	-- 	"savq/melange-nvim",
-	-- },
+	{
+		"savq/melange-nvim",
+	},
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	{
 		lazy = false,
@@ -175,14 +175,14 @@ return {
 		dependencies = { "rktjmp/lush.nvim" },
 		config = function()
 			vim.g.zenbones = {
-				transparent_background = true,
+				-- transparent_background = true,
 			}
 			vim.g.zenwritten = {
 				lightness = "bright",
 				darkness = "warm",
 				lighten_non_text = 25,
 				lighten_comments = 28,
-				transparent_background = true,
+				-- transparent_background = true,
 			}
 		end,
 	},
@@ -296,16 +296,8 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = function(_, opts)
-			opts.colorscheme = "mellifluous"
-			-- opts.colorscheme = "zenwritten"
-			init()
-			-- opts.colorscheme = "mellifluous"
-			-- if os_is_dark() then
-			-- 	vim.o.background = "dark"
-			-- else
-			-- 	vim.o.background = "light"
-			-- end
-			-- return opts
+			opts.colorscheme = "melange"
+			-- init()
 		end,
 	},
 }
