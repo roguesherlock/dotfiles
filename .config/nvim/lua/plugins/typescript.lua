@@ -7,7 +7,7 @@ return {
 			{ "<leader>ctc", "<cmd>TSC<cr>", desc = "Type-check" },
 		},
 	},
-	-- {
-	-- 	"pmizio/typescript-tools.nvim",
-	-- },
+	{
+		"pmizio/typescript-tools.nvim",
+	},
 }

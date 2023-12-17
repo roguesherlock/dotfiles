@@ -80,7 +80,7 @@ nmap("<leader>tt", function()
 end, { desc = "Toggle theme" })
 
 -- Term
--- nmap("<c-/>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+nmap("<c-/>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
 
 -- Zen mode
 nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle zen mode" })
