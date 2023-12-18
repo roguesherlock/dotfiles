@@ -25,33 +25,6 @@ require("lazy").setup({
 			"LazyVim/LazyVim",
 			import = "lazyvim.plugins",
 		},
-		-- { import = "lazyvim.plugins.extras.editor.mini-files" },
-		--
-		-- {
-		-- 	import = "lazyvim.plugins.extras.lang.typescript",
-		-- },
-		-- {
-		-- 	import = "lazyvim.plugins.extras.lang.json",
-		-- },
-		-- {
-		-- 	import = "lazyvim.plugins.extras.linting.eslint",
-		-- },
-		-- { import = "lazyvim.plugins.extras.formatting.conform" },
-		-- {
-		-- 	import = "lazyvim.plugins.extras.formatting.prettier",
-		-- },
-		-- {
-		-- 	import = "lazyvim.plugins.extras.coding.copilot",
-		-- },
-		-- {
-		-- 	import = "lazyvim.plugins.extras.lang.tailwind",
-		-- },
-		-- {
-		-- 	import = "lazyvim.plugins.extras.coding.yanky",
-		-- },
-		-- {
-		-- 	import = "lazyvim.plugins.extras.vscode",
-		-- },
 		{
 			import = "plugins",
 		},
@@ -104,7 +77,7 @@ local set_from_os = function()
 	else
 		vim.o.background = "light"
 	end
-	vim.cmd.colorscheme("melange")
+	vim.cmd.colorscheme("catppuccin")
 end
 
 local init = function()
