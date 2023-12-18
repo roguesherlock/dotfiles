@@ -148,3 +148,9 @@ nmap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Toggle trouble q
 
 -- Fold --
 nmap("<space>", "za", { desc = "Toggle fold" })
+
+-- Resize --
+map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
