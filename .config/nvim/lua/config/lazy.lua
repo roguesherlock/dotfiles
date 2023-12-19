@@ -77,7 +77,7 @@ local set_from_os = function()
 	else
 		vim.o.background = "light"
 	end
-	vim.cmd.colorscheme("catppuccin")
+	vim.cmd.colorscheme("melange")
 end
 
 local init = function()
