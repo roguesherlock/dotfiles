@@ -28,7 +28,7 @@ if status is-interactive
     set -gx EDITOR nvim
 
     # add bunch of fish functions
-    source ~/.config/fish/functions/fish_functions.fish
+    # source ~/.config/fish/functions/fish_functions.fish
 
     # successor to nvm
     set -gx FNM_LOGLEVEL quiet
@@ -39,7 +39,7 @@ if status is-interactive
 
     # Setting PATH for Python 3.12
     # The original version is saved in /Users/akash/.config/fish/config.fish.pysave
-    set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
+    # set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
 
     if test "$TERM_PROGRAM" != WarpTerminal
         test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
@@ -47,6 +47,8 @@ if status is-interactive
 
     # themes
     # source ~/.config/fish/themes/terafox.fish
+
+    set fish_greeting "I solemnly swear that I am up to no good."
 
     # New Hey
     # alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date -I).md && echo ---\ndate:\ (date -I)\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
@@ -57,7 +59,7 @@ if status is-interactive
             set date $argv[1]
         end
         set filename "$date.md"
-        set filepath "$HOME/Developer/aaakash.xyz/src/content/heys/$filename"
+        set filepath "$HOME/Developer/akashpomal-com/src/content/heys/$filename"
         if test -f $filepath
             echo "File $filepath already exists"
             return
@@ -65,6 +67,9 @@ if status is-interactive
         touch $filepath # Create file with default value if empty
         echo ---\ndate: $date\n--- >$filepath # Add frontmatter
         echo "File $filepath created" # Print message
+    end
+    if type starship >/dev/null 2>&1
+        starship init fish | source
     end
 end
 export GPG_TTY=(tty)
@@ -80,3 +85,7 @@ ulimit -n 2048
 # (such as running tests). 'docker-compose' has a default timeout of
 # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
 set -x COMPOSE_HTTP_TIMEOUT 300
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
