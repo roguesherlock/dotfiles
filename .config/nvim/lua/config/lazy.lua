@@ -81,8 +81,6 @@ local set_from_os = function()
 end
 
 local init = function()
-	set_from_os()
-
 	vim.api.nvim_create_autocmd("Signal", {
 		pattern = "*",
 		callback = function()
@@ -101,6 +99,7 @@ local init = function()
 			end
 		end,
 	})
+	set_from_os()
 end
 
 init()
