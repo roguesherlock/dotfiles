@@ -247,16 +247,16 @@ return {
 		lazy = false,
 		priority = 1000,
 		"rebelot/kanagawa.nvim",
-		opts = {
-			overrides = function(colors)
-				local theme = colors.theme
-				return {
-					-- IndentBlanklineChar = { fg = theme.ui.bg_p1 },
-					-- IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
-					-- IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
-				}
-			end,
-		},
+		-- opts = {
+		-- 	overrides = function(colors)
+		-- 		local theme = colors.theme
+		-- 		return {
+		-- 			IndentBlanklineChar = { fg = theme.ui.bg_p1 },
+		-- 			IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
+		-- 			IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
+		-- 		}
+		-- 	end,
+		-- },
 	},
 	-- {
 	-- 	"craftzdog/solarized-osaka.nvim",
