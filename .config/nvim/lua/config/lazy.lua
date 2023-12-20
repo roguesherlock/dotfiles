@@ -77,7 +77,7 @@ local set_from_os = function()
 	else
 		vim.o.background = "light"
 	end
-	vim.cmd.colorscheme("melange")
+	vim.cmd.colorscheme("kanagawa")
 end
 
 local init = function()
@@ -87,6 +87,18 @@ local init = function()
 		pattern = "*",
 		callback = function()
 			set_from_os()
+		end,
+	})
+	vim.api.nvim_create_autocmd("ColorScheme", {
+		pattern = "kanagawa",
+		callback = function()
+			if vim.o.background == "light" then
+				vim.fn.system("kitty +kitten themes kanagawa_light")
+			elseif vim.o.background == "dark" then
+				vim.fn.system("kitty +kitten themes kanagawa_dragon")
+			else
+				vim.fn.system("kitty +kitten themes kanagawa")
+			end
 		end,
 	})
 end

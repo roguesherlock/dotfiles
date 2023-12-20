@@ -63,7 +63,7 @@ return {
 	{
 		"sainnhe/gruvbox-material",
 		name = "gruvbox-material",
-		-- lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			vim.g.gruvbox_material_better_performance = 1
@@ -205,23 +205,25 @@ return {
 	-- },
 
 	-- github
-	-- {
-	-- 	"projekt0n/github-nvim-theme",
-	-- 	-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	-- 	-- priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		require("github-theme").setup({
-	-- 			options = {
-	-- 				transparent = true,
-	-- 				styles = {
-	-- 					comments = "italic",
-	-- 					keywords = "bold",
-	-- 					types = "italic,bold",
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"projekt0n/github-nvim-theme",
+		lazy = true,
+		priority = 1000,
+		-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		-- priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require("github-theme").setup({
+				-- options = {
+				-- 	transparent = true,
+				-- 	styles = {
+				-- 		comments = "italic",
+				-- 		keywords = "bold",
+				-- 		types = "italic,bold",
+				-- 	},
+				-- },
+			})
+		end,
+	},
 
 	-- rose-pine
 	-- {
@@ -241,19 +243,21 @@ return {
 	-- },
 
 	-- kanagawa
-	-- {
-	-- 	"rebelot/kanagawa.nvim",
-	-- 	opts = {
-	-- 		overrides = function(colors)
-	-- 			local theme = colors.theme
-	-- 			return {
-	-- 				IndentBlanklineChar = { fg = theme.ui.bg_p1 },
-	-- 				IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
-	-- 				IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
-	-- 			}
-	-- 		end,
-	-- 	},
-	-- },
+	{
+		lazy = false,
+		priority = 1000,
+		"rebelot/kanagawa.nvim",
+		opts = {
+			overrides = function(colors)
+				local theme = colors.theme
+				return {
+					-- IndentBlanklineChar = { fg = theme.ui.bg_p1 },
+					-- IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
+					-- IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
+				}
+			end,
+		},
+	},
 	-- {
 	-- 	"craftzdog/solarized-osaka.nvim",
 	-- 	branch = "osaka",
