@@ -2,15 +2,13 @@
 
 mkdir ~/Developer
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 git clone https://github.com/roguesherlock/dotfiles.git ~/Developer/dotfiles
 
 #fish
-mkdir ~/.config/fish/ -p
-ln -sF ~/Developer/dotfiles/.config/fish/themes ~/.config/fish/themes
-ln -sF ~/Developer/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
-ln -sF ~/Developer/dotfiles/.config/fish/fish_plugins ~/.config/fish/fish_plugins
+mkdir -p ~/.config/fish/
+ln -sF ~/Developer/dotfiles/.config/fish ~/.config/fish
 
 # tmux
 ln -sf ~/Developer/dotfiles/.tmux.conf ~/.tmux.conf
@@ -19,11 +17,11 @@ ln -sf ~/Developer/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/Developer/dotfiles/.vimrc ~/.vimrc
 
 # ssh
-mkdir .ssh
+mkdir -p ~/.ssh
 ln -sf ~/Developer/dotfiles/.ssh/config ~/.ssh/config
 
 # gnupg
-mkdir .gnupg
+mkdir -p ~/.gnupg
 ln -sf ~/Developer/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 ln -sf ~/Developer/dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 
@@ -31,7 +29,7 @@ ln -sf ~/Developer/dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 ln -sf ~/Developer/dotfiles/.gitconfig ~/.gitconfig
 
 # alacritty
-mkdir ~/.config/alacritty/ -p
+mkdir -p ~/.config/alacritty/
 ln -sF ~/Developer/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 #karabinner
@@ -48,8 +46,9 @@ ln -sF ~/Developer/dotfiles/.config/kitty ~/.config/kitty
 
 #lazygit
 ln -sF ~/Developer/dotfiles/.config/lazygit ~/.config/lazygit
+mkdir -p ~/Library/Application\ Support/lazygit
 ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 
 # rtx
-mkdir ~/.config/rtx/ -p
+mkdir -p ~/.config/rtx/
 ln -sF ~/Developer/dotfiles/.config/rtx/config.toml ~/.config/rtx/config.toml
