@@ -258,6 +258,7 @@ return {
 		-- 	end,
 		-- },
 	},
+	{ "miikanissi/modus-themes.nvim", priority = 1000 },
 	-- {
 	-- 	"craftzdog/solarized-osaka.nvim",
 	-- 	branch = "osaka",
