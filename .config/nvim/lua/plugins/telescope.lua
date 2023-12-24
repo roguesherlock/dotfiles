@@ -52,8 +52,8 @@ return {
 			defaults = {
 				mappings = {
 					i = {
-						["<Down>"] = actions.cycle_history_next,
-						["<Up>"] = actions.cycle_history_prev,
+						["<Down>"] = actions.move_selection_next,
+						["<Up>"] = actions.move_selection_previous,
 						["<C-n>"] = actions.preview_scrolling_down,
 						["<C-p>"] = actions.preview_scrolling_up,
 						["<C-j>"] = actions.move_selection_next,
