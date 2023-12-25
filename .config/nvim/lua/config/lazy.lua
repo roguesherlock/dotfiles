@@ -40,6 +40,7 @@ require("lazy").setup({
 	},
 	install = {
 		colorscheme = {
+			"miikanissi/modus-themes.nvim",
 			"tokyonight",
 		},
 	},
