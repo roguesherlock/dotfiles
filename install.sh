@@ -52,3 +52,6 @@ ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Su
 # rtx
 mkdir -p ~/.config/rtx/
 ln -sF ~/Developer/dotfiles/.config/rtx/config.toml ~/.config/rtx/config.toml
+
+# startship prompt
+ln -sF ~/Developer/dotfiles/.config/starship.toml ~/.config/starship.toml
