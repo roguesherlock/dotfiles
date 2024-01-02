@@ -112,6 +112,18 @@ local init = function()
 			end
 		end,
 	})
+	vim.api.nvim_create_autocmd("ColorScheme", {
+		pattern = "catppuccin",
+		callback = function()
+			if vim.o.background == "light" then
+				vim.fn.system("kitty +kitten themes catppuccin_latte")
+			elseif vim.o.background == "dark" then
+				vim.fn.system("kitty +kitten themes catppuccin_macchiato")
+			else
+				vim.fn.system("kitty +kitten themes catppuccin_macchiato")
+			end
+		end,
+	})
 	set_from_os()
 end
 
