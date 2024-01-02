@@ -117,7 +117,7 @@ return {
 
 	{
 		"ramojus/mellifluous.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		opts = {
 			color_set = "mellifluous",
@@ -133,13 +133,13 @@ return {
 		},
 	},
 	{
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		"savq/melange-nvim",
 	},
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	{
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		"mcchrish/zenbones.nvim",
 		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
@@ -244,7 +244,7 @@ return {
 
 	-- kanagawa
 	{
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		"rebelot/kanagawa.nvim",
 		-- opts = {

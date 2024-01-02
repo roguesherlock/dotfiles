@@ -89,38 +89,19 @@ local init = function()
 		end,
 	})
 	vim.api.nvim_create_autocmd("ColorScheme", {
-		pattern = "kanagawa",
+		pattern = "*",
 		callback = function()
+			-- local colorscheme = string.lower(vim.g.colors_name).gmatch
+			local colorscheme = string.match(vim.g.colors_name, "([^%-]+)")
+			-- vim.print("colorscheme: " .. colorscheme)
 			if vim.o.background == "light" then
-				vim.fn.system("kitty +kitten themes kanagawa_light")
+				local theme = colorscheme .. "_light"
+				vim.fn.system("kitty +kitten themes " .. theme)
 			elseif vim.o.background == "dark" then
-				vim.fn.system("kitty +kitten themes kanagawa_dragon")
+				local theme = colorscheme .. "_dark"
+				vim.fn.system("kitty +kitten themes " .. theme)
 			else
-				vim.fn.system("kitty +kitten themes kanagawa")
-			end
-		end,
-	})
-	vim.api.nvim_create_autocmd("ColorScheme", {
-		pattern = "modus",
-		callback = function()
-			if vim.o.background == "light" then
-				vim.fn.system("kitty +kitten themes Modus Operandi")
-			elseif vim.o.background == "dark" then
-				vim.fn.system("kitty +kitten themes Modus Vivendi")
-			else
-				vim.fn.system("kitty +kitten themes Modus Vivendi")
-			end
-		end,
-	})
-	vim.api.nvim_create_autocmd("ColorScheme", {
-		pattern = "catppuccin",
-		callback = function()
-			if vim.o.background == "light" then
-				vim.fn.system("kitty +kitten themes catppuccin_latte")
-			elseif vim.o.background == "dark" then
-				vim.fn.system("kitty +kitten themes catppuccin_macchiato")
-			else
-				vim.fn.system("kitty +kitten themes catppuccin_macchiato")
+				vim.fn.system("kitty +kitten themes modus_dark")
 			end
 		end,
 	})
