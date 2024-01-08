@@ -229,16 +229,10 @@ return {
 	-- {
 	-- 	"rose-pine/neovim",
 	-- 	name = "rose-pine",
-	-- 	-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	-- 	-- priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	lazy = true,
+	-- 	priority = 1000,
 	-- 	config = function()
-	-- 		require("rose-pine").setup({
-	-- 			-- highlight_groups = {
-	-- 			-- 	IndentBlanklineChar = { fg = "highlight_low" },
-	-- 			-- 	IndentBlanklineContextChar = { fg = "highlight_high" },
-	-- 			-- 	IndentBlanklineContextStart = { sp = "highlight_high" },
-	-- 			-- },
-	-- 		})
+	-- 		require("rose-pine").setup({})
 	-- 	end,
 	-- },
 
