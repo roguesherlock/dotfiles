@@ -8,6 +8,7 @@ return {
 		},
 	},
 	{
+		ft = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
 		"pmizio/typescript-tools.nvim",
 		opts = {
 			on_attach = function(client, bufnr)
