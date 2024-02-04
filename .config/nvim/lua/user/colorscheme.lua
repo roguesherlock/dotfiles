@@ -12,8 +12,8 @@ end
 -- CHANGE COLORSCHME HERE
 M.colorscheme_light = "dayfox"
 M.colorscheme_dark = "nightfox"
-M.kitty_theme_light = "nightfox_light"
-M.kitty_theme_dark = "nightfox_dark"
+M.kitty_theme_light = "dayfox"
+M.kitty_theme_dark = "nightfox"
 
 ---@param light boolean
 function M.set_colorscheme(light)

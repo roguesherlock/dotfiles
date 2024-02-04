@@ -1,22 +1,29 @@
 return {
 	-- {
 	-- 	"bluz71/vim-nightfly-guicolors",
+	-- 	lazy = true,
 	-- 	priority = 1000, -- make sure to load this before all the other start plugins
 	-- 	config = function()
-	-- 		vim.g.nightflyTransparent = true
+	-- 		vim.g.nightflyVirtualTextColor = true
+	-- 		vim.g.nightflyNormalFloat = true
+	-- 		vim.g.nightflyflyCursorColor = true
+	-- 		-- vim.g.nightflyTransparent = true
 	-- 		-- load the colorscheme here
 	-- 		-- vim.cmd([[colorscheme nightfly]])
 	-- 	end,
 	-- },
-	-- {
-	-- 	"bluz71/vim-moonfly-colors",
-	-- 	name = "moonfly",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.g.moonflyTransparent = true
-	-- 	end,
-	-- },
+	{
+		"bluz71/vim-moonfly-colors",
+		name = "moonfly",
+		lazy = true,
+		priority = 1000,
+		config = function()
+			vim.g.moonflyVirtualTextColor = true
+			vim.g.moonflyNormalFloat = true
+			vim.g.moonflyCursorColor = true
+			-- vim.g.moonflyTransparent = true
+		end,
+	},
 	-- { "kepano/flexoki-neovim", name = "flexoki" },
 	-- {
 	-- 	"mikesmithgh/gruvsquirrel.nvim",
