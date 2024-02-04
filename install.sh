@@ -49,9 +49,9 @@ ln -sF ~/Developer/dotfiles/.config/lazygit ~/.config/lazygit
 mkdir -p ~/Library/Application\ Support/lazygit
 ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
 
-# rtx
-mkdir -p ~/.config/rtx/
-ln -sF ~/Developer/dotfiles/.config/rtx/config.toml ~/.config/rtx/config.toml
+# mise
+mkdir -p ~/.config/mise/
+ln -sF ~/Developer/dotfiles/.config/mise/config.toml ~/.config/mise/config.toml
 
 # startship prompt
 ln -sF ~/Developer/dotfiles/.config/starship.toml ~/.config/starship.toml

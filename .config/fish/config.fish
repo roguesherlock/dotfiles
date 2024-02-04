@@ -35,7 +35,7 @@ if status is-interactive
     fnm env --use-on-cd --resolve-engines | source
 
     direnv hook fish | source
-    rtx activate fish | source
+    mise activate fish | source
 
     # Setting PATH for Python 3.12
     # The original version is saved in /Users/akash/.config/fish/config.fish.pysave
