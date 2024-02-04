@@ -1,3 +1,4 @@
+local colorscheme = require("user.colorscheme")
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   -- bootstrap lazy.nvim
@@ -64,48 +65,4 @@ require("lazy").setup({
 	},
 })
 
--- TODO: auto switch theme to light/dark based on macos appearance
--- https://github.com/jascha030/macos-nvim-dark-mode
-local os_is_dark = function()
-	return (vim.fn.system(
-		[[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
-	)):find("dark") ~= nil
-end
-
-local set_from_os = function()
-	if os_is_dark() then
-		vim.o.background = "dark"
-	else
-		vim.o.background = "light"
-	end
-	vim.cmd.colorscheme("modus")
-end
-
-local init = function()
-	vim.api.nvim_create_autocmd("Signal", {
-		pattern = "*",
-		callback = function()
-			set_from_os()
-		end,
-	})
-	vim.api.nvim_create_autocmd("ColorScheme", {
-		pattern = "*",
-		callback = function()
-			-- local colorscheme = string.lower(vim.g.colors_name).gmatch
-			local colorscheme = string.match(vim.g.colors_name, "([^%-]+)")
-			-- vim.print("colorscheme: " .. colorscheme)
-			if vim.o.background == "light" then
-				local theme = colorscheme .. "_light"
-				vim.fn.system("kitty +kitten themes " .. theme)
-			elseif vim.o.background == "dark" then
-				local theme = colorscheme .. "_dark"
-				vim.fn.system("kitty +kitten themes " .. theme)
-			else
-				vim.fn.system("kitty +kitten themes modus_dark")
-			end
-		end,
-	})
-	set_from_os()
-end
-
-init()
+colorscheme.init()
