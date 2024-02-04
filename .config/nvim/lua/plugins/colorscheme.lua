@@ -140,15 +140,15 @@ return {
 		},
 	},
 	{
+		"savq/melange-nvim",
 		lazy = true,
 		priority = 1000,
-		"savq/melange-nvim",
 	},
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	{
+		"mcchrish/zenbones.nvim",
 		lazy = true,
 		priority = 1000,
-		"mcchrish/zenbones.nvim",
 		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
 		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
 		-- In Vim, compat mode is turned on as Lush only works in Neovim.
@@ -193,6 +193,8 @@ return {
 	-- nightfox
 	{
 		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
 		config = function()
 			require("nightfox").setup({
 				options = {
@@ -216,8 +218,6 @@ return {
 		"projekt0n/github-nvim-theme",
 		lazy = true,
 		priority = 1000,
-		-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		-- priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require("github-theme").setup({
 				-- options = {
@@ -245,9 +245,9 @@ return {
 
 	-- kanagawa
 	{
+		"rebelot/kanagawa.nvim",
 		lazy = true,
 		priority = 1000,
-		"rebelot/kanagawa.nvim",
 		-- opts = {
 		-- 	overrides = function(colors)
 		-- 		local theme = colors.theme
@@ -259,7 +259,11 @@ return {
 		-- 	end,
 		-- },
 	},
-	{ "miikanissi/modus-themes.nvim", priority = 1000 },
+	{
+		"miikanissi/modus-themes.nvim",
+		lazy = true,
+		priority = 1000,
+	},
 	-- {
 	-- 	"craftzdog/solarized-osaka.nvim",
 	-- 	branch = "osaka",
