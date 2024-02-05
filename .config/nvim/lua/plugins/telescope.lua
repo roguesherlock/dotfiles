@@ -44,7 +44,7 @@ return {
 		keys = {
 			{
 				"<leader><space>",
-				"<cmd>Telescope smart_open theme=ivy cwd_only=true<cr>",
+				"<cmd>Telescope smart_open theme=ivy cwd_only=true match_algorithm=fzf<cr>",
 				desc = "Find Files (smart_open)",
 			},
 		},
@@ -250,6 +250,7 @@ return {
 				},
 				-- TODO: this doesn't work. maybe neeed to load the extension after telescope is loaded?
 				smart_open = {
+					match_algorithm = "fzf",
 					show_scores = false,
 					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules" },
 					theme = "ivy",
