@@ -5,6 +5,7 @@ return {
 		-- add a keymap
 		keys[#keys + 1] =
 			{ "<leader>.", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
+		keys[#keys + 1] = { "<leader>cL", "<cmd>LspRestart<cr>", desc = "Restart LSP server", mode = { "n" } }
 		keys[#keys + 1] = {
 			"<leader>/",
 			function()
