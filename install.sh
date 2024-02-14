@@ -51,7 +51,7 @@ ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Su
 
 # mise
 mkdir -p ~/.config/mise/
-ln -sF ~/Developer/dotfiles/.config/mise/config.toml ~/.config/mise/config.toml
+ln -sF ~/Developer/dotfiles/.config/mise ~/.config/mise
 
 # startship prompt
 ln -sF ~/Developer/dotfiles/.config/starship.toml ~/.config/starship.toml
