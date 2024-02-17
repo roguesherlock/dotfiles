@@ -15,13 +15,13 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("CommitMono")
+-- config.font = wezterm.font("CommitMono")
 config.font_size = 14.0
-config.line_height = 1.21
+-- config.line_height = 1.21
 
 -- config.colors = colors
 -- config.window_frame = window_frame
-config.color_scheme = "Everforest Dark (Gogh)"
+config.color_scheme = "nightfox"
 
 -- local appearance = wezterm.gui.get_appearance()
 -- if appearance:find "Dark" then
@@ -47,8 +47,8 @@ config.enable_scroll_bar = false
 -- config.enable_kitty_keyboard = true
 -- config.enable_csi_u_key_encoding = false
 
-config.window_background_opacity = 0.7
-config.macos_window_background_blur = 20
+-- config.window_background_opacity = 0.7
+-- config.macos_window_background_blur = 20
 
 -- and finally, return the configuration to wezterm
 return config

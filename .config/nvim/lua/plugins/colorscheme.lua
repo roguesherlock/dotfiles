@@ -174,21 +174,20 @@ return {
 	-- 		vim.g.everforest_transparent_background = 2
 	-- 	end,
 	-- },
-	-- {
-	-- 	"neanias/everforest-nvim",
-	-- 	version = false,
-	-- 	lazy = false,
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	-- Optional; default configuration will be used if setup isn't called.
-	-- 	config = function()
-	-- 		require("everforest").setup({
-	-- 			-- Your config here
-	-- 			background = "hard",
-	-- 			italics = true,
-	-- 			-- transparent_background_level = 2,
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"neanias/everforest-nvim",
+		lazy = true,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		-- Optional; default configuration will be used if setup isn't called.
+		config = function()
+			require("everforest").setup({
+				-- Your config here
+				background = "hard",
+				italics = true,
+				-- transparent_background_level = 2,
+			})
+		end,
+	},
 
 	-- nightfox
 	{
@@ -212,6 +211,23 @@ return {
 	-- {
 	-- 	"navarasu/onedark.nvim",
 	-- },
+	{
+		"rockyzhang24/arctic.nvim",
+		lazy = true,
+		priority = 1000,
+		branch = "v2",
+		dependencies = { "rktjmp/lush.nvim" },
+	},
+	{
+		"crispybaccoon/aki",
+		lazy = true,
+		priority = 1000,
+	},
+	{
+		"crispybaccoon/evergarden",
+		lazy = true,
+		priority = 1000,
+	},
 
 	-- github
 	{
