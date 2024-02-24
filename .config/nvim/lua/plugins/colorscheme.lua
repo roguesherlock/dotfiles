@@ -24,7 +24,8 @@ return {
 			-- vim.g.moonflyTransparent = true
 		end,
 	},
-	-- { "kepano/flexoki-neovim", name = "flexoki" },
+	-- { "kepano/flexoki-neovim", name = "flexoki", lazy = true, priority = 1000 },
+	-- { "uloco/bluloco.nvim", lazy = false, priority = 1000 },
 	-- {
 	-- 	"mikesmithgh/gruvsquirrel.nvim",
 	-- },
@@ -192,7 +193,7 @@ return {
 	-- nightfox
 	{
 		"EdenEast/nightfox.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			require("nightfox").setup({
@@ -277,7 +278,7 @@ return {
 	},
 	{
 		"miikanissi/modus-themes.nvim",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 	},
 	-- {
