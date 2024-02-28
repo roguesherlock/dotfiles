@@ -13,11 +13,12 @@ return {
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 
-			opts.mapping = vim.tbl_extend("force", opts.mapping, {
+			opts.mapping = cmp.mapping.preset.insert({
 				["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 				["<C-j>"] = cmp.mapping.select_next_item({
 					behavior = cmp.SelectBehavior.Select,
 				}),
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<C-p>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), {
 					"i",
 					"c",
@@ -30,39 +31,24 @@ return {
 					"i",
 					"c",
 				}),
-				["<C-e>"] = cmp.mapping({
-					i = cmp.mapping.abort(),
-					c = cmp.mapping.close(),
-				}),
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						-- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
-						cmp.select_next_item()
-					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-					-- this way you will only jump inside the snippet region
-					elseif luasnip.expand_or_jumpable() then
+				-- Think of <c-l> as moving to the right of your snippet expansion.
+				--  So if you have a snippet that's like:
+				--  function $name($args)
+				--    $body
+				--  end
+				--
+				-- <c-l> will move you to the right of each of the expansion locations.
+				-- <c-h> is similar, except moving you backwards.
+				["<C-l>"] = cmp.mapping(function()
+					if luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
-					elseif has_words_before() then
-						cmp.complete()
-					else
-						fallback()
 					end
-				end, {
-					"i",
-					"s",
-				}),
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
+				end, { "i", "s" }),
+				["<C-h>"] = cmp.mapping(function()
+					if luasnip.locally_jumpable(-1) then
 						luasnip.jump(-1)
-					else
-						fallback()
 					end
-				end, {
-					"i",
-					"s",
-				}),
+				end, { "i", "s" }),
 			})
 		end,
 	},
