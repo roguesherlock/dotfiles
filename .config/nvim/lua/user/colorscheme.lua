@@ -10,10 +10,10 @@ function M.os_is_dark()
 end
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "dayfox"
-M.colorscheme_dark = "nightfox"
-M.kitty_theme_light = "dayfox"
-M.kitty_theme_dark = "nightfox"
+M.colorscheme_light = "modus"
+M.colorscheme_dark = "modus"
+M.kitty_theme_light = "modus_light"
+M.kitty_theme_dark = "modus_dark"
 
 ---@param light boolean
 function M.set_colorscheme(light)
