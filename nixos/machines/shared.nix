@@ -50,6 +50,13 @@
   };
 
   programs.gpg.enable = true;
+  programs.gpg.agent = {
+    enable = true;
+    pinentryFlavor = "tty";
+    # cache the keys forever so we don't get asked for a password
+    defaultCacheTtl = 31536000;
+    maxCacheTtl = 31536000;
+  };
 
   # Enable tailscale. We manually authenticate when we want with
   # "sudo tailscale up". If you don't use tailscale, you should comment
@@ -62,6 +69,7 @@
   users.users.akash = {
     isNormalUser = true;
     description = "Akash";
+    hashedPassword = "$y$j9T$rka7WMNIqs/u4KQopsGuB1$6YgkyrjVaCbPQYaspzIGK8mTIF9iWhNYV10nF4PWLs9";
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
     ];
@@ -70,9 +78,7 @@
 
   services.getty.autologinUser = "akash";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # TODO: add this after wh have a hashed password in the config
-  # users.mutableUsers = false;
+  users.mutableUsers = false;
 
 
   # Manage fonts. We pull these from a secret directory since most of these
