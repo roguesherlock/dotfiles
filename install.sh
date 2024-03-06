@@ -2,7 +2,19 @@
 
 mkdir ~/Developer
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+OS=$(uname -s)
+
+isDarwin() {
+	[ "$OS" = "Darwin" ]
+}
+
+isLinux() {
+	[ "$OS" = "Linux" ]
+}
+
+if isDarwin; then
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
 git clone https://github.com/roguesherlock/dotfiles.git ~/Developer/dotfiles
 
@@ -32,8 +44,10 @@ ln -sf ~/Developer/dotfiles/.gitconfig ~/.gitconfig
 mkdir -p ~/.config/alacritty/
 ln -sF ~/Developer/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
-#karabinner
-ln -sF ~/Developer/dotfiles/.config/karabiner ~/.config/karabiner
+if isDarwin; then
+	#karabinner
+	ln -sF ~/Developer/dotfiles/.config/karabiner ~/.config/karabiner
+fi
 
 #nvim
 ln -sF ~/Developer/dotfiles/.config/nvim ~/.config/nvim
@@ -46,8 +60,10 @@ ln -sF ~/Developer/dotfiles/.config/kitty ~/.config/kitty
 
 #lazygit
 ln -sF ~/Developer/dotfiles/.config/lazygit ~/.config/lazygit
-mkdir -p ~/Library/Application\ Support/lazygit
-ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+if isDarwin; then
+	mkdir -p ~/Library/Application\ Support/lazygit
+	ln -sF ~/Developer/dotfiles/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+fi
 
 # mise
 mkdir -p ~/.config/mise/
