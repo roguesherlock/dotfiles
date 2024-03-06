@@ -33,7 +33,7 @@
       inherit (self) outputs;
     in
     {
-      nixosConfigurations.system = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.${systemSettings.hostname} = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs systemSettings userSettings; };
         system = systemSettings.system;
         # > Our main nixos configuration file <
