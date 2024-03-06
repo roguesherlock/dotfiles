@@ -54,28 +54,32 @@
   # setup windowing environment
 
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
+  # gnome and others don't support proper fractional scaling
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  #
   # remove some default gnome packages
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
+  # environment.gnome.excludePackages = (with pkgs; [
+  #   gnome-photos
+  #   gnome-tour
+  # ]) ++ (with pkgs.gnome; [
+  #   cheese # webcam tool
+  #   gnome-music
+  #   gnome-terminal
+  #   gedit # text editor
+  #   epiphany # web browser
+  #   geary # email reader
+  #   evince # document viewer
+  #   gnome-characters
+  #   totem # video player
+  #   tali # poker game
+  #   iagno # go game
+  #   hitori # sudoku game
+  #   atomix # puzzle game
+  # ]);
 
   environment = {
     variables = {
