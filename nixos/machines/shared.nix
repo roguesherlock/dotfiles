@@ -52,26 +52,38 @@
   };
 
   # setup windowing environment
-  hardware = {
-    opengl.enable = true;
-  };
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
-  };
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # remove some default gnome packages
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    gedit # text editor
+    epiphany # web browser
+    geary # email reader
+    evince # document viewer
+    gnome-characters
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ]);
+
   environment = {
     variables = {
-      NIXOS_OZONE_WL = "1";
-      GDK_BACKEND = "wayland,x11";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      XDG_SESSION_TYPE = "wayland";
       XDG_CACHE_HOME = "/home/akash/.cache";
       EDITOR = "nvim";
     };
   };
+
   # TODO: these are part of home manager.
   # xdg.enable = true;
   # programs.gpg.enable = true;
@@ -90,6 +102,7 @@
 
   users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
+  programs.direnv.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${userSettings.username} = {
@@ -108,11 +121,15 @@
       gopls
       nodejs
       cachix
+      starship
+      lazygit
     ];
     shell = pkgs.fish;
   };
 
-  services.getty.autologinUser = "akash";
+  services.getty.autologinUser = userSettings.username;
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = userSettings.username;
 
   users.mutableUsers = false;
 
@@ -132,7 +149,7 @@
         serif = [ "IBM Plex Serif" ];
         sansSerif = [ "Inter Variable" ];
         # TODO: use Input Mono
-        monospace = [ "JetBrains Mono" ];
+        monospace = [ "Input Mono" "JetBrains Mono" "IBM Plex Mono" ];
       };
     };
   };
@@ -146,8 +163,6 @@
     gcc
     gnumake
     killall
-    xclip
-    wayland
     alacritty
     kitty
     lf
