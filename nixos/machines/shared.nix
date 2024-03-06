@@ -146,15 +146,17 @@
     fontDir.enable = true;
 
     packages = with pkgs;[
-      jetbrains-mono
-      ibm-plex
       inter
+      ibm-plex
+      input-fonts
+      commit-mono
+      jetbrains-mono
+      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     ];
     fontconfig = {
       defaultFonts = {
         serif = [ "IBM Plex Serif" ];
         sansSerif = [ "Inter Variable" ];
-        # TODO: use Input Mono
         monospace = [ "Input Mono" "JetBrains Mono" "IBM Plex Mono" ];
       };
     };
