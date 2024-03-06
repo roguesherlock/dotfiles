@@ -39,15 +39,42 @@
 
   # Select internationalisation properties.
   i18n = {
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = "en_IN.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_IN.UTF-8";
+      LC_IDENTIFICATION = "en_IN.UTF-8";
+      LC_MEASUREMENT = "en_IN.UTF-8";
+      LC_MONETARY = "en_IN.UTF-8";
+      LC_NAME = "en_IN.UTF-8";
+      LC_NUMERIC = "en_IN.UTF-8";
+      LC_PAPER = "en_IN.UTF-8";
+      LC_TELEPHONE = "en_IN.UTF-8";
+      LC_TIME = "en_IN.UTF-8";
+    };
   };
 
   # setup windowing environment
+  hardware = {
+    opengl.enable = true;
+  };
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
+  environment = {
+    variables = {
+      NIXOS_OZONE_WL = "1";
+      GDK_BACKEND = "wayland,x11";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_CACHE_HOME = "/home/akash/.cache";
+      EDITOR = "nvim";
+    };
+  };
+  xdg.enable = true;
 
   programs.gpg.enable = true;
   programs.gpg.agent = {
@@ -72,6 +99,16 @@
     hashedPassword = "$y$j9T$rka7WMNIqs/u4KQopsGuB1$6YgkyrjVaCbPQYaspzIGK8mTIF9iWhNYV10nF4PWLs9";
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
+      fzf
+      gh
+      htop
+      jq
+      ripgrep
+      tree
+      watch
+      gopls
+      nodejs
+      cachix
     ];
     shell = pkgs.fish;
   };
