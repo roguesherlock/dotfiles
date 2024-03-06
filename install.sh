@@ -3,6 +3,7 @@
 mkdir ~/Developer
 
 OS=$(uname -s)
+DOTFILES_DIR=~/Developer/dotfiles
 
 isDarwin() {
 	[ "$OS" = "Darwin" ]
@@ -16,7 +17,10 @@ if isDarwin; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-git clone https://github.com/roguesherlock/dotfiles.git ~/Developer/dotfiles
+if [ -d "$DOTFILES_DIR" ]; then
+	git clone https://github.com/roguesherlock/dotfiles.git $DOTFILES_DIR
+	echo "[warn] Looks like dotfiles already exists. Not cloning again."
+fi
 
 #fish
 mkdir -p ~/.config/fish/
