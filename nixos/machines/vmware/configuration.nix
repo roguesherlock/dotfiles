@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
   imports = [
-    ./hardware-configuration.nix
+    ../hardware-configuration.nix
     ./vmware-guest.nix
     ../shared.nix
   ];
