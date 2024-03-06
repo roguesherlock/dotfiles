@@ -1,4 +1,4 @@
-{ config, pkgs, lib, currentSystem, currentSystemName, ... }:
+{ config, pkgs, lib, userSettings, systemSettings, ... }:
 
 {
   # Be careful updating this.
@@ -19,10 +19,10 @@
   boot.loader.systemd-boot.consoleMode = "0";
 
   # Define your hostname.
-  networking.hostName = "dev";
+  networking.hostName = systemSettings.hostname;
 
   # Set your time zone.
-  time.timeZone = "Asia/Kolkata";
+  time.timeZone = systemSettings.timeZone;
 
   networking.networkmanager.enable = true;
 
@@ -38,19 +38,17 @@
   # virtualisation.docker.enable = true;
 
   # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_IN.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "en_IN.UTF-8";
-      LC_IDENTIFICATION = "en_IN.UTF-8";
-      LC_MEASUREMENT = "en_IN.UTF-8";
-      LC_MONETARY = "en_IN.UTF-8";
-      LC_NAME = "en_IN.UTF-8";
-      LC_NUMERIC = "en_IN.UTF-8";
-      LC_PAPER = "en_IN.UTF-8";
-      LC_TELEPHONE = "en_IN.UTF-8";
-      LC_TIME = "en_IN.UTF-8";
-    };
+  i18n.defaultLocale = systemSettings.locale;
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = systemSettings.locale;
+    LC_IDENTIFICATION = systemSettings.locale;
+    LC_MEASUREMENT = systemSettings.locale;
+    LC_MONETARY = systemSettings.locale;
+    LC_NAME = systemSettings.locale;
+    LC_NUMERIC = systemSettings.locale;
+    LC_PAPER = systemSettings.locale;
+    LC_TELEPHONE = systemSettings.locale;
+    LC_TIME = systemSettings.locale;
   };
 
   # setup windowing environment
@@ -74,29 +72,30 @@
       EDITOR = "nvim";
     };
   };
-  xdg.enable = true;
-
-  programs.gpg.enable = true;
-  programs.gpg.agent = {
-    enable = true;
-    pinentryFlavor = "tty";
-    # cache the keys forever so we don't get asked for a password
-    defaultCacheTtl = 31536000;
-    maxCacheTtl = 31536000;
-  };
+  # TODO: these are part of home manager.
+  # xdg.enable = true;
+  # programs.gpg.enable = true;
+  # programs.gpg.agent = {
+  #   enable = true;
+  #   pinentryFlavor = "tty";
+  #   # cache the keys forever so we don't get asked for a password
+  #   defaultCacheTtl = 31536000;
+  #   maxCacheTtl = 31536000;
+  # };
 
   # Enable tailscale. We manually authenticate when we want with
   # "sudo tailscale up". If you don't use tailscale, you should comment
   # out or delete all of this.
   # services.tailscale.enable = true;
 
+  users.defaultUserShell = pkgs.fish;
   programs.fish.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.akash = {
+  users.users.${userSettings.username} = {
     isNormalUser = true;
-    description = "Akash";
-    hashedPassword = "$y$j9T$rka7WMNIqs/u4KQopsGuB1$6YgkyrjVaCbPQYaspzIGK8mTIF9iWhNYV10nF4PWLs9";
+    description = userSettings.name;
+    hashedPassword = userSettings.hashedPassword;
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
       fzf
@@ -158,10 +157,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

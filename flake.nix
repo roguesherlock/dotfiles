@@ -18,11 +18,24 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
+      systemSettings = {
+        system = "aarch64-linux";
+        hostname = "dev";
+        locale = "en_US.UTF-8";
+        timeZone = "Asia/Kolkata";
+      };
+      userSettings = {
+        username = "akash";
+        name = "Akash";
+        email = "aakash@hey.com";
+        hashedPassword = "$y$j9T$rka7WMNIqs/u4KQopsGuB1$6YgkyrjVaCbPQYaspzIGK8mTIF9iWhNYV10nF4PWLs9";
+      };
       inherit (self) outputs;
     in
     {
-      nixosConfigurations.vmware = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
+      nixosConfigurations.system = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs systemSettings userSettings; };
+        system = systemSettings.system;
         # > Our main nixos configuration file <
         modules = [ ./nixos/machines/vmware/configuration.nix ];
       };
