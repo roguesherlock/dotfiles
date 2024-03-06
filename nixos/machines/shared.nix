@@ -79,7 +79,7 @@
 
   environment = {
     variables = {
-      XDG_CACHE_HOME = "/home/akash/.cache";
+      XDG_CACHE_HOME = "/home/${userSettings.username}/.cache";
       EDITOR = "nvim";
     };
   };
@@ -123,6 +123,8 @@
       cachix
       starship
       lazygit
+      neofetch
+      screenfetch
     ];
     shell = pkgs.fish;
   };
