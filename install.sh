@@ -56,8 +56,10 @@ else
   echo "Dotfiles cloned to $DOTFILES_DIR"
 fi
 
+mkdir -p ~/.config
+
 #fish
-mkdir -p ~/.config/fish/
+# mkdir -p ~/.config/fish/
 install ~/Developer/dotfiles/.config/fish ~/.config/fish
 
 # tmux
@@ -108,7 +110,7 @@ if isDarwin; then
 fi
 
 # mise
-mkdir -p ~/.config/mise/
+# mkdir -p ~/.config/mise/
 install ~/Developer/dotfiles/.config/mise ~/.config/mise
 
 # startship prompt
