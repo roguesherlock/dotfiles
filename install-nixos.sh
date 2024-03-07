@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# To be used in nixos system to bootstrap the system
+#
 
 if [ $# -eq 0 ]; then
     echo "Usage: $0 <machine-name>"
