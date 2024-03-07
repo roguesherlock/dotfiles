@@ -128,6 +128,8 @@
       watch
       gopls
       nodejs
+      rustc
+      cargo
       cachix
       # prompt
       starship
