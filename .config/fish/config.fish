@@ -89,13 +89,8 @@ if status is-interactive
     end
 
     if test $isLinux -eq 1
-        function nixbuild
-            sudo nixos-rebuild switch --flake ~/Developer/dotfiles
-        end
-
-        function nixtest
-            sudo nixos-rebuild test --flake ~/Developer/dotfiles
-        end
+        alias nixbuild="sudo nixos-rebuild switch --flake ~/Developer/dotfiles"
+        alias nixtest="sudo nixos-rebuild test --flake ~/Developer/dotfiles"
     end
 end
 export GPG_TTY=(tty)
