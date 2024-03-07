@@ -32,10 +32,10 @@ if status is-interactive
         alias icat="kitty +kitten icat"
         alias s="kitty +kitten ssh"
     end
-    if type -q exa
-        alias ls "exa --icons --classify"
-        alias ll "exa --icons --header --long --git --classify"
-        alias tree "exa --icons --header --long --tree --level=3"
+    if type -q eza
+        alias ls "eza --icons --classify"
+        alias ll "eza --icons --header --long --git --classify"
+        alias tree "eza --icons --header --long --tree --level=3"
         alias lla "ll --all"
     end
 

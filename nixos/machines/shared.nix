@@ -138,7 +138,7 @@
       yt-dlp
 
       # A modern, maintained replacement for ls
-      exa
+      eza
     ];
     shell = pkgs.fish;
   };
