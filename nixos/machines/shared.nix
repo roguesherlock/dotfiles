@@ -132,7 +132,6 @@
       lazygit
       neofetch
       screenfetch
-      sqlite
       go
 
       # youtube-dl
@@ -140,9 +139,6 @@
 
       # A modern, maintained replacement for ls
       exa
-
-      # mysql80
-      # postgresql_16
     ];
     shell = pkgs.fish;
   };
@@ -193,6 +189,9 @@
     kitty
     lf
     neovim
+    sqlite
+    # mysql80
+    # postgresql_16
     xclip
     xsel
   ];
