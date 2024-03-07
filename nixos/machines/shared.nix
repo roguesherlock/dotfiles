@@ -85,6 +85,8 @@
     variables = {
       XDG_CACHE_HOME = "/home/${userSettings.username}/.cache";
       EDITOR = "nvim";
+      LD_LIBRARY_PATH = [ "${pkgs.sqlite.out}/lib" ];
+      LIBSQLITE = "${pkgs.sqlite.out}/lib/libsqlite3.so";
     };
   };
 
