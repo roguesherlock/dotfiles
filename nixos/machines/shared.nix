@@ -127,12 +127,20 @@
       gopls
       nodejs
       cachix
+      # prompt
       starship
       lazygit
       neofetch
       screenfetch
       sqlite
       go
+
+      # youtube-dl
+      yt-dlp
+
+      # A modern, maintained replacement for ls
+      exa
+
       # mysql80
       # postgresql_16
     ];

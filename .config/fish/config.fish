@@ -1,3 +1,17 @@
+set -l os_type (uname -s)
+
+if string match -q Linux $os_type
+    set -g isLinux 1
+else
+    set -g isLinux 0
+end
+
+if string match -q Darwin $os_type
+    set -g isDarwin 1
+else
+    set -g isDarwin 0
+end
+
 if status is-interactive
     # test -z "$TMUX"; and exec tmux
     # Commands to run in interactive sessions can go here
@@ -30,21 +44,6 @@ if status is-interactive
     # add bunch of fish functions
     # source ~/.config/fish/functions/fish_functions.fish
 
-    # successor to nvm
-    set -gx FNM_LOGLEVEL quiet
-    fnm env --use-on-cd --resolve-engines | source
-
-    direnv hook fish | source
-    mise activate fish | source
-
-    # Setting PATH for Python 3.12
-    # The original version is saved in /Users/akash/.config/fish/config.fish.pysave
-    # set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
-
-    if test "$TERM_PROGRAM" != WarpTerminal
-        test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
-    end
-
     # themes
     # source ~/.config/fish/themes/terafox.fish
 
@@ -71,21 +70,49 @@ if status is-interactive
     if type starship >/dev/null 2>&1
         starship init fish | source
     end
+
+    if test $isDarwin -eq 1
+        # successor to nvm
+        set -gx FNM_LOGLEVEL quiet
+        fnm env --use-on-cd --resolve-engines | source
+
+        direnv hook fish | source
+        mise activate fish | source
+
+        # Setting PATH for Python 3.12
+        # The original version is saved in /Users/akash/.config/fish/config.fish.pysave
+        # set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
+
+        if test "$TERM_PROGRAM" != WarpTerminal
+            test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+        end
+    end
+
+    if test $isLinux -eq 1
+        function nixbuild
+            sudo nixos-rebuild switch --flake ~/Developer/dotfiles
+        end
+
+        function nixtest
+            sudo nixos-rebuild test --flake ~/Developer/dotfiles
+        end
+    end
 end
 export GPG_TTY=(tty)
 
 set -x LC_ALL en_US.UTF-8
 
-# On macOS, the default number of file descriptors is far too low ('256').
-# That would cause Docker to run out of available file handles, so let's
-# bump it up.
-ulimit -n 2048
+if test $isDarwin -eq 1
+    # On macOS, the default number of file descriptors is far too low ('256').
+    # That would cause Docker to run out of available file handles, so let's
+    # bump it up.
+    ulimit -n 2048
+    # Some operations with 'docker-compose' can take awhile without output
+    # (such as running tests). 'docker-compose' has a default timeout of
+    # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
+    set -x COMPOSE_HTTP_TIMEOUT 300
 
-# Some operations with 'docker-compose' can take awhile without output
-# (such as running tests). 'docker-compose' has a default timeout of
-# 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
-set -x COMPOSE_HTTP_TIMEOUT 300
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+    # bun
+    set --export BUN_INSTALL "$HOME/.bun"
+    set --export PATH $BUN_INSTALL/bin $PATH
+end
