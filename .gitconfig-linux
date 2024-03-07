@@ -1,0 +1,13 @@
+[user]
+	signingkey = B28D3A60
+	name = Akash
+  email = aakash@hey.com
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

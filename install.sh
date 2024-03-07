@@ -76,7 +76,11 @@ install ~/Developer/dotfiles/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 install ~/Developer/dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 
 # git
-install ~/Developer/dotfiles/.gitconfig ~/.gitconfig
+if isDarwin; then
+  install ~/Developer/dotfiles/.gitconfig ~/.gitconfig
+elif isLinux; then
+  install ~/Developer/dotfiles/.gitconfig-linux ~/.gitconfig
+fi
 
 # alacritty
 mkdir -p ~/.config/alacritty/
