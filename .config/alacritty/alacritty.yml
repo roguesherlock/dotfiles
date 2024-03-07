@@ -1,9 +1,9 @@
 font:
   normal:
-    family: "Jetbrains Mono"
+    family: "Input Mono"
     style: Regular
 
-  size: 13
+  size: 14
   y: 1.21
 
 window:
