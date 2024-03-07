@@ -115,9 +115,11 @@
     hashedPassword = userSettings.hashedPassword;
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
+      fd
       fzf
       gh
       htop
+      unzip
       jq
       ripgrep
       tree
@@ -129,6 +131,10 @@
       lazygit
       neofetch
       screenfetch
+      sqlite
+      go
+      # mysql80
+      # postgresql_16
     ];
     shell = pkgs.fish;
   };
@@ -179,6 +185,8 @@
     kitty
     lf
     neovim
+    xclip
+    xsel
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
