@@ -39,5 +39,11 @@
         # > Our main nixos configuration file <
         modules = [ ./nixos/machines/vmware/configuration.nix ];
       };
+      nixosConfigurations.utm = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs systemSettings userSettings; };
+        system = systemSettings.system;
+        # > Our main nixos configuration file <
+        modules = [ ./nixos/machines/utm/configuration.nix ];
+      };
     };
 }
