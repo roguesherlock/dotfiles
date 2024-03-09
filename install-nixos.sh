@@ -15,6 +15,6 @@ mkdir ~/Developer
 nix-shell -p git --command "git clone https://github.com/roguesherlock/dotfiles ~/Developer/dotfiles"
 
 # Generate hardware config for new system
-sudo nixos-generate-config --show-hardware-config >~/Developer/dotfiles/nixos/machines/hardware-configuration.nix
+sudo nixos-generate-config --show-hardware-config > ~/Developer/dotfiles/nixos/machines/hardware-configuration.nix
 
 sudo nixos-rebuild switch --flake ~/Developer/dotfiles#$1
