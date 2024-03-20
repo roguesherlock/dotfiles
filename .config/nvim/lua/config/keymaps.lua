@@ -34,7 +34,7 @@ end
 
 nmap("<leader>ww", ":w<CR>", { desc = "Save file" })
 nmap("<D-s>", ":w<CR>", { desc = "Save file" })
-nmap("<esc><esc>", ":w<CR>", { desc = "Save file" })
+-- nmap("<esc><esc>", ":w<CR>", { desc = "Save file" })
 -- imap("<esc>", "<esc>:w<CR>", { desc = "Save file" })
 
 -- nmap("<leader>w<leader>", "<C-W>p", { desc = "Switch to previous window" })
@@ -103,25 +103,6 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 -- nmap("<leader>fb", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 -- nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 
--- harpoon
--- harpoon maybe causing freeze, have to debug more
-nmap("<leader>ma", '<cmd>lua require("harpoon.mark").add_file()<cr>', { desc = "Add file to harpoon" })
-nmap("<leader>mc", '<cmd>lua require("harpoon.mark").clear_all()<cr>', { desc = "Clear all harpoon marks" })
-nmap("<leader>mn", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
-nmap("<leader>m<leader>", '<cmd>lua require("harpoon.ui").nav_next()<cr>', { desc = "Navigate to next harpoon mark" })
-nmap("<leader>mp", '<cmd>lua require("harpoon.ui").nav_prev()<cr>', { desc = "Navigate to previous harpoon mark" })
-nmap("<leader>ml", "<cmd>Telescope harpoon marks<cr>", { desc = "List harpoon marks" })
-nmap("<leader>mt", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", { desc = "Open terminal with harpoon" }) -- goes to the first tmux window
-nmap("<Leader>1", '<cmd>lua require("harpoon.ui").nav_file(1)<cr>', { desc = "Switch to harpoon mark 1" })
-nmap("<Leader>2", '<cmd>lua require("harpoon.ui").nav_file(2)<cr>', { desc = "Switch to harpoon mark 2" })
-nmap("<Leader>3", '<cmd>lua require("harpoon.ui").nav_file(3)<cr>', { desc = "Switch to harpoon mark 3" })
-nmap("<Leader>4", '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', { desc = "Switch to harpoon mark 4" })
-nmap("<Leader>5", '<cmd>lua require("harpoon.ui").nav_file(5)<cr>', { desc = "Switch to harpoon mark 5" })
-nmap("<Leader>6", '<cmd>lua require("harpoon.ui").nav_file(6)<cr>', { desc = "Switch to harpoon mark 6" })
-nmap("<Leader>7", '<cmd>lua require("harpoon.ui").nav_file(7)<cr>', { desc = "Switch to harpoon mark 7" })
-nmap("<Leader>8", '<cmd>lua require("harpoon.ui").nav_file(8)<cr>', { desc = "Switch to harpoon mark 8" })
-nmap("<Leader>9", '<cmd>lua require("harpoon.ui").nav_file(9)<cr>', { desc = "Switch to harpoon mark 9" })
-nmap("<Leader>0", '<cmd>lua require("harpoon.ui").nav_file(10)<cr>', { desc = "Switch to harpoon mark 10" })
 
 nmap("<leader>mc", "<cmd>delmarks A-Z0-9<cr>")
 nmap("<leader>ml", '<cmd>lua require("telescope.builtin").marks()<cr>')

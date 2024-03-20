@@ -11,12 +11,13 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{
-				"ThePrimeagen/harpoon",
-				config = function()
-					require("telescope").load_extension("harpoon")
-				end,
-			},
+      -- lazy provides harpoon now 
+			-- {
+			-- 	"ThePrimeagen/harpoon",
+			-- 	config = function()
+			-- 		require("telescope").load_extension("harpoon")
+			-- 	end,
+			-- },
 			-- already included by lazy
 			-- {
 			-- 	"nvim-telescope/telescope-fzf-native.nvim",

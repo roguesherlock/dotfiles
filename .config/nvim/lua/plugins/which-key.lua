@@ -8,7 +8,7 @@ return {
 				-- ["<leader>sl"] = { name = "Live Grep (with args)" },
 				["<leader><tab>"] = { name = "Buffer list (with preview)" },
 				["<leader>t"] = { name = "+tabs" },
-				["<leader>m"] = { name = "+harpoon" },
+				["<leader>m"] = { name = "+marks" },
 				["<leader>gn"] = { name = "Neogit" },
 			},
 			triggers_blacklist = {

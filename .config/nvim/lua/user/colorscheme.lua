@@ -10,8 +10,8 @@ function M.os_is_dark()
 end
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "modus"
-M.colorscheme_dark = "modus"
+M.colorscheme_light = "gruvbox-material"
+M.colorscheme_dark = "gruvbox-material"
 M.kitty_theme_light = "modus_light"
 M.kitty_theme_dark = "modus_dark"
 
