@@ -11,7 +11,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-      -- lazy provides harpoon now 
+			-- lazy provides harpoon now
 			-- {
 			-- 	"ThePrimeagen/harpoon",
 			-- 	config = function()
@@ -35,16 +35,16 @@ return {
 			{
 				"danielfalk/smart-open.nvim",
 				dependencies = {
-          {
+					{
 
-            "kkharji/sqlite.lua",
-            config = function()
-              -- TODO: add a btter detection for nix
-              if jit.os:find("Linux") then
-                vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
-              end
-            end
-          }
+						"kkharji/sqlite.lua",
+						config = function()
+							-- TODO: add a btter detection for nix
+							if jit.os:find("Linux") then
+								vim.g.sqlite_clib_path = require("luv").os_getenv("LIBSQLITE")
+							end
+						end,
+					},
 				},
 				config = function()
 					require("telescope").load_extension("smart_open")

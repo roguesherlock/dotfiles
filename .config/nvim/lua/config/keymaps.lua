@@ -103,7 +103,6 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 -- nmap("<leader>fb", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 -- nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 
-
 nmap("<leader>mc", "<cmd>delmarks A-Z0-9<cr>")
 nmap("<leader>ml", '<cmd>lua require("telescope.builtin").marks()<cr>')
 
@@ -153,4 +152,4 @@ local function open_in_gh()
 	end
 end
 
-nmap("<leader>go", open_in_gh, { desc = "Open file in github" })
+nmap("<leader>gl", open_in_gh, { desc = "Open file in github" })
