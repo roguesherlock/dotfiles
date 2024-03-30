@@ -142,7 +142,7 @@ return {
 	},
 	{
 		"savq/melange-nvim",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 	},
 	-- { "nyoom-engineering/oxocarbon.nvim" },
