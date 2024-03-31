@@ -35,6 +35,14 @@ function M.set_from_os()
 	end
 end
 
+function M.get_colorscheme()
+	if vim.o.background == "light" then
+		return M.colorscheme_light
+	else
+		return M.colorscheme_dark
+	end
+end
+
 function M.init()
 	vim.api.nvim_create_autocmd("Signal", {
 		pattern = "*",

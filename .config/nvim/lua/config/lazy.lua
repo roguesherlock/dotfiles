@@ -25,6 +25,11 @@ require("lazy").setup({
 		{
 			"LazyVim/LazyVim",
 			import = "lazyvim.plugins",
+			opts = {
+				-- we have to set this here too because otherwise lazyvim will set it's default colorscheme first,
+				-- which will cause it to flicker when we set our colorscheme at the end of initialization
+				colorscheme = colorscheme.get_colorscheme(),
+			},
 		},
 		{
 			import = "plugins",

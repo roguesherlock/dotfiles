@@ -17,7 +17,7 @@
   "everforest-nvim": { "branch": "main", "commit": "5e0e32a569fb464911342f0d421721cc1c94cf25" },
   "evergarden": { "branch": "mega", "commit": "9f18f8b5f20882774ded04e768179e49b9339af0" },
   "flit.nvim": { "branch": "main", "commit": "04f744bbb2b91fb2ad2c702b5eb8e23d17924fa6" },
-  "friendly-snippets": { "branch": "main", "commit": "9fba5827cd74581bf4ae42cd095b3ef359cea8c3" },
+  "friendly-snippets": { "branch": "main", "commit": "ea068f1becd91bcd4591fceb6420d4335e2e14d3" },
   "github-nvim-theme": { "branch": "main", "commit": "d92e1143e5aaa0d7df28a26dd8ee2102df2cadd8" },
   "gruvbox-material": { "branch": "master", "commit": "80331fbbec9ba18590a17bc6b7d277d96c05c2b6" },
   "harpoon": { "branch": "harpoon2", "commit": "a38be6e0dd4c6db66997deab71fc4453ace97f9c" },
