@@ -10,10 +10,12 @@ function M.os_is_dark()
 end
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "modus"
-M.colorscheme_dark = "modus"
-M.kitty_theme_light = "modus_light"
-M.kitty_theme_dark = "modus_dark"
+M.colorscheme_light = "melange"
+M.colorscheme_dark = "melange"
+M.kitty_theme_light = "melange_light"
+M.kitty_theme_dark = "melange_dark"
+M.enable_auto_switch = false
+M.default_light = false
 
 ---@param light boolean
 function M.set_colorscheme(light)
@@ -28,6 +30,10 @@ function M.set_colorscheme(light)
 end
 
 function M.set_from_os()
+	if not M.enable_auto_switch then
+		M.set_colorscheme(M.default_light)
+		return
+	end
 	if M.os_is_dark() then
 		M.set_colorscheme(false)
 	else
@@ -36,6 +42,13 @@ function M.set_from_os()
 end
 
 function M.get_colorscheme()
+	if not M.enable_auto_switch then
+		if M.default_light then
+			return M.colorscheme_light
+		else
+			return M.colorscheme_dark
+		end
+	end
 	if vim.o.background == "light" then
 		return M.colorscheme_light
 	else
