@@ -14,7 +14,7 @@ M.colorscheme_light = "melange"
 M.colorscheme_dark = "melange"
 M.kitty_theme_light = "melange_light"
 M.kitty_theme_dark = "melange_dark"
-M.enable_auto_switch = false
+M.enable_auto_switch = true
 M.default_light = false
 
 ---@param light boolean
