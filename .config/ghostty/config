@@ -1,7 +1,43 @@
-font-size = 16
+# font-family = "IBM Plex Mono"
+# font-family = "InputMono"
+# font-family = "InputMonoNarrow"
+# font-family = "CommitMono"
 
-theme = zenbones_dark
+font-size = 15
 
-window-theme = auto
+# theme = zenbones_dark
 
-window-colorspace = display-p3
+# window-theme = auto
+
+# window-colorspace = display-p3
+
+mouse-hide-while-typing = true
+
+#
+# Melange Dark theme
+#
+# Begin
+#
+palette = 0=#34302C
+palette = 1=#BD8183
+palette = 2=#78997A
+palette = 3=#E49B5D
+palette = 4=#7F91B2
+palette = 5=#B380B0
+palette = 6=#7B9695
+palette = 7=#C1A78E
+palette = 8=#867462
+palette = 9=#D47766
+palette = 10=#85B695
+palette = 11=#EBC06D
+palette = 12=#A3A9CE
+palette = 13=#CF9BC2
+palette = 14=#89B3B6
+palette = 15=#ECE1D7
+background = 292522
+foreground = ECE1D7
+selection-background = 403A36
+selection-foreground = ECE1D7
+#
+# End
+#
