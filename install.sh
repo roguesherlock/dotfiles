@@ -115,3 +115,7 @@ install ~/Developer/dotfiles/.config/mise ~/.config/mise
 
 # startship prompt
 install ~/Developer/dotfiles/.config/starship.toml ~/.config/starship.toml
+
+#ghostty
+mkdir -p ~/.config/ghostty/
+install ~/Developer/dotfiles/.config/ghostty/config ~/.config/ghostty/config
