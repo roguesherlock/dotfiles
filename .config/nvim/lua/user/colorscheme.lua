@@ -10,8 +10,8 @@ function M.os_is_dark()
 end
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "melange"
-M.colorscheme_dark = "melange"
+M.colorscheme_light = "zenbones"
+M.colorscheme_dark = "zenbones"
 M.kitty_theme_light = "melange_light"
 M.kitty_theme_dark = "melange_dark"
 M.enable_auto_switch = true
