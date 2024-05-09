@@ -46,6 +46,7 @@ require("lazy").setup({
 	},
 	install = {
 		colorscheme = {
+			"mcchrish/zenbones.nvim",
 			"savq/melange-nvim",
 			"miikanissi/modus-themes.nvim",
 			"EdenEast/nightfox.nvim",

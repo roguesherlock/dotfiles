@@ -128,8 +128,8 @@ return {
 		lazy = true,
 		priority = 1000,
 		opts = {
-			color_set = "mellifluous",
-			-- color_set = "mountain",
+			-- color_set = "mellifluous",
+			color_set = "mountain",
 			-- transparent_background = {
 			-- 	enabled = true,
 			-- 	floating_windows = true,
@@ -148,7 +148,7 @@ return {
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	{
 		"mcchrish/zenbones.nvim",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
 		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1

@@ -5,10 +5,60 @@
 
 font-size = 15
 
-# theme = zenbones_dark
+theme = zenbones_dark
 
+# The theme to use for the windows. Valid values:
+# 
+#   * `auto` - Determine the theme based on the configured terminal
+#      background color.
+#   * `system` - Use the system theme.
+#   * `light` - Use the light theme regardless of system theme.
+#   * `dark` - Use the dark theme regardless of system theme.
+# 
+# On macOS, if `macos-titlebar-tabs` is set, the window theme will be
+# automatically set based on the luminosity of the terminal background color.
+# This only applies to terminal windows. This setting will still apply to
+# non-terminal windows within Ghostty.
+# 
+# This is currently only supported on macOS and Linux.
 # window-theme = auto
 
+# If `true`, the *Option* key will be treated as *Alt*. This makes terminal
+# sequences expecting *Alt* to work properly, but will break Unicode input
+# sequences on macOS if you use them via the *Alt* key. You may set this to
+# `false` to restore the macOS *Alt* key unicode sequences but this will break
+# terminal sequences expecting *Alt* to work.
+# 
+# Note that if an *Option*-sequence doesn't produce a printable character, it
+# will be treated as *Alt* regardless of this setting. (i.e. `alt+ctrl+a`).
+# 
+# This does not work with GLFW builds.
+macos-option-as-alt = true
+
+# If `true`, places the tab bar in the titlebar for tabbed windows.
+# 
+# When this is true, the titlebar will also always appear even when
+# fullscreen (native fullscreen) with only one tab. This is not considered
+# a bug but if you'd like to improve this behavior then I'm open to it and
+# please contribute to the project.
+# 
+# This option intercepts the native tab bar view from macOS and forces it to use
+# different positioning. Because of this, it might be buggy or break entirely if
+# macOS changes the way its native tab bar view is constructed or managed.
+# This has been tested on macOS 14.
+# 
+# For macOS 13 users: saved window state will not restore tabs correctly
+# if this is enabled. macOS 14 does not have this issue.
+# 
+# This option only applies to new windows when changed.
+macos-titlebar-tabs = true
+
+# The colorspace to use for the terminal window. The default is `srgb` but
+# this can also be set to `display-p3` to use the Display P3 colorspace.
+# 
+# Changing this value at runtime will only affect new windows.
+# 
+# This setting is only supported on macOS.
 # window-colorspace = display-p3
 
 mouse-hide-while-typing = true
@@ -18,26 +68,26 @@ mouse-hide-while-typing = true
 #
 # Begin
 #
-palette = 0=#34302C
-palette = 1=#BD8183
-palette = 2=#78997A
-palette = 3=#E49B5D
-palette = 4=#7F91B2
-palette = 5=#B380B0
-palette = 6=#7B9695
-palette = 7=#C1A78E
-palette = 8=#867462
-palette = 9=#D47766
-palette = 10=#85B695
-palette = 11=#EBC06D
-palette = 12=#A3A9CE
-palette = 13=#CF9BC2
-palette = 14=#89B3B6
-palette = 15=#ECE1D7
-background = 292522
-foreground = ECE1D7
-selection-background = 403A36
-selection-foreground = ECE1D7
+# palette = 0=#34302C
+# palette = 1=#BD8183
+# palette = 2=#78997A
+# palette = 3=#E49B5D
+# palette = 4=#7F91B2
+# palette = 5=#B380B0
+# palette = 6=#7B9695
+# palette = 7=#C1A78E
+# palette = 8=#867462
+# palette = 9=#D47766
+# palette = 10=#85B695
+# palette = 11=#EBC06D
+# palette = 12=#A3A9CE
+# palette = 13=#CF9BC2
+# palette = 14=#89B3B6
+# palette = 15=#ECE1D7
+# background = 292522
+# foreground = ECE1D7
+# selection-background = 403A36
+# selection-foreground = ECE1D7
 #
 # End
 #
