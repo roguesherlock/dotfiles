@@ -9,6 +9,7 @@ return {
 					"intelephense",
 					"emmet-language-server",
 					"prisma-language-server",
+					"vtsls", -- typescript language server
 				})
 			end
 		end,
