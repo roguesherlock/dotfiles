@@ -6,4 +6,5 @@
 .config/karabiner/automatic_backups/
 .config/nvim/plugin/packer_compiled.lua
 kitty.conf.bak
+config.bak
 .config/lazygit/state.yml
