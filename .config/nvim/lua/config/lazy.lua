@@ -48,9 +48,9 @@ require("lazy").setup({
 		colorscheme = {
 			"mcchrish/zenbones.nvim",
 			"savq/melange-nvim",
-			"miikanissi/modus-themes.nvim",
-			"EdenEast/nightfox.nvim",
-			"sainnhe/gruvbox-material",
+			-- "miikanissi/modus-themes.nvim",
+			-- "EdenEast/nightfox.nvim",
+			-- "sainnhe/gruvbox-material",
 			"tokyonight",
 		},
 	},
