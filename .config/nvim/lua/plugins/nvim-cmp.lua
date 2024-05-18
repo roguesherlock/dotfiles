@@ -10,7 +10,7 @@ return {
 			-- 		and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			-- end
 			--
-			local luasnip = require("luasnip")
+			-- local luasnip = require("luasnip")
 			local cmp = require("cmp")
 
 			opts.mapping = cmp.mapping.preset.insert({
@@ -40,26 +40,24 @@ return {
 				-- <c-l> will move you to the right of each of the expansion locations.
 				-- <c-h> is similar, except moving you backwards.
 				["<C-l>"] = cmp.mapping(function()
-					-- TODO: enable this once stable
-					-- if vim.snippet.jumpable(1) then
-					-- 	vim.schedule(function()
-					-- 		vim.snippet.jump(1)
-					-- 	end)
-					-- end
-					if luasnip.expand_or_locally_jumpable() then
-						luasnip.expand_or_jump()
+					if vim.snippet.jumpable(1) then
+						vim.schedule(function()
+							vim.snippet.jump(1)
+						end)
 					end
+					-- if luasnip.expand_or_locally_jumpable() then
+					-- 	luasnip.expand_or_jump()
+					-- end
 				end, { "i", "s" }),
 				["<C-h>"] = cmp.mapping(function()
-					-- TODO: enable this once stable
-					-- if vim.snippet.jumpable(-1) then
-					-- 	vim.schedule(function()
-					-- 		vim.snippet.jump(-1)
-					-- 	end)
-					-- end
-					if luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
+					if vim.snippet.jumpable(-1) then
+						vim.schedule(function()
+							vim.snippet.jump(-1)
+						end)
 					end
+					-- if luasnip.locally_jumpable(-1) then
+					-- 	luasnip.jump(-1)
+					-- end
 				end, { "i", "s" }),
 			})
 		end,
