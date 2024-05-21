@@ -76,9 +76,9 @@ return {
 		config = function()
 			vim.g.gruvbox_material_better_performance = 1
 			-- Fonts
-			vim.g.gruvbox_material_disable_italic_comment = 1
-			vim.g.gruvbox_material_enable_italic = 0
-			vim.g.gruvbox_material_enable_bold = 0
+			vim.g.gruvbox_material_disable_italic_comment = 0
+			vim.g.gruvbox_material_enable_italic = 1
+			vim.g.gruvbox_material_enable_bold = 1
 			vim.g.gruvbox_material_transparent_background = 1
 			-- Themes
 			vim.g.gruvbox_material_foreground = "mix"
@@ -157,6 +157,8 @@ return {
 		config = function()
 			vim.g.zenbones = {
 				-- transparent_background = true,
+				lightness = "bright",
+				darkness = "stark",
 			}
 			vim.g.zenwritten = {
 				lightness = "bright",
@@ -184,7 +186,7 @@ return {
 			require("everforest").setup({
 				-- Your config here
 				background = "hard",
-				italics = true,
+				-- italics = true,
 				-- transparent_background_level = 2,
 			})
 		end,
@@ -280,7 +282,7 @@ return {
 	},
 	{
 		"miikanissi/modus-themes.nvim",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 	},
 	-- {

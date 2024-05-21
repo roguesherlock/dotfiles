@@ -14,10 +14,13 @@
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.tailwind",
-    "lazyvim.plugins.extras.linting.eslint"
+    "lazyvim.plugins.extras.lang.typescript",
+    "lazyvim.plugins.extras.lang.vue",
+    "lazyvim.plugins.extras.linting.eslint",
+    "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "news": {
-    "NEWS.md": "4828"
+    "NEWS.md": "4964"
   },
-  "version": 3
+  "version": 4
 }
