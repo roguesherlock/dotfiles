@@ -10,10 +10,10 @@ function M.os_is_dark()
 end
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "zenbones"
-M.colorscheme_dark = "zenbones"
-M.terminal_theme_light = "zenbones_light"
-M.terminal_theme_dark = "zenbones_dark"
+M.colorscheme_light = "catppuccin"
+M.colorscheme_dark = "catppuccin"
+M.terminal_theme_light = "catppuccin-latte"
+M.terminal_theme_dark = "catppuccin-mocha"
 M.enable_auto_switch = true
 M.default_light = false
 
@@ -77,6 +77,11 @@ function M.init()
 							.. "/' (readlink ~/.config/ghostty/config)"
 					)
 				end
+				-- vim.fn.system(
+				-- 	'sed -i\'.bak\' \'s/theme "[^"]*"/theme "'
+				-- 		.. M.terminal_theme_light
+				-- 		.. "\"/' ~/.config/zellij/config.kdl"
+				-- )
 			elseif vim.o.background == "dark" then
 				if term == "xterm-kitty" then
 					vim.fn.system("kitty +kitten themes " .. M.terminal_theme_dark)
@@ -87,6 +92,11 @@ function M.init()
 							.. "/' (readlink ~/.config/ghostty/config)"
 					)
 				end
+				-- vim.fn.system(
+				-- 	'sed -i\'.bak\' \'s/theme "[^"]*"/theme "'
+				-- 		.. M.terminal_theme_dark
+				-- 		.. "\"/' ~/.config/zellij/config.kdl"
+				-- )
 			else
 				if term == "xterm-kitty" then
 					vim.fn.system("kitty +kitten themes " .. M.terminal_theme_dark)

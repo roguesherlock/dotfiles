@@ -71,7 +71,7 @@ window-padding-y = 0
 # given a certain viewport size and grid cell size.
 window-padding-balance = true
 
-theme = zenbones_dark
+theme = catppuccin-latte
 
 # The theme to use for the windows. Valid values:
 # 
@@ -87,7 +87,7 @@ theme = zenbones_dark
 # non-terminal windows within Ghostty.
 # 
 # This is currently only supported on macOS and Linux.
-# window-theme = zenbones_dark
+# window-theme = catppuccin-latte
 
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input
@@ -117,7 +117,24 @@ macos-option-as-alt = true
 # if this is enabled. macOS 14 does not have this issue.
 # 
 # This option only applies to new windows when changed.
-macos-titlebar-tabs = true
+macos-titlebar-tabs = false
+
+# If anything other than false, fullscreen mode on macOS will not use the
+# native fullscreen, but make the window fullscreen without animations and
+# using a new space. It's faster than the native fullscreen mode since it
+# doesn't use animations.
+# 
+# Warning: tabs do not work with a non-native fullscreen window. This
+# can be fixed but is looking for contributors to help. See issue #392.
+# 
+# Allowable values are:
+# 
+#   * `visible-menu` - Use non-native macOS fullscreen, keep the menu bar visible
+#   * `true` - Use non-native macOS fullscreen, hide the menu bar
+#   * `false` - Use native macOS fullscreeen
+# 
+macos-non-native-fullscreen = true
+
 
 # The colorspace to use for the terminal window. The default is `srgb` but
 # this can also be set to `display-p3` to use the Display P3 colorspace.
