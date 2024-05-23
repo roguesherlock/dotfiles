@@ -119,3 +119,6 @@ install ~/Developer/dotfiles/.config/starship.toml ~/.config/starship.toml
 #ghostty
 mkdir -p ~/.config/ghostty/
 install ~/Developer/dotfiles/.config/ghostty/config ~/.config/ghostty/config
+
+# zellij
+install ~/Developer/dotfiles/.config/zellij ~/.config/zellij

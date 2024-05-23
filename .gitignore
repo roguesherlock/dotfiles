@@ -7,4 +7,5 @@
 .config/nvim/plugin/packer_compiled.lua
 kitty.conf.bak
 config.bak
+config.kdl.bak
 .config/lazygit/state.yml
