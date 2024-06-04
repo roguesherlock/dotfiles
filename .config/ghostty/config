@@ -1,6 +1,6 @@
 # font-family = "IBM Plex Mono"
 # font-family = "InputMono"
-# font-family = "InputMonoNarrow"
+font-family = "InputMonoNarrow"
 # font-family = "CommitMono"
 
 font-size = 14
@@ -71,7 +71,7 @@ window-padding-y = 0
 # given a certain viewport size and grid cell size.
 window-padding-balance = true
 
-theme = catppuccin-latte
+theme = zenbones_dark
 
 # The theme to use for the windows. Valid values:
 # 
@@ -87,7 +87,7 @@ theme = catppuccin-latte
 # non-terminal windows within Ghostty.
 # 
 # This is currently only supported on macOS and Linux.
-# window-theme = catppuccin-latte
+# window-theme = zenbones_dark
 
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input
@@ -145,6 +145,22 @@ macos-non-native-fullscreen = true
 # window-colorspace = display-p3
 
 mouse-hide-while-typing = true
+
+# The opacity level (opposite of transparency) of the background. A value of
+# 1 is fully opaque and a value of 0 is fully transparent. A value less than 0
+# or greater than 1 will be clamped to the nearest valid value.
+# 
+# Changing this value at runtime (and reloading config) will only affect new
+# windows, tabs, and splits.
+# background-opacity = 0.85
+
+# A positive value enables blurring of the background when background-opacity
+# is less than 1. The value is the blur radius to apply. A value of 20
+# is reasonable for a good looking blur. Higher values will cause strange
+# rendering issues as well as performance issues.
+# 
+# This is only supported on macOS.
+# background-blur-radius = 20
 
 #
 # Melange Dark theme

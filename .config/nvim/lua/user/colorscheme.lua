@@ -10,10 +10,10 @@ function M.os_is_dark()
 end
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "catppuccin"
-M.colorscheme_dark = "catppuccin"
-M.terminal_theme_light = "catppuccin-latte"
-M.terminal_theme_dark = "catppuccin-mocha"
+M.colorscheme_light = "zenbones"
+M.colorscheme_dark = "zenbones"
+M.terminal_theme_light = "zenbones_light"
+M.terminal_theme_dark = "zenbones_dark"
 M.enable_auto_switch = true
 M.default_light = false
 

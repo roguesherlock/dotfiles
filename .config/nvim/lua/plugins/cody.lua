@@ -1,4 +1,5 @@
 return {
+	enabled = false,
 	"sourcegraph/sg.nvim",
 	event = "InsertEnter",
 	cmd = { "CodyAsk", "CodyChat", "SourcegraphLink", "SourcegraphLogin" },

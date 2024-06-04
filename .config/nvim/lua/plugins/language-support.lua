@@ -4,12 +4,14 @@ return {
 		opts = function(_, opts)
 			if type(opts.ensure_installed) == "table" then
 				vim.list_extend(opts.ensure_installed, {
-					"astro-language-server",
-					"vue-language-server",
+					-- lazyvim does this already
+					-- "astro-language-server",
+					-- "vue-language-server",
 					"intelephense",
 					"emmet-language-server",
 					"prisma-language-server",
-					"vtsls", -- typescript language server
+					-- lazyvim does this already
+					-- "vtsls", -- typescript language server
 				})
 			end
 		end,
