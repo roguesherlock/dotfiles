@@ -133,6 +133,9 @@ return {
 		lazy = false,
 		priority = 1000,
 	},
+	{
+		"dasupradyumna/midnight.nvim",
+	},
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	{
 		"mcchrish/zenbones.nvim",

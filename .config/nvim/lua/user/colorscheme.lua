@@ -10,11 +10,15 @@ function M.os_is_dark()
 end
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "zenbones"
-M.colorscheme_dark = "zenbones"
+-- M.colorscheme_light = "zenbones"
+-- M.colorscheme_dark = "zenbones"
+-- M.terminal_theme_light = "zenbones_light"
+-- M.terminal_theme_dark = "zenbones_dark"
+M.colorscheme_light = "everforest"
+M.colorscheme_dark = "everforest"
 M.terminal_theme_light = "zenbones_light"
-M.terminal_theme_dark = "zenbones_dark"
-M.enable_auto_switch = true
+M.terminal_theme_dark = "Everblush"
+M.enable_auto_switch = false
 M.default_light = false
 
 ---@param light boolean
