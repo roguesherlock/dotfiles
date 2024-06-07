@@ -1,4 +1,3 @@
-local colorscheme = require("user.colorscheme")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -72,6 +71,7 @@ nmap("<leader>th", ":tabprev<cr>", { desc = "Switch to previous tab" })
 
 -- Toggle theme
 nmap("<leader>tt", function()
+	local colorscheme = require("user.colorscheme")
 	local is_light = vim.o.background == "light"
 	if is_light then
 		colorscheme.set_colorscheme(false)
