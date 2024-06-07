@@ -1,9 +1,12 @@
 # font-family = "IBM Plex Mono"
-# font-family = "InputMono"
-font-family = "InputMonoNarrow"
+# font-family = "Input Mono"
+# font-family = "Input Mono Narrow"
 # font-family = "CommitMono"
+font-family = "Geist Mono"
+font-variation = wght=450
+# font-family = "Berkeley Mono Trial"
 
-font-size = 14
+font-size = 13
 
 # All of the configurations behavior adjust various metrics determined by the
 # font. The values can be integers (1, -1, etc.) or a percentage (20%, -15%,
@@ -32,7 +35,7 @@ font-size = 14
 #     that things like status lines continue to look aligned.
 adjust-cell-width = 
 
-adjust-cell-height = 30%
+adjust-cell-height = 20%
 adjust-font-baseline = 
 adjust-underline-position = 
 adjust-underline-thickness = 
@@ -71,7 +74,7 @@ window-padding-y = 0
 # given a certain viewport size and grid cell size.
 window-padding-balance = true
 
-theme = Everblush
+theme = Builtin Tango Dark
 
 # The theme to use for the windows. Valid values:
 # 
@@ -87,7 +90,7 @@ theme = Everblush
 # non-terminal windows within Ghostty.
 # 
 # This is currently only supported on macOS and Linux.
-# window-theme = Everblush
+# window-theme = Builtin Tango Dark
 
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input
@@ -142,9 +145,9 @@ macos-non-native-fullscreen = true
 # Changing this value at runtime will only affect new windows.
 # 
 # This setting is only supported on macOS.
-# window-colorspace = display-p3
+window-colorspace = display-p3
 
-mouse-hide-while-typing = true
+mouse-hide-while-typing = false
 
 # The opacity level (opposite of transparency) of the background. A value of
 # 1 is fully opaque and a value of 0 is fully transparent. A value less than 0
@@ -152,7 +155,7 @@ mouse-hide-while-typing = true
 # 
 # Changing this value at runtime (and reloading config) will only affect new
 # windows, tabs, and splits.
-# background-opacity = 0.85
+background-opacity = 0.85
 
 # A positive value enables blurring of the background when background-opacity
 # is less than 1. The value is the blur radius to apply. A value of 20
@@ -160,7 +163,7 @@ mouse-hide-while-typing = true
 # rendering issues as well as performance issues.
 # 
 # This is only supported on macOS.
-# background-blur-radius = 20
+background-blur-radius = 20
 
 #
 # Melange Dark theme
