@@ -104,23 +104,6 @@ theme = Builtin Tango Dark
 # This does not work with GLFW builds.
 macos-option-as-alt = true
 
-# If `true`, places the tab bar in the titlebar for tabbed windows.
-# 
-# When this is true, the titlebar will also always appear even when
-# fullscreen (native fullscreen) with only one tab. This is not considered
-# a bug but if you'd like to improve this behavior then I'm open to it and
-# please contribute to the project.
-# 
-# This option intercepts the native tab bar view from macOS and forces it to use
-# different positioning. Because of this, it might be buggy or break entirely if
-# macOS changes the way its native tab bar view is constructed or managed.
-# This has been tested on macOS 14.
-# 
-# For macOS 13 users: saved window state will not restore tabs correctly
-# if this is enabled. macOS 14 does not have this issue.
-# 
-# This option only applies to new windows when changed.
-macos-titlebar-tabs = false
 
 # If anything other than false, fullscreen mode on macOS will not use the
 # native fullscreen, but make the window fullscreen without animations and
