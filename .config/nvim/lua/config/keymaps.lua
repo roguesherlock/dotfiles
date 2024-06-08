@@ -80,12 +80,6 @@ nmap("<leader>tt", function()
 	end
 end, { desc = "Toggle theme" })
 
--- Term
-nmap("<c-/>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
-
--- Zen mode
-nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle zen mode" })
-
 -- Telescope --
 -- nmap(
 -- 	"<leader>j",
@@ -102,9 +96,6 @@ nmap("<leader>z", "<cmd>lua require('zen-mode').toggle()<CR>", { desc = "Toggle 
 -- nmap("<leader><space>", "<cmd> Telescope smart_open theme=ivy <cr>", { desc = "Find Files" })
 -- nmap("<leader>fb", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
 -- nmap("<leader><leader>", "<cmd> Telescope buffers theme=ivy <cr>", { desc = "Find buffers (with preview)" })
-
-nmap("<leader>mc", "<cmd>delmarks A-Z0-9<cr>")
-nmap("<leader>ml", '<cmd>lua require("telescope.builtin").marks()<cr>')
 
 -- Insert --
 -- Press jk fast to enter

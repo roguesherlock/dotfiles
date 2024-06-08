@@ -57,6 +57,16 @@ return {
 				"<cmd>Telescope smart_open theme=ivy cwd_only=true match_algorithm=fzf<cr>",
 				desc = "Find Files (smart_open)",
 			},
+			{
+				"<leader>mc",
+				"<cmd>delmarks A-Z0-9<cr>",
+				desc = "Delete marks",
+			},
+			{
+				"<leader>ml",
+				"<cmd>lua require('telescope.builtin').marks()<cr>",
+				desc = "Find marks",
+			},
 		},
 		opts = {
 			defaults = {
