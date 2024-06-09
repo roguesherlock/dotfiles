@@ -76,22 +76,6 @@ window-padding-balance = true
 
 theme = Builtin Tango Dark
 
-# The theme to use for the windows. Valid values:
-# 
-#   * `auto` - Determine the theme based on the configured terminal
-#      background color.
-#   * `system` - Use the system theme.
-#   * `light` - Use the light theme regardless of system theme.
-#   * `dark` - Use the dark theme regardless of system theme.
-# 
-# On macOS, if `macos-titlebar-tabs` is set, the window theme will be
-# automatically set based on the luminosity of the terminal background color.
-# This only applies to terminal windows. This setting will still apply to
-# non-terminal windows within Ghostty.
-# 
-# This is currently only supported on macOS and Linux.
-# window-theme = Builtin Tango Dark
-
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input
 # sequences on macOS if you use them via the *Alt* key. You may set this to
@@ -120,7 +104,6 @@ macos-option-as-alt = true
 #   * `false` - Use native macOS fullscreeen
 # 
 macos-non-native-fullscreen = true
-
 
 # The colorspace to use for the terminal window. The default is `srgb` but
 # this can also be set to `display-p3` to use the Display P3 colorspace.

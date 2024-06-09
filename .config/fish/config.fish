@@ -58,7 +58,7 @@ if status is-interactive
             set date $argv[1]
         end
         set filename "$date.md"
-        set filepath "$HOME/Developer/akashpomal-com/src/content/heys/$filename"
+        set filepath "$HOME/Developer/akashpomal.com/src/content/heys/$filename"
         if test -f $filepath
             echo "File $filepath already exists"
             return
