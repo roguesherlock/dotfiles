@@ -92,6 +92,8 @@ if status is-interactive
         alias nixbuild="sudo nixos-rebuild switch --flake ~/Developer/dotfiles"
         alias nixtest="sudo nixos-rebuild test --flake ~/Developer/dotfiles"
     end
+
+    fzf --fish | source
 end
 export GPG_TTY=(tty)
 

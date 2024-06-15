@@ -1,9 +1,11 @@
 return {
 	{
 		"supermaven-inc/supermaven-nvim",
-		config = function()
-			require("supermaven-nvim").setup({})
-		end,
+		lazy = false,
+		config = true,
+		keys = {
+			{ "<leader>tsm", "<cmd>SupermavenToggle<cr>", desc = "Toggle SuperMaven" },
+		},
 	},
 	{
 		"hrsh7th/nvim-cmp",
