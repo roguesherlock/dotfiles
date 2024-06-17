@@ -6,7 +6,7 @@ font-family = "Geist Mono"
 font-variation = wght=450
 # font-family = "Berkeley Mono Trial"
 
-font-size = 13
+font-size = 14
 
 # All of the configurations behavior adjust various metrics determined by the
 # font. The values can be integers (1, -1, etc.) or a percentage (20%, -15%,
