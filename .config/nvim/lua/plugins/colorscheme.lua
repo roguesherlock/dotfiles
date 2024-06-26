@@ -28,7 +28,7 @@ return {
 			vim.g.moonflyVirtualTextColor = true
 			vim.g.moonflyNormalFloat = true
 			vim.g.moonflyCursorColor = true
-			-- vim.g.moonflyTransparent = true
+			vim.g.moonflyTransparent = true
 		end,
 	},
 	-- { "kepano/flexoki-neovim", name = "flexoki", lazy = true, priority = 1000 },

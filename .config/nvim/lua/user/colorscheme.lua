@@ -20,8 +20,8 @@ end
 -- M.terminal_theme_dark = "Everblush"
 -- M.colorscheme_light = "rose-pine"
 -- M.colorscheme_dark = "rose-pine"
-M.colorscheme_light = "modus"
-M.colorscheme_dark = "modus"
+M.colorscheme_light = "gruvbox-material"
+M.colorscheme_dark = "gruvbox-material"
 M.terminal_theme_light = "Builtin Tango Light"
 M.terminal_theme_dark = "Builtin Tango Dark"
 M.enable_auto_switch = false
