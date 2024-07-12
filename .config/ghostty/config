@@ -74,7 +74,7 @@ window-padding-y = 0
 # given a certain viewport size and grid cell size.
 window-padding-balance = true
 
-theme = Builtin Tango Dark
+theme = Builtin Tango Light
 
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input
@@ -104,6 +104,32 @@ macos-option-as-alt = true
 #   * `false` - Use native macOS fullscreeen
 # 
 macos-non-native-fullscreen = true
+
+# The style of the macOS titlebar. Available values are: "native",
+# "transparent", and "tabs".
+# 
+# The "native" style uses the native macOS titlebar with zero customization.
+# The titlebar will match your window theme (see `window-theme`).
+# 
+# The "transparent" style is the same as "native" but the titlebar will
+# be transparent and allow your window background color to come through.
+# This makes a more seamless window appearance but looks a little less
+# typical for a macOS application and may not work well with all themes.
+# 
+# The "tabs" style is a completely custom titlebar that integrates the
+# tab bar into the titlebar. This titlebar always matches the background
+# color of the terminal. There are some limitations to this style:
+# On macOS 13 and below, saved window state will not restore tabs correctly.
+# macOS 14 does not have this issue and any other macOS version has not
+# been tested.
+# 
+# The default value is "transparent". This is an opinionated choice
+# but its one I think is the most aesthetically pleasing and works in
+# most cases.
+# 
+# Changing this option at runtime only applies to new windows.
+# macos-titlebar-style = transparent
+
 
 # The colorspace to use for the terminal window. The default is `srgb` but
 # this can also be set to `display-p3` to use the Display P3 colorspace.

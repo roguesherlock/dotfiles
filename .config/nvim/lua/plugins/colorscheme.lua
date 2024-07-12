@@ -19,18 +19,18 @@ return {
 	-- 		transparent_background = true,
 	-- 	},
 	-- },
-	{
-		"bluz71/vim-moonfly-colors",
-		name = "moonfly",
-		lazy = true,
-		priority = 1000,
-		config = function()
-			vim.g.moonflyVirtualTextColor = true
-			vim.g.moonflyNormalFloat = true
-			vim.g.moonflyCursorColor = true
-			vim.g.moonflyTransparent = true
-		end,
-	},
+	-- {
+	-- 	"bluz71/vim-moonfly-colors",
+	-- 	name = "moonfly",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.g.moonflyVirtualTextColor = true
+	-- 		vim.g.moonflyNormalFloat = true
+	-- 		vim.g.moonflyCursorColor = true
+	-- 		vim.g.moonflyTransparent = true
+	-- 	end,
+	-- },
 	-- { "kepano/flexoki-neovim", name = "flexoki", lazy = true, priority = 1000 },
 	-- { "uloco/bluloco.nvim", lazy = false, priority = 1000 },
 	-- {
@@ -121,7 +121,7 @@ return {
 		priority = 1000,
 		opts = {
 			-- color_set = "mellifluous",
-			color_set = "mountain",
+			-- color_set = "mountain",
 			-- transparent_background = {
 			-- 	enabled = true,
 			-- 	floating_windows = true,
@@ -137,11 +137,11 @@ return {
 		lazy = true,
 		priority = 1000,
 	},
-	{
-		"dasupradyumna/midnight.nvim",
-		lazy = true,
-		priority = 1000,
-	},
+	-- {
+	-- 	"dasupradyumna/midnight.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- },
 	-- { "nyoom-engineering/oxocarbon.nvim" },
 	{
 		"mcchrish/zenbones.nvim",
@@ -153,7 +153,7 @@ return {
 		dependencies = { "rktjmp/lush.nvim" },
 		config = function()
 			vim.g.zenbones = {
-				-- transparent_background = true,
+				transparent_background = true,
 				lightness = "bright",
 				darkness = "stark",
 			}
@@ -179,50 +179,50 @@ return {
 		lazy = true,
 		priority = 1000, -- make sure to load this before all the other start plugins
 		-- Optional; default configuration will be used if setup isn't called.
-		config = function()
-			require("everforest").setup({
-				-- Your config here
-				-- background = "hard",
-				-- italics = true,
-				transparent_background_level = 2,
-			})
-		end,
+		-- config = function()
+		-- 	require("everforest").setup({
+		-- 		-- Your config here
+		-- 		-- background = "hard",
+		-- 		-- italics = true,
+		-- 		transparent_background_level = 2,
+		-- 	})
+		-- end,
 	},
 
 	-- nightfox
-	{
-		"EdenEast/nightfox.nvim",
-		lazy = true,
-		priority = 1000,
-		config = function()
-			require("nightfox").setup({
-				options = {
-					transparent = true,
-					styles = {
-						comments = "italic",
-						keywords = "bold",
-					},
-				},
-			})
-		end,
-	},
+	-- {
+	-- 	"EdenEast/nightfox.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("nightfox").setup({
+	-- 			options = {
+	-- 				transparent = true,
+	-- 				styles = {
+	-- 					comments = "italic",
+	-- 					keywords = "bold",
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- onedark
 	-- {
 	-- 	"navarasu/onedark.nvim",
 	-- },
-	{
-		"rockyzhang24/arctic.nvim",
-		lazy = true,
-		priority = 1000,
-		branch = "v2",
-		dependencies = { "rktjmp/lush.nvim" },
-	},
-	{
-		"crispybaccoon/aki",
-		lazy = true,
-		priority = 1000,
-	},
+	-- {
+	-- 	"rockyzhang24/arctic.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	branch = "v2",
+	-- 	dependencies = { "rktjmp/lush.nvim" },
+	-- },
+	-- {
+	-- 	"crispybaccoon/aki",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- },
 	{
 		"crispybaccoon/evergarden",
 		lazy = true,
@@ -230,77 +230,77 @@ return {
 	},
 
 	-- github
-	{
-		"projekt0n/github-nvim-theme",
-		lazy = true,
-		priority = 1000,
-		config = function()
-			require("github-theme").setup({
-				-- options = {
-				-- 	transparent = true,
-				-- 	styles = {
-				-- 		comments = "italic",
-				-- 		keywords = "bold",
-				-- 		types = "italic,bold",
-				-- 	},
-				-- },
-			})
-		end,
-	},
+	-- {
+	-- 	"projekt0n/github-nvim-theme",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("github-theme").setup({
+	-- 			-- options = {
+	-- 			-- 	transparent = true,
+	-- 			-- 	styles = {
+	-- 			-- 		comments = "italic",
+	-- 			-- 		keywords = "bold",
+	-- 			-- 		types = "italic,bold",
+	-- 			-- 	},
+	-- 			-- },
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- rose-pine
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		lazy = true,
-		priority = 1000,
-		opts = {
-			styles = {
-				transparency = true,
-			},
-		},
-	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		styles = {
+	-- 			transparency = true,
+	-- 		},
+	-- 	},
+	-- },
 
 	-- kanagawa
-	{
-		"rebelot/kanagawa.nvim",
-		lazy = true,
-		priority = 1000,
-		-- opts = {
-		-- 	-- transparent = true,
-		-- 	overrides = function(colors)
-		-- 		local theme = colors.theme
-		-- 		return {
-		-- 			-- NormalFloat = { bg = "none" },
-		-- 			-- FloatBorder = { bg = "none" },
-		-- 			-- FloatTitle = { bg = "none" },
-		-- 			--
-		-- 			-- -- Save an hlgroup with dark background and dimmed foreground
-		-- 			-- -- so that you can use it where your still want darker windows.
-		-- 			-- -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
-		-- 			-- -- NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-		-- 			-- NormalDark = { fg = "none", bg = theme.ui.bg_m3 },
-		-- 			--
-		-- 			-- -- Popular plugins that open floats will link to NormalFloat by default;
-		-- 			-- -- set their background accordingly if you wish to keep them dark and borderless
-		-- 			-- -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-		-- 			-- -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-		-- 			-- LazyNormal = { bg = "none", fg = theme.ui.fg_dim },
-		-- 			-- MasonNormal = { bg = "none", fg = theme.ui.fg_dim },
-		--
-		-- 			IndentBlanklineChar = { fg = theme.ui.bg_p1 },
-		-- 			IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
-		-- 			IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
-		-- 		}
-		-- 	end,
-		-- },
-	},
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	-- opts = {
+	-- 	-- 	-- transparent = true,
+	-- 	-- 	overrides = function(colors)
+	-- 	-- 		local theme = colors.theme
+	-- 	-- 		return {
+	-- 	-- 			-- NormalFloat = { bg = "none" },
+	-- 	-- 			-- FloatBorder = { bg = "none" },
+	-- 	-- 			-- FloatTitle = { bg = "none" },
+	-- 	-- 			--
+	-- 	-- 			-- -- Save an hlgroup with dark background and dimmed foreground
+	-- 	-- 			-- -- so that you can use it where your still want darker windows.
+	-- 	-- 			-- -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+	-- 	-- 			-- -- NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+	-- 	-- 			-- NormalDark = { fg = "none", bg = theme.ui.bg_m3 },
+	-- 	-- 			--
+	-- 	-- 			-- -- Popular plugins that open floats will link to NormalFloat by default;
+	-- 	-- 			-- -- set their background accordingly if you wish to keep them dark and borderless
+	-- 	-- 			-- -- LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+	-- 	-- 			-- -- MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+	-- 	-- 			-- LazyNormal = { bg = "none", fg = theme.ui.fg_dim },
+	-- 	-- 			-- MasonNormal = { bg = "none", fg = theme.ui.fg_dim },
+	-- 	--
+	-- 	-- 			IndentBlanklineChar = { fg = theme.ui.bg_p1 },
+	-- 	-- 			IndentBlanklineContextChar = { fg = theme.ui.bg_p2 },
+	-- 	-- 			IndentBlanklineContextStart = { sp = theme.ui.bg_p2 },
+	-- 	-- 		}
+	-- 	-- 	end,
+	-- 	-- },
+	-- },
 	{
 		"miikanissi/modus-themes.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {
-			transparent = true,
+			-- transparent = true,
 			-- variant = "tinted",
 			-- variant = "tritanopia",
 			-- variant = "deuteranopia",
