@@ -18,8 +18,10 @@ M.colorscheme_light = "modus"
 M.colorscheme_dark = "modus"
 -- M.colorscheme_light = "gruvbox-material"
 -- M.colorscheme_dark = "gruvbox-material"
-M.terminal_theme_light = "Builtin Tango Light"
-M.terminal_theme_dark = "Builtin Tango Dark"
+M.terminal_theme_light = "Raycast_Light"
+M.terminal_theme_dark = "Raycast_Dark"
+-- M.terminal_theme_light = "zenwritten_light"
+-- M.terminal_theme_dark = "zenwritten_dark"
 M.enable_auto_switch = true
 M.default_light = false
 
