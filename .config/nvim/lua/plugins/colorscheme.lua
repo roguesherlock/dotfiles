@@ -1,4 +1,10 @@
 return {
+	{
+		"aktersnurra/no-clown-fiesta.nvim",
+		name = "gray",
+		lazy = true,
+		priority = 1000,
+	},
 	-- {
 	-- 	"bluz71/vim-nightfly-guicolors",
 	-- 	lazy = true,

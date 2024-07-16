@@ -9,6 +9,8 @@ function M.os_is_dark()
 	)):find("dark") ~= nil
 end
 
+local initialDark = M.os_is_dark()
+
 -- CHANGE COLORSCHME HERE
 -- M.colorscheme_light = "zenbones"
 -- M.colorscheme_dark = "zenbones"
@@ -18,8 +20,8 @@ M.colorscheme_light = "modus"
 M.colorscheme_dark = "modus"
 -- M.colorscheme_light = "gruvbox-material"
 -- M.colorscheme_dark = "gruvbox-material"
-M.terminal_theme_light = "Raycast_Light"
-M.terminal_theme_dark = "Raycast_Dark"
+M.terminal_theme_light = "iceberg-light"
+M.terminal_theme_dark = "Builtin Pastel Dark"
 -- M.terminal_theme_light = "zenwritten_light"
 -- M.terminal_theme_dark = "zenwritten_dark"
 M.enable_auto_switch = true
@@ -57,10 +59,30 @@ function M.get_colorscheme()
 			return M.colorscheme_dark
 		end
 	end
-	if vim.o.background == "light" then
-		return M.colorscheme_light
-	else
+	if M.os_is_dark() then
 		return M.colorscheme_dark
+	else
+		return M.colorscheme_light
+	end
+
+	-- if vim.o.background == "light" then
+	-- 	return M.colorscheme_light
+	-- else
+	-- 	return M.colorscheme_dark
+	-- end
+end
+
+if M.enable_auto_switch then
+	if initialDark then
+		M.initialColorScheme = M.colorscheme_dark
+	else
+		M.initialColorScheme = M.colorscheme_light
+	end
+else
+	if M.default_light then
+		M.initialColorScheme = M.colorscheme_light
+	else
+		M.initialColorScheme = M.colorscheme_dark
 	end
 end
 
