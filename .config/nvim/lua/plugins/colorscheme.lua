@@ -1,4 +1,128 @@
 return {
+	{
+		"miikanissi/modus-themes.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			-- transparent = true,
+			-- variant = "tinted",
+			-- variant = "tritanopia",
+			-- variant = "deuteranopia",
+		},
+	},
+	{
+		"folke/tokyonight.nvim",
+		opts = {
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+		},
+	},
+	{
+		"mcchrish/zenbones.nvim",
+		lazy = false,
+		priority = 1000,
+		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
+		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+		-- In Vim, compat mode is turned on as Lush only works in Neovim.
+		dependencies = { "rktjmp/lush.nvim" },
+		config = function()
+			vim.g.zenbones = {
+				transparent_background = true,
+				lightness = "bright",
+				darkness = "stark",
+			}
+			vim.g.zenwritten = {
+				lightness = "bright",
+				darkness = "warm",
+				lighten_non_text = 25,
+				lighten_comments = 28,
+				-- transparent_background = true,
+			}
+		end,
+	},
+	{
+		"sainnhe/gruvbox-material",
+		name = "gruvbox-material",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.g.gruvbox_material_better_performance = 1
+			-- Fonts
+			vim.g.gruvbox_material_disable_italic_comment = 0
+			vim.g.gruvbox_material_enable_italic = 0
+			vim.g.gruvbox_material_enable_bold = 0
+			vim.g.gruvbox_material_transparent_background = 1
+			-- Themes
+			vim.g.gruvbox_material_foreground = "mix"
+			vim.g.gruvbox_material_background = "hard"
+			vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
+			vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
+
+			-- vim.g.gruvbox_material_diagnostic_virtual_text = "highlighted"
+			-- vim.g.gruvbox_material_diagnostic_line_highlight = 1
+			vim.g.gruvbox_material_current_word = "grey background"
+
+			local configuration = vim.fn["gruvbox_material#get_configuration"]()
+			local palette = vim.fn["gruvbox_material#get_palette"](
+				configuration.background,
+				configuration.foreground,
+				configuration.colors_override
+			)
+
+			-- vim.cmd.colorscheme("gruvbox-material")
+
+			local highlights_groups = {
+				FoldColumn = { bg = "none" },
+				SignColumn = { bg = "none" },
+				Normal = { bg = "none" },
+				NormalNC = { bg = "none" },
+				NormalFloat = { bg = "none" },
+				FloatBorder = { bg = "none" },
+				FloatTitle = { bg = "none", fg = palette.orange[1] },
+				TelescopeBorder = { bg = "none" },
+				TelescopeNormal = { fg = "none" },
+				TelescopePromptNormal = { bg = "none" },
+				TelescopeResultsNormal = { bg = "none" },
+				TelescopeSelection = { bg = palette.bg3[1] },
+				Visual = { bg = palette.bg_visual_red[1] },
+				Cursor = { bg = palette.bg_red[1], fg = palette.bg_dim[1] },
+				ColorColumn = { bg = palette.bg_visual_blue[1] },
+				CursorLine = { bg = palette.bg3[1], blend = 25 },
+				GitSignsAdd = { fg = palette.green[1], bg = "none" },
+				GitSignsChange = { fg = palette.yellow[1], bg = "none" },
+				GitSignsDelete = { fg = palette.red[1], bg = "none" },
+			}
+
+			for group, styles in pairs(highlights_groups) do
+				vim.api.nvim_set_hl(0, group, styles)
+			end
+		end,
+	},
+	{
+		"neanias/everforest-nvim",
+		lazy = true,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		-- Optional; default configuration will be used if setup isn't called.
+		config = function()
+			require("everforest").setup({
+				background = "hard",
+				float_style = "dark",
+				transparent_background_level = 2,
+			})
+		end,
+	},
+	{
+		"crispybaccoon/evergarden",
+		lazy = true,
+		priority = 1000,
+		opts = {
+			transparent_background = true,
+			contrast_dark = "medium", -- 'hard'|'medium'|'soft'
+		},
+	},
 	-- {
 	-- 	"aktersnurra/no-clown-fiesta.nvim",
 	-- 	name = "gray",
@@ -76,64 +200,6 @@ return {
 	-- 	lazy = true,
 	-- 	priority = 1000,
 	-- },
-	{
-		"sainnhe/gruvbox-material",
-		name = "gruvbox-material",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.g.gruvbox_material_better_performance = 1
-			-- Fonts
-			vim.g.gruvbox_material_disable_italic_comment = 0
-			vim.g.gruvbox_material_enable_italic = 0
-			vim.g.gruvbox_material_enable_bold = 0
-			vim.g.gruvbox_material_transparent_background = 1
-			-- Themes
-			vim.g.gruvbox_material_foreground = "mix"
-			vim.g.gruvbox_material_background = "hard"
-			vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
-			vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
-
-			-- vim.g.gruvbox_material_diagnostic_virtual_text = "highlighted"
-			-- vim.g.gruvbox_material_diagnostic_line_highlight = 1
-			vim.g.gruvbox_material_current_word = "grey background"
-
-			local configuration = vim.fn["gruvbox_material#get_configuration"]()
-			local palette = vim.fn["gruvbox_material#get_palette"](
-				configuration.background,
-				configuration.foreground,
-				configuration.colors_override
-			)
-
-			-- vim.cmd.colorscheme("gruvbox-material")
-
-			local highlights_groups = {
-				FoldColumn = { bg = "none" },
-				SignColumn = { bg = "none" },
-				Normal = { bg = "none" },
-				NormalNC = { bg = "none" },
-				NormalFloat = { bg = "none" },
-				FloatBorder = { bg = "none" },
-				FloatTitle = { bg = "none", fg = palette.orange[1] },
-				TelescopeBorder = { bg = "none" },
-				TelescopeNormal = { fg = "none" },
-				TelescopePromptNormal = { bg = "none" },
-				TelescopeResultsNormal = { bg = "none" },
-				TelescopeSelection = { bg = palette.bg3[1] },
-				Visual = { bg = palette.bg_visual_red[1] },
-				Cursor = { bg = palette.bg_red[1], fg = palette.bg_dim[1] },
-				ColorColumn = { bg = palette.bg_visual_blue[1] },
-				CursorLine = { bg = palette.bg3[1], blend = 25 },
-				GitSignsAdd = { fg = palette.green[1], bg = "none" },
-				GitSignsChange = { fg = palette.yellow[1], bg = "none" },
-				GitSignsDelete = { fg = palette.red[1], bg = "none" },
-			}
-
-			for group, styles in pairs(highlights_groups) do
-				vim.api.nvim_set_hl(0, group, styles)
-			end
-		end,
-	},
 
 	-- {
 	-- 	"ramojus/mellifluous.nvim",
@@ -163,29 +229,6 @@ return {
 	-- 	priority = 1000,
 	-- },
 	-- { "nyoom-engineering/oxocarbon.nvim" },
-	{
-		"mcchrish/zenbones.nvim",
-		lazy = false,
-		priority = 1000,
-		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
-		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-		-- In Vim, compat mode is turned on as Lush only works in Neovim.
-		dependencies = { "rktjmp/lush.nvim" },
-		config = function()
-			vim.g.zenbones = {
-				transparent_background = true,
-				lightness = "bright",
-				darkness = "stark",
-			}
-			vim.g.zenwritten = {
-				lightness = "bright",
-				darkness = "warm",
-				lighten_non_text = 25,
-				lighten_comments = 28,
-				-- transparent_background = true,
-			}
-		end,
-	},
 	--
 	-- everforest
 	-- {
@@ -194,20 +237,6 @@ return {
 	-- 		vim.g.everforest_transparent_background = 2
 	-- 	end,
 	-- },
-	{
-		"neanias/everforest-nvim",
-		lazy = true,
-		priority = 1000, -- make sure to load this before all the other start plugins
-		-- Optional; default configuration will be used if setup isn't called.
-		config = function()
-			require("everforest").setup({
-				background = "hard",
-				float_style = "dark",
-				transparent_background_level = 2,
-			})
-		end,
-	},
-
 	-- nightfox
 	-- {
 	-- 	"EdenEast/nightfox.nvim",
@@ -242,16 +271,6 @@ return {
 	-- 	lazy = true,
 	-- 	priority = 1000,
 	-- },
-	{
-		"crispybaccoon/evergarden",
-		lazy = true,
-		priority = 1000,
-		opts = {
-			transparent_background = true,
-			contrast_dark = "medium", -- 'hard'|'medium'|'soft'
-		},
-	},
-
 	-- github
 	-- {
 	-- 	"projekt0n/github-nvim-theme",
@@ -318,27 +337,6 @@ return {
 	-- 	-- 	end,
 	-- 	-- },
 	-- },
-	{
-		"miikanissi/modus-themes.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			-- transparent = true,
-			-- variant = "tinted",
-			-- variant = "tritanopia",
-			-- variant = "deuteranopia",
-		},
-	},
-	{
-		"folke/tokyonight.nvim",
-		opts = {
-			transparent = true,
-			styles = {
-				sidebars = "transparent",
-				floats = "transparent",
-			},
-		},
-	},
 	-- {
 	-- 	"craftzdog/solarized-osaka.nvim",
 	-- 	branch = "osaka",
