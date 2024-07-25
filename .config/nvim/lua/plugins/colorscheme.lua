@@ -1,10 +1,10 @@
 return {
-	{
-		"aktersnurra/no-clown-fiesta.nvim",
-		name = "gray",
-		lazy = true,
-		priority = 1000,
-	},
+	-- {
+	-- 	"aktersnurra/no-clown-fiesta.nvim",
+	-- 	name = "gray",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- },
 	-- {
 	-- 	"0xstepit/flow.nvim",
 	-- 	lazy = false,
@@ -79,7 +79,7 @@ return {
 	{
 		"sainnhe/gruvbox-material",
 		name = "gruvbox-material",
-		lazy = true,
+		lazy = false,
 		priority = 1000,
 		config = function()
 			vim.g.gruvbox_material_better_performance = 1
@@ -135,28 +135,28 @@ return {
 		end,
 	},
 
-	{
-		"ramojus/mellifluous.nvim",
-		lazy = true,
-		priority = 1000,
-		opts = {
-			-- color_set = "mellifluous",
-			-- color_set = "mountain",
-			-- transparent_background = {
-			-- 	enabled = true,
-			-- 	floating_windows = true,
-			-- 	telescope = true,
-			-- 	file_tree = true,
-			-- 	cursor_line = true,
-			-- 	status_line = false,
-			-- },
-		},
-	},
-	{
-		"savq/melange-nvim",
-		lazy = true,
-		priority = 1000,
-	},
+	-- {
+	-- 	"ramojus/mellifluous.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		-- color_set = "mellifluous",
+	-- 		-- color_set = "mountain",
+	-- 		-- transparent_background = {
+	-- 		-- 	enabled = true,
+	-- 		-- 	floating_windows = true,
+	-- 		-- 	telescope = true,
+	-- 		-- 	file_tree = true,
+	-- 		-- 	cursor_line = true,
+	-- 		-- 	status_line = false,
+	-- 		-- },
+	-- 	},
+	-- },
+	-- {
+	-- 	"savq/melange-nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- },
 	-- {
 	-- 	"dasupradyumna/midnight.nvim",
 	-- 	lazy = true,
@@ -199,14 +199,13 @@ return {
 		lazy = true,
 		priority = 1000, -- make sure to load this before all the other start plugins
 		-- Optional; default configuration will be used if setup isn't called.
-		-- config = function()
-		-- 	require("everforest").setup({
-		-- 		-- Your config here
-		-- 		-- background = "hard",
-		-- 		-- italics = true,
-		-- 		transparent_background_level = 2,
-		-- 	})
-		-- end,
+		config = function()
+			require("everforest").setup({
+				background = "hard",
+				float_style = "dark",
+				transparent_background_level = 2,
+			})
+		end,
 	},
 
 	-- nightfox
@@ -247,6 +246,10 @@ return {
 		"crispybaccoon/evergarden",
 		lazy = true,
 		priority = 1000,
+		opts = {
+			transparent_background = true,
+			contrast_dark = "medium", -- 'hard'|'medium'|'soft'
+		},
 	},
 
 	-- github
