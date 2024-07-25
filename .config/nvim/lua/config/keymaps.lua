@@ -49,13 +49,14 @@ nmap("n", "nzzzv", { desc = "Move to next search result and keep window centered
 nmap("N", "Nzzzv", { desc = "Move to previous search result and keep window centered" })
 
 -- Useful mappings for managing tabs
-nmap("<leader>tn", ":tabnew<cr>", { desc = "New tab" })
-nmap("<leader>to", ":tabonly<cr>", { desc = "Close all other tabs" })
-nmap("<leader>tc", ":tabclose<cr>", { desc = "Close tab" })
-nmap("<leader>tm", ":tabmove<cr>", { desc = "Move tab" })
-nmap("<leader>t<Leader>", ":tabnext #<cr>", { desc = "Switch to last tab" })
-nmap("<leader>tl", ":tabnext<cr>", { desc = "Switch to next tab" })
-nmap("<leader>th", ":tabprev<cr>", { desc = "Switch to previous tab" })
+-- lazy vim has tabs mapping with <leader><tab>
+-- nmap("<leader>tn", ":tabnew<cr>", { desc = "New tab" })
+-- nmap("<leader>to", ":tabonly<cr>", { desc = "Close all other tabs" })
+-- nmap("<leader>tc", ":tabclose<cr>", { desc = "Close tab" })
+-- nmap("<leader>tm", ":tabmove<cr>", { desc = "Move tab" })
+-- nmap("<leader>t<Leader>", ":tabnext #<cr>", { desc = "Switch to last tab" })
+-- nmap("<leader>tl", ":tabnext<cr>", { desc = "Switch to next tab" })
+-- nmap("<leader>th", ":tabprev<cr>", { desc = "Switch to previous tab" })
 -- nmap("<Leader>1", ":tabnext 1<cr>", { desc = "Switch to tab 1" })
 -- nmap("<Leader>2", ":tabnext 2<cr>", { desc = "Switch to tab 2" })
 -- nmap("<Leader>3", ":tabnext 3<cr>", { desc = "Switch to tab 3" })
@@ -99,8 +100,9 @@ end, { desc = "Toggle theme" })
 
 -- Insert --
 -- Press jk fast to enter
-imap("jk", "<ESC>", { desc = "Exit insert mode" })
-imap("fd", "<ESC>", { desc = "Exit insert mode" })
+-- I just use escape now (which is mapped to caps lock key)
+-- imap("jk", "<ESC>", { desc = "Exit insert mode" })
+-- imap("fd", "<ESC>", { desc = "Exit insert mode" })
 
 -- Visual --
 
@@ -116,7 +118,7 @@ imap("fd", "<ESC>", { desc = "Exit insert mode" })
 -- tmap("<Esc>", "<C-\\><C-n>")
 
 -- Trouble --
-nmap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Toggle trouble quickfix list" })
+-- nmap("<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Toggle trouble quickfix list" })
 
 -- Fold --
 nmap("<space>", "za", { desc = "Toggle fold" })
