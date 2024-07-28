@@ -110,7 +110,7 @@ return {
 			require("everforest").setup({
 				background = "hard",
 				float_style = "dark",
-				transparent_background_level = 2,
+				-- transparent_background_level = 2,
 			})
 		end,
 	},
@@ -119,9 +119,14 @@ return {
 		lazy = true,
 		priority = 1000,
 		opts = {
-			transparent_background = true,
-			contrast_dark = "medium", -- 'hard'|'medium'|'soft'
+			-- transparent_background = true,
+			contrast_dark = "hard", -- 'hard'|'medium'|'soft'
 		},
+	},
+	{
+		"marko-cerovac/material.nvim",
+		priority = 1000,
+		opts = {},
 	},
 	-- {
 	-- 	"vague2k/vague.nvim",

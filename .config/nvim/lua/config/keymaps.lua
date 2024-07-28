@@ -81,6 +81,21 @@ nmap("<leader>tt", function()
 	end
 end, { desc = "Toggle theme" })
 
+nmap("<leader>tg", function()
+	if string.find(vim.g.colors_name, "gruvbox") then
+		require("user.colorscheme").set_from_os()
+	else
+		vim.cmd.colorscheme("gruvbox-material")
+	end
+end, { desc = "Toggle gruvbox-material colorscheme" })
+
+nmap("<leader>tm", function()
+	if string.find(vim.g.colors_name, "modus") then
+		require("user.colorscheme").set_from_os()
+	else
+		vim.cmd.colorscheme("modus")
+	end
+end, { desc = "Toggle modus colorscheme" })
 -- Telescope --
 -- nmap(
 -- 	"<leader>j",
