@@ -14,7 +14,7 @@ $line_break\
 $character"""
 
 add_newline = true
-palette = 'gruvbox_material_dark'
+palette = 'modus_dark'
 
 [fill]
 symbol = ' '
@@ -96,6 +96,19 @@ symbol = ' '
 
 [package]
 symbol = '󰏗 '
+
+[palettes.modus_dark]
+dark_blue = '#1640b0'
+blue = '#2fafff'
+teal = '#00d3d0'
+red = '#ff5f59'
+orange = '#e78a4e'
+green = '#44bc44'
+yellow = '#d0bc00'
+purple = '#feacd0'
+gray = '#db7b5f'
+black = '#0a0a0a'
+white = '#2f3f83'
 
 [palettes.gruvbox_material_dark]
 dark_blue = '#5E81AC'

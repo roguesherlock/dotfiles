@@ -124,6 +124,16 @@ return {
 		},
 	},
 	-- {
+	-- 	"vague2k/vague.nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("vague").setup({
+	-- 			-- optional configuration here
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
 	-- 	"aktersnurra/no-clown-fiesta.nvim",
 	-- 	name = "gray",
 	-- 	lazy = true,
