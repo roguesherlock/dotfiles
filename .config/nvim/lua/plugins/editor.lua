@@ -1,6 +1,30 @@
 return {
 	{
 		"chrisgrieser/nvim-recorder",
+		keys = {
+			-- these must match the keys in the mapping config below
+			{ "q", desc = " Start Recording" },
+			{ "Q", desc = " Play Recording" },
+		},
+		opts = {
+			mapping = {
+				startStopRecording = "q",
+				playMacro = "Q",
+			},
+		},
+	},
+	{
+		"leath-dub/snipe.nvim",
+		keys = {
+			{
+				"gb",
+				function()
+					require("snipe").open_buffer_menu()
+				end,
+				desc = "Open Snipe buffer menu",
+			},
+		},
+		opts = {},
 	},
 	{
 		"folke/zen-mode.nvim",
