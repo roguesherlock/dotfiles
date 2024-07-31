@@ -8,15 +8,13 @@ return {
 		enabled = false,
 	},
 	{
-		{
-			"nvim-lspconfig",
-			opts = {
-				inlay_hints = { enabled = false },
-			},
+		"nvim-lspconfig",
+		opts = {
+			inlay_hints = { enabled = false },
 		},
 	},
-	-- {
-	-- 	"folke/persistence.nvim",
-	-- 	enabled = false,
-	-- },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		enabled = false,
+	},
 }

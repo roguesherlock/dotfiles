@@ -1,3 +1,0 @@
-return {
-	"chrisgrieser/nvim-recorder",
-}
