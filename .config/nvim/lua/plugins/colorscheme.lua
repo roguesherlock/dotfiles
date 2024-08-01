@@ -30,7 +30,7 @@ return {
 		dependencies = { "rktjmp/lush.nvim" },
 		config = function()
 			vim.g.zenbones = {
-				transparent_background = true,
+				-- transparent_background = true,
 				lightness = "bright",
 				darkness = "stark",
 			}

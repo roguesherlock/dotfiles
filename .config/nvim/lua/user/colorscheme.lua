@@ -13,8 +13,10 @@ local initialDark = M.os_is_dark()
 -- CHANGE COLORSCHME HERE
 M.colorscheme_light = "modus"
 M.colorscheme_dark = "modus"
-M.terminal_theme_light = "iceberg-light"
-M.terminal_theme_dark = "Builtin Pastel Dark"
+M.ghostty_theme_light = "iceberg-light"
+M.ghostty_theme_dark = "Builtin Pastel Dark"
+M.kitty_theme_light = "modus_light"
+M.kitty_theme_dark = "modus_dark"
 M.enable_auto_switch = true
 M.default_light = false
 M.initialColorScheme = nil
@@ -90,11 +92,11 @@ function M.init()
 		callback = function()
 			if vim.o.background == "light" then
 				if term == "xterm-kitty" then
-					vim.fn.system("kitty +kitten themes " .. M.terminal_theme_light)
+					vim.fn.system("kitty +kitten themes " .. M.kitty_theme_light)
 				elseif term == "xterm-ghostty" then
 					vim.fn.system(
 						"sed -i'.bak' 's/theme = .*/theme = "
-							.. M.terminal_theme_light
+							.. M.ghostty_theme_light
 							.. "/' (readlink ~/.config/ghostty/config)"
 					)
 				end
@@ -105,11 +107,11 @@ function M.init()
 				-- )
 			elseif vim.o.background == "dark" then
 				if term == "xterm-kitty" then
-					vim.fn.system("kitty +kitten themes " .. M.terminal_theme_dark)
+					vim.fn.system("kitty +kitten themes " .. M.kitty_theme_dark)
 				elseif term == "xterm-ghostty" then
 					vim.fn.system(
 						"sed -i'.bak' 's/theme = .*/theme = "
-							.. M.terminal_theme_dark
+							.. M.ghostty_theme_dark
 							.. "/' (readlink ~/.config/ghostty/config)"
 					)
 				end
@@ -120,11 +122,11 @@ function M.init()
 				-- )
 			else
 				if term == "xterm-kitty" then
-					vim.fn.system("kitty +kitten themes " .. M.terminal_theme_dark)
+					vim.fn.system("kitty +kitten themes " .. M.kitty_theme_dark)
 				elseif term == "xterm-ghostty" then
 					vim.fn.system(
 						"sed -i'.bak' 's/theme = .*/theme = "
-							.. M.terminal_theme_dark
+							.. M.ghostty_theme_dark
 							.. "/' (readlink ~/.config/ghostty/config)"
 					)
 				end
