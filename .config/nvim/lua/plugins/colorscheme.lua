@@ -22,7 +22,7 @@ return {
 	-- },
 	{
 		"mcchrish/zenbones.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		-- Optionally install Lush. Allows for more configuration or extending the colorscheme
 		-- If you don't want to install lush, make sure to set g:zenbones_compat = 1
@@ -46,7 +46,7 @@ return {
 	{
 		"sainnhe/gruvbox-material",
 		name = "gruvbox-material",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			vim.g.gruvbox_material_better_performance = 1
@@ -106,23 +106,22 @@ return {
 		lazy = true,
 		priority = 1000, -- make sure to load this before all the other start plugins
 		-- Optional; default configuration will be used if setup isn't called.
-		config = function()
-			require("everforest").setup({
-				background = "hard",
-				float_style = "dark",
-				-- transparent_background_level = 2,
-			})
-		end,
-	},
-	{
-		"crispybaccoon/evergarden",
-		lazy = true,
-		priority = 1000,
+		config = true,
 		opts = {
-			-- transparent_background = true,
-			contrast_dark = "hard", -- 'hard'|'medium'|'soft'
+			background = "hard",
+			float_style = "dark",
+			-- transparent_background_level = 2,
 		},
 	},
+	-- {
+	-- 	"crispybaccoon/evergarden",
+	-- 	lazy = true,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		-- transparent_background = true,
+	-- 		contrast_dark = "hard", -- 'hard'|'medium'|'soft'
+	-- 	},
+	-- },
 	-- {
 	-- 	"marko-cerovac/material.nvim",
 	-- 	priority = 1000,

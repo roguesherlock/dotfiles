@@ -47,9 +47,9 @@ require("lazy").setup({
 	},
 	install = {
 		colorscheme = {
-			"mcchrish/zenbones.nvim",
-			"rose-pine/neovim",
-			"savq/melange-nvim",
+			-- "mcchrish/zenbones.nvim",
+			-- "rose-pine/neovim",
+			-- "savq/melange-nvim",
 			"miikanissi/modus-themes.nvim",
 			-- "EdenEast/nightfox.nvim",
 			"sainnhe/gruvbox-material",

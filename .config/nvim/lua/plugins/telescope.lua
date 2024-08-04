@@ -1,31 +1,9 @@
 local actions = require("telescope.actions")
-local transform_mod = require("telescope.actions.mt").transform_mod
-
-local extraActions = transform_mod({
-	open_qflist = function()
-		require("trouble").toggle("quickfix")
-	end,
-})
 
 return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			-- lazy provides harpoon now
-			-- {
-			-- 	"ThePrimeagen/harpoon",
-			-- 	config = function()
-			-- 		require("telescope").load_extension("harpoon")
-			-- 	end,
-			-- },
-			-- already included by lazy
-			-- {
-			-- 	"nvim-telescope/telescope-fzf-native.nvim",
-			-- 	build = "make",
-			-- 	config = function()
-			-- 		require("telescope").load_extension("fzf")
-			-- 	end,
-			-- },
 			{
 				"axkirillov/hbac.nvim",
 				config = function()
@@ -81,8 +59,6 @@ return {
 						["<D-j>"] = actions.move_selection_next,
 						["<D-k>"] = actions.move_selection_previous,
 						["<ESC>"] = actions.close,
-						["<C-q>"] = actions.send_to_qflist + extraActions.open_qflist,
-						["<M-q>"] = actions.send_selected_to_qflist + extraActions.open_qflist,
 					},
 				},
 			},
