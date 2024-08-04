@@ -16,9 +16,9 @@ My dotfiles for `macOS Ventura 13.5.2 (22G91)`
 
 ## Screenshot
 
-![screenshot 1](./screenshots/2024-08-04/Screenshot 2024-08-04 at 23.34.00.png)
+![screenshot 1](./screenshots/2024-08-04/screenshot-1.png)
 
-![screenshot 2](./screenshots/2024-08-04/Screenshot 2024-08-04 at 23.32.44.png)
+![screenshot 2](./screenshots/2024-08-04/screenshot-2.png)
 
 ## Note
 
