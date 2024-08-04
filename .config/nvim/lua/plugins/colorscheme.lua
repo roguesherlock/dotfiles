@@ -10,16 +10,16 @@ return {
 			-- variant = "deuteranopia",
 		},
 	},
-	{
-		"folke/tokyonight.nvim",
-		opts = {
-			transparent = true,
-			styles = {
-				sidebars = "transparent",
-				floats = "transparent",
-			},
-		},
-	},
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	opts = {
+	-- 		-- transparent = true,
+	-- 		-- styles = {
+	-- 		-- 	sidebars = "transparent",
+	-- 		-- 	floats = "transparent",
+	-- 		-- },
+	-- 	},
+	-- },
 	{
 		"mcchrish/zenbones.nvim",
 		lazy = false,
@@ -123,11 +123,23 @@ return {
 			contrast_dark = "hard", -- 'hard'|'medium'|'soft'
 		},
 	},
-	{
-		"marko-cerovac/material.nvim",
-		priority = 1000,
-		opts = {},
-	},
+	-- {
+	-- 	"marko-cerovac/material.nvim",
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- },
+	-- {
+	-- 	"nyoom-engineering/oxocarbon.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- },
+	-- {
+	-- 	"aliqyan-21/darkvoid.nvim",
+	-- 	opts = {
+	-- 		transparent = true, -- set true for transparent
+	-- 		glow = true, -- set true for glow effect
+	-- 	},
+	-- },
 	-- {
 	-- 	"vague2k/vague.nvim",
 	-- 	lazy = true,
@@ -243,7 +255,6 @@ return {
 	-- 	lazy = true,
 	-- 	priority = 1000,
 	-- },
-	-- { "nyoom-engineering/oxocarbon.nvim" },
 	--
 	-- everforest
 	-- {

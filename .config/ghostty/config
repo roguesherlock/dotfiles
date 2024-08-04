@@ -74,7 +74,7 @@ window-padding-y = 0
 # given a certain viewport size and grid cell size.
 window-padding-balance = true
 
-theme = Builtin Pastel Dark
+theme = Builtin Light
 
 # If `true`, the *Option* key will be treated as *Alt*. This makes terminal
 # sequences expecting *Alt* to work properly, but will break Unicode input
@@ -128,7 +128,7 @@ macos-non-native-fullscreen = true
 # most cases.
 # 
 # Changing this option at runtime only applies to new windows.
-# macos-titlebar-style = transparent
+# macos-titlebar-style = native
 
 
 # The colorspace to use for the terminal window. The default is `srgb` but
@@ -137,7 +137,7 @@ macos-non-native-fullscreen = true
 # Changing this value at runtime will only affect new windows.
 # 
 # This setting is only supported on macOS.
-window-colorspace = display-p3
+# window-colorspace = display-p3
 
 mouse-hide-while-typing = false
 
@@ -147,7 +147,7 @@ mouse-hide-while-typing = false
 # 
 # Changing this value at runtime (and reloading config) will only affect new
 # windows, tabs, and splits.
-background-opacity = 0.85
+# background-opacity = 0.85
 
 # A positive value enables blurring of the background when background-opacity
 # is less than 1. The value is the blur radius to apply. A value of 20
@@ -155,7 +155,7 @@ background-opacity = 0.85
 # rendering issues as well as performance issues.
 # 
 # This is only supported on macOS.
-background-blur-radius = 20
+# background-blur-radius = 20
 
 #
 # Melange Dark theme

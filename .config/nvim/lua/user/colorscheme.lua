@@ -13,8 +13,8 @@ local initialDark = M.os_is_dark()
 -- CHANGE COLORSCHME HERE
 M.colorscheme_light = "modus"
 M.colorscheme_dark = "modus"
-M.ghostty_theme_light = "iceberg-light"
-M.ghostty_theme_dark = "Builtin Pastel Dark"
+M.ghostty_theme_light = "Builtin Light"
+M.ghostty_theme_dark = "Builtin  Dark"
 M.kitty_theme_light = "modus_light"
 M.kitty_theme_dark = "modus_dark"
 M.enable_auto_switch = true
