@@ -2,11 +2,11 @@
 # font-family = "Input Mono"
 # font-family = "Input Mono Narrow"
 # font-family = "CommitMono"
-font-family = "Geist Mono"
-font-variation = wght=450
+# font-family = "Geist Mono"
+# font-variation = wght=450
 # font-family = "Berkeley Mono Trial"
 
-font-size = 14
+# font-size = 14
 
 # All of the configurations behavior adjust various metrics determined by the
 # font. The values can be integers (1, -1, etc.) or a percentage (20%, -15%,
@@ -35,7 +35,7 @@ font-size = 14
 #     that things like status lines continue to look aligned.
 adjust-cell-width = 
 
-adjust-cell-height = 20%
+# adjust-cell-height = 20%
 adjust-font-baseline = 
 adjust-underline-position = 
 adjust-underline-thickness = 
@@ -139,7 +139,7 @@ macos-non-native-fullscreen = true
 # This setting is only supported on macOS.
 # window-colorspace = display-p3
 
-mouse-hide-while-typing = false
+# mouse-hide-while-typing = false
 
 # The opacity level (opposite of transparency) of the background. A value of
 # 1 is fully opaque and a value of 0 is fully transparent. A value less than 0
@@ -157,61 +157,26 @@ mouse-hide-while-typing = false
 # This is only supported on macOS.
 # background-blur-radius = 20
 
-#
-# Melange Dark theme
-#
-# Begin
-#
-# palette = 0=#34302C
-# palette = 1=#BD8183
-# palette = 2=#78997A
-# palette = 3=#E49B5D
-# palette = 4=#7F91B2
-# palette = 5=#B380B0
-# palette = 6=#7B9695
-# palette = 7=#C1A78E
-# palette = 8=#867462
-# palette = 9=#D47766
-# palette = 10=#85B695
-# palette = 11=#EBC06D
-# palette = 12=#A3A9CE
-# palette = 13=#CF9BC2
-# palette = 14=#89B3B6
-# palette = 15=#ECE1D7
-# background = 292522
-# foreground = ECE1D7
-# selection-background = 403A36
-# selection-foreground = ECE1D7
-#
+# modus_dark
+palette = 0=#000000
+palette = 1=#ff5f59
+palette = 2=#44bc44
+palette = 3=#d0bc00
+palette = 4=#2fafff
+palette = 5=#feacd0
+palette = 6=#00d3d0
+palette = 7=#ffffff
+palette = 8=#1e1e1e
+palette = 9=#ff5f5f
+palette = 10=#44df44
+palette = 11=#efef00
+palette = 12=#338fff
+palette = 13=#ff66ff
+palette = 14=#00eff0
+palette = 15=#989898
+background = #000000
+foreground = #ffffff
+cursor-color= #ffffff
+selection-background = #7030af
+selection-foreground = #ffffff
 # End
-#
-#
-#
-# Everforest Dark theme
-#
-# Begin
-#
-# palette = 0=#34302C
-# palette = 1=#BD8183
-# palette = 2=#78997A
-# palette = 3=#E49B5D
-# palette = 4=#7F91B2
-# palette = 5=#B380B0
-# palette = 6=#7B9695
-# palette = 7=#C1A78E
-# palette = 8=#867462
-# palette = 9=#D47766
-# palette = 10=#85B695
-# palette = 11=#EBC06D
-# palette = 12=#A3A9CE
-# palette = 13=#CF9BC2
-# palette = 14=#89B3B6
-# palette = 15=#ECE1D7
-# background = 292522
-# foreground = ECE1D7
-# selection-background = 403A36
-# selection-foreground = ECE1D7
-#
-# End
-#
-

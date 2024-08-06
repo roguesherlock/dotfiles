@@ -119,8 +119,7 @@ install ~/Developer/dotfiles/.config/mise ~/.config/mise
 install ~/Developer/dotfiles/.config/starship.toml ~/.config/starship.toml
 
 #ghostty
-mkdir -p ~/.config/ghostty/
-install ~/Developer/dotfiles/.config/ghostty/config ~/.config/ghostty/config
+install ~/Developer/dotfiles/.config/ghostty ~/.config/ghostty
 
 # zellij
 install ~/Developer/dotfiles/.config/zellij ~/.config/zellij
