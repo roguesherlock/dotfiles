@@ -4,6 +4,9 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
+			on_highlights = function(h, c)
+				h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
+			end,
 			-- transparent = true,
 			-- variant = "tinted",
 			-- variant = "tritanopia",
