@@ -1,163 +1,18 @@
-# font-family = "IBM Plex Mono"
-# font-family = "Input Mono"
-# font-family = "Input Mono Narrow"
-# font-family = "CommitMono"
 font-family = "Geist Mono"
 font-variation = wght=500
 font-variation-bold = wght=800
 font-variation-italic = wght=500
 font-variation-bold-italic = wght=800
-# font-family = "Berkeley Mono Trial"
-
 # font-size = 14
-
-# All of the configurations behavior adjust various metrics determined by the
-# font. The values can be integers (1, -1, etc.) or a percentage (20%, -15%,
-# etc.). In each case, the values represent the amount to change the original
-# value.
-# 
-# For example, a value of `1` increases the value by 1; it does not set it to
-# literally 1. A value of `20%` increases the value by 20%. And so on.
-# 
-# There is little to no validation on these values so the wrong values (i.e.
-# `-100%`) can cause the terminal to be unusable. Use with caution and reason.
-# 
-# Some values are clamped to minimum or maximum values. This can make it
-# appear that certain values are ignored. For example, the underline position
-# is clamped to the height of a cell. If you set the underline position so
-# high that it extends beyond the bottom of the cell size, it will be clamped
-# to the bottom of the cell.
-# 
-# `adjust-cell-height` has some additional behaviors to describe:
-# 
-#   * The font will be centered vertically in the cell.
-# 
-#   * The cursor will remain the same size as the font.
-# 
-#   * Powerline glyphs will be adjusted along with the cell height so
-#     that things like status lines continue to look aligned.
-adjust-cell-width = 
-
 adjust-cell-height = 20%
-adjust-font-baseline = 
-adjust-underline-position = 
-adjust-underline-thickness = 
-adjust-strikethrough-position = 
-adjust-strikethrough-thickness = 
-adjust-cursor-thickness = 
-
-
-
-# Window padding. This applies padding between the terminal cells and the
-# window border. The `x` option applies to the left and right padding and the
-# `y` option is top and bottom. The value is in points, meaning that it will
-# be scaled appropriately for screen DPI.
-# 
-# If this value is set too large, the screen will render nothing, because the
-# grid will be completely squished by the padding. It is up to you as the user
-# to pick a reasonable value. If you pick an unreasonable value, a warning
-# will appear in the logs.
-# 
-# Changing these values will only apply after restart.
 window-padding-x = 0
-
 window-padding-y = 0
-
-# The viewport dimensions are usually not perfectly divisible by the cell
-# size. In this case, some extra padding on the end of a column and the bottom
-# of the final row may exist. If this is `true`, then this extra padding
-# is automatically balanced between all four edges to minimize imbalance on
-# one side. If this is `false`, the top left grid cell will always hug the
-# edge with zero padding other than what may be specified with the other
-# `window-padding` options.
-# 
-# If other `window-padding` fields are set and this is `true`, this will still
-# apply. The other padding is applied first and may affect how many grid cells
-# actually exist, and this is applied last in order to balance the padding
-# given a certain viewport size and grid cell size.
 window-padding-balance = true
-
 theme = Builtin Pastel Dark
-
-# If `true`, the *Option* key will be treated as *Alt*. This makes terminal
-# sequences expecting *Alt* to work properly, but will break Unicode input
-# sequences on macOS if you use them via the *Alt* key. You may set this to
-# `false` to restore the macOS *Alt* key unicode sequences but this will break
-# terminal sequences expecting *Alt* to work.
-# 
-# Note that if an *Option*-sequence doesn't produce a printable character, it
-# will be treated as *Alt* regardless of this setting. (i.e. `alt+ctrl+a`).
-# 
-# This does not work with GLFW builds.
 macos-option-as-alt = true
-
-
-# If anything other than false, fullscreen mode on macOS will not use the
-# native fullscreen, but make the window fullscreen without animations and
-# using a new space. It's faster than the native fullscreen mode since it
-# doesn't use animations.
-# 
-# Warning: tabs do not work with a non-native fullscreen window. This
-# can be fixed but is looking for contributors to help. See issue #392.
-# 
-# Allowable values are:
-# 
-#   * `visible-menu` - Use non-native macOS fullscreen, keep the menu bar visible
-#   * `true` - Use non-native macOS fullscreen, hide the menu bar
-#   * `false` - Use native macOS fullscreeen
-# 
 macos-non-native-fullscreen = true
-
-# The style of the macOS titlebar. Available values are: "native",
-# "transparent", and "tabs".
-# 
-# The "native" style uses the native macOS titlebar with zero customization.
-# The titlebar will match your window theme (see `window-theme`).
-# 
-# The "transparent" style is the same as "native" but the titlebar will
-# be transparent and allow your window background color to come through.
-# This makes a more seamless window appearance but looks a little less
-# typical for a macOS application and may not work well with all themes.
-# 
-# The "tabs" style is a completely custom titlebar that integrates the
-# tab bar into the titlebar. This titlebar always matches the background
-# color of the terminal. There are some limitations to this style:
-# On macOS 13 and below, saved window state will not restore tabs correctly.
-# macOS 14 does not have this issue and any other macOS version has not
-# been tested.
-# 
-# The default value is "transparent". This is an opinionated choice
-# but its one I think is the most aesthetically pleasing and works in
-# most cases.
-# 
-# Changing this option at runtime only applies to new windows.
-# macos-titlebar-style = native
-
-
-# The colorspace to use for the terminal window. The default is `srgb` but
-# this can also be set to `display-p3` to use the Display P3 colorspace.
-# 
-# Changing this value at runtime will only affect new windows.
-# 
-# This setting is only supported on macOS.
 # window-colorspace = display-p3
-
-# mouse-hide-while-typing = false
-
-# The opacity level (opposite of transparency) of the background. A value of
-# 1 is fully opaque and a value of 0 is fully transparent. A value less than 0
-# or greater than 1 will be clamped to the nearest valid value.
-# 
-# Changing this value at runtime (and reloading config) will only affect new
-# windows, tabs, and splits.
 # background-opacity = 0.85
-
-# A positive value enables blurring of the background when background-opacity
-# is less than 1. The value is the blur radius to apply. A value of 20
-# is reasonable for a good looking blur. Higher values will cause strange
-# rendering issues as well as performance issues.
-# 
-# This is only supported on macOS.
 # background-blur-radius = 20
 
 # modus_dark
@@ -169,7 +24,7 @@ palette = 4=#2fafff
 palette = 5=#feacd0
 palette = 6=#00d3d0
 palette = 7=#ffffff
-palette = 8=#1e1e1e
+palette = 8=#6a6e79
 palette = 9=#ff5f5f
 palette = 10=#44df44
 palette = 11=#efef00
