@@ -1,4 +1,7 @@
 return {
+	{ "catppuccin/nvim", opts = {
+		transparent_background = true,
+	} },
 	{
 		"miikanissi/modus-themes.nvim",
 		lazy = false,
@@ -7,7 +10,7 @@ return {
 			on_highlights = function(h, c)
 				h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
 			end,
-			-- transparent = true,
+			transparent = true,
 			-- variant = "tinted",
 			-- variant = "tritanopia",
 			-- variant = "deuteranopia",
@@ -108,13 +111,13 @@ return {
 		"neanias/everforest-nvim",
 		lazy = true,
 		priority = 1000, -- make sure to load this before all the other start plugins
-		-- Optional; default configuration will be used if setup isn't called.
-		config = true,
-		opts = {
-			background = "hard",
-			float_style = "dark",
-			-- transparent_background_level = 2,
-		},
+		config = function()
+			require("everforest").setup({
+				background = "hard",
+				float_style = "dark",
+				transparent_background_level = 2,
+			})
+		end,
 	},
 	-- {
 	-- 	"crispybaccoon/evergarden",
