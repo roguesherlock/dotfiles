@@ -121,6 +121,9 @@ end, { desc = "Toggle modus colorscheme" })
 
 -- Visual --
 
+-- paste without overwriting register
+vmap("p", '"_dP')
+
 -- move text up and down
 -- LazyVim already has these mappings with alt key
 -- vmap("<c-k>", ":m .=<CR>==")
