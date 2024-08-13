@@ -123,3 +123,6 @@ install ~/Developer/dotfiles/.config/ghostty ~/.config/ghostty
 
 # zellij
 install ~/Developer/dotfiles/.config/zellij ~/.config/zellij
+
+# aerospace
+install ~/Developer/dotfiles/.config/aerospace ~/.config/aerospace
