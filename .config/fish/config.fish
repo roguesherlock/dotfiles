@@ -19,6 +19,7 @@ if status is-interactive
     # aliases
     alias vim=nvim
     alias vi=nvim
+    alias top=btop
     alias pg='ping www.google.com'
     alias gl='git log --oneline --graph --all --decorate'
     alias gc='git checkout'
@@ -27,17 +28,16 @@ if status is-interactive
     alias ytb="yt-dlp -f 'bv+ba/b' "
     alias yta="yt-dlp -f 'ba' -S 'ext' "
     alias g git
-    command -qv nvim && alias vim nvim
-    if type -q kitty
-        alias icat="kitty +kitten icat"
-        alias s="kitty +kitten ssh"
-    end
-    if type -q eza
-        alias ls "eza --icons --classify"
-        alias ll "eza --icons --header --long --git --classify"
-        alias tree "eza --icons --header --long --tree --level=3"
-        alias lla "ll --all"
-    end
+    # if type -q kitty
+    alias icat="kitty +kitten icat"
+    alias s="kitty +kitten ssh"
+    # end
+    # if type -q eza
+    alias ls "eza --icons --classify"
+    alias ll "eza --icons --header --long --git --classify"
+    alias tree "eza --icons --header --long --tree --level=3"
+    alias lla "ll --all"
+    # end
 
     set -gx EDITOR nvim
 
@@ -71,28 +71,16 @@ if status is-interactive
         starship init fish | source
     end
 
-    if test $isDarwin -eq 1
-        # successor to nvm
-        set -gx FNM_LOGLEVEL quiet
-        fnm env --use-on-cd --resolve-engines | source
-
-        direnv hook fish | source
-        mise activate fish | source
-
-        # Setting PATH for Python 3.12
-        # The original version is saved in /Users/akash/.config/fish/config.fish.pysave
-        # set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
-
-        if test "$TERM_PROGRAM" != WarpTerminal
-            test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
-        end
-    end
-
     if test $isLinux -eq 1
         alias nixbuild="sudo nixos-rebuild switch --flake ~/Developer/dotfiles"
         alias nixtest="sudo nixos-rebuild test --flake ~/Developer/dotfiles"
     end
 
+    # successor to nvm
+    set -gx FNM_LOGLEVEL quiet
+    fnm env --use-on-cd --resolve-engines | source
+    direnv hook fish | source
+    mise activate fish | source
     fzf --fish | source
 end
 export GPG_TTY=(tty)
@@ -108,6 +96,10 @@ if test $isDarwin -eq 1
     # (such as running tests). 'docker-compose' has a default timeout of
     # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
     set -x COMPOSE_HTTP_TIMEOUT 300
+
+    if test "$TERM_PROGRAM" != WarpTerminal
+        test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+    end
 
     # bun
     set --export BUN_INSTALL "$HOME/.bun"
