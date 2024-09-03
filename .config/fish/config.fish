@@ -105,3 +105,6 @@ if test $isDarwin -eq 1
     set --export BUN_INSTALL "$HOME/.bun"
     set --export PATH $BUN_INSTALL/bin $PATH
 end
+
+# Created by `pipx` on 2024-08-18 06:50:26
+set PATH $PATH /Users/akash/.local/bin

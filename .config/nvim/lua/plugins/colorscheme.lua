@@ -1,7 +1,10 @@
 return {
-	{ "catppuccin/nvim", opts = {
-		transparent_background = true,
-	} },
+	{
+		"catppuccin/nvim",
+		opts = {
+			transparent_background = true,
+		},
+	},
 	{
 		"miikanissi/modus-themes.nvim",
 		lazy = false,
