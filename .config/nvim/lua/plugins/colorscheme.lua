@@ -1,10 +1,10 @@
 return {
-	{
-		"catppuccin/nvim",
-		opts = {
-			transparent_background = true,
-		},
-	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	opts = {
+	-- 		transparent_background = true,
+	-- 	},
+	-- },
 	{
 		"miikanissi/modus-themes.nvim",
 		lazy = false,
@@ -325,17 +325,17 @@ return {
 	-- },
 
 	-- rose-pine
-	-- {
-	-- 	"rose-pine/neovim",
-	-- 	name = "rose-pine",
-	-- 	lazy = true,
-	-- 	priority = 1000,
-	-- 	opts = {
-	-- 		styles = {
-	-- 			transparency = true,
-	-- 		},
-	-- 	},
-	-- },
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = true,
+		priority = 1000,
+		-- opts = {
+		-- 	styles = {
+		-- 		transparency = true,
+		-- 	},
+		-- },
+	},
 
 	-- kanagawa
 	-- {

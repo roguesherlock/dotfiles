@@ -96,6 +96,31 @@ nmap("<leader>tm", function()
 		vim.cmd.colorscheme("modus")
 	end
 end, { desc = "Toggle modus colorscheme" })
+
+nmap("<leader>tz", function()
+	if string.find(vim.g.colors_name, "zenbones") then
+		require("user.colorscheme").set_from_os()
+	else
+		vim.cmd.colorscheme("zenbones")
+	end
+end, { desc = "Toggle zenbones colorscheme" })
+
+nmap("<leader>tc", function()
+	if string.find(vim.g.colors_name, "catppuccin") then
+		require("user.colorscheme").set_from_os()
+	else
+		vim.cmd.colorscheme("catppuccin")
+	end
+end, { desc = "Toggle catppuccin colorscheme" })
+
+nmap("<leader>tr", function()
+	if string.find(vim.g.colors_name, "rose-pine") then
+		require("user.colorscheme").set_from_os()
+	else
+		vim.cmd.colorscheme("rose-pine")
+	end
+end, { desc = "Toggle rose-pine colorscheme" })
+
 -- Telescope --
 -- nmap(
 -- 	"<leader>j",

@@ -206,7 +206,7 @@ function M.set_ghostty_theme(theme)
 	-- Write the updated content back to the base config file
 	vim.fn.writefile(base_config_content, base_config_path)
 
-	print("Theme set to: " .. theme)
+	-- print("Theme set to: " .. theme)
 end
 
 return M
