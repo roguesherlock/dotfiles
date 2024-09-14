@@ -9,8 +9,10 @@
 (defcfg
   process-unmapped-keys yes
 )
+
 (defsrc
-  a   s   d   f   j   k   l   ;
+  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  a    s    d    f    j    k    l    ;
 )
 (defvar
   ;; Note: consider using different time values for your different fingers.
@@ -37,27 +39,14 @@
   )
 )
 
-(deflayermap (function-keys)
-  f1   brdn
-  f2   brup
-  f3   kp3
-  f4   kp4
-  f5   kp5
-  f6   kp6
-  f7   prev
-  f8   pp
-  f9   next
-  f10  mute
-  f11  vold
-  f12  volu
-)
-
 (deflayer base
-  @a  @s  @d  @f  @j  @k  @l  @;
+  brdn brup kp3  kp4  kp5  kp6  prev pp  next mute vold volu
+  @a   @s   @d   @f   @j   @k   @l   @;
 )
 
 (deflayer nomods
-  a   s   d   f   j   k   l   ;
+  _    _    _    _    _    _    _    _    _    _    _    _
+  a    s    d    f    j    k    l    ;
 )
 (deffakekeys
   to-base (layer-switch base)
