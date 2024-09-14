@@ -36,6 +36,22 @@
     n m , . /
   )
 )
+
+(deflayermap (function-keys)
+  f1   brdn
+  f2   brup
+  f3   kp3
+  f4   kp4
+  f5   kp5
+  f6   kp6
+  f7   prev
+  f8   pp
+  f9   next
+  f10  mute
+  f11  vold
+  f12  volu
+)
+
 (deflayer base
   @a  @s  @d  @f  @j  @k  @l  @;
 )
