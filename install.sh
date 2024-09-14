@@ -126,3 +126,31 @@ install ~/Developer/dotfiles/.config/zellij ~/.config/zellij
 
 # aerospace
 install ~/Developer/dotfiles/.config/aerospace ~/.config/aerospace
+
+# kanata
+mkdir -p ~/.config/kanata/
+install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
+install ~/Developer/dotfiles/.config/kanata/kanata-tray.toml ~/.config/kanata/kanata-tray.toml
+install ~/Developer/dotfiles/bin/kanata ~/.local/bin/kanata
+install ~/Developer/dotfiles/bin/kanata-tray ~/.local/bin/kanata-tray
+install ~/Developer/dotfiles/.config/kanata/kanata-tray.toml ~/Library/Application\ Support/kanata-tray/kanata-tray.toml
+# Cache sudo credentials
+sudo -v
+if [ -e "/private/etc/sudoers.d/kanata" ] || [ -L "/private/etc/sudoers.d/kanata" ]; then
+  echo "[warn] A file or symbolic link already exists at /private/etc/sudoers.d/kanata. No action taken."
+else
+  echo "Installed sudoers.d/kanata"
+  sudo cp ~/Developer/dotfiles/.config/kanata/sudoers.d/kanata /private/etc/sudoers.d/kanata
+  sudo chmod 440 /private/etc/sudoers.d/kanata
+fi
+
+if [ -e "/private/etc/sudoers.d/kanata-tray" ] || [ -L "/private/etc/sudoers.d/kanata-tray" ]; then
+  echo "[warn] A file or symbolic link already exists at /private/etc/sudoers.d/kanata-tray. No action taken."
+else
+  echo "Installed sudoers.d/kanata-tray"
+  sudo cp ~/Developer/dotfiles/.config/kanata/sudoers.d/kanata-tray /private/etc/sudoers.d/kanata-tray
+  sudo chown root:wheel /private/etc/sudoers.d/kanata-tray
+  sudo chmod 440 /private/etc/sudoers.d/kanata-tray
+  cp ~/Developer/dotfiles/.config/kanata/kanata-tray.plist ~/Library/LaunchAgents/com.akash.kanata-tray.plist
+  launchctl load -w ~/Library/LaunchAgents/com.akash.kanata-tray.plist
+fi

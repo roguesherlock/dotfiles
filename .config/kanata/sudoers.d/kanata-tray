@@ -1,0 +1,2 @@
+Cmnd_Alias KANATATRAY = /Users/akash/.local/bin/kanata-tray 
+akash ALL=(ALL) NOPASSWD: KANATATRAY

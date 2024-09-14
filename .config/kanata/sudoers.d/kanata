@@ -1,0 +1,2 @@
+Cmnd_Alias KANATA = /Users/akash/.local/bin/kanata 
+akash ALL=(ALL) NOPASSWD: KANATA
