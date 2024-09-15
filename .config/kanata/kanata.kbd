@@ -66,6 +66,7 @@
   f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lsft $left-hand-keys)
   j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rsft $right-hand-keys)
   k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rctl $right-hand-keys)
-  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) rmet $right-hand-keys)
-  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) ralt $right-hand-keys)
+  ;; we use lmet instead of ralt because rmet and ralt are used by rcmd application which we use to quickly switch between apps
+  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) lmet $right-hand-keys)
+  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) lalt $right-hand-keys)
 )
