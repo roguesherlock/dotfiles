@@ -189,3 +189,9 @@ local function open_in_gh()
 end
 
 nmap("<leader>gl", open_in_gh, { desc = "Open file in github" })
+
+--     ╭───────────────────────────────────────────────────────────────────╮
+--     │    More comfortable keys for searching history in command line    │
+--     ╰───────────────────────────────────────────────────────────────────╯
+map("c", "<C-j>", "<Down>", { desc = "Next command" })
+map("c", "<C-k>", "<Up>", { desc = "Previous command" })
