@@ -88,7 +88,7 @@ fi
 
 # alacritty
 mkdir -p ~/.config/alacritty/
-install ~/Developer/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+install ~/Developer/dotfiles/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 if isDarwin; then
 	#karabinner

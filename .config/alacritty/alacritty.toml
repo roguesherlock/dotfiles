@@ -1,0 +1,45 @@
+[colors.bright]
+black = "#867462"
+blue = "#A3A9CE"
+cyan = "#89B3B6"
+green = "#85B695"
+magenta = "#CF9BC2"
+red = "#D47766"
+white = "#ECE1D7"
+yellow = "#EBC06D"
+
+[colors.normal]
+black = "#34302C"
+blue = "#7F91B2"
+cyan = "#7B9695"
+green = "#78997A"
+magenta = "#B380B0"
+red = "#BD8183"
+white = "#C1A78E"
+yellow = "#E49B5D"
+
+[colors.primary]
+background = "#292522"
+foreground = "#ECE1D7"
+
+[font]
+size = 14
+y = 1.21
+
+[font.normal]
+family = "Input Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "None"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "None"
+key = "W"
+mods = "Command"
+
+[window]
+decorations = "none"
+startup_mode = "Maximized"
