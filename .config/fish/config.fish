@@ -16,6 +16,7 @@ if status is-interactive
     # test -z "$TMUX"; and exec tmux
     # Commands to run in interactive sessions can go here
 
+
     # aliases
     alias vim=nvim
     alias vi=nvim
@@ -82,6 +83,7 @@ if status is-interactive
     direnv hook fish | source
     mise activate fish | source
     fzf --fish | source
+    eval (zellij setup --generate-auto-start fish | string collect)
 end
 export GPG_TTY=(tty)
 

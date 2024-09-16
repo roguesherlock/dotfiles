@@ -1,8 +1,5 @@
-// Catppuccin Theme:
-// https://github.com/catppuccin/catppuccin
-
 themes {
-  catppuccin-latte {
+  catppuccin_latte {
     bg "#acb0be" // Surface2
     fg "#acb0be" // Surface2
     red "#d20f39"
@@ -16,7 +13,7 @@ themes {
     white "#4c4f69" // Text
   }
 
-  catppuccin-frappe {
+  catppuccin_frappe {
     bg "#626880" // Surface2
     fg "#c6d0f5"
     red "#e78284"
@@ -30,7 +27,7 @@ themes {
     white "#c6d0f5"
   }
 
-  catppuccin-macchiato {
+  catppuccin_macchiato {
     bg "#5b6078" // Surface2
     fg "#cad3f5"
     red "#ed8796"
@@ -44,7 +41,7 @@ themes {
     white "#cad3f5"
   }
 
-  catppuccin-mocha {
+  catppuccin_mocha {
     bg "#585b70" // Surface2
     fg "#cdd6f4"
     red "#f38ba8"
@@ -57,4 +54,32 @@ themes {
     black "#181825" // Mantle
     white "#cdd6f4"
   }
+
+  modus_dark {
+      bg "#000000"
+      fg "#ffffff"
+      red "#ff5f59"
+      green "#44bc44"
+      blue "#2fafff"
+      yellow "#fec43f"
+      magenta "#feacd0"
+      orange "#ff9580"
+      cyan "#00d3d0"
+      black "#000000"
+      white "#ffffff"
+  }
+
+  modus_light {
+      bg "#ffffff"
+      fg "#000000"
+      red "#a60000"
+      green "#006800"
+      blue "#0031a9"
+      yellow "#6f5500"
+      magenta "#721045"
+      orange "#884900"
+      cyan "#005e8b"
+      black "#000000"
+      white "#ffffff"
+    }
 }
