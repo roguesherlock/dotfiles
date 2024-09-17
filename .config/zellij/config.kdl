@@ -3,6 +3,19 @@ keybinds clear-defaults=true {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
     }
 
+    normal {
+       bind "♠" { GoToTab 1; SwitchToMode "Normal"; }           // Cmd 1
+       bind "☂" { GoToTab 2; SwitchToMode "Normal"; }           // Cmd 2
+       bind "♫" { GoToTab 3; SwitchToMode "Normal"; }           // Cmd 3
+       bind "☯" { GoToTab 4; SwitchToMode "Normal"; }           // Cmd 4
+       bind "⚛" { GoToTab 5; SwitchToMode "Normal"; }           // Cmd 5
+       bind "⛵" { GoToTab 6; SwitchToMode "Normal"; }          // Cmd 6
+       bind "♞" { GoToTab 7; SwitchToMode "Normal"; }           // Cmd 7
+       bind "⚘" { GoToTab 8; SwitchToMode "Normal"; }           // Cmd 8
+       bind "☄" { GoToTab 9; SwitchToMode "Normal"; }           // Cmd 9
+       bind "⛄" { GoToTab 10; SwitchToMode "Normal"; }         // Cmd 0
+    }
+
     shared_among "search" "scroll" {
         bind "Esc" { ScrollToBottom; SwitchToMode "Normal"; }
     }
