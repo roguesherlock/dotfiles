@@ -18,6 +18,8 @@ M.ghostty_theme_dark = "modus_dark"
 M.ghostty_custom_theme = true
 M.kitty_theme_light = "modus_light"
 M.kitty_theme_dark = "modus_dark"
+M.zellij_theme_light = "modus_light"
+M.zellij_theme_dark = "modus_dark"
 M.enable_auto_switch = true
 M.default_light = false
 M.initialColorScheme = nil
@@ -105,6 +107,13 @@ function M.init()
 						)
 					end
 				end
+				-- TODO: enable this when the next zellij release is out
+				-- vim.fn.system(
+				-- 	"sed -i'.bak' 's/theme .*/theme \""
+				-- 		.. M.zellij_theme_light
+				-- 		.. "\"/' (readlink ~/.config/zellij/config.kdl)"
+				-- )
+				--
 				-- vim.fn.system(
 				-- 	'sed -i\'.bak\' \'s/theme "[^"]*"/theme "'
 				-- 		.. M.terminal_theme_light
@@ -124,6 +133,13 @@ function M.init()
 						)
 					end
 				end
+				-- TODO: enable this when the next zellij release is out
+				-- vim.fn.system(
+				-- 	"sed -i'.bak' 's/theme .*/theme \""
+				-- 		.. M.zellij_theme_dark
+				-- 		.. "\"/' (readlink ~/.config/zellij/config.kdl)"
+				-- )
+
 				-- vim.fn.system(
 				-- 	'sed -i\'.bak\' \'s/theme "[^"]*"/theme "'
 				-- 		.. M.terminal_theme_dark
