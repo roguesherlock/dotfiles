@@ -8,7 +8,7 @@ keybinds clear-defaults=true {
     }
 
     shared {
-        bind "" { Detach; } // Cmd T
+        bind "" { Detach; } // Cmd D
         bind "" { Quit; }   // Cmd Q
     }
 
@@ -21,8 +21,9 @@ keybinds clear-defaults=true {
         bind "" { NewPane "Down"; }                               // Cmd Shift N
         bind "" { SwitchToMode "RenamePane"; PaneNameInput 0; }   // Cmd R
         bind "" { TogglePaneFrames; SwitchToMode "Normal"; }      // Cmd B
-        bind "" { ToggleFocusFullscreen; SwitchToMode "Normal"; } // Cmd M
+        bind "" { ToggleFocusFullscreen; SwitchToMode "Normal"; } // Cmd M or Cmd Shift Enter
         bind "" { ToggleFloatingPanes; }                          // Cmd O
+
         bind "" { CloseFocus; SwitchToMode "Normal"; }            // Cmd W
 
         bind "ﰯ" { MoveFocusOrTab "Left"; }  // Shift ←
@@ -43,11 +44,11 @@ keybinds clear-defaults=true {
         bind "" {
             NewTab { layout "compact"; }
             SwitchToMode "Normal";
-        }                                                      // Opt ↑
+        }                                                      // Opt ↑ or Cmd T
         bind "" { SwitchToMode "RenameTab"; TabNameInput 0; } // Opt R
         bind "" { CloseTab; SwitchToMode "Normal"; }          // Opt W
-        bind "" { GoToPreviousTab; }                          // Opt ←
-        bind "" { GoToNextTab; }                              // Opt →
+        bind "" { GoToPreviousTab; }                          // Cmd ←
+        bind "" { GoToNextTab; }                              // Cmd →
         bind "" { MoveTab "Left"; }                           // Opt Shift ←
         bind "" { MoveTab "Right"; }                          // Opt Shift →
     }

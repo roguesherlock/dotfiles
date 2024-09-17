@@ -27,7 +27,8 @@ keybind = super+shift+n=text:           # NewPane "Down"
 keybind = super+r=text:                 # Rename
 keybind = super+b=text:                 # TogglePaneFrames
 keybind = super+m=text:                 # ToggleFocusFullscreen
-keybind = super+o=text:                  # ToggleFloatingPanes
+keybind = super+shift+enter=text:       # ToggleFocusFullscreen
+keybind = super+o=text:                 # ToggleFloatingPanes
 keybind = super+w=text:                 # CloseFocus
 
 keybind = shift+left=text:ﰯ              # MoveFocusOrTab "Left";
