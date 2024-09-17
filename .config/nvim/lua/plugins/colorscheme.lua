@@ -13,7 +13,8 @@ return {
 			on_highlights = function(h, c)
 				h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
 			end,
-			transparent = true,
+			-- TODO: enable this when the next zellij release is out
+			-- transparent = true,
 			-- variant = "tinted",
 			-- variant = "tritanopia",
 			-- variant = "deuteranopia",
