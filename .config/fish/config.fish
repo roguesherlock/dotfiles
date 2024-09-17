@@ -68,9 +68,6 @@ if status is-interactive
         echo ---\ndate: $date\n--- >$filepath # Add frontmatter
         echo "File $filepath created" # Print message
     end
-    if type starship >/dev/null 2>&1
-        starship init fish | source
-    end
 
     if test $isLinux -eq 1
         alias nixbuild="sudo nixos-rebuild switch --flake ~/Developer/dotfiles"
@@ -83,7 +80,15 @@ if status is-interactive
     direnv hook fish | source
     mise activate fish | source
     fzf --fish | source
-    eval (zellij setup --generate-auto-start fish | string collect)
+
+    if test "$TERM_PROGRAM" != WarpTerminal
+        if type starship >/dev/null 2>&1
+            starship init fish | source
+        end
+
+        eval (zellij setup --generate-auto-start fish | string collect)
+        test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+    end
 end
 export GPG_TTY=(tty)
 
@@ -98,10 +103,6 @@ if test $isDarwin -eq 1
     # (such as running tests). 'docker-compose' has a default timeout of
     # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
     set -x COMPOSE_HTTP_TIMEOUT 300
-
-    if test "$TERM_PROGRAM" != WarpTerminal
-        test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
-    end
 
     # bun
     set --export BUN_INSTALL "$HOME/.bun"
