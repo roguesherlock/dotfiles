@@ -23,7 +23,7 @@ keybinds clear-defaults=true {
         bind "" { TogglePaneFrames; SwitchToMode "Normal"; }      // Cmd B
         bind "" { ToggleFocusFullscreen; SwitchToMode "Normal"; } // Cmd M or Cmd Shift Enter
         bind "" { ToggleFloatingPanes; }                          // Cmd O
-
+        bind "▣" { TogglePaneEmbedOrFloating; }                    // Cmd Shift O
         bind "" { CloseFocus; SwitchToMode "Normal"; }            // Cmd W
 
         bind "ﰯ" { MoveFocusOrTab "Left"; }  // Shift ←
