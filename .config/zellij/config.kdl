@@ -37,6 +37,13 @@ keybinds clear-defaults=true {
         bind "" { ToggleFocusFullscreen; SwitchToMode "Normal"; } // Cmd M or Cmd Shift Enter
         bind "" { ToggleFloatingPanes; }                          // Cmd O
         bind "▣" { TogglePaneEmbedOrFloating; }                    // Cmd Shift O
+        bind "ꙮ" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }                                                          // Cmd p
         bind "" { CloseFocus; SwitchToMode "Normal"; }            // Cmd W
 
         bind "ﰯ" { MoveFocusOrTab "Left"; }  // Shift ←
@@ -390,7 +397,7 @@ serialize_pane_viewport true
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "modus_dark"
+// theme "modus_dark"
 
 // The name of the default layout to load on startup
 // Default: "default"
