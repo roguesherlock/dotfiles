@@ -11,6 +11,81 @@ if string match -q Darwin $os_type
 else
     set -g isDarwin 0
 end
+export GPG_TTY=(tty)
+
+# set -x LC_ALL en_US.UTF-8
+
+# if test $isDarwin -eq 1
+#     # On macOS, the default number of file descriptors is far too low ('256').
+#     # That would cause Docker to run out of available file handles, so let's
+#     # bump it up.
+#     ulimit -n 2048
+#     # Some operations with 'docker-compose' can take awhile without output
+#     # (such as running tests). 'docker-compose' has a default timeout of
+#     # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
+#     set -x COMPOSE_HTTP_TIMEOUT 300
+#
+#     # Since we're using U we only need to call this once. Use this command when installing for the first time
+#     set -Ux LC_ALL en_US.UTF-8
+#     set -Ux BUN_INSTALL "$HOME/.bun"
+#     set -U fish_user_paths $fish_user_paths $BUN_INSTALL/bin
+#     set -U fish_user_paths $fish_user_paths /Users/akash/.local/bin
+# end
+
+# New Hey
+# alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date -I).md && echo ---\ndate:\ (date -I)\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
+function new_hey
+    if test -z $argv[1]
+        set date (date -I)
+    else
+        set date $argv[1]
+    end
+    set filename "$date.md"
+    set filepath "$HOME/Developer/akashpomal.com/src/content/heys/$filename"
+    if test -f $filepath
+        echo "File $filepath already exists"
+        return
+    end
+    touch $filepath # Create file with default value if empty
+    echo ---\ndate: $date\n--- >$filepath # Add frontmatter
+    echo "File $filepath created" # Print message
+end
+function zellij_start
+    # zellij setup --generate-auto-start fish
+    # The following snippet is meant to be used like this in your fish config:
+    #
+    # if status is-interactive
+    #     # Configure auto-attach/exit to your likings (default is off).
+    #     # set ZELLIJ_AUTO_ATTACH true
+    #     # set ZELLIJ_AUTO_EXIT true
+    #     eval (zellij setup --generate-auto-start fish | string collect)
+    # end
+    set ZELLIJ_AUTO_ATTACH true # If the zellij session already exists, attach to the default session. (not starting as a new session)
+    set ZELLIJ_AUTO_EXIT true # When zellij exits, the shell exits as well.
+
+    if not set -q ZELLIJ
+        if test "$ZELLIJ_AUTO_ATTACH" = true
+            # Get the list of Zellij sessions, ignoring the first two header lines
+            set latest_session (zellij list-sessions -sn | tail -n 1)
+
+            # Check if there are any sessions available
+            if test -n "$latest_session"
+                # Attach to the most recent session
+                zellij attach $latest_session
+            else
+                # Create a new session if none exists
+                zellij attach -c
+            end
+        else
+            zellij
+            # zellij -l welcome
+        end
+
+        if test "$ZELLIJ_AUTO_EXIT" = true
+            kill $fish_pid
+        end
+    end
+end
 
 if status is-interactive
     # test -z "$TMUX"; and exec tmux
@@ -50,29 +125,11 @@ if status is-interactive
 
     set fish_greeting "I solemnly swear that I am up to no good."
 
-    # New Hey
-    # alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date -I).md && echo ---\ndate:\ (date -I)\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
-    function new_hey
-        if test -z $argv[1]
-            set date (date -I)
-        else
-            set date $argv[1]
-        end
-        set filename "$date.md"
-        set filepath "$HOME/Developer/akashpomal.com/src/content/heys/$filename"
-        if test -f $filepath
-            echo "File $filepath already exists"
-            return
-        end
-        touch $filepath # Create file with default value if empty
-        echo ---\ndate: $date\n--- >$filepath # Add frontmatter
-        echo "File $filepath created" # Print message
-    end
-
     if test $isLinux -eq 1
         alias nixbuild="sudo nixos-rebuild switch --flake ~/Developer/dotfiles"
         alias nixtest="sudo nixos-rebuild test --flake ~/Developer/dotfiles"
     end
+
 
     # successor to nvm
     set -gx FNM_LOGLEVEL quiet
@@ -86,28 +143,7 @@ if status is-interactive
             starship init fish | source
         end
 
-        eval (zellij setup --generate-auto-start fish | string collect)
         test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+        zellij_start
     end
 end
-export GPG_TTY=(tty)
-
-set -x LC_ALL en_US.UTF-8
-
-if test $isDarwin -eq 1
-    # On macOS, the default number of file descriptors is far too low ('256').
-    # That would cause Docker to run out of available file handles, so let's
-    # bump it up.
-    ulimit -n 2048
-    # Some operations with 'docker-compose' can take awhile without output
-    # (such as running tests). 'docker-compose' has a default timeout of
-    # 60 seconds, which is too little. Bump it up (in seconds) to 5 minutes.
-    set -x COMPOSE_HTTP_TIMEOUT 300
-
-    # bun
-    set --export BUN_INSTALL "$HOME/.bun"
-    set --export PATH $BUN_INSTALL/bin $PATH
-end
-
-# Created by `pipx` on 2024-08-18 06:50:26
-set PATH $PATH /Users/akash/.local/bin
