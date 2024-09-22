@@ -397,7 +397,7 @@ serialize_pane_viewport true
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-// theme "modus_dark"
+theme "modus_dark"
 
 // The name of the default layout to load on startup
 // Default: "default"
