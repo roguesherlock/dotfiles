@@ -15,6 +15,37 @@ return {
 			{ "<leader>tsm", "<cmd>SupermavenToggle<cr>", desc = "Toggle SuperMaven" },
 		},
 	},
+	{
+		"yetone/avante.nvim",
+		init = function()
+			require("avante_lib").load()
+		end,
+		event = "VeryLazy",
+		opts = {
+			hints = { enabled = false },
+		},
+		build = LazyVim.is_win() and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+			or "make",
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		optional = true,
+		opts = function(_, opts)
+			opts.file_types = vim.list_extend(opts.file_types or {}, { "Avante" })
+		end,
+		ft = function(_, ft)
+			vim.list_extend(ft, { "Avante" })
+		end,
+	},
+	{
+		"folke/which-key.nvim",
+		optional = true,
+		opts = {
+			spec = {
+				{ "<leader>a", group = "ai" },
+			},
+		},
+	},
 	-- {
 	-- 	"hrsh7th/nvim-cmp",
 	-- 	opts = function(_, opts)
@@ -29,24 +60,5 @@ return {
 	-- {
 	-- 	enabled = false,
 	-- 	"sourcegraph/sg.nvim",
-	-- },
-	-- {
-	-- 	enabled = false,
-	-- 	"yetone/avante.nvim",
-	-- 	event = "VeryLazy",
-	-- 	build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
-	-- 	opts = {
-	-- 		-- add any opts here
-	-- 	},
-	-- 	dependencies = {
-	-- 		--- The below is optional, make sure to setup it properly if you have lazy=true
-	-- 		{
-	-- 			"MeanderingProgrammer/render-markdown.nvim",
-	-- 			opts = {
-	-- 				file_types = { "markdown", "Avante" },
-	-- 			},
-	-- 			ft = { "markdown", "Avante" },
-	-- 		},
-	-- 	},
 	-- },
 }
