@@ -1,3 +1,4 @@
+continuation_prompt = "[▸▹ ](dimmed white)"
 format = """
 $cmd_duration\
 $hostname\
@@ -73,7 +74,6 @@ $conda\
 $meson\
 $spack\
 $memory_usage\
-$aws\
 $gcloud\
 $openstack\
 $azure\
@@ -93,6 +93,11 @@ add_newline = true
 format = "$symbol "
 success_symbol = "[◉](bold italic bright-yellow)"
 error_symbol = "[⊘](italic purple)"
+vimcmd_symbol = "[■](italic dimmed green)"
+vimcmd_replace_one_symbol = "◌"
+vimcmd_replace_symbol = "□"
+vimcmd_visual_symbol = "▼"
+
 
 [env_var.VIMSHELL] # vim subshell
 format = "[$env_value]($style)"
@@ -117,10 +122,13 @@ truncation_symbol = "▦ "
 read_only = " ■"
 style = "italic blue"
 format = ' [$path]($style)[$read_only]($read_only_style)'
+repo_root_style = 'bold blue'
+repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold bright-blue)'
+
 
 [cmd_duration]
 min_time = 500
-format = "[$duration ](italic bright-yellow)"
+format = "[◄ $duration ](italic bright-yellow)"
 
 [jobs]
 format = "[ $symbol$number]($style)"
@@ -137,7 +145,7 @@ disabled = false
 format = "[ $time]($style)"
 time_format = "%R"
 utc_time_offset = "local"
-style = "dimmed white"
+style = "white"
 
 [battery]
 format = "[ $percentage $symbol]($style)"
@@ -153,7 +161,7 @@ style = "dimmed yellow"
 
 [[battery.display]]
 threshold = 70
-style = "dimmed white"
+style = "blue"
 
 [git_branch]
 format = "[ $symbol $branch(:$remote_branch)]($style)"

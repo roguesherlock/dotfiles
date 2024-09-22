@@ -14,7 +14,7 @@ return {
 				h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
 			end,
 			-- TODO: enable this when the next zellij release is out
-			-- transparent = true,
+			transparent = true,
 			-- variant = "tinted",
 			-- variant = "tritanopia",
 			-- variant = "deuteranopia",
