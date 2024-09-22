@@ -31,7 +31,7 @@ local function xmap(shortcut, command, opts)
 	map("x", shortcut, command, opts)
 end
 
-nmap("<leader>ww", ":w<CR>", { desc = "Save file" })
+-- nmap("<leader>ww", ":w<CR>", { desc = "Save file" })
 nmap("<D-s>", ":w<CR>", { desc = "Save file" })
 -- nmap("<esc><esc>", ":w<CR>", { desc = "Save file" })
 -- imap("<esc>", "<esc>:w<CR>", { desc = "Save file" })
