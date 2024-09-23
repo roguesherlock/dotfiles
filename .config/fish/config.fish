@@ -142,8 +142,13 @@ if status is-interactive
         if type starship >/dev/null 2>&1
             starship init fish | source
         end
+    end
 
+    if test "$TERM_PROGRAM" = iTerm.app
         test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
+    end
+
+    if test "$TERM_PROGRAM" = iTerm.app -o "$TERM" = xterm-ghostty -o "$TERM" = xterm-kitty -o "$TERM" = alacritty
         zellij_start
     end
 end
