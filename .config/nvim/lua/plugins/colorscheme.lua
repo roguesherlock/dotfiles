@@ -119,7 +119,7 @@ return {
 			require("everforest").setup({
 				background = "hard",
 				float_style = "dark",
-				transparent_background_level = 2,
+				-- transparent_background_level = 2,
 			})
 		end,
 	},
