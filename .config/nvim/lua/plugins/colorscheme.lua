@@ -112,17 +112,22 @@ return {
 		end,
 	},
 	{
-		"neanias/everforest-nvim",
-		lazy = true,
+		"sainnhe/everforest",
+		-- lazy = true,
 		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require("everforest").setup({
-				background = "hard",
-				float_style = "dark",
-				-- transparent_background_level = 2,
-			})
-		end,
 	},
+	-- {
+	-- 	"neanias/everforest-nvim",
+	-- 	lazy = true,
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		require("everforest").setup({
+	-- 			background = "hard",
+	-- 			float_style = "dark",
+	-- 			-- transparent_background_level = 2,
+	-- 		})
+	-- 	end,
+	-- },
 	-- {
 	-- 	"crispybaccoon/evergarden",
 	-- 	lazy = true,
