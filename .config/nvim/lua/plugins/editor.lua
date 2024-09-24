@@ -81,4 +81,12 @@ return {
 			{ "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
 		},
 	},
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				blade = { "blade-formatter" },
+			},
+		},
+	},
 }
