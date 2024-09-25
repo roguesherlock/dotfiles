@@ -148,6 +148,10 @@ if status is-interactive
         test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
     end
 
+    if test "$TERM_PROGRAM" = zed
+        return
+    end
+
     if test "$TERM_PROGRAM" = iTerm.app -o "$TERM" = xterm-ghostty -o "$TERM" = xterm-kitty -o "$TERM" = alacritty
         zellij_start
     end
