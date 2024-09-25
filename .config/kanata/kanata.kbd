@@ -10,6 +10,7 @@
   process-unmapped-keys yes
   macos-dev-names-include (
     "Apple Internal Keyboard / Trackpad"
+    "Magic Keyboard"
   )
 )
 
