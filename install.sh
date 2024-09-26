@@ -127,6 +127,9 @@ install ~/Developer/dotfiles/.config/zellij ~/.config/zellij
 # aerospace
 install ~/Developer/dotfiles/.config/aerospace ~/.config/aerospace
 
+# helix
+install ~/Developer/dotfiles/.config/helix ~/.config/helix
+
 # kanata
 mkdir -p ~/.config/kanata/
 install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
