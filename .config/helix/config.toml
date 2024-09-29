@@ -10,3 +10,6 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.auto-save]
+focus-lost = true
