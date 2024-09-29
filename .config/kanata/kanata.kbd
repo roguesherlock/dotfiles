@@ -133,7 +133,7 @@
   acmk (tap-hold-release-keys $tap-time $hold-time (multi a @tap-cmk) lalt $left-hand-keys-cmk)
   rcmk (tap-hold-release-keys $tap-time $hold-time (multi r @tap-cmk) lmet $left-hand-keys-cmk)
   scmk (tap-hold-release-keys $tap-time $hold-time (multi s @tap-cmk) lctl $left-hand-keys-cmk)
-  tcmk (tap-hold-release-keys $tap-time $hold-time (multi f @tap-cmk) lsft $left-hand-keys-cmk)
+  tcmk (tap-hold-release-keys $tap-time $hold-time (multi t @tap-cmk) lsft $left-hand-keys-cmk)
   ncmk (tap-hold-release-keys $tap-time $hold-time (multi n @tap-cmk) rsft $right-hand-keys-cmk)
   ecmk (tap-hold-release-keys $tap-time $hold-time (multi e @tap-cmk) rctl $right-hand-keys-cmk)
   ;; we use lmet instead of ralt because rmet and ralt are used by rcmd application which we use to quickly switch between apps
