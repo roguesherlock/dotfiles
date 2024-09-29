@@ -1,11 +1,3 @@
-;; Home row mods QWERTY example with more complexity.
-;; Some of the changes from the basic example:
-;; - when a home row mod activates tap, the home row mods are disabled
-;;   while continuing to type rapidly
-;; - tap-hold-release helps make the hold action more responsive
-;; - pressing another key on the same half of the keyboard
-;;   as the home row mod will activate an early tap action
-
 (defcfg
   process-unmapped-keys yes
   macos-dev-names-include (
@@ -15,59 +7,147 @@
 )
 
 (defsrc
-  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  a    s    d    f    j    k    l    ;
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  fn   lctl lalt lmet           spc            rmet ralt
 )
+
+(defalias
+  ;; nav (layer-while-held navigation)
+  ;; change the base layer between qwerty and dvorak
+  lay (layer-while-held layers)
+  cmk (layer-switch colmak)
+  qwr (layer-switch qwerty)
+)
+
+(deflayer colmak
+  esc  brdn  brup  kp3   kp4   kp5   kp6   prev  pp   next  mute  vold volu
+  grv  1     2     3     4     5     6     7     8     9     0     -    =    bspc
+  tab  q     w     f     p     b     j     l     u     y     ;     [    ]    \
+  caps @acmk @rcmk @scmk @tcmk g     m     @ncmk @ecmk @icmk @ocmk '    ret
+  lsft z     x     c     d     v     k     h     ,     .     /     ]
+  @lay lctl  lalt  lmet        spc         rmet  ralt
+)
+
+
+(deflayer qwerty
+  esc  brdn  brup  kp3   kp4   kp5   kp6   prev  pp    next  mute vold volu
+  grv  1     2     3     4     5     6     7     8     9     0    -    =    bspc
+  tab  q     w     e     r     t     y     u     i     o     p    [    ]    \
+  caps @aqwr @sqwr @dqwr @fqwr g     h     @jqwr @kqwr @lqwr ;    '    ret
+  lsft z     x     c     v     b     n     m     ,     .     /    rsft
+  @lay lctl  lalt  lmet        spc         rmet ralt
+)
+
+(deflayer layers
+  _    @qwr @cmk lrld _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _              _              _    _
+)
+
+(deflayer nomods-colmak
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    a    r    s    t    g    m    n    e    i    o    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _              _              _    _
+)
+
+(deflayer nomods-qwerty
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    a    s    d    f    g    h    j    k    l    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _              _              _    _
+)
+
+
+;; Home row mods COLMAK/QWERTY example with more complexity.
+;; Some of the changes from the basic example:
+;; - when a home row mod activates tap, the home row mods are disabled
+;;   while continuing to type rapidly
+;; - tap-hold-release helps make the hold action more responsive
+;; - pressing another key on the same half of the keyboard
+;;   as the home row mod will activate an early tap action
+
 (defvar
   ;; Note: consider using different time values for your different fingers.
   ;; For example, your pinkies might be slower to release keys and index
   ;; fingers faster.
-  tap-time 210
-  hold-time 180
+  tap-time 200
+  hold-time 150
   ;; Longer tap time for pinky fingers
   pinky-tap-time 250
   ;; Slightly longer hold time for pinky fingers
   pinky-hold-time 180 
 
 
+  left-hand-keys-cmk (
+    q w f p b
+    a r s t g 
+    z x c d v
+  )
 
-  left-hand-keys (
+  right-hand-keys-cmk (
+    j l u y ;
+    m n e i o
+    k h , . /
+  )
+
+  left-hand-keys-qwr (
     q w e r t
     a s d f g
     z x c v b
   )
-  right-hand-keys (
+  right-hand-keys-qwr (
     y u i o p
     h j k l ;
     n m , . /
   )
 )
 
-(deflayer base
-  brdn brup kp3  kp4  kp5  kp6  prev pp  next mute vold volu
-  @a   @s   @d   @f   @j   @k   @l   @;
-)
 
-(deflayer nomods
-  _    _    _    _    _    _    _    _    _    _    _    _
-  a    s    d    f    j    k    l    ;
-)
 (deffakekeys
-  to-base (layer-switch base)
+  to-cmk (layer-switch colmak)
+  to-qwr (layer-switch qwerty)
 )
 (defalias
-  tap (multi
-    (layer-switch nomods)
-    (on-idle-fakekey to-base tap 20)
+  tap-cmk (multi
+    (layer-switch nomods-colmak)
+    (on-idle-fakekey to-cmk tap 20)
+  )
+  tap-qwr (multi
+    (layer-switch nomods-qwerty)
+    (on-idle-fakekey to-qwr tap 20)
   )
 
-  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lalt $left-hand-keys)
-  s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lmet $left-hand-keys)
-  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lctl $left-hand-keys)
-  f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lsft $left-hand-keys)
-  j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rsft $right-hand-keys)
-  k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rctl $right-hand-keys)
+  ;; colmak
+  acmk (tap-hold-release-keys $tap-time $hold-time (multi a @tap-cmk) lalt $left-hand-keys-cmk)
+  rcmk (tap-hold-release-keys $tap-time $hold-time (multi r @tap-cmk) lmet $left-hand-keys-cmk)
+  scmk (tap-hold-release-keys $tap-time $hold-time (multi s @tap-cmk) lctl $left-hand-keys-cmk)
+  tcmk (tap-hold-release-keys $tap-time $hold-time (multi f @tap-cmk) lsft $left-hand-keys-cmk)
+  ncmk (tap-hold-release-keys $tap-time $hold-time (multi n @tap-cmk) rsft $right-hand-keys-cmk)
+  ecmk (tap-hold-release-keys $tap-time $hold-time (multi e @tap-cmk) rctl $right-hand-keys-cmk)
   ;; we use lmet instead of ralt because rmet and ralt are used by rcmd application which we use to quickly switch between apps
-  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) lmet $right-hand-keys)
-  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) lalt $right-hand-keys)
+  icmk (tap-hold-release-keys $tap-time $hold-time (multi i @tap-cmk) lmet $right-hand-keys-cmk)
+  ocmk (tap-hold-release-keys $tap-time $hold-time (multi o @tap-cmk) lalt $right-hand-keys-cmk)
+
+  ;; qwerty
+  aqwr (tap-hold-release-keys $tap-time $hold-time (multi a @tap-qwr) lalt $left-hand-keys-qwr)
+  sqwr (tap-hold-release-keys $tap-time $hold-time (multi s @tap-qwr) lmet $left-hand-keys-qwr)
+  dqwr (tap-hold-release-keys $tap-time $hold-time (multi d @tap-qwr) lctl $left-hand-keys-qwr)
+  fqwr (tap-hold-release-keys $tap-time $hold-time (multi f @tap-qwr) lsft $left-hand-keys-qwr)
+  jqwr (tap-hold-release-keys $tap-time $hold-time (multi j @tap-qwr) rsft $right-hand-keys-qwr)
+  kqwr (tap-hold-release-keys $tap-time $hold-time (multi k @tap-qwr) rctl $right-hand-keys-qwr)
+  ;; we use lmet instead of ralt because rmet and ralt are used by rcmd application which we use to quickly switch between apps
+  lqwr (tap-hold-release-keys $tap-time $hold-time (multi l @tap-qwr) lmet $right-hand-keys-qwr)
+  ;qwr (tap-hold-release-keys $tap-time $hold-time (multi ; @tap-qwr) lalt $right-hand-keys-qwr)
 )
