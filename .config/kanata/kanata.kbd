@@ -28,7 +28,7 @@
   tab  q     w     f     p     b     j     l     u     y     ;     [    ]    \
   caps @acmk @rcmk @scmk @tcmk g     m     @ncmk @ecmk @icmk @ocmk '    ret
   lsft z     x     c     d     v     k     h     ,     .     /     ]
-  @lay lctl  lalt  lmet        spc         rmet  ralt
+  @lay lctl  lalt  lmet        @spc         rmet  ralt
 )
 
 (deflayer nomods-colmak
@@ -46,7 +46,7 @@
   tab  q     w     e     r     t     y     u     i     o     p     [    ]    \
   caps @aqwr @sqwr @dqwr @fqwr g     h     @jqwr @kqwr @lqwr @;qwr '    ret
   lsft z     x     c     v     b     n     m     ,     .     /     rsft
-  @lay lctl  lalt  lmet        spc         rmet ralt
+  @lay lctl  lalt  lmet        @spc         rmet ralt
 )
 
 (deflayer nomods-qwerty
