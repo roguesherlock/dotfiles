@@ -16,9 +16,8 @@
 )
 
 (defalias
-  ;; nav (layer-while-held navigation)
-  ;; change the base layer between qwerty and dvorak
   lay (layer-while-held layers)
+  ;; change the base layer between qwerty and colmak
   cmk (layer-switch colmak)
   qwr (layer-switch qwerty)
 )
@@ -66,6 +65,15 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _              _              _    _
+)
+
+(deflayer navigation
+  _    _    _    _    _    _    _     _    _    _     _    _    _
+  _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    M-grv pgdn pgup M-tab _    _    _    _
+  _    _    _    _    _    _    right down up   left  _    _    _
+  _    _    _    _    _    _    _     end  home    _     _    _
+  _    _    _    _              _               _     _
 )
 
 
@@ -118,6 +126,7 @@
   to-qwr (layer-switch qwerty)
 )
 (defalias
+  nav (layer-toggle navigation)
   tap-cmk (multi
     (layer-switch nomods-colmak)
     (on-idle-fakekey to-cmk tap 20)
@@ -126,6 +135,9 @@
     (layer-switch nomods-qwerty)
     (on-idle-fakekey to-qwr tap 20)
   )
+
+  ;; navigation
+  spc (tap-hold-release $tap-time $hold-time spc @nav)
 
   ;; colmak
   acmk (tap-hold-release-keys $tap-time $hold-time (multi a @tap-cmk) lalt $left-hand-keys-cmk)
