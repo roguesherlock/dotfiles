@@ -32,14 +32,31 @@
   @lay lctl  lalt  lmet        spc         rmet  ralt
 )
 
+(deflayer nomods-colmak
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    a    r    s    t    _    _    n    e    i    o    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _              _              _    _
+)
 
 (deflayer qwerty
-  esc  brdn  brup  kp3   kp4   kp5   kp6   prev  pp    next  mute vold volu
-  grv  1     2     3     4     5     6     7     8     9     0    -    =    bspc
-  tab  q     w     e     r     t     y     u     i     o     p    [    ]    \
-  caps @aqwr @sqwr @dqwr @fqwr g     h     @jqwr @kqwr @lqwr ;    '    ret
-  lsft z     x     c     v     b     n     m     ,     .     /    rsft
+  esc  brdn  brup  kp3   kp4   kp5   kp6   prev  pp    next  mute  vold volu
+  grv  1     2     3     4     5     6     7     8     9     0     -    =    bspc
+  tab  q     w     e     r     t     y     u     i     o     p     [    ]    \
+  caps @aqwr @sqwr @dqwr @fqwr g     h     @jqwr @kqwr @lqwr @;qwr '    ret
+  lsft z     x     c     v     b     n     m     ,     .     /     rsft
   @lay lctl  lalt  lmet        spc         rmet ralt
+)
+
+(deflayer nomods-qwerty
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    a    s    d    f    _    _    j    k    l    ;    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _              _              _    _
 )
 
 (deflayer layers
@@ -47,24 +64,6 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _              _              _    _
-)
-
-(deflayer nomods-colmak
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    a    r    s    t    g    m    n    e    i    o    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _              _              _    _
-)
-
-(deflayer nomods-qwerty
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    a    s    d    f    g    h    j    k    l    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _              _              _    _
 )
@@ -88,7 +87,6 @@
   pinky-tap-time 250
   ;; Slightly longer hold time for pinky fingers
   pinky-hold-time 180 
-
 
   left-hand-keys-cmk (
     q w f p b
