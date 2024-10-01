@@ -1,9 +1,10 @@
 # font-family = "Input Mono Narrow"
-font-family = "Geist Mono"
-font-variation = wght=450
-font-variation-bold = wght=800
-font-variation-italic = wght=450
-font-variation-bold-italic = wght=800
+font-family = "Julia Mono"
+# font-family = "Geist Mono"
+# font-variation = wght=450
+# font-variation-bold = wght=800
+# font-variation-italic = wght=450
+# font-variation-bold-italic = wght=800
 font-size = 14
 adjust-cell-height = 20%
 window-padding-x = 0
