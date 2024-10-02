@@ -33,7 +33,7 @@ end
 
 -- nmap("<leader>ww", ":w<CR>", { desc = "Save file" })
 nmap("<D-s>", ":w<CR>", { desc = "Save file" })
--- nmap("<esc><esc>", ":w<CR>", { desc = "Save file" })
+nmap("<esc><esc>", ":w<CR>", { desc = "Save file" })
 -- imap("<esc>", "<esc>:w<CR>", { desc = "Save file" })
 
 -- nmap("<leader>w<leader>", "<C-W>p", { desc = "Switch to previous window" })
