@@ -89,12 +89,12 @@
   ;; Note: consider using different time values for your different fingers.
   ;; For example, your pinkies might be slower to release keys and index
   ;; fingers faster.
-  tap-time 200
-  hold-time 150
+  tap-time 210
+  hold-time 175
   ;; Longer tap time for pinky fingers
   pinky-tap-time 250
   ;; Slightly longer hold time for pinky fingers
-  pinky-hold-time 180 
+  pinky-hold-time 200 
 
   left-hand-keys-cmk (
     q w f p b
