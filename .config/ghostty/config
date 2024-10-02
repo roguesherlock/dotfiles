@@ -1,6 +1,6 @@
 # font-family = "Input Mono Narrow"
 font-family = "Julia Mono"
-# font-family = "Geist Mono"
+# fontmodus_light-family = "Geist Mono"
 # font-variation = wght=450
 # font-variation-bold = wght=800
 # font-variation-italic = wght=450
@@ -20,62 +20,62 @@ window-colorspace = display-p3
 macos-titlebar-style = native
 
 # zellij keybinds
-keybind = super+d=text:                 # detach zellij
-keybind = super+q=text:                 # Quit
-keybind = super+f=text:                 # EnterSearch
-keybind = super+n=text:                 # NewPane "Right"
-keybind = super+shift+n=text:           # NewPane "Down"
-keybind = super+r=text:                 # Rename
-keybind = super+b=text:                 # TogglePaneFrames
-keybind = super+m=text:                 # ToggleFocusFullscreen
-keybind = super+shift+enter=text:       # ToggleFocusFullscreen
-keybind = super+o=text:                 # ToggleFloatingPanes
-keybind = super+shift+o=text:▣           # TogglePaneEmbedOrFloating
-keybind = super+p=text:ꙮ                 # LaunchOrFocusPlugin "session-manager"
-keybind = super+w=text:                 # CloseFocus
-
-keybind = shift+left=text:ﰯ              # MoveFocusOrTab "Left";
-keybind = shift+right=text:ﰲ             # MoveFocusOrTab "Right";
-keybind = shift+up=text:ﰵ                # MoveFocusOrTab "Up";
-keybind = shift+down=text:ﰬ              # MoveFocusOrTab "Down";
-
-keybind = ctrl+shift+left=text:         # Resize "Left";
-keybind = ctrl+shift+right=text:        # Resize "Right";
-keybind = ctrl+shift+up=text:           # Resize "Up";
-keybind = ctrl+shift+down=text:         # Resize "Down";
-
-keybind = opt+shift+left=text:          # MovePane "Left";
-keybind = opt+shift+right=text:         # MovePane "Right";
-keybind = opt+shift+up=text:            # MovePane "Up";
-keybind = opt+shift+down=text:          # MovePane "Down";
-
-keybind = super+t=text:                 # NewTab
-keybind = opt+up=text:                  # NewTab
-keybind = opt+r=text:                   # RenameTab
-keybind = opt+w=text:                   # CloseTab
-keybind = super+left=text:              # PreviousTab
-keybind = super+right=text:             # NextTab
-keybind = opt+shift+left=text:          # MoveTab "Left";
-keybind = opt+shift+right=text:         # MoveTab "Right";
-
-keybind = super+physical:one=text:♠      # GoToTab 1 
-keybind = super+physical:two=text:☂      # GoToTab 2
-keybind = super+physical:three=text:♫    # GoToTab 3
-keybind = super+physical:four=text:☯     # GoToTab 4
-keybind = super+physical:five=text:⚛     # GoToTab 5
-keybind = super+physical:six=text:⛵     # GoToTab 6
-keybind = super+physical:seven=text:♞    # GoToTab 7
-keybind = super+physical:eight=text:⚘    # GoToTab 8
-keybind = super+physical:nine=text:☄     # GoToTab 9
-keybind = super+physical:zero=text:⛄    # GoToTab 10
-
-
-keybind = super+up=text:                # ScrollUp
-keybind = super+down=text:              # ScrollDown
-keybind = super+shift+up=text:          # HalfPageScrollUp
-keybind = super+shift+down=text:        # HalfPageScrollDown
-keybind = super+shift+right=text:       # PageScrollUp
-keybind = super+shift+left=text:        # PageScrollDown
+# keybind = super+d=text:                 # detach zellij
+# keybind = super+q=text:                 # Quit
+# keybind = super+f=text:                 # EnterSearch
+# keybind = super+n=text:                 # NewPane "Right"
+# keybind = super+shift+n=text:           # NewPane "Down"
+# keybind = super+r=text:                 # Rename
+# keybind = super+b=text:                 # TogglePaneFrames
+# keybind = super+m=text:                 # ToggleFocusFullscreen
+# keybind = super+shift+enter=text:       # ToggleFocusFullscreen
+# keybind = super+o=text:                 # ToggleFloatingPanes
+# keybind = super+shift+o=text:▣           # TogglePaneEmbedOrFloating
+# keybind = super+p=text:ꙮ                 # LaunchOrFocusPlugin "session-manager"
+# keybind = super+w=text:                 # CloseFocus
+#
+# keybind = shift+left=text:ﰯ              # MoveFocusOrTab "Left";
+# keybind = shift+right=text:ﰲ             # MoveFocusOrTab "Right";
+# keybind = shift+up=text:ﰵ                # MoveFocusOrTab "Up";
+# keybind = shift+down=text:ﰬ              # MoveFocusOrTab "Down";
+#
+# keybind = ctrl+shift+left=text:         # Resize "Left";
+# keybind = ctrl+shift+right=text:        # Resize "Right";
+# keybind = ctrl+shift+up=text:           # Resize "Up";
+# keybind = ctrl+shift+down=text:         # Resize "Down";
+#
+# keybind = opt+shift+left=text:          # MovePane "Left";
+# keybind = opt+shift+right=text:         # MovePane "Right";
+# keybind = opt+shift+up=text:            # MovePane "Up";
+# keybind = opt+shift+down=text:          # MovePane "Down";
+#
+# keybind = super+t=text:                 # NewTab
+# keybind = opt+up=text:                  # NewTab
+# keybind = opt+r=text:                   # RenameTab
+# keybind = opt+w=text:                   # CloseTab
+# keybind = super+left=text:              # PreviousTab
+# keybind = super+right=text:             # NextTab
+# keybind = opt+shift+left=text:          # MoveTab "Left";
+# keybind = opt+shift+right=text:         # MoveTab "Right";
+#
+# keybind = super+physical:one=text:♠      # GoToTab 1 
+# keybind = super+physical:two=text:☂      # GoToTab 2
+# keybind = super+physical:three=text:♫    # GoToTab 3
+# keybind = super+physical:four=text:☯     # GoToTab 4
+# keybind = super+physical:five=text:⚛     # GoToTab 5
+# keybind = super+physical:six=text:⛵     # GoToTab 6
+# keybind = super+physical:seven=text:♞    # GoToTab 7
+# keybind = super+physical:eight=text:⚘    # GoToTab 8
+# keybind = super+physical:nine=text:☄     # GoToTab 9
+# keybind = super+physical:zero=text:⛄    # GoToTab 10
+#
+#
+# keybind = super+up=text:                # ScrollUp
+# keybind = super+down=text:              # ScrollDown
+# keybind = super+shift+up=text:          # HalfPageScrollUp
+# keybind = super+shift+down=text:        # HalfPageScrollDown
+# keybind = super+shift+right=text:       # PageScrollUp
+# keybind = super+shift+left=text:        # PageScrollDown
 
 
 # modus_dark

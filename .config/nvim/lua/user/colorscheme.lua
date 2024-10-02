@@ -11,8 +11,8 @@ end
 local initialDark = M.os_is_dark()
 
 -- CHANGE COLORSCHME HERE
-M.colorscheme_light = "everforest"
-M.colorscheme_dark = "everforest"
+M.colorscheme_dark = "modus"
+M.colorscheme_light = "modus"
 -- TODO: enable this when the next zellij release is out
 M.ghostty_theme_light = "modus_light"
 M.ghostty_theme_dark = "modus_dark"
@@ -21,7 +21,7 @@ M.kitty_theme_light = "modus_light"
 M.kitty_theme_dark = "modus_dark"
 M.zellij_theme_light = "modus_light"
 M.zellij_theme_dark = "modus_dark"
-M.enable_auto_switch = false
+M.enable_auto_switch = true
 M.default_light = false
 M.initialColorScheme = nil
 

@@ -16,6 +16,10 @@ return {
 			--
 			-- local luasnip = require("luasnip")
 			local cmp = require("cmp")
+			opts.window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			}
 
 			opts.mapping = cmp.mapping.preset.insert({
 				["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),

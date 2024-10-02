@@ -115,10 +115,6 @@
                         "vendor_id": 7504
                     },
                     "ignore": true
-                },
-                {
-                    "identifiers": { "is_keyboard": true },
-                    "ignore": true
                 }
             ],
             "name": "Macbook Pro",

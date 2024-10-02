@@ -153,6 +153,6 @@ if status is-interactive
     end
 
     if test "$TERM_PROGRAM" = iTerm.app -o "$TERM" = xterm-ghostty -o "$TERM" = xterm-kitty -o "$TERM" = alacritty
-        zellij_start
+        # zellij_start
     end
 end
