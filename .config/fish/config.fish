@@ -104,6 +104,8 @@ if status is-interactive
     alias ytb="yt-dlp -f 'bv+ba/b' "
     alias yta="yt-dlp -f 'ba' -S 'ext' "
     alias g git
+    alias lg lazygit
+    alias lslat "curl https://cheat.sh/latencies"
     # if type -q kitty
     alias icat="kitty +kitten icat"
     alias s="kitty +kitten ssh"
