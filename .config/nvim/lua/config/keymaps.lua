@@ -195,3 +195,11 @@ nmap("<leader>gl", open_in_gh, { desc = "Open file in github" })
 --     ╰───────────────────────────────────────────────────────────────────╯
 map("c", "<C-j>", "<Down>", { desc = "Next command" })
 map("c", "<C-k>", "<Up>", { desc = "Previous command" })
+
+-- CodeCompanion
+nmap("<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vmap("<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+nmap("<Leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vmap("<Leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vmap("ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+vim.cmd([[cab cc CodeCompanion]])
