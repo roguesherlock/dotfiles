@@ -1,30 +1,36 @@
 themes {
 
+  // modus_vivendi
   modus_dark {
-      bg "#7030af"
       fg "#ffffff"
+      bg "#000000"
+      // Black should match the terminal background color
+      // This ensures the top and bottom bars are transparent
+      black "#000000"
       red "#ff5f59"
       green "#44bc44"
+      yellow "#d0bc00"
       blue "#2fafff"
-      yellow "#fec43f"
       magenta "#feacd0"
-      orange "#ff9580"
       cyan "#00d3d0"
-      black "#000000"
       white "#ffffff"
+      orange "#fec43f"
   }
 
+  // modus_operandi
   modus_light {
-      bg "#dfa0f0"
       fg "#000000"
+      bg "#ffffff"
+      // Black should match the terminal background color
+      // This ensures the top and bottom bars are transparent
+      black "#ffffff"
       red "#a60000"
       green "#006800"
-      blue "#0031a9"
       yellow "#6f5500"
+      blue "#0031a9"
       magenta "#721045"
-      orange "#884900"
       cyan "#005e8b"
-      black "#000000"
-      white "#ffffff"
+      white "#000000"
+      orange "#884900"
     }
 }
