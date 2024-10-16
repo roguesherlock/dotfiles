@@ -455,10 +455,44 @@ local function codecompanion()
   vim.cmd [[cab cc CodeCompanion]]
 end
 
+local function avante()
+  add {
+    source = 'yetone/avante.nvim',
+    monitor = 'main',
+    depends = {
+      'stevearc/dressing.nvim',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'echasnovski/mini.icons',
+    },
+    hooks = {
+      post_checkout = function()
+        vim.cmd 'AvanteBuild source=false'
+      end,
+    },
+  }
+  --- optional
+  add { source = 'zbirenbaum/copilot.lua' }
+  add { source = 'HakonHarnes/img-clip.nvim' }
+  add { source = 'MeanderingProgrammer/render-markdown.nvim' }
+
+  now(function()
+    require('avante_lib').load()
+  end)
+  later(function()
+    require('render-markdown').setup {}
+  end)
+  later(function()
+    require('img-clip').setup {}
+    require('copilot').setup {}
+    require('avante').setup {}
+  end)
+end
+
 local function ai()
   supermaven()
-  codecompanion()
-  -- avante()
+  -- codecompanion()
+  avante()
 end
 
 local function git()
