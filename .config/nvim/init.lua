@@ -3,7 +3,17 @@
 vim.loader.enable()
 
 local add, now, later -- mini.deps will be setup later
-local light_theme, dark_theme -- colors, look at colors()
+-- colors, look at colors()
+local light_theme, dark_theme
+local enable_auto_switch = true
+local default_light = false
+local ghostty_light_theme = 'modus_light'
+local ghostty_dark_theme = 'modus_dark'
+local ghostty_custom_theme = true
+local kitty_light_theme = 'modus_light'
+local kitty_dark_theme = 'modus_dark'
+local zellij_light_theme = 'modus_light'
+local zellij_dark_theme = 'modus_dark'
 
 local function map(mode, lhs, rhs, opts)
   opts = opts or {}
@@ -209,48 +219,176 @@ local function setup_plugin_manager()
   add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 end
 
-local function iceberg()
-  add 'cocopon/iceberg.vim'
-  dark_theme = 'iceberg'
-  light_theme = 'iceberg'
-end
-
-local function komau()
-  add 'ntk148v/komau.vim'
-  dark_theme = 'komau'
-  light_theme = 'komau'
-end
-
 local function tokyonight()
   add 'folke/tokyonight.nvim'
+
   dark_theme = 'tokyonight-night'
   light_theme = 'tokyonight-day'
+  ghostty_dark_theme = 'tokyonight-night'
+  ghostty_light_theme = 'tokyonight-day'
+  ghostty_custom_theme = false
+  kitty_dark_theme = 'tokyonight-night'
+  kitty_light_theme = 'tokyonight-day'
 end
 
 local function modus()
   add 'miikanissi/modus-themes.nvim'
+
   dark_theme = 'modus_operandi'
   light_theme = 'modus_vivendi'
+  ghostty_dark_theme = 'modus_dark'
+  ghostty_light_theme = 'modus_light'
+  ghostty_custom_theme = true
+  kitty_dark_theme = 'modus_dark'
+  kitty_light_theme = 'modus_light'
+end
+
+-- TODO: auto switch theme to light/dark based on macos appearance
+-- https://github.com/jascha030/macos-nvim-dark-mode
+local os_is_dark = function()
+  return (vim.fn.system [[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]):find 'dark' ~= nil
+end
+
+---@param light boolean
+local set_colorscheme = function(light)
+  if light then
+    vim.opt.background = 'light'
+    vim.cmd('colorscheme ' .. light_theme)
+  else
+    vim.opt.background = 'dark'
+    vim.cmd('colorscheme ' .. dark_theme)
+  end
+end
+
+local set_from_os = function()
+  if not enable_auto_switch then
+    set_colorscheme(default_light)
+  end
+  if os_is_dark() then
+    set_colorscheme(false)
+  else
+    set_colorscheme(true)
+  end
+end
+
+local function switch_theme(theme)
+  local theme_name, theme_type = theme:match '([^_]*)_([^_]*)'
+  if theme_type == 'light' then
+    theme_type = 'dark'
+  else
+    theme_type = 'light'
+  end
+  return theme_name .. '_' .. theme_type
+end
+
+local function set_ghostty_theme(theme)
+  local base_config_path = vim.fn.expand '~/.config/ghostty/config'
+  local theme_file_path = vim.fn.expand('~/.config/ghostty/' .. theme .. '.conf')
+
+  -- Check if the theme file exists
+  if vim.fn.filereadable(theme_file_path) == 0 then
+    print('Theme file not found: ' .. theme_file_path)
+    return
+  end
+
+  local currentTheme = switch_theme(theme)
+
+  -- Read the content of the theme file
+  local theme_content = vim.fn.readfile(theme_file_path)
+
+  -- Read the current content of the base config file
+  local base_config_content = vim.fn.readfile(base_config_path)
+
+  -- Find the start and end indices of the current theme section
+  local start_index, end_index
+  local in_theme_section = false
+  for i, line in ipairs(base_config_content) do
+    if line:match('^# %s*' .. theme .. '$') then
+      return
+    elseif line:match('^# %s*' .. currentTheme .. '$') then
+      start_index = i
+      in_theme_section = true
+    elseif line:match '^# End*$' and in_theme_section then
+      end_index = i
+      break
+    end
+  end
+
+  -- Remove the current theme section if found
+  if start_index and end_index then
+    for i = end_index, start_index, -1 do
+      table.remove(base_config_content, i)
+    end
+  end
+
+  -- Insert the new theme content at the position where the old theme was removed
+  -- or at the end if no theme section was found
+  local insert_position = start_index or (#base_config_content + 1)
+  for i, line in ipairs(theme_content) do
+    table.insert(base_config_content, insert_position, line)
+    insert_position = insert_position + 1
+  end
+
+  -- Write the updated content back to the base config file
+  vim.fn.writefile(base_config_content, base_config_path)
+
+  -- print("Theme set to: " .. theme)
 end
 
 local function colors()
   vim.opt.background = 'dark'
   tokyonight()
-  -- color utils
-  vim.cmd('colorscheme ' .. dark_theme)
+  modus()
+
+  local term = os.getenv 'TERM'
+  vim.api.nvim_create_autocmd('Signal', {
+    pattern = '*',
+    callback = function()
+      set_from_os()
+    end,
+  })
+
+  vim.api.nvim_create_autocmd('ColorScheme', {
+    pattern = '*',
+    callback = function()
+      if vim.o.background == 'light' then
+        if term == 'xterm-kitty' then
+          vim.fn.system('kitty +kitten themes ' .. kitty_light_theme)
+        elseif term == 'xterm-ghostty' then
+          if ghostty_custom_theme then
+            set_ghostty_theme(ghostty_light_theme)
+          else
+            vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_light_theme .. "/' (readlink ~/.config/ghostty/config)")
+          end
+        end
+      elseif vim.o.background == 'dark' then
+        if term == 'xterm-kitty' then
+          vim.fn.system('kitty +kitten themes ' .. kitty_dark_theme)
+        elseif term == 'xterm-ghostty' then
+          if ghostty_custom_theme then
+            set_ghostty_theme(ghostty_dark_theme)
+          else
+            vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_dark_theme .. "/' (readlink ~/.config/ghostty/config)")
+          end
+        end
+      else
+        if term == 'xterm-kitty' then
+          vim.fn.system('kitty +kitten themes ' .. kitty_dark_theme)
+        elseif term == 'xterm-ghostty' then
+          vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_dark_theme .. "/' (readlink ~/.config/ghostty/config)")
+        end
+      end
+    end,
+  })
+
   vim.api.nvim_create_user_command('Light', function()
-    vim.opt.background = 'light'
-    vim.cmd('colorscheme ' .. light_theme)
+    set_colorscheme(true)
   end, {})
   vim.api.nvim_create_user_command('Dark', function()
-    vim.opt.background = 'dark'
-    vim.cmd('colorscheme ' .. dark_theme)
+    set_colorscheme(false)
   end, {})
-  -- Fix cursorline
-  -- vim.api.nvim_command [[
-  --   hi! CursorLine guibg=#2e3440
-  --   hi! link Visual CursorLine
-  -- ]]
+
+  set_from_os()
 end
 
 local function plenary()
@@ -271,8 +409,8 @@ end
 
 local function which_key()
   add 'folke/which-key.nvim'
-  vim.o.timeout = true
-  vim.o.timeoutlen = 300
+  vim.opt.timeout = true
+  vim.opt.timeoutlen = 300
   require('which-key').setup {
     preset = 'helix',
     -- Document existing key chains
@@ -311,9 +449,10 @@ local function codecompanion()
 
   require('codecompanion').setup()
 
-  map({ 'n', 'v' }, '<leader>ap', '<cmd>CodeCompanionActions<cr>', { desc = 'Ai Actions [P]rompt' })
+  map({ 'n', 'v' }, '<leader>ap', '<cmd>CodeCompanionActions<cr>', { desc = '[A]i Actions [P]rompt' })
   map({ 'n', 'v' }, '<leader>aa', '<cmd>CodeCompanionChat Toggle<cr>', { desc = 'Toggle [A]i Chat' })
   map({ 'n', 'v' }, '<leader>ac', '<cmd>CodeCompanionChat Add<cr>', { desc = '[A]i add to [C]hat' })
+  vim.cmd [[cab cc CodeCompanion]]
 end
 
 local function ai()
@@ -956,10 +1095,10 @@ local function nvim_ufo()
 
   local ufo = require 'ufo'
 
-  vim.o.foldcolumn = '1' -- '0' is not bad
-  vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-  vim.o.foldlevelstart = 99
-  vim.o.foldenable = true
+  vim.opt.foldcolumn = '0' -- '0' is not bad
+  vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+  vim.opt.foldlevelstart = 99
+  vim.opt.foldenable = true
   -- global handler
   -- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
   -- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
