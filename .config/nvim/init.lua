@@ -234,8 +234,8 @@ end
 local function modus()
   add 'miikanissi/modus-themes.nvim'
 
-  dark_theme = 'modus_operandi'
-  light_theme = 'modus_vivendi'
+  dark_theme = 'modus_vivendi'
+  light_theme = 'modus_operandi'
   ghostty_dark_theme = 'modus_dark'
   ghostty_light_theme = 'modus_light'
   ghostty_custom_theme = true
