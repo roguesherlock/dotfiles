@@ -109,7 +109,36 @@ local function setup_mappings()
   map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
   -- quit
-  map('n', '<leader>wq', '<cmd>qa<cr>', { desc = '[W]orkspace [Q]uit All' })
+  local function quit_with_prompt()
+    local modified_buffers = {}
+    for _, buf in ipairs(vim.fn.getbufinfo { bufmodified = 1 }) do
+      if buf.changed == 1 then
+        table.insert(modified_buffers, buf)
+      end
+    end
+
+    if #modified_buffers == 0 then
+      vim.cmd 'qa'
+      return
+    end
+
+    for _, buf in ipairs(modified_buffers) do
+      local choice = vim.fn.confirm('Save changes to ' .. buf.name .. '?', '&Yes\n&No\n&Cancel', 1)
+      if choice == 1 then -- Yes
+        vim.api.nvim_buf_call(buf.bufnr, function()
+          vim.cmd 'write'
+        end)
+      elseif choice == 2 then -- No
+        vim.cmd 'qa!'
+      -- Do nothing, continue to next buffer
+      else -- Cancel or any other input
+        return -- Stop the quit process
+      end
+    end
+
+    vim.cmd 'qa'
+  end
+  map('n', '<leader>wq', quit_with_prompt, { desc = '[W]orkspace [Q]uit All' })
 
   -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
   -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -197,7 +226,9 @@ local function setup_autocommands()
       '*',
     },
     callback = function()
-      vim.cmd [[ silent! update ]]
+      if vim.bo.modified and not vim.bo.readonly and vim.fn.expand '%' ~= '' and vim.bo.buftype == '' then
+        vim.api.nvim_command 'silent! update'
+      end
     end,
   })
 
