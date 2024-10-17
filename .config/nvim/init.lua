@@ -926,12 +926,13 @@ local function lsp()
 
   local lspconfig = require 'lspconfig'
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local on_attach = function(client, bufnr)
+  local on_attach = function(client, buffer)
+    -- mini_completion_on_attach(client, buffer)
+
     -- we use conform to format
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
 
-    -- mini_completion_on_attach(client, bufnr)
     -- The following two autocommands are used to highlight references of the
     -- word under your cursor when your cursor rests there for a little while.
     --    See `:help CursorHold` for information about when this is executed
@@ -940,13 +941,13 @@ local function lsp()
     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
       local highlight_augroup = vim.api.nvim_create_augroup('user-lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-        buffer = bufnr,
+        buffer = buffer,
         group = highlight_augroup,
         callback = vim.lsp.buf.document_highlight,
       })
 
       vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-        buffer = bufnr,
+        buffer = buffer,
         group = highlight_augroup,
         callback = vim.lsp.buf.clear_references,
       })
@@ -959,6 +960,36 @@ local function lsp()
         end,
       })
     end
+
+    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_codeLens) then
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+        group = vim.api.nvim_create_augroup('user-lsp-codelens', { clear = true }),
+        buffer = buffer,
+        callback = vim.lsp.codelens.refresh,
+      })
+    end
+
+    vim.diagnostic.config {
+      underline = true,
+      update_in_insert = false,
+      virtual_text = {
+        spacing = 4,
+        source = 'if_many',
+        -- prefix = '●',
+        -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+        -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+        -- prefix = 'icons',
+      },
+      severity_sort = true,
+      -- signs = {
+      --   text = {
+      --     [vim.diagnostic.severity.ERROR] = ' ',
+      --     [vim.diagnostic.severity.WARN] = ' ',
+      --     [vim.diagnostic.severity.HINT] = ' ',
+      --     [vim.diagnostic.severity.INFO] = ' ',
+      --   },
+      -- },
+    }
   end
 
   -- LSP servers and clients are able to communicate to each other what features they support.
