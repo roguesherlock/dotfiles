@@ -201,16 +201,16 @@ local function setup_autocommands()
   -- Close certain filetypes with 'q'
   vim.api.nvim_create_autocmd('FileType', {
     pattern = {
-      'qf',           -- quickfix list
-      'help',         -- help files
-      'man',          -- man pages
-      'notify',       -- notifications
-      'lspinfo',      -- lsp info
+      'qf', -- quickfix list
+      'help', -- help files
+      'man', -- man pages
+      'notify', -- notifications
+      'lspinfo', -- lsp info
       'spectre_panel',
       'startuptime',
       'tsplayground',
       'PlenaryTestPopup',
-      'mini.pick',    -- mini.pick
+      'mini.pick', -- mini.pick
     },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
@@ -946,7 +946,33 @@ local function lsp()
 
   lazydev()
 
-  setup_lsp 'vtsls'
+  setup_lsp('vtsls', {
+    complete_function_calls = true,
+    vtsls = {
+      -- enableMoveToFileCodeAction = true,
+      autoUseWorkspaceTsdk = true,
+      experimental = {
+        completion = {
+          enableServerSideFuzzyMatch = true,
+        },
+      },
+    },
+    typescript = {
+      updateImportsOnFileMove = { enabled = 'always' },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+      tsserver = { maxTsServerMemory = 8192 },
+      inlayHints = {
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = 'literals' },
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = false },
+      },
+    },
+  })
   setup_lsp 'vimls'
   setup_lsp 'bashls'
   setup_lsp 'jsonls'
