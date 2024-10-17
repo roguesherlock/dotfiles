@@ -108,6 +108,9 @@ local function setup_mappings()
   -- Diagnostic keymaps
   map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+  -- quit
+  map('n', '<leader>wq', '<cmd>qa<cr>', { desc = '[W]orkspace [Q]uit All' })
+
   -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
   -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
   -- is not what someone will guess without a bit more experience.
@@ -540,7 +543,7 @@ local function auto_session()
     bypass_save_filetypes = { 'NvimTree', 'Lazy', 'Starter' },
   }
   require('which-key').add {
-    { '<leader>wsd', group = '[W]orkspace [S]ession [D]elete' },
+    { '<leader>ws', group = '[W]orkspace [S]ession' },
   }
   map('n', '<leader>wsd', function()
     vim.cmd 'silent! SessionDelete' -- delete session
