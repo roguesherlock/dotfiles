@@ -777,6 +777,82 @@ local function auto_session()
   end)
 end
 
+local function auto_session_custom()
+  local function create_session(session_name)
+    local session_dir = vim.fn.stdpath 'data' .. '/session'
+    vim.fn.mkdir(session_dir, 'p')
+
+    local current_dir = vim.fn.getcwd()
+    local git_dir = vim.fn.system('git -C ' .. vim.fn.shellescape(current_dir) .. ' rev-parse --show-toplevel 2>/dev/null'):gsub('\n', '')
+
+    local base_dir = git_dir ~= '' and git_dir or current_dir
+    local dir_name = vim.fn.fnamemodify(base_dir, ':t')
+
+    session_name = session_name or dir_name
+    local session_file = session_dir .. '/' .. session_name .. '.vim'
+
+    vim.cmd('mksession! ' .. vim.fn.fnameescape(session_file))
+    print('Session saved to: ' .. session_file)
+  end
+
+  local function delete_session(session_name)
+    local session_dir = vim.fn.stdpath 'data' .. '/session'
+
+    if session_name == nil or session_name == '' then
+      -- List available sessions and prompt user to choose
+      local sessions = vim.fn.glob(session_dir .. '/*.vim', false, true)
+      if #sessions == 0 then
+        print 'No sessions found.'
+        return
+      end
+      print 'Available sessions:'
+      for i, session in ipairs(sessions) do
+        print(i .. '. ' .. vim.fn.fnamemodify(session, ':t:r'))
+      end
+      local choice = tonumber(vim.fn.input 'Enter the number of the session to delete (or 0 to cancel): ')
+      if choice == nil or choice == 0 or choice > #sessions then
+        print 'Deletion cancelled.'
+        return
+      end
+      session_name = vim.fn.fnamemodify(sessions[choice], ':t:r')
+    end
+
+    local session_file = session_dir .. '/' .. session_name .. '.vim'
+
+    if vim.fn.filereadable(session_file) == 1 then
+      local confirm = vim.fn.input("Are you sure you want to delete the session '" .. session_name .. "'? (y/N): ")
+      if confirm:lower() == 'y' then
+        vim.fn.delete(session_file)
+        print("Session '" .. session_name .. "' deleted.")
+      else
+        print 'Deletion cancelled.'
+      end
+    else
+      print("Session '" .. session_name .. "' not found.")
+    end
+  end
+
+  later(function()
+    require('which-key').add {
+      { '<leader>ws', group = '[W]orkspace [S]ession' },
+      { '<leader>wsc', group = '[W]orkspace [S]ession [C]reate' },
+      { '<leader>wsd', group = '[W]orkspace [S]ession [D]elete' },
+    }
+    -- Command to create a session
+    vim.api.nvim_create_user_command('CreateSession', function(opts)
+      create_session(opts.args ~= '' and opts.args or nil)
+    end, { nargs = '?', desc = 'Create a session for the current directory or Git repository' })
+    map('n', '<leader>wsc', '<cmd>CreateSession<cr>', { desc = '[W]orkspace [S]ession [C]reate' })
+
+    -- Command to delete a session
+    vim.api.nvim_create_user_command('DeleteSession', function(opts)
+      delete_session(opts.args ~= '' and opts.args or nil)
+    end, { nargs = '?', desc = 'Delete a session file' })
+
+    map('n', '<leader>wsd', '<cmd>DeleteSession<cr>', { desc = '[W]orkspace [S]ession [D]elete' })
+  end)
+end
+
 local function mini_nvim()
   add 'echasnovski/mini.nvim'
   -- require('mini.completion').setup {}
@@ -1596,77 +1672,8 @@ local function overseer()
 end
 
 local function dashboard()
-  -- auto_session()
   add 'echasnovski/mini.sessions'
   require('mini.sessions').setup {}
-
-  local function create_session(session_name)
-    local session_dir = vim.fn.stdpath 'data' .. '/session'
-    vim.fn.mkdir(session_dir, 'p')
-
-    local current_dir = vim.fn.getcwd()
-    local git_dir = vim.fn.system('git -C ' .. vim.fn.shellescape(current_dir) .. ' rev-parse --show-toplevel 2>/dev/null'):gsub('\n', '')
-
-    local base_dir = git_dir ~= '' and git_dir or current_dir
-    local dir_name = vim.fn.fnamemodify(base_dir, ':t')
-
-    session_name = session_name or dir_name
-    local session_file = session_dir .. '/' .. session_name .. '.vim'
-
-    vim.cmd('mksession! ' .. vim.fn.fnameescape(session_file))
-    print('Session saved to: ' .. session_file)
-  end
-
-  -- Command to create a session
-  vim.api.nvim_create_user_command('CreateSession', function(opts)
-    create_session(opts.args ~= '' and opts.args or nil)
-  end, { nargs = '?', desc = 'Create a session for the current directory or Git repository' })
-
-  map('n', '<leader>wsc', '<cmd>CreateSession<cr>', { desc = '[W]orkspace [S]ession [C]reate' })
-
-  local function delete_session(session_name)
-    local session_dir = vim.fn.stdpath 'data' .. '/session'
-
-    if session_name == nil or session_name == '' then
-      -- List available sessions and prompt user to choose
-      local sessions = vim.fn.glob(session_dir .. '/*.vim', false, true)
-      if #sessions == 0 then
-        print 'No sessions found.'
-        return
-      end
-      print 'Available sessions:'
-      for i, session in ipairs(sessions) do
-        print(i .. '. ' .. vim.fn.fnamemodify(session, ':t:r'))
-      end
-      local choice = tonumber(vim.fn.input 'Enter the number of the session to delete (or 0 to cancel): ')
-      if choice == nil or choice == 0 or choice > #sessions then
-        print 'Deletion cancelled.'
-        return
-      end
-      session_name = vim.fn.fnamemodify(sessions[choice], ':t:r')
-    end
-
-    local session_file = session_dir .. '/' .. session_name .. '.vim'
-
-    if vim.fn.filereadable(session_file) == 1 then
-      local confirm = vim.fn.input("Are you sure you want to delete the session '" .. session_name .. "'? (y/N): ")
-      if confirm:lower() == 'y' then
-        vim.fn.delete(session_file)
-        print("Session '" .. session_name .. "' deleted.")
-      else
-        print 'Deletion cancelled.'
-      end
-    else
-      print("Session '" .. session_name .. "' not found.")
-    end
-  end
-
-  -- Command to delete a session
-  vim.api.nvim_create_user_command('DeleteSession', function(opts)
-    delete_session(opts.args ~= '' and opts.args or nil)
-  end, { nargs = '?', desc = 'Delete a session file' })
-
-  map('n', '<leader>wsd', '<cmd>CreateSession<cr>', { desc = '[W]orkspace [S]ession [D]elete' })
 
   add 'echasnovski/mini.starter'
   local starter = require 'mini.starter'
@@ -1823,6 +1830,7 @@ local function setup_plugins()
   plugins_that_should_be_the_default()
   which_key()
   -- auto_session()
+  auto_session_custom()
   -- telescope()
   grug()
   git()
