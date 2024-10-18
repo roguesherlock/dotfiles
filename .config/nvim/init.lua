@@ -108,6 +108,9 @@ local function setup_mappings()
   -- Diagnostic keymaps
   map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+  -- quickfix list
+  map('n', '<leader>xx', '<cmd>copen<cr>', { desc = 'Open [X]Quikfi[X] list' })
+  map('n', '<leader>xl', '<cmd>lopen<cr>', { desc = 'Open [L]ocal [X]Quikfi[X] list' })
   -- quit
   local function quit_with_prompt()
     local modified_buffers = {}
@@ -130,7 +133,7 @@ local function setup_mappings()
         end)
       elseif choice == 2 then -- No
         vim.cmd 'qa!'
-      -- Do nothing, continue to next buffer
+        -- Do nothing, continue to next buffer
       else -- Cancel or any other input
         return -- Stop the quit process
       end
@@ -629,7 +632,9 @@ local function mini_nvim()
 
   require('mini.pairs').setup()
 
-  require('mini.bracketed').setup()
+  require('mini.bracketed').setup {
+    window = { suffix = 'W', options = {} },
+  }
 
   require('mini.pick').setup {
     mappings = {
@@ -896,14 +901,29 @@ local function lsp()
   }
 
   map('n', 'E', vim.diagnostic.open_float, { desc = 'Show line diagnostics' })
-  map('n', ']d', function()
-    vim.diagnostic.goto_next()
-    vim.cmd 'normal! zz'
-  end, { desc = 'Go to next diagnostic' })
-  map('n', '[d', function()
-    vim.diagnostic.goto_prev()
-    vim.cmd 'normal! zz'
-  end, { desc = 'Go to previous diagnostic' })
+
+  -- diagnostic
+  local diagnostic_goto = function(next, severity)
+    local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+    severity = severity and vim.diagnostic.severity[severity] or nil
+    return function()
+      go { severity = severity }
+      vim.cmd 'normal! zz'
+    end
+  end
+  map('n', ']d', diagnostic_goto(true), { desc = 'Next [D]iagnostic' })
+  map('n', '[d', diagnostic_goto(false), { desc = 'Prev [D]iagnostic' })
+  map('n', ']e', diagnostic_goto(true, 'ERROR'), { desc = 'Next [E]rror' })
+  map('n', '[e', diagnostic_goto(false, 'ERROR'), { desc = 'Prev [E]rror' })
+  map('n', ']w', diagnostic_goto(true, 'WARN'), { desc = 'Next [W]arning' })
+  map('n', '[w', diagnostic_goto(false, 'WARN'), { desc = 'Prev [W]arning' })
+  map('n', '<leader>td', function()
+    if vim.diagnostic.enable then
+      pcall(vim.diagnostic.enable, false)
+    else
+      pcall(vim.diagnostic.enable, true)
+    end
+  end, { desc = '[T]oggle [D]iagnostics' })
 
   map('n', 'K', vim.lsp.buf.hover, { desc = 'Hover' })
 
@@ -1092,7 +1112,8 @@ end
 local function trouble()
   add 'folke/trouble.nvim'
   require('trouble').setup {}
-  map('n', '<leader>d', ':Trouble diagnostics toggle<cr>', { desc = 'Toggle trouble diagnostics' })
+  map('n', '<leader>d', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'Toggle trouble diagnostics' })
+  map('n', '<leader>q', '<cmd>Trouble qflist toggle<cr>', { desc = 'Toggle trouble [Q]uickfix' })
 end
 
 local function conform()
@@ -1167,6 +1188,16 @@ local function todo_comments()
   require('todo-comments').setup {
     signs = false,
   }
+  map('n', ']t', function()
+    require('todo-comments').jump_next { 'FIX', 'TODO' }
+  end, { desc = 'Next todo comment' })
+
+  map('n', '[t', function()
+    require('todo-comments').jump_prev { 'FIX', 'TODO' }
+  end, { desc = 'Previous todo comment' })
+
+  -- map('n', '<leader>xt', '<cmd>TodoTrouble<cr>', { desc = 'Toggle [X]todo [T]rouble' })
+  map('n', '<leader>xt', '<cmd>TodoQuickFix<cr>', { desc = 'Open Todo' })
 end
 
 local function harpoon()
@@ -1536,7 +1567,7 @@ local function setup_plugins()
   lsp()
   completion()
   ai()
-  trouble()
+  -- trouble()
   conform()
   highlight_colors()
   todo_comments()
