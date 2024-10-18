@@ -1,6 +1,6 @@
 # font-family = "Input Mono Narrow"
-font-family = "JuliaMono"
-# fontmodus_light-family = "Geist Mono"
+# font-family = "JuliaMono"
+# font-family = "Geist Mono"
 # font-variation = wght=450
 # font-variation-bold = wght=800
 # font-variation-italic = wght=450
@@ -10,7 +10,7 @@ adjust-cell-height = 20%
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = Builtin Pastel Dark
+theme = catppuccin-mocha
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 window-colorspace = display-p3
@@ -76,48 +76,3 @@ macos-titlebar-style = native
 # keybind = super+shift+down=text:        # HalfPageScrollDown
 # keybind = super+shift+right=text:       # PageScrollUp
 # keybind = super+shift+left=text:        # PageScrollDown
-# modus_dark
-palette = 0=#000000
-palette = 1=#ff5f59
-palette = 2=#44bc44
-palette = 3=#d0bc00
-palette = 4=#2fafff
-palette = 5=#feacd0
-palette = 6=#00d3d0
-palette = 7=#ffffff
-palette = 8=#6a6e79
-palette = 9=#ff5f5f
-palette = 10=#44df44
-palette = 11=#efef00
-palette = 12=#338fff
-palette = 13=#ff66ff
-palette = 14=#00eff0
-palette = 15=#989898
-background = #000000
-foreground = #ffffff
-cursor-color= #ffffff
-selection-background = #7030af
-selection-foreground = #ffffff
-# End
-# melange_dark
-palette = 0=#34302C
-palette = 1=#BD8183
-palette = 2=#78997A
-palette = 3=#E49B5D
-palette = 4=#7F91B2
-palette = 5=#B380B0
-palette = 6=#7B9695
-palette = 7=#C1A78E
-palette = 8=#867462
-palette = 9=#D47766
-palette = 10=#85B695
-palette = 11=#EBC06D
-palette = 12=#A3A9CE
-palette = 13=#CF9BC2
-palette = 14=#89B3B6
-palette = 15=#ECE1D7
-background = 292522
-foreground = ECE1D7
-selection-background = 403A36
-selection-foreground = ECE1D7
-# End

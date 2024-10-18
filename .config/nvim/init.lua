@@ -314,7 +314,19 @@ local function switch_theme(theme)
   return theme_name .. '_' .. theme_type
 end
 
-local function set_ghostty_theme(theme)
+local function set_ghostty_theme(theme, is_custom_theme)
+  is_custom_theme = is_custom_theme or false
+  if not is_custom_theme then
+    -- vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_light_theme .. "/' (readlink ~/.config/ghostty/config)")
+    local config_path = vim.fn.expand '~/.config/ghostty/config'
+    local real_path = vim.fn.resolve(config_path)
+    local cmd = string.format("sed -i'.bak' 's/theme = .*/theme = %s/' %s", theme, real_path)
+    local result = vim.fn.system { 'bash', '-c', cmd }
+    if vim.v.shell_error ~= 0 then
+      print('Error updating Ghostty theme: ' .. result)
+    end
+    return
+  end
   local base_config_path = vim.fn.expand '~/.config/ghostty/config'
   local theme_file_path = vim.fn.expand('~/.config/ghostty/' .. theme .. '.conf')
 
@@ -450,7 +462,7 @@ local function colors()
   -- tokyonight()
   modus()
   catppuccin()
-  melange()
+  -- melange()
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -467,27 +479,19 @@ local function colors()
         if term == 'xterm-kitty' then
           vim.fn.system('kitty +kitten themes ' .. kitty_light_theme)
         elseif term == 'xterm-ghostty' then
-          if ghostty_custom_theme then
-            set_ghostty_theme(ghostty_light_theme)
-          else
-            vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_light_theme .. "/' (readlink ~/.config/ghostty/config)")
-          end
+          set_ghostty_theme(ghostty_light_theme, ghostty_custom_theme)
         end
       elseif vim.o.background == 'dark' then
         if term == 'xterm-kitty' then
           vim.fn.system('kitty +kitten themes ' .. kitty_dark_theme)
         elseif term == 'xterm-ghostty' then
-          if ghostty_custom_theme then
-            set_ghostty_theme(ghostty_dark_theme)
-          else
-            vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_dark_theme .. "/' (readlink ~/.config/ghostty/config)")
-          end
+          set_ghostty_theme(ghostty_dark_theme, ghostty_custom_theme)
         end
       else
         if term == 'xterm-kitty' then
           vim.fn.system('kitty +kitten themes ' .. kitty_dark_theme)
         elseif term == 'xterm-ghostty' then
-          vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_dark_theme .. "/' (readlink ~/.config/ghostty/config)")
+          set_ghostty_theme(ghostty_dark_theme, ghostty_custom_theme)
         end
       end
     end,
@@ -500,7 +504,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Melange'
+  vim.api.nvim_command 'Catppuccin'
   -- set_from_os()
 end
 
@@ -560,7 +564,53 @@ end
 local function codecompanion()
   add 'olimorris/codecompanion.nvim'
 
-  require('codecompanion').setup()
+  require('codecompanion').setup {
+    strategies = {
+      chat = {
+        adapter = 'anthropic',
+        slash_commands = {
+          ['buffer'] = {
+            opts = {
+              provider = 'mini_pick',
+            },
+          },
+          ['fetch'] = {
+            opts = {
+              provider = 'mini_pick',
+            },
+          },
+          ['file'] = {
+            opts = {
+              provider = 'mini_pick',
+            },
+          },
+          ['help'] = {
+            opts = {
+              provider = 'mini_pick',
+            },
+          },
+        },
+        keymaps = {
+          close = {
+            modes = {
+              n = 'q',
+              i = 'q',
+            },
+          },
+          stop = {
+            modes = {
+              n = '<C-c>',
+            },
+          },
+        },
+      },
+    },
+    display = {
+      diff = {
+        provider = 'mini_diff',
+      },
+    },
+  }
 
   map({ 'n', 'v' }, '<leader>ap', '<cmd>CodeCompanionActions<cr>', { desc = '[A]i Actions [P]rompt' })
   map({ 'n', 'v' }, '<leader>aa', '<cmd>CodeCompanionChat Toggle<cr>', { desc = 'Toggle [A]i Chat' })
