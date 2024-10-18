@@ -1341,10 +1341,26 @@ local function noice()
     },
   }
   require('noice').setup {
-    lsp = { progress = { enabled = false } },
-    notify = { enabled = true, view = 'notify' },
-    messages = { enabled = true, view = 'notify' },
-    cmdline = { view = 'cmdline_popup' },
+    -- lsp = { progress = { enabled = false } },
+    -- notify = { enabled = true, view = 'notify' },
+    -- messages = { enabled = true, view = 'notify' },
+    -- cmdline = { view = 'cmdline_popup' },
+    lsp = {
+      -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+      override = {
+        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+        ['vim.lsp.util.stylize_markdown'] = true,
+        ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+      },
+    },
+    -- you can enable a preset for easier configuration
+    presets = {
+      bottom_search = true, -- use a classic bottom cmdline for search
+      command_palette = true, -- position the cmdline and popupmenu together
+      long_message_to_split = true, -- long messages will be sent to a split
+      inc_rename = false, -- enables an input dialog for inc-rename.nvim
+      lsp_doc_border = true, -- add a border to hover docs and signature help
+    },
   }
 end
 
@@ -1583,19 +1599,74 @@ local function dashboard()
   -- auto_session()
   add 'echasnovski/mini.sessions'
   require('mini.sessions').setup {}
-  -- require('mini.sessions').setup {
-  --   -- Whether to read latest session if Neovim opened without file arguments
-  --   autoread = false,
-  --   -- Whether to write current session before quitting Neovim
-  --   autowrite = true,
-  --
-  --   directory = 'sessions',
-  --
-  --   file = '',
-  --
-  --   -- Whether to print session path after action
-  --   verbose = { read = true, write = true, delete = true },
-  -- }
+
+  local function create_session(session_name)
+    local session_dir = vim.fn.stdpath 'data' .. '/session'
+    vim.fn.mkdir(session_dir, 'p')
+
+    local current_dir = vim.fn.getcwd()
+    local git_dir = vim.fn.system('git -C ' .. vim.fn.shellescape(current_dir) .. ' rev-parse --show-toplevel 2>/dev/null'):gsub('\n', '')
+
+    local base_dir = git_dir ~= '' and git_dir or current_dir
+    local dir_name = vim.fn.fnamemodify(base_dir, ':t')
+
+    session_name = session_name or dir_name
+    local session_file = session_dir .. '/' .. session_name .. '.vim'
+
+    vim.cmd('mksession! ' .. vim.fn.fnameescape(session_file))
+    print('Session saved to: ' .. session_file)
+  end
+
+  -- Command to create a session
+  vim.api.nvim_create_user_command('CreateSession', function(opts)
+    create_session(opts.args ~= '' and opts.args or nil)
+  end, { nargs = '?', desc = 'Create a session for the current directory or Git repository' })
+
+  map('n', '<leader>wsc', '<cmd>CreateSession<cr>', { desc = '[W]orkspace [S]ession [C]reate' })
+
+  local function delete_session(session_name)
+    local session_dir = vim.fn.stdpath 'data' .. '/session'
+
+    if session_name == nil or session_name == '' then
+      -- List available sessions and prompt user to choose
+      local sessions = vim.fn.glob(session_dir .. '/*.vim', false, true)
+      if #sessions == 0 then
+        print 'No sessions found.'
+        return
+      end
+      print 'Available sessions:'
+      for i, session in ipairs(sessions) do
+        print(i .. '. ' .. vim.fn.fnamemodify(session, ':t:r'))
+      end
+      local choice = tonumber(vim.fn.input 'Enter the number of the session to delete (or 0 to cancel): ')
+      if choice == nil or choice == 0 or choice > #sessions then
+        print 'Deletion cancelled.'
+        return
+      end
+      session_name = vim.fn.fnamemodify(sessions[choice], ':t:r')
+    end
+
+    local session_file = session_dir .. '/' .. session_name .. '.vim'
+
+    if vim.fn.filereadable(session_file) == 1 then
+      local confirm = vim.fn.input("Are you sure you want to delete the session '" .. session_name .. "'? (y/N): ")
+      if confirm:lower() == 'y' then
+        vim.fn.delete(session_file)
+        print("Session '" .. session_name .. "' deleted.")
+      else
+        print 'Deletion cancelled.'
+      end
+    else
+      print("Session '" .. session_name .. "' not found.")
+    end
+  end
+
+  -- Command to delete a session
+  vim.api.nvim_create_user_command('DeleteSession', function(opts)
+    delete_session(opts.args ~= '' and opts.args or nil)
+  end, { nargs = '?', desc = 'Delete a session file' })
+
+  map('n', '<leader>wsd', '<cmd>CreateSession<cr>', { desc = '[W]orkspace [S]ession [D]elete' })
 
   add 'echasnovski/mini.starter'
   local starter = require 'mini.starter'
@@ -1748,10 +1819,10 @@ end
 
 -- Lazy load plugins
 local function setup_plugins()
-  -- noice()
+  noice()
   plugins_that_should_be_the_default()
   which_key()
-  auto_session()
+  -- auto_session()
   -- telescope()
   grug()
   git()
@@ -1781,7 +1852,7 @@ setup_plugin_manager()
 now(function()
   setup_options()
   setup_priority_plugins()
-  -- dashboard()
+  dashboard()
 end)
 
 later(function()
