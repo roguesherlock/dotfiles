@@ -397,6 +397,23 @@ local function tokyonight()
   vim.api.nvim_create_user_command('Tokyonight', set_theme, { desc = 'Set tokyonight theme' })
 end
 
+local function rosepine()
+  add 'rose-pine/neovim'
+
+  local set_theme = function()
+    dark_theme = 'rose-pine'
+    light_theme = 'rose-pine'
+    ghostty_dark_theme = 'rose-pine'
+    ghostty_light_theme = 'rose-pine-dawn'
+    ghostty_custom_theme = false
+    kitty_dark_theme = 'Rose Pine'
+    kitty_light_theme = 'Rose Pine Dawn'
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('RosePine', set_theme, { desc = 'Set rosepine theme' })
+end
+
 local function modus()
   add 'miikanissi/modus-themes.nvim'
 
@@ -424,7 +441,43 @@ end
 local function catppuccin()
   add 'catppuccin/nvim'
 
-  require('catppuccin').setup {}
+  require('catppuccin').setup {
+    {
+      integrations = {
+        cmp = true,
+        dashboard = true,
+        diffview = true,
+        grug_far = true,
+        gitsigns = true,
+        headlines = true,
+        harpoon = true,
+        leap = true,
+        lsp_trouble = true,
+        mason = true,
+        markdown = true,
+        mini = {
+          enabled = true,
+          indentscope_color = '', -- catppuccin color (eg. `lavender`) Default: text
+        },
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { 'undercurl' },
+            hints = { 'undercurl' },
+            warnings = { 'undercurl' },
+            information = { 'undercurl' },
+            ok = { 'undercurl' },
+          },
+        },
+        noice = true,
+        telescope = true,
+        treesitter = true,
+        treesitter_context = true,
+        which_key = true,
+        overseer = true,
+      },
+    },
+  }
 
   local set_theme = function()
     dark_theme = 'catppuccin'
@@ -462,7 +515,8 @@ local function colors()
   -- tokyonight()
   modus()
   catppuccin()
-  -- melange()
+  melange()
+  -- rosepine()
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -504,7 +558,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Catppuccin'
+  vim.api.nvim_command 'Melange'
   -- set_from_os()
 end
 
@@ -1317,41 +1371,85 @@ local function lsp()
   --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
   capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-  local function setup_lsp(lsp_name, settings)
-    lspconfig[lsp_name].setup {
+  local function setup_lsp(lsp_name, settings, opts)
+    -- lspconfig[lsp_name].setup {
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   settings = settings,
+    -- }
+    opts = opts or {}
+    local setup_config = {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = settings,
     }
+
+    for k, v in pairs(opts) do
+      setup_config[k] = v
+    end
+
+    lspconfig[lsp_name].setup(setup_config)
   end
 
   lazydev()
+  local function get_pkg_path(pkg, path)
+    local mason_root = vim.fn.stdpath 'data' .. '/mason'
+    local ret = mason_root .. '/packages/' .. pkg .. '/' .. path
+    if not vim.loop.fs_stat(ret) then
+      print(('Mason package path not found for **%s**:\n- `%s`\nYou may need to force update the package.'):format(pkg, path))
+    end
+    return ret
+  end
+  setup_lsp 'volar'
 
+  local typescriptSettings = {
+    updateImportsOnFileMove = { enabled = 'always' },
+    suggest = {
+      completeFunctionCalls = true,
+    },
+    tsserver = { maxTsServerMemory = 8192 },
+    inlayHints = {
+      enumMemberValues = { enabled = true },
+      functionLikeReturnTypes = { enabled = true },
+      parameterNames = { enabled = 'literals' },
+      parameterTypes = { enabled = true },
+      propertyDeclarationTypes = { enabled = true },
+      variableTypes = { enabled = false },
+    },
+  }
   setup_lsp('vtsls', {
     complete_function_calls = true,
     vtsls = {
-      -- enableMoveToFileCodeAction = true,
       autoUseWorkspaceTsdk = true,
       experimental = {
         completion = {
           enableServerSideFuzzyMatch = true,
         },
       },
+      tsserver = {
+        globalPlugins = {
+          {
+            name = '@vue/typescript-plugin',
+            location = get_pkg_path('vue-language-server', '/node_modules/@vue/language-server'),
+            languages = { 'vue' },
+            configNamespace = 'typescript',
+            enableForWorkspaceTypeScriptVersions = true,
+          },
+        },
+      },
     },
-    typescript = {
-      updateImportsOnFileMove = { enabled = 'always' },
-      suggest = {
-        completeFunctionCalls = true,
-      },
-      tsserver = { maxTsServerMemory = 8192 },
-      inlayHints = {
-        enumMemberValues = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
-        parameterNames = { enabled = 'literals' },
-        parameterTypes = { enabled = true },
-        propertyDeclarationTypes = { enabled = true },
-        variableTypes = { enabled = false },
-      },
+    typescript = typescriptSettings,
+    javascript = typescriptSettings,
+    vue = typescriptSettings,
+  }, {
+    filetypes = {
+      'javascript',
+      'javascriptreact',
+      'javascript.jsx',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx',
+      'vue',
     },
   })
   setup_lsp 'vimls'
