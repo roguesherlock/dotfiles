@@ -399,6 +399,12 @@ local function modus()
 
     set_from_os()
   end
+  require('modus-themes').setup {
+    transparent = true,
+    on_highlights = function(h, c)
+      h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
+    end,
+  }
 
   vim.api.nvim_create_user_command('Modus', set_theme, { desc = 'Set modus theme' })
 end
@@ -422,11 +428,29 @@ local function catppuccin()
   vim.api.nvim_create_user_command('Catppuccin', set_theme, { desc = 'Set catppuccin theme' })
 end
 
+local function melange()
+  add 'savq/melange-nvim'
+
+  local set_theme = function()
+    dark_theme = 'melange'
+    light_theme = 'melange'
+    ghostty_dark_theme = 'melange_dark'
+    ghostty_light_theme = 'melange_dark'
+    ghostty_custom_theme = true
+    kitty_dark_theme = 'melange_dark'
+    kitty_light_theme = 'melange_light'
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('Melange', set_theme, { desc = 'Set melange theme' })
+end
+
 local function colors()
   vim.opt.background = 'dark'
-  tokyonight()
+  -- tokyonight()
   modus()
   catppuccin()
+  melange()
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -476,7 +500,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Modus'
+  vim.api.nvim_command 'Melange'
   -- set_from_os()
 end
 
@@ -580,8 +604,8 @@ end
 
 local function ai()
   supermaven()
-  -- codecompanion()
-  avante()
+  codecompanion()
+  -- avante()
 end
 
 local function git()
@@ -1585,6 +1609,10 @@ local function blink_completion()
   require('blink.cmp').setup {}
 end
 
+local function markdown()
+  add 'OXY2DEV/markview.nvim'
+end
+
 -- Lazy load plugins
 local function setup_plugins()
   noice()
@@ -1612,6 +1640,7 @@ local function setup_plugins()
   flit()
   nvim_ufo()
   overseer()
+  markdown()
 end
 
 setup_plugin_manager()
