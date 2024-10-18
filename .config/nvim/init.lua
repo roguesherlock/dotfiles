@@ -743,7 +743,12 @@ local function git()
   -- add { source = "akinsho/git-conflict.nvim", checkout = "*" }
   ---@diagnostic disable-next-line: missing-fields
   -- require("git-conflict").setup {}
-  add 'NeogitOrg/neogit'
+  add {
+    source = 'NeogitOrg/neogit',
+    depends = {
+      'sindrets/diffview.nvim',
+    },
+  }
   require('neogit').setup {}
 
   gitsigns()
@@ -1743,7 +1748,7 @@ end
 
 -- Lazy load plugins
 local function setup_plugins()
-  noice()
+  -- noice()
   plugins_that_should_be_the_default()
   which_key()
   auto_session()
