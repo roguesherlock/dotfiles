@@ -276,30 +276,6 @@ local function setup_plugin_manager()
   add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 end
 
-local function tokyonight()
-  add 'folke/tokyonight.nvim'
-
-  dark_theme = 'tokyonight-night'
-  light_theme = 'tokyonight-day'
-  ghostty_dark_theme = 'tokyonight-night'
-  ghostty_light_theme = 'tokyonight-day'
-  ghostty_custom_theme = false
-  kitty_dark_theme = 'tokyonight-night'
-  kitty_light_theme = 'tokyonight-day'
-end
-
-local function modus()
-  add 'miikanissi/modus-themes.nvim'
-
-  dark_theme = 'modus_vivendi'
-  light_theme = 'modus_operandi'
-  ghostty_dark_theme = 'modus_dark'
-  ghostty_light_theme = 'modus_light'
-  ghostty_custom_theme = true
-  kitty_dark_theme = 'modus_dark'
-  kitty_light_theme = 'modus_light'
-end
-
 -- TODO: auto switch theme to light/dark based on macos appearance
 -- https://github.com/jascha030/macos-nvim-dark-mode
 local os_is_dark = function()
@@ -392,10 +368,65 @@ local function set_ghostty_theme(theme)
   -- print("Theme set to: " .. theme)
 end
 
+local function tokyonight()
+  add 'folke/tokyonight.nvim'
+
+  local set_theme = function()
+    dark_theme = 'tokyonight-night'
+    light_theme = 'tokyonight-day'
+    ghostty_dark_theme = 'tokyonight-night'
+    ghostty_light_theme = 'tokyonight-day'
+    ghostty_custom_theme = false
+    kitty_dark_theme = 'tokyonight-night'
+    kitty_light_theme = 'tokyonight-day'
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('Tokyonight', set_theme, { desc = 'Set tokyonight theme' })
+end
+
+local function modus()
+  add 'miikanissi/modus-themes.nvim'
+
+  local set_theme = function()
+    dark_theme = 'modus_vivendi'
+    light_theme = 'modus_operandi'
+    ghostty_dark_theme = 'modus_dark'
+    ghostty_light_theme = 'modus_light'
+    ghostty_custom_theme = true
+    kitty_dark_theme = 'modus_dark'
+    kitty_light_theme = 'modus_light'
+
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('Modus', set_theme, { desc = 'Set modus theme' })
+end
+
+local function catppuccin()
+  add 'catppuccin/nvim'
+
+  require('catppuccin').setup {}
+
+  local set_theme = function()
+    dark_theme = 'catppuccin'
+    light_theme = 'catppuccin'
+    ghostty_dark_theme = 'catppuccin-mocha'
+    ghostty_light_theme = 'catppuccin-latte'
+    ghostty_custom_theme = false
+    kitty_dark_theme = 'Catppuccin-Mocha'
+    kitty_light_theme = 'Catppuccin-Latte'
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('Catppuccin', set_theme, { desc = 'Set catppuccin theme' })
+end
+
 local function colors()
   vim.opt.background = 'dark'
   tokyonight()
   modus()
+  catppuccin()
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -445,7 +476,8 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  set_from_os()
+  vim.api.nvim_command 'Modus'
+  -- set_from_os()
 end
 
 local function plenary()
