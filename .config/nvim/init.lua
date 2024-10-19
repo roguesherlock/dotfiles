@@ -803,7 +803,12 @@ local function git()
       'sindrets/diffview.nvim',
     },
   }
-  require('neogit').setup {}
+  require('neogit').setup {
+    integrations = {
+      diffview = true,
+      mini_pick = true,
+    },
+  }
 
   gitsigns()
 
