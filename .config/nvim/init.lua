@@ -1159,6 +1159,22 @@ local function treesitter()
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   }
+
+  vim.filetype.add {
+    pattern = {
+      ['.*%.blade%.php'] = 'blade',
+    },
+  }
+  require('nvim-treesitter.configs').setup {}
+  local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+  parser_config.blade = {
+    install_info = {
+      url = 'https://github.com/EmranMR/tree-sitter-blade',
+      files = { 'src/parser.c' },
+      branch = 'main',
+    },
+    filetype = 'blade',
+  }
 end
 
 local function lazydev()
@@ -1217,7 +1233,7 @@ local function lsp()
       'vimls',
       'lua_ls',
       'astro',
-      'biome',
+      -- 'biome',
       'eslint',
       'vtsls',
       -- "zls", --for zig
@@ -1462,7 +1478,7 @@ local function lsp()
   setup_lsp 'jsonls'
   setup_lsp 'html'
   setup_lsp 'astro'
-  setup_lsp 'biome'
+  -- setup_lsp 'biome'
   setup_lsp 'eslint'
   setup_lsp('lua_ls', {
     Lua = {
@@ -1505,6 +1521,7 @@ local function conform()
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
+      blade = { 'blade-formatter' },
     },
   }
   map('n', '<leader>bf', function()
