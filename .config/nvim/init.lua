@@ -236,7 +236,7 @@ local function setup_autocommands()
   })
 
   -- Close certain filetypes with 'q'
-  vim.api.nvim_create_autocmd('FileType', {
+  vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter' }, {
     pattern = {
       'qf', -- quickfix list
       'help', -- help files
@@ -248,6 +248,7 @@ local function setup_autocommands()
       'tsplayground',
       'PlenaryTestPopup',
       'mini.pick', -- mini.pick
+      'gitsigns*', -- gitsigns diff buffers
     },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
@@ -593,6 +594,7 @@ local function which_key()
       { '<leader>b', group = '[B]uffer' },
       { '<leader>g', group = '[G]it' },
       { '<leader>w', group = '[W]orkspace' },
+      { '<leader>wt', group = '[W]orkspace [T]asks' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>l', group = '[L]SP' },
       { '<leader>gh', group = '[G]it [H]unk', mode = { 'n', 'v' } },
@@ -823,9 +825,9 @@ local function auto_session()
     use_git_branch = true,
     bypass_save_filetypes = { 'NvimTree', 'Lazy', 'Starter' },
   }
-  require('which-key').add {
-    { '<leader>ws', group = '[W]orkspace [S]ession' },
-  }
+  -- require('which-key').add {
+  --   { '<leader>ws', group = '[W]orkspace [S]ession' },
+  -- }
   map('n', '<leader>wsd', function()
     vim.cmd 'silent! SessionDelete' -- delete session
     vim.cmd 'silent! %bd' -- close all buffers
@@ -892,11 +894,11 @@ local function auto_session_custom()
   end
 
   later(function()
-    require('which-key').add {
-      { '<leader>ws', group = '[W]orkspace [S]ession' },
-      { '<leader>wsc', group = '[W]orkspace [S]ession [C]reate' },
-      { '<leader>wsd', group = '[W]orkspace [S]ession [D]elete' },
-    }
+    -- require('which-key').add {
+    --   { '<leader>ws', group = '[W]orkspace [S]ession' },
+    --   { '<leader>wsc', group = '[W]orkspace [S]ession [C]reate' },
+    --   { '<leader>wsd', group = '[W]orkspace [S]ession [D]elete' },
+    -- }
     -- Command to create a session
     vim.api.nvim_create_user_command('CreateSession', function(opts)
       create_session(opts.args ~= '' and opts.args or nil)
@@ -991,16 +993,60 @@ local function mini_nvim()
   --  You could remove this setup call if you don't like it,
   --  and try some other statusline plugin
   local statusline = require 'mini.statusline'
-  -- set use_icons to true if you have a Nerd Font
-  statusline.setup { use_icons = true }
 
-  -- You can configure sections in the statusline by overriding their
-  -- default behavior. For example, here we set the section for
-  -- cursor location to LINE:COLUMN
-  ---@diagnostic disable-next-line: duplicate-set-field
-  statusline.section_location = function()
+  local icons = require 'mini.icons'
+
+  local recorder_status = function()
+    local recorder_exists, recorder = pcall(require, 'recorder')
+    if recorder_exists then
+      return recorder.recordingStatus()
+    end
+    return ''
+  end
+  local fileinfo = function()
+    local filetype = vim.bo.filetype
+
+    -- Don't show anything if there is no filetype
+    if filetype == '' then
+      return ''
+    end
+
+    -- Add filetype icon
+    filetype = icons.get('filetype', filetype) .. ' ' .. filetype
+
+    return filetype
+  end
+  local location = function()
     return '%2l:%-2v'
   end
+
+  -- set use_icons to true if you have a Nerd Font
+  statusline.setup {
+    use_icons = true,
+    content = {
+      active = function()
+        local mode, mode_hl = statusline.section_mode { trunc_width = 120 }
+        local git = statusline.section_git { trunc_width = 40 }
+        local diff = statusline.section_diff { trunc_width = 75 }
+        local diagnostics = statusline.section_diagnostics { trunc_width = 75 }
+        local lsp = statusline.section_lsp { trunc_width = 75 }
+        local filename = statusline.section_filename { trunc_width = 140 }
+        -- local fileinfo = statusline.section_fileinfo { trunc_width = 120 }
+        -- local location = statusline.section_location { trunc_width = 75 }
+        local search = statusline.section_searchcount { trunc_width = 75 }
+
+        return statusline.combine_groups {
+          { hl = mode_hl, strings = { mode } },
+          { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+          '%<', -- Mark general truncate point
+          { hl = 'MiniStatuslineFilename', strings = { filename } },
+          '%=', -- End left alignment
+          { hl = 'MiniStatuslineFileinfo', strings = { fileinfo() } },
+          { hl = mode_hl, strings = { recorder_status(), search, location() } },
+        }
+      end,
+    },
+  }
 
   -- require('mini.diff').setup {
   --   mappings = {
@@ -1793,9 +1839,9 @@ local function overseer()
     },
   }
 
-  require('which-key').add {
-    { '<leader>wt', group = '[W]orkspace [T]asks' },
-  }
+  -- require('which-key').add {
+  --   { '<leader>wt', group = '[W]orkspace [T]asks' },
+  -- }
   map('n', '<leader>wtl', '<cmd>OverseerToggle<cr>', { desc = '[W]orkspace [T]asks [L]ist' })
   map('n', '<leader>wtr', '<cmd>OverseerRun<cr>', { desc = '[W]orkspace [T]asks [R]un' })
   map('n', '<leader>wtq', '<cmd>OverseerQuickAction<cr>', { desc = '[W]orkspace [T]asks [Q]uick Run' })
