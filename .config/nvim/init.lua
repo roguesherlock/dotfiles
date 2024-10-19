@@ -2066,6 +2066,28 @@ local function lint()
   })
 end
 
+local function nvim_tree()
+  add {
+    source = 'nvim-neo-tree/neo-tree.nvim',
+    depends = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+    },
+  }
+
+  require('neo-tree').setup {
+    filesystem = {
+      window = {
+        mappings = {
+          ['<leader>tn'] = 'close_window',
+        },
+      },
+    },
+  }
+
+  map('n', '<Leader>tn', ':Neotree reveal<CR>', { desc = '[T]oggle [N]eoTree' })
+end
+
 -- Lazy load plugins
 local function setup_plugins()
   noice()
@@ -2097,6 +2119,7 @@ local function setup_plugins()
   markdown()
   dap()
   lint()
+  nvim_tree()
 end
 
 setup_plugin_manager()
