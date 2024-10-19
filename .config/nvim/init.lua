@@ -1236,6 +1236,9 @@ local function lsp()
       -- 'biome',
       'eslint',
       'vtsls',
+      'volar',
+      'tailwindcss',
+      'intelephense',
       -- "zls", --for zig
     },
   }
@@ -1421,6 +1424,17 @@ local function lsp()
     end
     return ret
   end
+  setup_lsp('tailwindcss', {
+    tailwindCSS = {
+      includeLanguages = {
+        elixir = 'html-eex',
+        eelixir = 'html-eex',
+        heex = 'html-eex',
+        blade = 'html',
+      },
+    },
+  })
+
   setup_lsp 'volar'
 
   local typescriptSettings = {
@@ -1680,7 +1694,7 @@ local function toggleterm()
     lazygit:toggle()
   end
 
-  map('n', '\\', _lazygit_toggle, { noremap = true, silent = true, desc = 'Toggle Lazygit' })
+  map('n', '\\', _lazygit_toggle, { desc = 'Toggle Lazygit' })
   map('n', '<c-/>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
 end
 
@@ -1867,6 +1881,33 @@ local function completion()
       end,
     },
     completion = { completeopt = 'menu,menuone,noinsert' },
+    formatting = {
+      -- kind icon / color icon + completion + kind text
+      fields = { 'menu', 'abbr', 'kind' },
+
+      format = function(entry, item)
+        local entryItem = entry:get_completion_item()
+        local color = entryItem.documentation
+
+        -- check if color is hexcolor
+        if color and type(color) == 'string' and color:match '^#%x%x%x%x%x%x$' then
+          local hl = 'hex-' .. color:sub(2)
+
+          if #vim.api.nvim_get_hl(0, { name = hl }) == 0 then
+            vim.api.nvim_set_hl(0, hl, { fg = color })
+          end
+
+          item.menu = ' '
+          item.menu_hl_group = hl
+
+          -- else
+          -- add your lspkind icon here!
+          -- item.menu_hl_group = item.kind_hl_group
+        end
+
+        return item
+      end,
+    },
 
     -- For an understanding of why these mappings were
     -- chosen, you will need to read `:help ins-completion`
