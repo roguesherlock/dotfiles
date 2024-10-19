@@ -1775,29 +1775,33 @@ local function overseer()
 end
 
 local function dashboard()
-  add 'echasnovski/mini.sessions'
-  require('mini.sessions').setup {}
+  -- add 'echasnovski/mini.sessions'
+  -- require('mini.sessions').setup {}
+  add 'folke/persistence.nvim'
+  require('persistence').setup {}
 
   add 'echasnovski/mini.starter'
   local starter = require 'mini.starter'
+  local pad = string.rep(' ', 22)
   starter.setup {
     evaluate_single = true,
     items = {
       starter.sections.builtin_actions(),
-      starter.sections.sessions(5, true),
+      {
+        name = 'Restore session',
+        action = [[lua require("persistence").load()]],
+        section = 'Sessions',
+      },
+      -- starter.sections.sessions(5, true),
       starter.sections.recent_files(5, false),
       -- starter.sections.recent_files(10, true),
-      -- Use this if you set up 'mini.sessions'
-      -- {
-      --   name = 'Restore session',
-      --   action = [[lua require("persistence").load()]],
-      --   section = 'Sessions',
-      -- },
     },
     content_hooks = {
-      starter.gen_hook.adding_bullet(),
-      starter.gen_hook.indexing('all', { 'Builtin actions' }),
-      starter.gen_hook.padding(3, 2),
+      starter.gen_hook.adding_bullet(pad .. '░ ', false),
+      starter.gen_hook.indexing('all', { 'Builtin actions', 'Sessions' }),
+      starter.gen_hook.aligning('center', 'center'),
+      -- starter.gen_hook.adding_bullet(),
+      -- starter.gen_hook.padding(3, 2),
     },
   }
 
