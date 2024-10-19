@@ -2146,6 +2146,18 @@ local function nvim_tree()
   map('n', '<Leader>tn', ':Neotree reveal<CR>', { desc = '[T]oggle [N]eoTree' })
 end
 
+local function multi_cursor()
+  add {
+    source = 'smoka7/multicursors.nvim',
+    depends = {
+      'nvimtools/hydra.nvim',
+    },
+  }
+  require('multicursors').setup {}
+
+  map({ 'n', 'v' }, '<leader>m', '<cmd>MCstart<cr>', { desc = 'Multi Cursor' })
+end
+
 -- Lazy load plugins
 local function setup_plugins()
   noice()
@@ -2178,6 +2190,7 @@ local function setup_plugins()
   dap()
   lint()
   nvim_tree()
+  multi_cursor()
 end
 
 setup_plugin_manager()
