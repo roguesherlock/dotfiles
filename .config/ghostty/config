@@ -1,5 +1,5 @@
 # font-family = "Input Mono Narrow"
-# font-family = "JuliaMono"
+font-family = "JuliaMono"
 # font-family = "Geist Mono"
 # font-variation = wght=450
 # font-variation-bold = wght=800
@@ -15,7 +15,7 @@ macos-option-as-alt = true
 macos-non-native-fullscreen = true
 window-colorspace = display-p3
 # TODO: enable this when the next zellij release is out
-background-opacity = 0.95
+background-opacity = 0.80
 background-blur-radius = 20
 macos-titlebar-style = native
 

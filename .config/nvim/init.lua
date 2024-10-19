@@ -511,13 +511,57 @@ local function melange()
   vim.api.nvim_create_user_command('Melange', set_theme, { desc = 'Set melange theme' })
 end
 
+local function custom_theme()
+  -- add 'echasnovski/mini.colors'
+  add 'echasnovski/mini.base16'
+
+  require('mini.base16').setup {
+    palette = {
+      base00 = '#282828',
+      base01 = '#3c3836',
+      base02 = '#423e3c',
+      base03 = '#484442',
+      base04 = '#bdae93',
+      base05 = '#d5c4a1',
+      base06 = '#ebdbb2',
+      base07 = '#fbf1c7',
+      base08 = '#fb4934',
+      base09 = '#fe8019',
+      base0A = '#fabd2f',
+      base0B = '#b8bb26',
+      base0C = '#8ec07c',
+      base0D = '#83a598',
+      base0E = '#d3869b',
+      base0F = '#d65d0e',
+    },
+  }
+
+  -- add 'echasnovski/mini.hues'
+  -- require('mini.hues').setup {
+  --   -- Use config table as you like
+  --   -- Needs both `background` and `foreground` fields present
+  --   background = '#11262d',
+  --   foreground = '#c0c8cc',
+  -- }
+end
+
+local function gruvbox()
+  add 'ellisonleao/gruvbox.nvim'
+
+  require('gruvbox').setup {
+    -- transparent_mode = true,
+  }
+end
+
 local function colors()
   vim.opt.background = 'dark'
   -- tokyonight()
   modus()
   catppuccin()
-  melange()
+  -- melange()
+  -- custom_theme()
   -- rosepine()
+  -- gruvbox()
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -1040,24 +1084,19 @@ local function mini_nvim()
     content = {
       active = function()
         local mode, mode_hl = statusline.section_mode { trunc_width = 120 }
-        local git = statusline.section_git { trunc_width = 40 }
-        local diff = statusline.section_diff { trunc_width = 75 }
-        local diagnostics = statusline.section_diagnostics { trunc_width = 75 }
-        local lsp = statusline.section_lsp { trunc_width = 75 }
+        local branch = statusline.section_git { trunc_width = 40 }
+        local diagnostics = statusline.section_diagnostics { trunc_width = 40 }
         local filename = statusline.section_filename { trunc_width = 140 }
-        -- local fileinfo = statusline.section_fileinfo { trunc_width = 120 }
-        -- local location = statusline.section_location { trunc_width = 75 }
         local search = statusline.section_searchcount { trunc_width = 75 }
+        local recorder = recorder_status()
 
         return statusline.combine_groups {
           { hl = mode_hl, strings = { mode } },
-          { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+          { hl = 'MiniStatuslineDevinfo', strings = { branch } },
           '%<', -- Mark general truncate point
           { hl = 'MiniStatuslineFilename', strings = { filename } },
           '%=', -- End left alignment
-          { hl = mode_hl, strings = { recorder_status() } },
-          { hl = 'MiniStatuslineFileinfo', strings = { fileinfo() } },
-          { hl = mode_hl, strings = { search, location() } },
+          { hl = mode_hl, strings = { recorder, search, diagnostics } },
         }
       end,
     },
