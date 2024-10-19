@@ -996,9 +996,23 @@ local function mini_nvim()
 
   local icons = require 'mini.icons'
 
+  -- Cache for the recorder module
+  local recorder_cache = {
+    exists = nil,
+    module = nil,
+  }
+  local function get_recorder()
+    -- Check if we've already tried to load the module
+    if recorder_cache.exists == nil then
+      recorder_cache.exists, recorder_cache.module = pcall(require, 'recorder')
+    end
+
+    return recorder_cache.exists, recorder_cache.module
+  end
+
   local recorder_status = function()
-    local recorder_exists, recorder = pcall(require, 'recorder')
-    if recorder_exists then
+    local recorder_exists, recorder = get_recorder()
+    if recorder_exists and recorder then
       return recorder.recordingStatus()
     end
     return ''
@@ -1041,8 +1055,9 @@ local function mini_nvim()
           '%<', -- Mark general truncate point
           { hl = 'MiniStatuslineFilename', strings = { filename } },
           '%=', -- End left alignment
+          { hl = mode_hl, strings = { recorder_status() } },
           { hl = 'MiniStatuslineFileinfo', strings = { fileinfo() } },
-          { hl = mode_hl, strings = { recorder_status(), search, location() } },
+          { hl = mode_hl, strings = { search, location() } },
         }
       end,
     },
