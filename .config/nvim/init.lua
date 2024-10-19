@@ -558,7 +558,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Melange'
+  vim.api.nvim_command 'Modus'
   -- set_from_os()
 end
 
@@ -1028,7 +1028,7 @@ local function mini_nvim()
   require('mini.files').setup {
     mappings = {
       go_in_plus = '<cr>',
-      synchronize = '<c-s>',
+      synchronize = '=',
     },
     windows = {
       preview = true,
