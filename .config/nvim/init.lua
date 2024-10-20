@@ -455,7 +455,7 @@ local function modus()
     set_from_os()
   end
   require('modus-themes').setup {
-    transparent = true,
+    -- transparent = true,
     on_highlights = function(h, c)
       h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
     end,
@@ -468,7 +468,7 @@ local function catppuccin()
   add 'catppuccin/nvim'
 
   require('catppuccin').setup {
-    transparent_background = true,
+    -- transparent_background = true,
     term_colors = true,
     integrations = {
       cmp = true,
@@ -536,6 +536,23 @@ local function melange()
   vim.api.nvim_create_user_command('Melange', set_theme, { desc = 'Set melange theme' })
 end
 
+local function everforest()
+  add 'neanias/everforest-nvim'
+
+  local set_theme = function()
+    dark_theme = 'everforest'
+    light_theme = 'everforest'
+    ghostty_dark_theme = 'everforest_dark'
+    ghostty_light_theme = 'everforest_light'
+    ghostty_custom_theme = true
+    kitty_dark_theme = 'everforest_dark'
+    kitty_light_theme = 'everforest_light'
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('Everforest', set_theme, { desc = 'Set everforest theme' })
+end
+
 local function custom_theme()
   -- add 'echasnovski/mini.colors'
   add 'echasnovski/mini.base16'
@@ -570,52 +587,14 @@ local function custom_theme()
   -- }
 end
 
-local function gruvbox()
-  add 'ellisonleao/gruvbox.nvim'
-
-  require('gruvbox').setup {
-    -- transparent_mode = true,
-  }
-end
-
-local function nightfox()
-  add 'EdenEast/nightfox.nvim'
-
-  require('nightfox').setup {
-    options = {
-      transparent = true,
-      styles = {
-        comments = 'italic',
-        keywords = 'bold',
-        types = 'italic,bold',
-      },
-    },
-  }
-
-  local set_theme = function()
-    dark_theme = 'nightfox'
-    light_theme = 'dayfox'
-    ghostty_dark_theme = 'nightfox'
-    ghostty_light_theme = 'dayfox'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'nightfox'
-    kitty_light_theme = 'dayfox'
-    set_from_os()
-  end
-
-  vim.api.nvim_create_user_command('Nightfox', set_theme, { desc = 'Set nightfox theme' })
-end
-
 local function colors()
   vim.opt.background = 'dark'
   modus()
   catppuccin()
   -- tokyonight()
-  -- melange()
+  melange()
   -- custom_theme()
-  -- rosepine()
-  -- gruvbox()
-  -- nightfox()
+  everforest()
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -657,7 +636,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Modus'
+  vim.api.nvim_command 'Everforest'
   -- set_from_os()
 end
 

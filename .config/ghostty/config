@@ -6,18 +6,18 @@ font-family = "Maple Mono"
 # font-variation-bold = wght=800
 # font-variation-italic = wght=450
 # font-variation-bold-italic = wght=800
-font-size = 14
+font-size = 15
 adjust-cell-height = 20%
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = catppuccin-latte
+theme = catppuccin-mocha
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 window-colorspace = display-p3
 # TODO: enable this when the next zellij release is out
-background-opacity = 0.85
-background-blur-radius = 20
+# background-opacity = 0.85
+# background-blur-radius = 20
 macos-titlebar-style = native
 
 # zellij keybinds
@@ -99,4 +99,26 @@ foreground = #000000
 cursor-color= #000000
 selection-background = #dfa0f0
 selection-foreground = #000000
+# End
+# everforest_dark
+palette = 0=#34302C
+palette = 1=#BD8183
+palette = 2=#78997A
+palette = 3=#E49B5D
+palette = 4=#7F91B2
+palette = 5=#B380B0
+palette = 6=#7B9695
+palette = 7=#C1A78E
+palette = 8=#867462
+palette = 9=#D47766
+palette = 10=#85B695
+palette = 11=#EBC06D
+palette = 12=#A3A9CE
+palette = 13=#CF9BC2
+palette = 14=#89B3B6
+palette = 15=#ECE1D7
+background = 292522
+foreground = ECE1D7
+selection-background = 403A36
+selection-foreground = ECE1D7
 # End
