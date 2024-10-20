@@ -446,9 +446,12 @@ local function modus()
   local set_theme = function()
     dark_theme = 'modus_vivendi'
     light_theme = 'modus_operandi'
-    ghostty_dark_theme = 'modus_dark'
-    ghostty_light_theme = 'modus_light'
-    ghostty_custom_theme = true
+    -- ghostty_dark_theme = 'modus_dark'
+    -- ghostty_light_theme = 'modus_light'
+    -- ghostty_custom_theme = true
+    ghostty_dark_theme = 'Builtin Pastel Dark'
+    ghostty_light_theme = 'Builtin Tango Light'
+    ghostty_custom_theme = false
     kitty_dark_theme = 'modus_dark'
     kitty_light_theme = 'modus_light'
 
@@ -525,9 +528,9 @@ local function melange()
   local set_theme = function()
     dark_theme = 'melange'
     light_theme = 'melange'
-    ghostty_dark_theme = 'melange_dark'
-    ghostty_light_theme = 'melange_dark'
-    ghostty_custom_theme = true
+    ghostty_dark_theme = 'Belafonte Night'
+    ghostty_light_theme = 'Belafonte Day'
+    ghostty_custom_theme = false
     kitty_dark_theme = 'melange_dark'
     kitty_light_theme = 'melange_light'
     set_from_os()
@@ -542,9 +545,9 @@ local function everforest()
   local set_theme = function()
     dark_theme = 'everforest'
     light_theme = 'everforest'
-    ghostty_dark_theme = 'everforest_dark'
-    ghostty_light_theme = 'everforest_light'
-    ghostty_custom_theme = true
+    ghostty_dark_theme = 'GruvboxDark'
+    ghostty_light_theme = 'GruvboxLight'
+    ghostty_custom_theme = false
     kitty_dark_theme = 'everforest_dark'
     kitty_light_theme = 'everforest_light'
     set_from_os()
