@@ -420,6 +420,12 @@ end
 local function rosepine()
   add 'rose-pine/neovim'
 
+  require('rose-pine').setup {
+    styles = {
+      transparency = true,
+    },
+  }
+
   local set_theme = function()
     dark_theme = 'rose-pine'
     light_theme = 'rose-pine'
@@ -572,15 +578,44 @@ local function gruvbox()
   }
 end
 
+local function nightfox()
+  add 'EdenEast/nightfox.nvim'
+
+  require('nightfox').setup {
+    options = {
+      transparent = true,
+      styles = {
+        comments = 'italic',
+        keywords = 'bold',
+        types = 'italic,bold',
+      },
+    },
+  }
+
+  local set_theme = function()
+    dark_theme = 'nightfox'
+    light_theme = 'dayfox'
+    ghostty_dark_theme = 'nightfox'
+    ghostty_light_theme = 'dayfox'
+    ghostty_custom_theme = false
+    kitty_dark_theme = 'nightfox'
+    kitty_light_theme = 'dayfox'
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('Nightfox', set_theme, { desc = 'Set nightfox theme' })
+end
+
 local function colors()
   vim.opt.background = 'dark'
-  -- tokyonight()
   modus()
   catppuccin()
+  -- tokyonight()
   -- melange()
   -- custom_theme()
   -- rosepine()
   -- gruvbox()
+  -- nightfox()
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -622,7 +657,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Catppuccin'
+  vim.api.nvim_command 'Modus'
   -- set_from_os()
 end
 
