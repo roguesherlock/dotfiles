@@ -101,6 +101,25 @@ local function setup_mappings()
 
   -- [[ Basic Keymaps ]]
   --  See `:help vim.keymap.set()`
+
+  -- better up/down
+  map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
+  map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
+  map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
+  map({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
+
+  -- buffers
+  map('n', '<S-h>', '<cmd>e #<cr>', { desc = 'Other Buffer' })
+  map('n', '<S-l>', '<cmd>e #<cr>', { desc = 'Other Buffer' })
+  map('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev [B]uffer' })
+  map('n', ']b', '<cmd>bnext<cr>', { desc = 'Next [B]uffer' })
+  map('n', '<leader>bd', '<cmd>bd<cr>', { desc = '[B]uffer [D]elete with Window' })
+  map('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[B]uffer [N]ew' })
+
+  --keywordprg
+  -- See `:help 'keywordprg'`
+  map('n', '<leader>K', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
+
   -- Clear highlights on search when pressing <Esc> in normal mode
   --  See `:help hlsearch`
   map('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -443,40 +462,40 @@ local function catppuccin()
   add 'catppuccin/nvim'
 
   require('catppuccin').setup {
-    {
-      integrations = {
-        cmp = true,
-        dashboard = true,
-        diffview = true,
-        grug_far = true,
-        gitsigns = true,
-        headlines = true,
-        harpoon = true,
-        leap = true,
-        lsp_trouble = true,
-        mason = true,
-        markdown = true,
-        mini = {
-          enabled = true,
-          indentscope_color = '', -- catppuccin color (eg. `lavender`) Default: text
-        },
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { 'undercurl' },
-            hints = { 'undercurl' },
-            warnings = { 'undercurl' },
-            information = { 'undercurl' },
-            ok = { 'undercurl' },
-          },
-        },
-        noice = true,
-        telescope = true,
-        treesitter = true,
-        treesitter_context = true,
-        which_key = true,
-        overseer = true,
+    transparent_background = true,
+    term_colors = true,
+    integrations = {
+      cmp = true,
+      dashboard = true,
+      diffview = true,
+      grug_far = true,
+      gitsigns = true,
+      headlines = true,
+      harpoon = true,
+      leap = true,
+      lsp_trouble = true,
+      mason = true,
+      markdown = true,
+      mini = {
+        enabled = true,
+        indentscope_color = '', -- catppuccin color (eg. `lavender`) Default: text
       },
+      native_lsp = {
+        enabled = true,
+        underlines = {
+          errors = { 'undercurl' },
+          hints = { 'undercurl' },
+          warnings = { 'undercurl' },
+          information = { 'undercurl' },
+          ok = { 'undercurl' },
+        },
+      },
+      noice = true,
+      telescope = true,
+      treesitter = true,
+      treesitter_context = true,
+      which_key = true,
+      overseer = true,
     },
   }
 
@@ -486,8 +505,8 @@ local function catppuccin()
     ghostty_dark_theme = 'catppuccin-mocha'
     ghostty_light_theme = 'catppuccin-latte'
     ghostty_custom_theme = false
-    kitty_dark_theme = 'Catppuccin-Mocha'
-    kitty_light_theme = 'Catppuccin-Latte'
+    kitty_dark_theme = 'catppuccin_dark'
+    kitty_light_theme = 'catppuccin_light'
     set_from_os()
   end
 
@@ -603,7 +622,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Modus'
+  vim.api.nvim_command 'Catppuccin'
   -- set_from_os()
 end
 
@@ -752,8 +771,22 @@ local function avante()
   end)
 end
 
+local function codeium()
+  add 'monkoose/neocodeium'
+  local neocodeium = require 'neocodeium'
+  neocodeium.setup {}
+  map('i', '<tab>', function()
+    if neocodeium.visible() then
+      neocodeium.accept()
+    else
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<tab>', true, false, true), 'n', true)
+    end
+  end, { desc = 'Accept Codeium Suggestion' })
+end
+
 local function ai()
-  supermaven()
+  -- supermaven()
+  codeium()
   codecompanion()
   -- avante()
 end
@@ -1622,6 +1655,10 @@ local function conform()
   add 'stevearc/conform.nvim'
   require('conform').setup {
     format_on_save = function(bufnr)
+      -- Disable with a global or buffer-local variable
+      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        return
+      end
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
@@ -1645,6 +1682,26 @@ local function conform()
   map('n', '<leader>bf', function()
     require('conform').format { async = true, lsp_format = 'fallback' }
   end, { desc = '[B]uffer [F]ormat' })
+
+  map('n', '<leader>tf', function()
+    if vim.b.disable_autoformat then
+      vim.b.disable_autoformat = false
+      print 'Enabled buffer autoformat'
+    else
+      vim.b.disable_autoformat = true
+      print 'Disabled buffer autoformat'
+    end
+  end, { desc = '[T]oggle Buffer [F]ormat' })
+
+  map('n', '<leader>tF', function()
+    if vim.g.disable_autoformat then
+      vim.g.disable_autoformat = false
+      print 'Enabled workspace autoformat'
+    else
+      vim.g.disable_autoformat = true
+      print 'Disabled workspace autoformat'
+    end
+  end, { desc = '[T]oggle Workspace [F]ormat' })
 end
 
 local function noice()
