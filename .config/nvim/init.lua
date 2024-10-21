@@ -1070,7 +1070,6 @@ local function mini_nvim()
   require('mini.extra').setup()
 
   vim.ui.select = MiniPick.ui_select
-
   map('n', '<leader>sh', '<cmd>Pick help<cr>', { desc = '[S]earch [H]elp' })
   map('n', '<leader>sk', '<cmd>Pick keymaps<cr>', { desc = '[S]earch [K]eymaps' })
   map('n', '<leader>sf', '<cmd>Pick files<cr>', { desc = '[S]earch [F]iles' })
@@ -1327,6 +1326,11 @@ local function treesitter()
   }
 end
 
+local function autotag()
+  add 'windwp/nvim-ts-autotag'
+  require('nvim-ts-autotag').setup {}
+end
+
 local function lazydev()
   add 'folke/lazydev.nvim'
 end
@@ -1458,6 +1462,7 @@ local function lsp()
   -- Execute a code action, usually your cursor needs to be on top of an error
   -- or a suggestion from your LSP for this to activate.
   map({ 'n', 'x' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
+  map({ 'n', 'x' }, '<leader>.', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
 
   -- WARN: This is not Goto Definition, this is Goto Declaration.
   --  For example, in C this would take you to the header.
@@ -1694,6 +1699,18 @@ local function conform()
     formatters_by_ft = {
       lua = { 'stylua' },
       blade = { 'blade-formatter' },
+      json = { 'prettierd' },
+      jsx = { 'prettierd' },
+      javascript = { 'prettierd' },
+      typescript = { 'prettierd' },
+      typescriptreact = { 'prettierd' },
+      javascriptreact = { 'prettierd' },
+      vue = { 'prettierd' },
+      html = { 'prettierd' },
+      css = { 'prettierd' },
+      graphql = { 'prettierd' },
+      markdown = { 'prettierd' },
+      yaml = { 'prettierd' },
     },
   }
   map('n', '<leader>bf', function()
@@ -2348,6 +2365,7 @@ local function setup_plugins()
   git()
   mini_nvim()
   treesitter()
+  autotag()
   lsp()
   completion()
   ai()
