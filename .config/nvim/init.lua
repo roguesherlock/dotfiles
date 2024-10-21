@@ -268,6 +268,9 @@ local function setup_autocommands()
       'PlenaryTestPopup',
       'mini.pick', -- mini.pick
       'gitsigns*', -- gitsigns diff buffers
+      'grug-far',
+      'grug-far-history',
+      'grug-far-help',
     },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
@@ -917,7 +920,7 @@ local function git()
 
   gitsigns()
 
-  map('n', '<leader>gg', '<cmd>Neogit<cr>', { desc = 'Open neogit' })
+  map('n', '<leader>gn', '<cmd>Neogit<cr>', { desc = '[G]it Open [N]eogit' })
 end
 
 local function auto_session()
@@ -1781,12 +1784,12 @@ end
 local function grug()
   add 'MagicDuck/grug-far.nvim'
 
-  require('grug-far').setup {}
+  local g = require 'grug-far'
+  g.setup {}
 
-  map({ 'n', 'v' }, '<leader>sr', function()
-    local grug = require 'grug-far'
+  map('n', '<leader>sr', function()
     local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
-    grug.open {
+    g.open {
       transient = true,
       prefills = {
         filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
@@ -1794,6 +1797,17 @@ local function grug()
     }
   end, {
     desc = '[S]earch and [R]eplace',
+  })
+  map('v', '<leader>sr', function()
+    local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
+    g.with_visual_selection {
+      transient = true,
+      prefills = {
+        filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
+      },
+    }
+  end, {
+    desc = '[S]earch and [R]eplace with selection as input',
   })
 end
 
@@ -1898,7 +1912,7 @@ local function toggleterm()
     lazygit:toggle()
   end
 
-  map('n', '\\', _lazygit_toggle, { desc = 'Toggle Lazygit' })
+  map('n', '<leader>gg', _lazygit_toggle, { desc = '[G]it Open Lazy[G]it' })
   map('n', '<c-/>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
 end
 
