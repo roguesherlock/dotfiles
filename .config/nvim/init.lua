@@ -542,6 +542,15 @@ end
 local function everforest()
   add 'neanias/everforest-nvim'
 
+  require('everforest').setup {
+    on_highlights = function(h, c)
+      h.LeapLabel = { fg = c.fg, bg = c.bg_red }
+      h.LspReferenceRead = { bg = c.bg_visual }
+      h.LspReferenceWrite = { bg = c.bg_visual }
+      h.LspReferenceText = { bg = c.bg_visual }
+    end,
+  }
+
   local set_theme = function()
     dark_theme = 'everforest'
     light_theme = 'everforest'
