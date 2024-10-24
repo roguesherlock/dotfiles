@@ -2,6 +2,13 @@
 -- Enable Neovim's built-in loader
 vim.loader.enable()
 
+-- TODO:
+-- 1. incremental seelction for treesitter
+-- 2. included file not showing up in codecompanion chat
+-- 3. ability to toggle diagnostics
+-- 4. lazygit breaks if path name contains brackets
+-- 5. trigger nvim with <c-space>
+
 local add, now, later -- mini.deps will be setup later
 -- colors, look at colors()
 local light_theme, dark_theme
@@ -412,10 +419,14 @@ local function tokyonight()
     ghostty_dark_theme = 'tokyonight-night'
     ghostty_light_theme = 'tokyonight-day'
     ghostty_custom_theme = false
-    kitty_dark_theme = 'tokyonight-night'
-    kitty_light_theme = 'tokyonight-day'
+    kitty_dark_theme = 'Tokyo Night'
+    kitty_light_theme = 'Tokyo Night Day'
     set_from_os()
   end
+
+  require('tokyonight').setup {
+    transparent = true,
+  }
 
   vim.api.nvim_create_user_command('Tokyonight', set_theme, { desc = 'Set tokyonight theme' })
 end
@@ -435,8 +446,8 @@ local function rosepine()
     ghostty_dark_theme = 'rose-pine'
     ghostty_light_theme = 'rose-pine-dawn'
     ghostty_custom_theme = false
-    kitty_dark_theme = 'Rose Pine'
-    kitty_light_theme = 'Rose Pine Dawn'
+    kitty_dark_theme = 'Rosé Pine'
+    kitty_light_theme = 'Rosé Pine Dawn'
     set_from_os()
   end
 
@@ -461,7 +472,7 @@ local function modus()
     set_from_os()
   end
   require('modus-themes').setup {
-    -- transparent = true,
+    transparent = true,
     on_highlights = function(h, c)
       h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
     end,
@@ -474,7 +485,7 @@ local function catppuccin()
   add 'catppuccin/nvim'
 
   require('catppuccin').setup {
-    -- transparent_background = true,
+    transparent_background = true,
     term_colors = true,
     integrations = {
       cmp = true,
@@ -560,8 +571,8 @@ local function everforest()
     ghostty_dark_theme = 'GruvboxDark'
     ghostty_light_theme = 'GruvboxLight'
     ghostty_custom_theme = false
-    kitty_dark_theme = 'everforest_dark'
-    kitty_light_theme = 'everforest_light'
+    kitty_dark_theme = 'Everforest Dark Medium'
+    kitty_light_theme = 'Everforest Light Medium'
     set_from_os()
   end
 
@@ -606,10 +617,16 @@ local function colors()
   vim.opt.background = 'dark'
   modus()
   catppuccin()
+  rosepine()
   -- tokyonight()
-  melange()
+  -- melange()
   -- custom_theme()
   everforest()
+
+  -- add 'sho-87/kanagawa-paper.nvim'
+  -- add 'Mofiqul/vscode.nvim'
+  -- add 'slugbyte/lackluster.nvim'
+  -- add 'ribru17/bamboo.nvim'
 
   local term = os.getenv 'TERM'
   vim.api.nvim_create_autocmd('Signal', {
@@ -814,8 +831,8 @@ local function codeium()
 end
 
 local function ai()
-  -- supermaven()
-  codeium()
+  supermaven()
+  -- codeium()
   codecompanion()
   -- avante()
 end
