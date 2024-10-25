@@ -17,8 +17,8 @@ local default_light = false
 local ghostty_light_theme = 'modus_light'
 local ghostty_dark_theme = 'modus_dark'
 local ghostty_custom_theme = true
-local kitty_light_theme = 'modus_light'
-local kitty_dark_theme = 'modus_dark'
+local kitty_light_theme = 'Modus Operandi'
+local kitty_dark_theme = 'Modus Vivendi'
 local zellij_light_theme = 'modus_light'
 local zellij_dark_theme = 'modus_dark'
 
@@ -466,8 +466,8 @@ local function modus()
     ghostty_dark_theme = 'Builtin Pastel Dark'
     ghostty_light_theme = 'Builtin Tango Light'
     ghostty_custom_theme = false
-    kitty_dark_theme = 'modus_dark'
-    kitty_light_theme = 'modus_light'
+    kitty_dark_theme = 'Modus Vivendi'
+    kitty_light_theme = 'Modus Operandi'
 
     set_from_os()
   end
@@ -528,8 +528,8 @@ local function catppuccin()
     ghostty_dark_theme = 'catppuccin-mocha'
     ghostty_light_theme = 'catppuccin-latte'
     ghostty_custom_theme = false
-    kitty_dark_theme = 'catppuccin_dark'
-    kitty_light_theme = 'catppuccin_light'
+    kitty_dark_theme = 'Catppuccin-Mocha'
+    kitty_light_theme = 'Catppuccin-Latte'
     set_from_os()
   end
 
@@ -668,7 +668,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Everforest'
+  vim.api.nvim_command 'Catppuccin'
   -- set_from_os()
 end
 
