@@ -1310,7 +1310,7 @@ local function treesitter()
   add 'nvim-treesitter/nvim-treesitter'
   ---@diagnostic disable-next-line: missing-fields
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'vue', 'svelte' },
 
     -- Autoinstall languages that are not installed
     auto_install = true,
@@ -1422,6 +1422,7 @@ local function lsp()
       'volar',
       'tailwindcss',
       'intelephense',
+      'svelte',
       -- "zls", --for zig
     },
   }
@@ -1658,12 +1659,19 @@ local function lsp()
             configNamespace = 'typescript',
             enableForWorkspaceTypeScriptVersions = true,
           },
+          {
+            name = 'typescript-svelte-plugin',
+            languages = { 'svelte' },
+            location = get_pkg_path('svelte-language-server', '/node_modules/typescript-svelte-plugin'),
+            enableForWorkspaceTypeScriptVersions = true,
+          },
         },
       },
     },
     typescript = typescriptSettings,
     javascript = typescriptSettings,
     vue = typescriptSettings,
+    svelte = typescriptSettings,
   }, {
     filetypes = {
       'javascript',
@@ -1734,6 +1742,7 @@ local function conform()
       typescript = { 'prettierd' },
       typescriptreact = { 'prettierd' },
       javascriptreact = { 'prettierd' },
+      svelte = { 'prettierd' },
       vue = { 'prettierd' },
       html = { 'prettierd' },
       css = { 'prettierd' },
