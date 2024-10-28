@@ -103,8 +103,9 @@ local function setup_options()
 end
 
 local function setup_mappings()
-  vim.g.mapleader = ','
-  vim.g.maplocalleader = '\\'
+  vim.g.mapleader = ' '
+  -- vim.g.maplocalleader = '\\'
+  vim.g.maplocalleader = ','
 
   -- [[ Basic Keymaps ]]
   --  See `:help vim.keymap.set()`
@@ -214,7 +215,7 @@ local function setup_mappings()
   map('v', 'p', '"_dP')
 
   -- Fold --
-  map('n', '<space>', 'za', { desc = 'Toggle fold' })
+  map('n', ',', 'za', { desc = 'Toggle fold' })
 
   -- Resize --
   map('n', '<A-Up>', '<cmd>resize +2<cr>', { desc = 'Increase window height' })
@@ -492,6 +493,7 @@ local function catppuccin()
       dashboard = true,
       diffview = true,
       grug_far = true,
+      blink_cmp = true,
       gitsigns = true,
       headlines = true,
       harpoon = true,
@@ -933,6 +935,7 @@ local function git()
       diffview = true,
       mini_pick = true,
     },
+    graph_style = 'kitty',
   }
 
   gitsigns()
@@ -1101,15 +1104,15 @@ local function mini_nvim()
   vim.ui.select = MiniPick.ui_select
   map('n', '<leader>sh', '<cmd>Pick help<cr>', { desc = '[S]earch [H]elp' })
   map('n', '<leader>sk', '<cmd>Pick keymaps<cr>', { desc = '[S]earch [K]eymaps' })
-  map('n', '<leader>sf', '<cmd>Pick files<cr>', { desc = '[S]earch [F]iles' })
-  map('n', '<leader> ', "<cmd>Pick files tool='git'<cr>", { desc = 'Search Git Files' })
+  map('n', '<leader>sf', "<cmd>Pick files tool='git'<cr>", { desc = '[S]earch Git [F]iles' })
+  map('n', '<leader><leader>', '<cmd>Pick files<cr>', { desc = 'Search Files' })
   map('n', '<leader>ss', '<cmd>Pick lsp<cr>', { desc = '[S]earch [S]elect ' })
   map('n', '<leader>sw', '<cmd>Pick grep<cr>', { desc = '[S]earch current [W]ord' })
   map('n', '<leader>sg', '<cmd>Pick grep_live<cr>', { desc = '[S]earch by [G]rep' })
   map('n', '<leader>sd', '<cmd>Pick diagnostic<cr>', { desc = '[S]earch [D]iagnostics' })
   map('n', '<leader>sR', '<cmd>Pick resume<cr>', { desc = '[S]earch [R]esume' })
   map('n', '<leader>s.', '<cmd>Pick history<cr>', { desc = '[S]earch Recent Files ("." for repeat)' })
-  map('n', '<leader><leader>', '<cmd>Pick buffers<cr>', { desc = '[ ] Find existing buffers' })
+  map('n', '<leader>sb', '<cmd>Pick buffers<cr>', { desc = '[S]earch existing [B]uffers' })
 
   -- Simple and easy statusline.
   --  You could remove this setup call if you don't like it,
@@ -1416,6 +1419,7 @@ local function lsp()
       'vimls',
       'lua_ls',
       'astro',
+      -- 'prettier',
       -- 'biome',
       'eslint',
       'vtsls',
@@ -1736,19 +1740,19 @@ local function conform()
     formatters_by_ft = {
       lua = { 'stylua' },
       blade = { 'blade-formatter' },
-      json = { 'prettierd' },
-      jsx = { 'prettierd' },
-      javascript = { 'prettierd' },
-      typescript = { 'prettierd' },
-      typescriptreact = { 'prettierd' },
-      javascriptreact = { 'prettierd' },
-      svelte = { 'prettierd' },
-      vue = { 'prettierd' },
-      html = { 'prettierd' },
-      css = { 'prettierd' },
-      graphql = { 'prettierd' },
-      markdown = { 'prettierd' },
-      yaml = { 'prettierd' },
+      json = { 'prettier' },
+      jsx = { 'prettier' },
+      javascript = { 'prettier' },
+      typescript = { 'prettier' },
+      typescriptreact = { 'prettier' },
+      javascriptreact = { 'prettier' },
+      svelte = { 'prettier' },
+      vue = { 'prettier' },
+      html = { 'prettier' },
+      css = { 'prettier' },
+      graphql = { 'prettier' },
+      markdown = { 'prettier' },
+      yaml = { 'prettier' },
     },
   }
   map('n', '<leader>bf', function()
