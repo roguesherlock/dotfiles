@@ -1329,6 +1329,8 @@ local function treesitter()
     incremental_selection = {
       enable = true,
       keymaps = {
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
         node_decremental = '<bs>',
         scope_incremental = false,
       },
