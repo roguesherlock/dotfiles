@@ -670,7 +670,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Catppuccin'
+  vim.api.nvim_command 'Modus'
   -- set_from_os()
 end
 
@@ -1930,13 +1930,25 @@ local function toggleterm()
     size = 22,
   }
   local Terminal = require('toggleterm.terminal').Terminal
+  -- Function to get git root directory or current working directory
+  local function get_git_dir()
+    local git_dir = vim.fn.system('git rev-parse --show-toplevel 2>/dev/null'):gsub('\n', '')
+    if vim.v.shell_error ~= 0 then
+      return vim.fn.getcwd()
+    end
+    return git_dir
+  end
   local lazygit = Terminal:new {
     cmd = 'lazygit',
+    count = 5,
     dir = 'git_dir',
     direction = 'float',
     float_opts = {
       border = 'curved',
     },
+    on_open = function(term)
+      term:change_dir(get_git_dir())
+    end,
     hidden = true,
   }
 
