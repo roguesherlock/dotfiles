@@ -437,7 +437,7 @@ local function rosepine()
 
   require('rose-pine').setup {
     styles = {
-      transparency = true,
+      -- transparency = true,
     },
   }
 
@@ -473,7 +473,7 @@ local function modus()
     set_from_os()
   end
   require('modus-themes').setup {
-    transparent = true,
+    -- transparent = true,
     on_highlights = function(h, c)
       h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
     end,
@@ -486,7 +486,7 @@ local function catppuccin()
   add 'catppuccin/nvim'
 
   require('catppuccin').setup {
-    transparent_background = true,
+    -- transparent_background = true,
     term_colors = true,
     integrations = {
       cmp = true,
@@ -619,7 +619,7 @@ local function colors()
   vim.opt.background = 'dark'
   modus()
   catppuccin()
-  rosepine()
+  -- rosepine()
   -- tokyonight()
   -- melange()
   -- custom_theme()
@@ -1329,8 +1329,8 @@ local function treesitter()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<c-space>',
-        node_incremental = '<c-space>',
+        -- init_selection = '<c-space>',
+        -- node_incremental = '<c-space>',
         node_decremental = '<bs>',
         scope_incremental = false,
       },
