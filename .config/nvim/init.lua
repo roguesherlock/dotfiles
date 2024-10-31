@@ -615,6 +615,25 @@ local function custom_theme()
   -- }
 end
 
+local function gruvbox_material()
+  add 'sainnhe/gruvbox-material'
+  vim.g.gruvbox_material_enable_italic = true
+  -- vim.g.gruvbox_material_background = 'hard'
+
+  local set_theme = function()
+    dark_theme = 'gruvbox-material'
+    light_theme = 'gruvbox-material'
+    ghostty_dark_theme = 'GruvboxDark'
+    ghostty_light_theme = 'GruvboxLight'
+    ghostty_custom_theme = false
+    kitty_dark_theme = 'Modus Vivendi'
+    kitty_light_theme = 'Modus Operandi'
+    set_from_os()
+  end
+
+  vim.api.nvim_create_user_command('Gruvbox', set_theme, { desc = 'Set gruvbox theme' })
+end
+
 local function colors()
   vim.opt.background = 'dark'
   modus()
@@ -624,6 +643,7 @@ local function colors()
   -- melange()
   -- custom_theme()
   everforest()
+  gruvbox_material()
 
   -- add 'sho-87/kanagawa-paper.nvim'
   -- add 'Mofiqul/vscode.nvim'
@@ -1425,6 +1445,7 @@ local function lsp()
       -- 'biome',
       'eslint',
       'vtsls',
+      'denols',
       'volar',
       'tailwindcss',
       'intelephense',
@@ -1513,6 +1534,7 @@ local function lsp()
   end, { desc = '[L]SP Toggle inlay [H]ints' })
 
   local lspconfig = require 'lspconfig'
+  local configs = require 'lspconfig.configs'
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   local on_attach = function(client, buffer)
     -- mini_completion_on_attach(client, buffer)
@@ -1610,6 +1632,15 @@ local function lsp()
     lspconfig[lsp_name].setup(setup_config)
   end
 
+  local function disable_lsp(lsp_name, condition)
+    local def = configs[lsp_name]
+    def.document_config.on_new_config = lspconfig.util.add_hook_before(def.document_config.on_new_config, function(config, root_dir)
+      if condition(root_dir, config) then
+        config.enabled = false
+      end
+    end)
+  end
+
   lazydev()
   local function get_pkg_path(pkg, path)
     local mason_root = vim.fn.stdpath 'data' .. '/mason'
@@ -1689,6 +1720,21 @@ local function lsp()
       'vue',
     },
   })
+
+  -- To appropriately highlight codefences returned from denols
+  vim.g.markdown_fenced_languages = {
+    'ts=typescript',
+  }
+  setup_lsp 'denols'
+
+  local is_deno = require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc', 'deno.lock')
+  disable_lsp('vtsls', is_deno)
+  disable_lsp('denols', function(root_dir, config)
+    if not is_deno(root_dir) then
+      return true
+    end
+    return false
+  end)
   setup_lsp 'vimls'
   setup_lsp 'bashls'
   setup_lsp 'jsonls'
@@ -1735,7 +1781,7 @@ local function conform()
         lsp_format_opt = 'fallback'
       end
       return {
-        timeout_ms = 500,
+        timeout_ms = 3000,
         lsp_format = lsp_format_opt,
       }
     end,
