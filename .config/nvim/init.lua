@@ -1764,6 +1764,18 @@ end
 
 local function conform()
   add 'stevearc/conform.nvim'
+
+  -- use deno_fmt if in deno project, otherwise prettier
+  local javascript_formatter = function(bufnr)
+    local lsp_clients = vim.lsp.get_clients()
+    for _, client in pairs(lsp_clients) do
+      if client.name == 'denols' then
+        return { 'deno_fmt' }
+      end
+    end
+    return { 'prettier' }
+  end
+
   require('conform').setup {
     format_on_save = function(bufnr)
       -- Disable with a global or buffer-local variable
@@ -1788,19 +1800,19 @@ local function conform()
     formatters_by_ft = {
       lua = { 'stylua' },
       blade = { 'blade-formatter' },
-      json = { 'prettier' },
-      jsx = { 'prettier' },
-      javascript = { 'prettier' },
-      typescript = { 'prettier' },
-      typescriptreact = { 'prettier' },
-      javascriptreact = { 'prettier' },
-      svelte = { 'prettier' },
-      vue = { 'prettier' },
-      html = { 'prettier' },
-      css = { 'prettier' },
+      json = javascript_formatter,
+      jsx = javascript_formatter,
+      javascript = javascript_formatter,
+      typescript = javascript_formatter,
+      typescriptreact = javascript_formatter,
+      javascriptreact = javascript_formatter,
+      svelte = javascript_formatter,
+      vue = javascript_formatter,
+      html = javascript_formatter,
+      css = javascript_formatter,
       graphql = { 'prettier' },
-      markdown = { 'prettier' },
-      yaml = { 'prettier' },
+      markdown = javascript_formatter,
+      yaml = javascript_formatter,
     },
   }
   map('n', '<leader>bf', function()
