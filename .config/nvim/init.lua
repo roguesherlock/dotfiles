@@ -1847,17 +1847,28 @@ local function noice()
       'MunifTanjim/nui.nvim',
     },
   }
-  require('noice').setup {
+  local n = require 'noice'
+  n.setup {
     -- lsp = { progress = { enabled = false } },
     -- notify = { enabled = true, view = 'notify' },
     -- messages = { enabled = true, view = 'notify' },
     -- cmdline = { view = 'cmdline_popup' },
     lsp = {
+      hover = {
+        silent = true,
+      },
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
         ['vim.lsp.util.stylize_markdown'] = true,
         ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+      },
+    },
+    views = {
+      mini = {
+        win_options = {
+          winblend = 0,
+        },
       },
     },
     -- you can enable a preset for easier configuration
@@ -1869,6 +1880,16 @@ local function noice()
       lsp_doc_border = true, -- add a border to hover docs and signature help
     },
   }
+  map({ 'n', 'i', 's' }, '<c-f>', function()
+    if not n.scroll(4) then
+      return '<c-b>'
+    end
+  end, { silent = true, expr = true, desc = 'Scroll Forward' })
+  map({ 'n', 'i', 's' }, '<c-b>', function()
+    if not n.scroll(-4) then
+      return '<c-b>'
+    end
+  end, { silent = true, expr = true, desc = 'Scroll Backward' })
 end
 
 local function grug()
