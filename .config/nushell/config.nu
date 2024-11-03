@@ -73,6 +73,7 @@ source ~/.local/share/atuin/init.nu
 
 
 # carspace
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 # mkdir ~/.local/share/carapace
 # carapace _carapace nushell | save --force ~/.local/share/carapace/init.nu
 source ~/.local/share/carapace/init.nu
