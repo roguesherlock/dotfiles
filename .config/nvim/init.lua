@@ -1823,6 +1823,7 @@ local function conform()
       graphql = { 'prettier' },
       markdown = javascript_formatter,
       yaml = javascript_formatter,
+      -- nu = { 'nufmt' },
     },
   }
   map('n', '<leader>bf', function()
