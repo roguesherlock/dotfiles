@@ -1378,6 +1378,16 @@ local function treesitter()
     },
     filetype = 'blade',
   }
+  -- parser_config.nu = {
+  --   install_info = {
+  --     url = 'https://github.com/nushell/tree-sitter-nu',
+  --     files = { 'src/parser.c' },
+  --     branch = 'main',
+  --   },
+  --   filetype = 'nu',
+  -- }
+
+  add 'nushell/tree-sitter-nu'
 end
 
 local function autotag()

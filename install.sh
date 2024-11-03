@@ -130,6 +130,11 @@ install ~/Developer/dotfiles/.config/aerospace ~/.config/aerospace
 # helix
 install ~/Developer/dotfiles/.config/helix ~/.config/helix
 
+# nushell
+install ~/Developer/dotfiles/.config/nushell ~/.config/nushell
+install ~/Developer/dotfiles/.config/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
+install ~/Developer/dotfiles/.config/nushell/env.nu ~/Library/Application\ Support/nushell/env.nu
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
