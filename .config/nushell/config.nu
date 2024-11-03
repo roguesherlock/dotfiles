@@ -35,7 +35,8 @@ alias tree = eza --icons --header --long --tree --level=3
 alias ll = ls -la
 
 $env.config.show_banner = false
-$env.config.edit_mode = "vi"
+# TODO: c-f completion doesn't work with vi mode
+# $env.config.edit_mode = "vi"
 
 # empty hooks to avoid errors. mise and others add their own hooks.
 $env.config.hooks = {
