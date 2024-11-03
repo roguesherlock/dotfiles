@@ -1,8 +1,8 @@
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
 
-$env.config.show_banner = false
-
+# secrets
+source ~/.env.nu
 
 # PATH
 $env.PATH = (
@@ -31,6 +31,8 @@ alias s = kitty +kitten ssh
 alias tree = eza --icons --header --long --tree --level=3
 alias ll = ls
 
+$env.config.show_banner = false
+
 # empty hooks to avoid errors. mise and others add their own hooks.
 $env.config.hooks = {
     pre_prompt: [{ null }] # run before the prompt is shown
@@ -42,14 +44,10 @@ $env.config.hooks = {
     command_not_found: { null } # return an error message when a command is not found
 }
 
-# starship
-$env.STARSHIP_SHELL = "nu"
-# starship init nu | save -f ~/.cache/starship/init.nu
-use ~/.cache/starship/init.nu
-
 # mise
-# mise activate nu | save -f ~/.cache/mise/init.nu
-use ~/.cache/mise/init.nu
+# mkdir ~/.local/share/mise/
+# mise activate nu | save -f ~/.local/share/mise/init.nu
+use ~/.local/share/mise/init.nu
 
 # direnv
 # $env.config.hooks.env_change.PWD = { ||
@@ -60,9 +58,21 @@ use ~/.cache/mise/init.nu
 #     direnv export json | from json | default {} | load-env
 # }
 
-# secrets
-source ~/.env.nu
 
 # zoxide
-# zoxide init nushell | save -f ~/.cache/zoxide/init.nu
-source ~/.cache/zoxide/init.nu
+# mkdir ~/.local/share/zoxide/
+# zoxide init nushell | save -f ~/.local/share/zoxide/init.nu
+source ~/.local/share/zoxide/init.nu
+
+
+# atuin
+# mkdir ~/.local/share/atuin/
+# atuin init nu | save ~/.local/share/atuin/init.nu
+source ~/.local/share/atuin/init.nu
+
+# starship
+$env.STARSHIP_SHELL = "nu"
+# mkdir ~/.local/share/starship/
+# starship init nu | save -f ~/.local/share/starship/init.nu
+use ~/.local/share/starship/init.nu
+
