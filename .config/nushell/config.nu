@@ -21,7 +21,7 @@ $env.PATH = (
 
 # aliases
 alias top = btop
-alias nu-open = open
+alias nopen = open
 alias open = ^open
 alias vi = nvim
 alias ytb = yt-dlp -f 'bv+ba/b' 
@@ -29,9 +29,10 @@ alias yta = yt-dlp -f 'ba' -S 'ext'
 alias icat = kitty +kitten icat
 alias s = kitty +kitten ssh
 alias tree = eza --icons --header --long --tree --level=3
-alias ll = ls
+alias ll = ls -la
 
 $env.config.show_banner = false
+$env.config.edit_mode = "vi"
 
 # empty hooks to avoid errors. mise and others add their own hooks.
 $env.config.hooks = {
