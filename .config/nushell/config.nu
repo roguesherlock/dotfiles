@@ -1,6 +1,9 @@
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"
 
+
+$env.PROMPT_INDICATOR_VI_INSERT = ''
+
 # secrets
 source ~/.env.nu
 
