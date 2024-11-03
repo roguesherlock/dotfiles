@@ -195,8 +195,11 @@ local function setup_mappings()
   map('n', 'N', 'Nzzzv', { desc = 'Move to previous search result and keep window centered' })
 
   -- Move lines
-  map('v', 'J', ":m '>+1<cr>gv=gv", { desc = 'Move line down' })
-  map('v', 'K', ":m '<-2<cr>gv=gv", { desc = 'Move line up' })
+  map('n', '<a-j>', ':m .+1<cr>==', { desc = 'Move line down' })
+  map('n', '<a-k>', ':m .-2<cr>==', { desc = 'Move line up' })
+
+  map('v', '<a-j>', ":m '>+1<cr>gv=gv", { desc = 'Move line down' })
+  map('v', '<a-k>', ":m '<-2<cr>gv=gv", { desc = 'Move line up' })
 
   -- Highlight matches with +
   map('n', '+', '*N', { desc = 'Highlight all matches' })
