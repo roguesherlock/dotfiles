@@ -9,7 +9,12 @@ $env.PATH = (
   $env.PATH
   | split row (char esep)
   | append /usr/local/bin
+  | append `/Users/akash/Library/Application Support/Herd/bin`
   | append ($env.HOME | path join .local bin)
+  | append ($env.HOME | path join .sst bin)
+  | append ($env.HOME | path join .cargo bin)
+  | append ($env.HOME | path join .bun bin)
+  | append ($env.HOME | path join go bin)
   | uniq # filter so the paths are unique
   | prepend '/opt/homebrew/bin'
 )
@@ -54,3 +59,6 @@ use ~/.cache/mise/init.nu
 #
 #     direnv export json | from json | default {} | load-env
 # }
+
+# secrets
+source ~/.env.nu
