@@ -62,3 +62,7 @@ use ~/.cache/mise/init.nu
 
 # secrets
 source ~/.env.nu
+
+# zoxide
+# zoxide init nushell | save -f ~/.cache/zoxide/init.nu
+source ~/.cache/zoxide/init.nu
