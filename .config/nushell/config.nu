@@ -49,6 +49,7 @@ $env.config.hooks = {
 # mise activate nu | save -f ~/.local/share/mise/init.nu
 use ~/.local/share/mise/init.nu
 
+
 # direnv
 # $env.config.hooks.env_change.PWD = { ||
 #     if (which direnv | is-empty) {
@@ -69,6 +70,13 @@ source ~/.local/share/zoxide/init.nu
 # mkdir ~/.local/share/atuin/
 # atuin init nu | save ~/.local/share/atuin/init.nu
 source ~/.local/share/atuin/init.nu
+
+
+# carspace
+# mkdir ~/.local/share/carapace
+# carapace _carapace nushell | save --force ~/.local/share/carapace/init.nu
+source ~/.local/share/carapace/init.nu
+
 
 # starship
 $env.STARSHIP_SHELL = "nu"
