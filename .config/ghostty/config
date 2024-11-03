@@ -1,24 +1,26 @@
-font-family = "Maple Mono"
-# font-family = "Input Mono Narrow"
+# font-family = "Maple Mono"
+font-family = "Input Mono Narrow"
 # font-family = "JuliaMono"
 # font-family = "Geist Mono"
 # font-variation = wght=450
 # font-variation-bold = wght=800
 # font-variation-italic = wght=450
 # font-variation-bold-italic = wght=800
-font-size = 15
+font-size = 13
 adjust-cell-height = 20%
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = catppuccin-mocha
+theme = Builtin Pastel Dark
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 window-colorspace = display-p3
 # TODO: enable this when the next zellij release is out
 # background-opacity = 0.85
 # background-blur-radius = 20
-macos-titlebar-style = native
+macos-titlebar-style = tabs
+window-save-state = always
+auto-update = download
 
 # zellij keybinds
 # keybind = super+d=text:                 # detach zellij
