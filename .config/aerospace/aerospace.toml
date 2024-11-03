@@ -90,10 +90,17 @@ outer.right =      0
 # end tell'
 # '''
 
+
+# keybindings for right command and right option set via karabiner elements
+# right_command => alt-shift-ctrl
+# right_option => alt-shift-ctrl-cmd
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-shift-ctrl-slash = 'layout tiles horizontal vertical'
 alt-shift-ctrl-comma = 'layout accordion horizontal vertical'
 
+alt-shift-ctrl-space = 'layout floating tiling'
+alt-shift-ctrl-enter= 'fullscreen'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
@@ -217,7 +224,11 @@ alt-shift-ctrl-cmd-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace E'        # mnemonics E - Terminal/Editor
+run = 'move-node-to-workspace E'        # mnemonics E - Terminal Editor
+
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace E'        # mnemonics E - Terminal Editor
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
