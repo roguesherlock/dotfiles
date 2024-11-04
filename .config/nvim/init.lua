@@ -637,6 +637,24 @@ local function gruvbox_material()
   vim.api.nvim_create_user_command('Gruvbox', set_theme, { desc = 'Set gruvbox theme' })
 end
 
+local function zenbones()
+  add 'zenbones-theme/zenbones.nvim'
+
+  local set_theme = function()
+    dark_theme = 'zenbones'
+    light_theme = 'zenbones'
+    ghostty_dark_theme = 'zenbones_dark'
+    ghostty_light_theme = 'zenbones_light'
+    ghostty_custom_theme = false
+    kitty_dark_theme = 'zenbones_dark'
+    kitty_light_theme = 'zenbones_light'
+    set_from_os()
+  end
+  vim.g.zenbones_compat = 1
+
+  vim.api.nvim_create_user_command('Zenbones', set_theme, { desc = 'Set zenbones theme' })
+end
+
 local function colors()
   vim.opt.background = 'dark'
   modus()
@@ -645,8 +663,9 @@ local function colors()
   -- tokyonight()
   -- melange()
   -- custom_theme()
-  everforest()
+  -- everforest()
   gruvbox_material()
+  -- zenbones()
 
   -- add 'sho-87/kanagawa-paper.nvim'
   -- add 'Mofiqul/vscode.nvim'
@@ -1542,6 +1561,7 @@ local function lsp()
   map('n', '<leader>lx', ':LspStop<cr>', { desc = '[L]SP [X]lose' })
   map('n', '<leader>lr', ':LspRestart<cr>', { desc = '[L]SP [R]estart' })
   map('n', '<leader>li', ':LspInfo<cr>', { desc = '[L]SP [I]nfo' })
+  map('n', '<leader>ll', ':LspLog<cr>', { desc = '[L]SP [L]og' })
   map('n', '<leader>lh', function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
   end, { desc = '[L]SP Toggle inlay [H]ints' })
