@@ -758,7 +758,9 @@ end
 
 local function supermaven()
   add 'supermaven-inc/supermaven-nvim'
-  require('supermaven-nvim').setup { log_level = 'off' }
+  later(function()
+    require('supermaven-nvim').setup { log_level = 'off' }
+  end)
   -- Trigger completion with <tab> manually since mini.completion doesn't play well with supermaven
   map('i', '<tab>', function()
     local suggestion = require 'supermaven-nvim.completion_preview'
@@ -768,6 +770,11 @@ local function supermaven()
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<tab>', true, false, true), 'n', true)
     end
   end, { desc = 'Accept Supermaven suggestion' })
+end
+
+local function copilot()
+  add 'zbirenbaum/copilot.lua'
+  later(require('copilot').setup {})
 end
 
 local function codecompanion()
@@ -794,6 +801,11 @@ local function codecompanion()
             },
           },
           ['help'] = {
+            opts = {
+              provider = 'mini_pick',
+            },
+          },
+          ['symbols'] = {
             opts = {
               provider = 'mini_pick',
             },
@@ -844,19 +856,19 @@ local function avante()
     },
   }
   --- optional
-  add { source = 'zbirenbaum/copilot.lua' }
+  -- add { source = 'zbirenbaum/copilot.lua' }
   add { source = 'HakonHarnes/img-clip.nvim' }
-  add { source = 'MeanderingProgrammer/render-markdown.nvim' }
+  -- add { source = 'MeanderingProgrammer/render-markdown.nvim' }
 
   now(function()
     require('avante_lib').load()
   end)
-  later(function()
-    require('render-markdown').setup {}
-  end)
+  -- later(function()
+  --   require('render-markdown').setup {}
+  -- end)
   later(function()
     require('img-clip').setup {}
-    require('copilot').setup {}
+    -- require('copilot').setup {}
     require('avante').setup {}
   end)
 end
@@ -877,6 +889,7 @@ end
 local function ai()
   supermaven()
   -- codeium()
+  -- copilot()
   codecompanion()
   -- avante()
 end
@@ -2362,6 +2375,12 @@ end
 
 local function markdown()
   add 'OXY2DEV/markview.nvim'
+  require('markview').setup {
+    filetypes = { 'markdown', 'quarto', 'rmd', 'codecompanion', 'Avante', 'avante' },
+  }
+
+  -- add 'MeanderingProgrammer/render-markdown.nvim'
+  -- require('render-markdown').setup {}
 end
 
 local function dap()
