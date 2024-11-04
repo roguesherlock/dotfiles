@@ -240,7 +240,11 @@ run = 'move-node-to-workspace I'        # mnemonics I - Slack
 
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
-run = 'move-node-to-workspace E'        # mnemonics E - Editor
+run = 'move-node-to-workspace D'        # mnemonics D - Editor
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace D'        # mnemonics D - Editor
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client'
@@ -250,8 +254,27 @@ run = 'move-node-to-workspace M'        # mnemonics M - Music
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace N'        # mnemonics N - Notion
 
+[[on-window-detected]]
+if.app-id = 'com.linear'
+run = 'move-node-to-workspace O'        # mnemonics O - Linear
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace G'        # mnemonics G - Figma
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace W'        # mnemonics W - WhatsApp
+
+[[on-window-detected]]
+if.app-id = 'com.ranchero.NetNewsWire-Evergreen'
+run = 'move-node-to-workspace Z'        # mnemonics Z - NetNewsWire
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace F'        # mnemonics F - Finder
 
 # Make all windows float by default
-[[on-window-detected]]
-check-further-callbacks = true
-run = 'layout floating'
+# [[on-window-detected]]
+# check-further-callbacks = true
+# run = 'layout floating'
