@@ -1481,7 +1481,7 @@ local function lsp()
   -- Useful status updates for LSP.
   add 'j-hui/fidget.nvim'
   -- Allows extra capabilities provided by nvim-cmp
-  add 'hrsh7th/cmp-nvim-lsp'
+  -- add 'hrsh7th/cmp-nvim-lsp'
 
   local function mini_completion_on_attach(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.MiniCompletion.completefunc_lsp')
@@ -1669,7 +1669,12 @@ local function lsp()
   --  By default, Neovim doesn't support everything that is in the LSP specification.
   --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
   --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-  capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+  print(vim.g.completion)
+  if vim.g.completion == 'nvim-cmp' then
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+  elseif vim.g.completion == 'blink' then
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities(capabilities))
+  end
 
   local function setup_lsp(lsp_name, settings, opts)
     -- lspconfig[lsp_name].setup {
@@ -2373,6 +2378,7 @@ local function completion()
       { name = 'path' },
     },
   }
+  vim.g.completion = 'nvim-cmp'
 end
 
 local function blink_completion()
@@ -2381,9 +2387,10 @@ local function blink_completion()
     depends = {
       'rafamadriz/friendly-snippets',
     },
-    checkout = 'v0.3.1',
+    checkout = 'v0.5.1',
   }
   require('blink.cmp').setup {}
+  vim.g.completion = 'blink'
 end
 
 local function markdown()
@@ -2565,6 +2572,17 @@ local function multi_cursor()
   map({ 'n', 'v' }, '<leader>m', '<cmd>MCstart<cr>', { desc = 'Multi Cursor' })
 end
 
+local function eagle()
+  add 'soulis-1256/eagle.nvim'
+  later(function()
+    require('eagle').setup {
+      keyboard_mode = true,
+    }
+    map('n', 'D', ':EagleWin<CR>', { noremap = true, silent = true })
+  end)
+  vim.o.mousemoveevent = true
+end
+
 -- Lazy load plugins
 local function setup_plugins()
   noice()
@@ -2578,8 +2596,9 @@ local function setup_plugins()
   mini_nvim()
   treesitter()
   autotag()
+  -- completion()
+  blink_completion()
   lsp()
-  completion()
   ai()
   -- trouble()
   conform()
@@ -2599,6 +2618,7 @@ local function setup_plugins()
   lint()
   nvim_tree()
   multi_cursor()
+  -- eagle()
 end
 
 setup_plugin_manager()
