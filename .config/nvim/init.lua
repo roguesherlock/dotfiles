@@ -245,13 +245,14 @@ local function setup_autocommands()
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('user-highlight-yank', { clear = true }),
     callback = function()
-      vim.highlight.on_yank()
+      (vim.hl or vim.highlight).on_yank()
     end,
   })
 
   -- [[ Autosave ]] --
   vim.api.nvim_create_autocmd({
     'FocusLost',
+    'InsertLeave',
     'BufEnter',
     'BufLeave',
   }, {
@@ -262,6 +263,41 @@ local function setup_autocommands()
       if vim.bo.modified and not vim.bo.readonly and vim.fn.expand '%' ~= '' and vim.bo.buftype == '' then
         vim.api.nvim_command 'silent! update'
       end
+    end,
+  })
+
+  -- [[ Check if we need to reload buffer ]] --
+  vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+    callback = function()
+      if vim.o.buftype ~= 'nofile' then
+        vim.cmd 'checktime'
+      end
+    end,
+  })
+
+  -- resize splits if window got resized
+  vim.api.nvim_create_autocmd({ 'VimResized' }, {
+    callback = function()
+      local current_tab = vim.fn.tabpagenr()
+      vim.cmd 'tabdo wincmd ='
+      vim.cmd('tabnext ' .. current_tab)
+    end,
+  })
+
+  -- make it easier to close man-files when opened inline
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'man' },
+    callback = function(event)
+      vim.bo[event.buf].buflisted = false
+    end,
+  })
+
+  -- wrap and check for spell in text filetypes
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'text', 'plaintex', 'typst', 'gitcommit', 'markdown' },
+    callback = function()
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = true
     end,
   })
 
@@ -282,10 +318,28 @@ local function setup_autocommands()
       'grug-far',
       'grug-far-history',
       'grug-far-help',
+      'startuptime',
+      'tsplayground',
+      'neotest-output',
+      'checkhealth',
+      'neotest-summary',
+      'neotest-output-panel',
+      'dbout',
+      'gitsigns-blame',
     },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
-      vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+      -- vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
+      vim.schedule(function()
+        vim.keymap.set('n', 'q', function()
+          vim.cmd 'close'
+          pcall(vim.api.nvim_buf_delete, event.buf, { force = true })
+        end, {
+          buffer = event.buf,
+          silent = true,
+          desc = 'Quit buffer',
+        })
+      end)
     end,
   })
 end
@@ -1669,7 +1723,6 @@ local function lsp()
   --  By default, Neovim doesn't support everything that is in the LSP specification.
   --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
   --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-  print(vim.g.completion)
   if vim.g.completion == 'nvim-cmp' then
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
   elseif vim.g.completion == 'blink' then
@@ -1945,16 +1998,16 @@ local function noice()
       lsp_doc_border = true, -- add a border to hover docs and signature help
     },
   }
-  map({ 'n', 'i', 's' }, '<c-f>', function()
-    if not n.scroll(4) then
-      return '<c-b>'
-    end
-  end, { silent = true, expr = true, desc = 'Scroll Forward' })
-  map({ 'n', 'i', 's' }, '<c-b>', function()
-    if not n.scroll(-4) then
-      return '<c-b>'
-    end
-  end, { silent = true, expr = true, desc = 'Scroll Backward' })
+  -- map({ 'n', 'i', 's' }, '<c-f>', function()
+  --   if not n.scroll(4) then
+  --     return '<c-b>'
+  --   end
+  -- end, { silent = true, expr = true, desc = 'Scroll Forward' })
+  -- map({ 'n', 'i', 's' }, '<c-b>', function()
+  --   if not n.scroll(-4) then
+  --     return '<c-b>'
+  --   end
+  -- end, { silent = true, expr = true, desc = 'Scroll Backward' })
 end
 
 local function grug()
@@ -2386,11 +2439,46 @@ local function blink_completion()
     source = 'saghen/blink.cmp',
     depends = {
       'rafamadriz/friendly-snippets',
+      -- TODO: codecompnaion breaks with this
+      -- 'saghen/blink.compat',
     },
     checkout = 'v0.5.1',
   }
-  require('blink.cmp').setup {}
+
   vim.g.completion = 'blink'
+
+  later(function()
+    require('blink.cmp').setup {
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      sources = {
+        completion = {
+          enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+        },
+        providers = {
+          -- dont show LuaLS require statements when lazydev has items
+          lsp = { fallback_for = { 'lazydev' } },
+          lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+        },
+      },
+      windows = {
+        autocomplete = {
+          draw = 'reversed',
+          winblend = vim.o.pumblend,
+          -- border = 'padded',
+        },
+        documentation = {
+          auto_show = true,
+        },
+        ghost_text = {
+          enabled = true,
+        },
+      },
+    }
+  end)
 end
 
 local function markdown()
