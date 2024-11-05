@@ -417,7 +417,7 @@ end
 local function set_zellij_theme(theme)
   local config_path = vim.fn.expand '~/.config/zellij/config.kdl'
   local real_path = vim.fn.resolve(config_path)
-  local cmd = string.format("sed -i'.bak' 's/theme \" .*/theme \" %s/' %s", theme, real_path)
+  local cmd = string.format('sed -i\'.bak\' \'s/theme "[^"]*"/theme "%s"/\' %s', theme, real_path)
   local result = vim.fn.system { 'bash', '-c', cmd }
   if vim.v.shell_error ~= 0 then
     print('Error updating Zellij theme: ' .. result)
