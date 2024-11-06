@@ -124,6 +124,9 @@ local function setup_mappings()
   map('n', '<leader>bd', '<cmd>bd<cr>', { desc = '[B]uffer [D]elete with Window' })
   map('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[B]uffer [N]ew' })
 
+  -- directly added to which key
+  -- map('n', 'w', '<C-w>', { desc = '[W]indow' })
+
   --keywordprg
   -- See `:help 'keywordprg'`
   map('n', '<leader>K', '<cmd>norm! K<cr>', { desc = 'Keywordprg' })
@@ -819,6 +822,7 @@ local function which_key()
       { '<leader>l', group = '[L]SP' },
       { '<leader>gh', group = '[G]it [H]unk', mode = { 'n', 'v' } },
       { '<leader>a', group = '[A]i', mode = { 'n', 'v' } },
+      { 'w', proxy = '<c-w>', group = '[W]indow' },
     },
   }
 end
