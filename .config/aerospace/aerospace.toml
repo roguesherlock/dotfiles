@@ -274,6 +274,14 @@ run = 'move-node-to-workspace Z'        # mnemonics Z - NetNewsWire
 if.app-id = 'com.apple.finder'
 run = 'move-node-to-workspace F'        # mnemonics F - Finder
 
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus'
+run = 'move-node-to-workspace T'        # mnemonics T - TablePlus
+
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run = 'move-node-to-workspace P'        # mnemonics P - Postman
+
 # Make all windows float by default
 # [[on-window-detected]]
 # check-further-callbacks = true

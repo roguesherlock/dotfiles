@@ -21,8 +21,8 @@ keybinds clear-defaults=true {
     }
 
     shared {
-        bind "Super Ctrl d" { Detach; } // Cmd Ctrl D
-        bind "Super Ctrl q" { Quit; }   // Cmd Ctrl Q
+        bind "Alt d" { Detach; } // Option D
+        bind "Alt q" { Quit; }   // Option Q
     }
 
     shared_except "entersearch" "locked" {
@@ -440,7 +440,7 @@ serialize_pane_viewport true
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "modus_dark"
+theme "catppuccin-mocha"
 
 // The name of the default layout to load on startup
 // Default: "default"

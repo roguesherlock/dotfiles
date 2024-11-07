@@ -19,8 +19,8 @@ local ghostty_dark_theme = 'modus_dark'
 local ghostty_custom_theme = true
 local kitty_light_theme = 'Modus Operandi'
 local kitty_dark_theme = 'Modus Vivendi'
-local zellij_light_theme = 'modus_light'
-local zellij_dark_theme = 'modus_dark'
+local zellij_light_theme = 'catppuccin-latte'
+local zellij_dark_theme = 'catppuccin-mocha'
 
 local function map(mode, lhs, rhs, opts)
   opts = opts or {}
@@ -487,7 +487,7 @@ local function tokyonight()
   local set_theme = function()
     dark_theme = 'tokyonight-night'
     light_theme = 'tokyonight-day'
-    ghostty_dark_theme = 'tokyonight-night'
+    ghostty_dark_theme = 'tokyonight'
     ghostty_light_theme = 'tokyonight-day'
     ghostty_custom_theme = false
     kitty_dark_theme = 'Tokyo Night'
@@ -496,7 +496,7 @@ local function tokyonight()
   end
 
   require('tokyonight').setup {
-    transparent = true,
+    -- transparent = true,
   }
 
   vim.api.nvim_create_user_command('Tokyonight', set_theme, { desc = 'Set tokyonight theme' })
@@ -724,6 +724,7 @@ end
 
 local function colors()
   vim.opt.background = 'dark'
+  tokyonight()
   modus()
   catppuccin()
   -- rosepine()
