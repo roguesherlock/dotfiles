@@ -22,6 +22,11 @@ macos-titlebar-style = tabs
 window-save-state = always
 auto-update = download
 
+# custom-shader = ./shaders/retro-terminal.glsl
+# custom-shader = ./shaders/just-snow.glsl
+# custom-shader = ./shaders/starfield.glsl
+# custom-shader = ./shaders/negative.glsl
+
 # zellij keybinds
 # keybind = super+d=unbind                 # detach zellij
 # keybind = super+q=unbind                 # Quit

@@ -23,6 +23,8 @@ $env.PATH = (
 )
 
 # aliases
+# apparently kitty isn't loaded in zellij shell so we alias it here
+alias kitty = /Applications/kitty.app/Contents/MacOS/kitty
 alias top = btop
 alias nopen = open
 alias open = ^open
