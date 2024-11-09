@@ -3,11 +3,11 @@
 vim.loader.enable()
 
 -- TODO:
--- 1. incremental seelction for treesitter -- DONE
--- 2. included file not showing up in codecompanion chat
--- 3. ability to toggle diagnostics
+-- 1. incremental seelction for treesitter -- DONE: There was a default macos keybind for ^Space that was causing issues
+-- 2. included file not showing up in codecompanion chat -- Looks like it's not supported by codecompanion?
+-- 3. ability to toggle diagnostics -- DONE
 -- 4. lazygit breaks if path name contains brackets
--- 5. trigger nvim with <c-space>
+-- 5. trigger nvim with <c-space> -- DONE: There was a default macos keybind for ^Space that was causing issues
 
 local add, now, later -- mini.deps will be setup later
 -- colors, look at colors()
@@ -820,6 +820,7 @@ local function which_key()
       { '<leader>w', group = '[W]orkspace' },
       { '<leader>wt', group = '[W]orkspace [T]asks' },
       { '<leader>t', group = '[T]oggle' },
+      { '<leader>tg', group = '[T]oggle [G]it' },
       { '<leader>l', group = '[L]SP' },
       { '<leader>gh', group = '[G]it [H]unk', mode = { 'n', 'v' } },
       { '<leader>a', group = '[A]i', mode = { 'n', 'v' } },
@@ -1459,7 +1460,7 @@ local function treesitter()
         init_selection = '<c-space>',
         node_incremental = '<c-space>',
         node_decremental = '<bs>',
-        scope_incremental = true,
+        scope_incremental = '<c-space>',
       },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
@@ -1589,10 +1590,12 @@ local function lsp()
   map('n', ']w', diagnostic_goto(true, 'WARN'), { desc = 'Next [W]arning' })
   map('n', '[w', diagnostic_goto(false, 'WARN'), { desc = 'Prev [W]arning' })
   map('n', '<leader>td', function()
-    if vim.diagnostic.enable then
-      pcall(vim.diagnostic.enable, false)
+    local is_enabled = vim.diagnostic.is_enabled()
+    vim.diagnostic.enable(not is_enabled)
+    if is_enabled then
+      print 'Disabled diagnostics'
     else
-      pcall(vim.diagnostic.enable, true)
+      print 'Enabled diagnostics'
     end
   end, { desc = '[T]oggle [D]iagnostics' })
 
@@ -2140,17 +2143,15 @@ local function toggleterm()
     end
     return git_dir
   end
+
   local lazygit = Terminal:new {
     cmd = 'lazygit',
     count = 5,
-    dir = 'git_dir',
+    dir = get_git_dir(),
     direction = 'float',
     float_opts = {
       border = 'curved',
     },
-    on_open = function(term)
-      term:change_dir(get_git_dir())
-    end,
     hidden = true,
   }
 
@@ -2573,10 +2574,10 @@ local function dap()
   map('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
   map('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
   map('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-  map('n', '<leader>tdb', dap.toggle_breakpoint, { desc = '[T]oggle [D]ebug [B]reakpoint' })
-  map('n', '<leader>tdB', function()
+  map('n', '<leader>tb', dap.toggle_breakpoint, { desc = '[T]oggle Debug [B]reakpoint' })
+  map('n', '<leader>tB', function()
     dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-  end, { desc = '[T]oggle [D]ebug [B]reakpoint with condition' })
+  end, { desc = '[T]oggle Debug [B]reakpoint with condition' })
   -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
   map('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
 end
