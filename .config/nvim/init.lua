@@ -7,16 +7,29 @@ vim.loader.enable()
 
 local add, now, later -- mini.deps will be setup later
 -- colors, look at colors()
-local light_theme, dark_theme
-local enable_auto_switch = true
-local default_light = false
-local ghostty_light_theme = 'modus_light'
-local ghostty_dark_theme = 'modus_dark'
-local ghostty_custom_theme = true
-local kitty_light_theme = 'Modus Operandi'
-local kitty_dark_theme = 'Modus Vivendi'
-local zellij_light_theme = 'catppuccin-latte'
-local zellij_dark_theme = 'catppuccin-mocha'
+local theme_config = {
+  opts = {
+    enable_auto_switch = true,
+    default_light = false,
+  },
+  nvim = {
+    light = 'modus_light',
+    dark = 'modus_dark',
+  },
+  ghostty = {
+    light = 'modus_light',
+    dark = 'modus_dark',
+    custom_theme = false,
+  },
+  kitty = {
+    light = 'Modus Operandi',
+    dark = 'Modus Vivendi',
+  },
+  zellij = {
+    light = 'catppuccin-latte',
+    dark = 'catppuccin-mocha',
+  },
+}
 
 local function map(mode, lhs, rhs, opts)
   opts = opts or {}
@@ -373,16 +386,16 @@ end
 local set_colorscheme = function(light)
   if light then
     vim.opt.background = 'light'
-    vim.cmd('colorscheme ' .. light_theme)
+    vim.cmd('colorscheme ' .. theme_config.nvim.light)
   else
     vim.opt.background = 'dark'
-    vim.cmd('colorscheme ' .. dark_theme)
+    vim.cmd('colorscheme ' .. theme_config.nvim.dark)
   end
 end
 
 local set_from_os = function()
-  if not enable_auto_switch then
-    set_colorscheme(default_light)
+  if not theme_config.opts.enable_auto_switch then
+    set_colorscheme(theme_config.opts.default_light)
   end
   if os_is_dark() then
     set_colorscheme(false)
@@ -481,13 +494,12 @@ local function tokyonight()
   add 'folke/tokyonight.nvim'
 
   local set_theme = function()
-    dark_theme = 'tokyonight-night'
-    light_theme = 'tokyonight-day'
-    ghostty_dark_theme = 'tokyonight'
-    ghostty_light_theme = 'tokyonight-day'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'Tokyo Night'
-    kitty_light_theme = 'Tokyo Night Day'
+    theme_config.nvim.dark = 'tokyonight-night'
+    theme_config.nvim.light = 'tokyonight-day'
+    theme_config.ghostty.dark = 'tokyonight'
+    theme_config.ghostty.light = 'tokyonight-day'
+    theme_config.kitty.dark = 'Tokyo Night'
+    theme_config.kitty.light = 'Tokyo Night Day'
     set_from_os()
   end
 
@@ -508,13 +520,12 @@ local function rosepine()
   }
 
   local set_theme = function()
-    dark_theme = 'rose-pine'
-    light_theme = 'rose-pine'
-    ghostty_dark_theme = 'rose-pine'
-    ghostty_light_theme = 'rose-pine-dawn'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'Rosé Pine'
-    kitty_light_theme = 'Rosé Pine Dawn'
+    theme_config.nvim.dark = 'rose-pine'
+    theme_config.nvim.light = 'rose-pine'
+    theme_config.ghostty.dark = 'rose-pine'
+    theme_config.ghostty.light = 'rose-pine-dawn'
+    theme_config.kitty.dark = 'Rosé Pine'
+    theme_config.kitty.light = 'Rosé Pine Dawn'
     set_from_os()
   end
 
@@ -525,16 +536,12 @@ local function modus()
   add 'miikanissi/modus-themes.nvim'
 
   local set_theme = function()
-    dark_theme = 'modus_vivendi'
-    light_theme = 'modus_operandi'
-    -- ghostty_dark_theme = 'modus_dark'
-    -- ghostty_light_theme = 'modus_light'
-    -- ghostty_custom_theme = true
-    ghostty_dark_theme = 'Builtin Pastel Dark'
-    ghostty_light_theme = 'Builtin Tango Light'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'Modus Vivendi'
-    kitty_light_theme = 'Modus Operandi'
+    theme_config.nvim.dark = 'modus_vivendi'
+    theme_config.nvim.light = 'modus_operandi'
+    theme_config.ghostty.dark = 'Builtin Pastel Dark'
+    theme_config.ghostty.light = 'Builtin Tango Light'
+    theme_config.kitty.dark = 'Modus Vivendi'
+    theme_config.kitty.light = 'Modus Operandi'
 
     set_from_os()
   end
@@ -552,7 +559,12 @@ local function catppuccin()
   add 'catppuccin/nvim'
 
   require('catppuccin').setup {
-    -- transparent_background = true,
+    flavour = 'auto',
+    background = { -- :h background
+      light = 'latte',
+      dark = 'frappe',
+    },
+    transparent_background = false,
     term_colors = true,
     integrations = {
       cmp = true,
@@ -591,13 +603,14 @@ local function catppuccin()
   }
 
   local set_theme = function()
-    dark_theme = 'catppuccin'
-    light_theme = 'catppuccin'
-    ghostty_dark_theme = 'catppuccin-mocha'
-    ghostty_light_theme = 'catppuccin-latte'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'Catppuccin-Mocha'
-    kitty_light_theme = 'Catppuccin-Latte'
+    theme_config.nvim.dark = 'catppuccin'
+    theme_config.nvim.light = 'catppuccin'
+    theme_config.ghostty.dark = 'catppuccin-frappe'
+    theme_config.ghostty.light = 'catppuccin-latte'
+    theme_config.kitty.dark = 'Catppuccin-Frappe'
+    theme_config.kitty.light = 'Catppuccin-Latte'
+    theme_config.zellij.dark = 'catppuccin-frappe'
+    theme_config.zellij.light = 'catppuccin-latte'
     set_from_os()
   end
 
@@ -608,13 +621,12 @@ local function melange()
   add 'savq/melange-nvim'
 
   local set_theme = function()
-    dark_theme = 'melange'
-    light_theme = 'melange'
-    ghostty_dark_theme = 'Belafonte Night'
-    ghostty_light_theme = 'Belafonte Day'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'melange_dark'
-    kitty_light_theme = 'melange_light'
+    theme_config.nvim.dark = 'melange'
+    theme_config.nvim.light = 'melange'
+    theme_config.ghostty.dark = 'Belafonte Night'
+    theme_config.ghostty.light = 'Belafonte Day'
+    theme_config.kitty.dark = 'melange_dark'
+    theme_config.kitty.light = 'melange_light'
     set_from_os()
   end
 
@@ -634,51 +646,16 @@ local function everforest()
   }
 
   local set_theme = function()
-    dark_theme = 'everforest'
-    light_theme = 'everforest'
-    ghostty_dark_theme = 'GruvboxDark'
-    ghostty_light_theme = 'GruvboxLight'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'Everforest Dark Medium'
-    kitty_light_theme = 'Everforest Light Medium'
+    theme_config.nvim.dark = 'everforest'
+    theme_config.nvim.light = 'everforest'
+    theme_config.ghostty.dark = 'GruvboxDark'
+    theme_config.ghostty.light = 'GruvboxLight'
+    theme_config.kitty.dark = 'Everforest Dark Medium'
+    theme_config.kitty.light = 'Everforest Light Medium'
     set_from_os()
   end
 
   vim.api.nvim_create_user_command('Everforest', set_theme, { desc = 'Set everforest theme' })
-end
-
-local function custom_theme()
-  -- add 'echasnovski/mini.colors'
-  add 'echasnovski/mini.base16'
-
-  require('mini.base16').setup {
-    palette = {
-      base00 = '#282828',
-      base01 = '#3c3836',
-      base02 = '#423e3c',
-      base03 = '#484442',
-      base04 = '#bdae93',
-      base05 = '#d5c4a1',
-      base06 = '#ebdbb2',
-      base07 = '#fbf1c7',
-      base08 = '#fb4934',
-      base09 = '#fe8019',
-      base0A = '#fabd2f',
-      base0B = '#b8bb26',
-      base0C = '#8ec07c',
-      base0D = '#83a598',
-      base0E = '#d3869b',
-      base0F = '#d65d0e',
-    },
-  }
-
-  -- add 'echasnovski/mini.hues'
-  -- require('mini.hues').setup {
-  --   -- Use config table as you like
-  --   -- Needs both `background` and `foreground` fields present
-  --   background = '#11262d',
-  --   foreground = '#c0c8cc',
-  -- }
 end
 
 local function gruvbox_material()
@@ -687,13 +664,12 @@ local function gruvbox_material()
   -- vim.g.gruvbox_material_background = 'hard'
 
   local set_theme = function()
-    dark_theme = 'gruvbox-material'
-    light_theme = 'gruvbox-material'
-    ghostty_dark_theme = 'GruvboxDark'
-    ghostty_light_theme = 'GruvboxLight'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'Modus Vivendi'
-    kitty_light_theme = 'Modus Operandi'
+    theme_config.nvim.dark = 'gruvbox-material'
+    theme_config.nvim.light = 'gruvbox-material'
+    theme_config.ghostty.dark = 'GruvboxDark'
+    theme_config.ghostty.light = 'GruvboxLight'
+    theme_config.kitty.dark = 'Modus Vivendi'
+    theme_config.kitty.light = 'Modus Operandi'
     set_from_os()
   end
 
@@ -704,13 +680,12 @@ local function zenbones()
   add 'zenbones-theme/zenbones.nvim'
 
   local set_theme = function()
-    dark_theme = 'zenbones'
-    light_theme = 'zenbones'
-    ghostty_dark_theme = 'zenbones_dark'
-    ghostty_light_theme = 'zenbones_light'
-    ghostty_custom_theme = false
-    kitty_dark_theme = 'zenbones_dark'
-    kitty_light_theme = 'zenbones_light'
+    theme_config.nvim.dark = 'zenbones'
+    theme_config.nvim.light = 'zenbones'
+    theme_config.ghostty.dark = 'zenbones_dark'
+    theme_config.ghostty.light = 'zenbones_light'
+    theme_config.kitty.dark = 'zenbones_dark'
+    theme_config.kitty.light = 'zenbones_light'
     set_from_os()
   end
   vim.g.zenbones_compat = 1
@@ -749,25 +724,25 @@ local function colors()
     callback = function()
       if vim.o.background == 'light' then
         if term == 'xterm-kitty' then
-          vim.fn.system('kitty +kitten themes ' .. kitty_light_theme)
+          vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.light)
         elseif term == 'xterm-ghostty' then
-          set_ghostty_theme(ghostty_light_theme, ghostty_custom_theme)
+          set_ghostty_theme(theme_config.ghostty.light, theme_config.ghostty.custom_theme)
         end
-        set_zellij_theme(zellij_light_theme)
+        set_zellij_theme(theme_config.zellij.light)
       elseif vim.o.background == 'dark' then
         if term == 'xterm-kitty' then
-          vim.fn.system('kitty +kitten themes ' .. kitty_dark_theme)
+          vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.dark)
         elseif term == 'xterm-ghostty' then
-          set_ghostty_theme(ghostty_dark_theme, ghostty_custom_theme)
+          set_ghostty_theme(theme_config.ghostty.dark, theme_config.ghostty.custom_theme)
         end
-        set_zellij_theme(zellij_dark_theme)
+        set_zellij_theme(theme_config.zellij.dark)
       else
         if term == 'xterm-kitty' then
-          vim.fn.system('kitty +kitten themes ' .. kitty_dark_theme)
+          vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.dark)
         elseif term == 'xterm-ghostty' then
-          set_ghostty_theme(ghostty_dark_theme, ghostty_custom_theme)
+          set_ghostty_theme(theme_config.ghostty.dark, theme_config.ghostty.custom_theme)
         end
-        set_zellij_theme(zellij_dark_theme)
+        set_zellij_theme(theme_config.zellij.dark)
       end
     end,
   })
@@ -1283,6 +1258,34 @@ local function mini_nvim()
     return '%2l:%-2v'
   end
 
+  local get_filename = function()
+    -- Get parent folder name and buffer name
+    local bufname = vim.api.nvim_buf_get_name(0)
+    local parentFolder = vim.fn.fnamemodify(bufname, ':h:t')
+
+    -- Next.js matching patterns
+    local patterns = {
+      ['page'] = 'Page',
+      ['layout'] = 'Layout',
+      ['loading'] = 'Loading',
+      ['not%-found'] = 'Not Found',
+      ['error'] = 'Error',
+      ['route'] = 'Route',
+      ['template'] = 'Template',
+    }
+
+    -- Get the base filename without extension to be account for (.js,.ts,.jsx.tsx)
+    local baseName = vim.fn.fnamemodify(bufname, ':t:r')
+    -- Match against the patterns and format accordingly
+    for file, label in pairs(patterns) do
+      if baseName:match('^' .. file .. '$') and parentFolder then
+        return parentFolder .. '/' .. label
+      end
+    end
+    return vim.fn.fnamemodify(bufname, ':~:.')
+    -- return statusline.section_filename { trunc_width = 140 }
+  end
+
   -- set use_icons to true if you have a Nerd Font
   statusline.setup {
     use_icons = true,
@@ -1291,7 +1294,9 @@ local function mini_nvim()
         local mode, mode_hl = statusline.section_mode { trunc_width = 120 }
         local branch = statusline.section_git { trunc_width = 40 }
         local diagnostics = statusline.section_diagnostics { trunc_width = 40 }
-        local filename = statusline.section_filename { trunc_width = 140 }
+        -- local filename = statusline.section_filename { trunc_width = 140 }
+        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':~:.')
+
         local search = statusline.section_searchcount { trunc_width = 75 }
         local recorder = recorder_status()
 
