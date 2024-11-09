@@ -27,7 +27,11 @@ local theme_config = {
   },
   zellij = {
     light = 'catppuccin-latte',
-    dark = 'catppuccin-mocha',
+    dark = 'catppuccin-frappe',
+  },
+  delta = {
+    light = 'catppuccin-latte',
+    dark = 'catppuccin-frappe',
   },
 }
 
@@ -490,6 +494,19 @@ local function set_zellij_theme(theme)
   end
   return
 end
+
+local function set_delta_theme(theme)
+  local config_path = vim.fn.expand '~/.gitconfig'
+  local real_path = vim.fn.resolve(config_path)
+  local cmd = string.format("sed -i'.bak' 's/features = .*/features = %s/' %s", theme, real_path)
+
+  local result = vim.fn.system { 'bash', '-c', cmd }
+  if vim.v.shell_error ~= 0 then
+    print('Error updating Delta theme for git: ' .. result)
+  end
+  return
+end
+
 local function tokyonight()
   add 'folke/tokyonight.nvim'
 
@@ -611,6 +628,8 @@ local function catppuccin()
     theme_config.kitty.light = 'Catppuccin-Latte'
     theme_config.zellij.dark = 'catppuccin-frappe'
     theme_config.zellij.light = 'catppuccin-latte'
+    theme_config.delta.dark = 'catppuccin-frappe'
+    theme_config.delta.light = 'catppuccin-latte'
     set_from_os()
   end
 
@@ -723,26 +742,15 @@ local function colors()
     pattern = '*',
     callback = function()
       if vim.o.background == 'light' then
-        if term == 'xterm-kitty' then
-          vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.light)
-        elseif term == 'xterm-ghostty' then
-          set_ghostty_theme(theme_config.ghostty.light, theme_config.ghostty.custom_theme)
-        end
+        vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.light)
+        set_ghostty_theme(theme_config.ghostty.light, theme_config.ghostty.custom_theme)
         set_zellij_theme(theme_config.zellij.light)
-      elseif vim.o.background == 'dark' then
-        if term == 'xterm-kitty' then
-          vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.dark)
-        elseif term == 'xterm-ghostty' then
-          set_ghostty_theme(theme_config.ghostty.dark, theme_config.ghostty.custom_theme)
-        end
-        set_zellij_theme(theme_config.zellij.dark)
+        set_delta_theme(theme_config.delta.light)
       else
-        if term == 'xterm-kitty' then
-          vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.dark)
-        elseif term == 'xterm-ghostty' then
-          set_ghostty_theme(theme_config.ghostty.dark, theme_config.ghostty.custom_theme)
-        end
+        vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.dark)
+        set_ghostty_theme(theme_config.ghostty.dark, theme_config.ghostty.custom_theme)
         set_zellij_theme(theme_config.zellij.dark)
+        set_delta_theme(theme_config.delta.dark)
       end
     end,
   })

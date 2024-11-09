@@ -10,3 +10,4 @@ config.bak
 config.kdl.bak
 .config/lazygit/state.yml
 .supermaven
+.gitconfig.bak
