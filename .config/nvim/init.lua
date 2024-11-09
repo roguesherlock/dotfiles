@@ -3,7 +3,7 @@
 vim.loader.enable()
 
 -- TODO:
--- 1. incremental seelction for treesitter
+-- 1. incremental seelction for treesitter -- DONE
 -- 2. included file not showing up in codecompanion chat
 -- 3. ability to toggle diagnostics
 -- 4. lazygit breaks if path name contains brackets
@@ -1456,10 +1456,10 @@ local function treesitter()
     incremental_selection = {
       enable = true,
       keymaps = {
-        -- init_selection = '<c-space>',
-        -- node_incremental = '<c-space>',
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
         node_decremental = '<bs>',
-        scope_incremental = false,
+        scope_incremental = true,
       },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
