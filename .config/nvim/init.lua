@@ -2,6 +2,9 @@
 -- Enable Neovim's built-in loader
 vim.loader.enable()
 
+-- TODO:
+-- 1. update delta, bat to dynamically change themes based on neovim theme
+
 local add, now, later -- mini.deps will be setup later
 -- colors, look at colors()
 local light_theme, dark_theme
@@ -114,7 +117,7 @@ local function setup_mappings()
   map('n', '<S-l>', '<cmd>e #<cr>', { desc = 'Other Buffer' })
   map('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev [B]uffer' })
   map('n', ']b', '<cmd>bnext<cr>', { desc = 'Next [B]uffer' })
-  map('n', '<leader>bd', '<cmd>bd<cr>', { desc = '[B]uffer [D]elete with Window' })
+  -- map('n', '<leader>bd', '<cmd>bd<cr>', { desc = '[B]uffer [D]elete with Window' })
   map('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[B]uffer [N]ew' })
 
   -- directly added to which key
@@ -776,7 +779,7 @@ local function colors()
     set_colorscheme(false)
   end, {})
 
-  vim.api.nvim_command 'Modus'
+  vim.api.nvim_command 'Catppuccin'
   -- set_from_os()
 end
 
@@ -1633,9 +1636,8 @@ local function lsp()
   map('n', '<leader>lr', ':LspRestart<cr>', { desc = '[L]SP [R]estart' })
   map('n', '<leader>li', ':LspInfo<cr>', { desc = '[L]SP [I]nfo' })
   map('n', '<leader>ll', ':LspLog<cr>', { desc = '[L]SP [L]og' })
-  map('n', '<leader>lh', function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
-  end, { desc = '[L]SP Toggle inlay [H]ints' })
+  -- stylua: ignore
+  map('n', '<leader>lh', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {}) end, { desc = '[L]SP Toggle inlay [H]ints' })
 
   local lspconfig = require 'lspconfig'
   local configs = require 'lspconfig.configs'
@@ -1962,6 +1964,9 @@ local function noice()
     -- notify = { enabled = true, view = 'notify' },
     -- messages = { enabled = true, view = 'notify' },
     -- cmdline = { view = 'cmdline_popup' },
+    notify = {
+      enabled = false,
+    },
     lsp = {
       hover = {
         silent = true,
@@ -2127,23 +2132,70 @@ local function toggleterm()
     return git_dir
   end
 
-  local lazygit = Terminal:new {
-    cmd = 'lazygit',
-    count = 5,
-    dir = get_git_dir(),
-    direction = 'float',
-    float_opts = {
-      border = 'curved',
-    },
-    hidden = true,
-  }
-
-  local function _lazygit_toggle()
-    lazygit:toggle()
-  end
-
-  map('n', '<leader>gg', _lazygit_toggle, { desc = '[G]it Open Lazy[G]it' })
+  -- local lazygit = Terminal:new {
+  --   cmd = 'lazygit',
+  --   count = 5,
+  --   dir = get_git_dir(),
+  --   direction = 'float',
+  --   float_opts = {
+  --     border = 'curved',
+  --   },
+  --   hidden = true,
+  -- }
+  --
+  -- local function _lazygit_toggle()
+  --   lazygit:toggle()
+  -- end
+  --
+  -- map('n', '<leader>gg', _lazygit_toggle, { desc = '[G]it Open Lazy[G]it' })
   map('n', '<c-/>', '<cmd>ToggleTerm<cr>', { desc = 'Toggle Terminal' })
+end
+
+local function snacks()
+  add 'folke/snacks.nvim'
+  local sn = require 'snacks'
+  sn.setup {
+    notifier = { enabled = false },
+  }
+-- stylua: ignore start
+  map('n', '<leader>gg', function() sn.lazygit.open() end, { desc = '[G]it Open Lazy[G]it' })
+  map('n', '<leader>gB', function() sn.gitbrowse() end, { desc = '[G]it [B]rowse' })
+  map('n', '<leader>gf', function() sn.lazygit.log_file() end, { desc = '[G]it [F]ile History' })
+  map('n', '<leader>gl', function() sn.lazygit.log() end, { desc = '[G]it [L]og' })
+  map('n', '<leader>cR', function() sn.rename() end, { desc = '[C]hange [R]ename' })
+  map('n', '<leader>bd', function() sn.bufdelete() end, { desc = '[B]uffer [D]elete' })
+  map('n', '<leader>un', function() sn.notifier.hide() end, { desc = '[N]otifier [D]ismiss' })
+  map('n', '<c-/>', function() sn.terminal() end, { desc = 'Toggle Terminal' })
+  map('n', '<c-_>', function() sn.terminal() end, { desc = 'which_key_ignore' })
+  map('n', ']]', function() sn.words.jump(vim.v.count1) end, { desc = 'Next Reference' })
+  map('n', '[[', function() sn.words.jump(-vim.v.count1) end, { desc = 'Prev Reference' })
+  map('n', '<leader>un', sn.notifier.hide, { desc = 'Show Notifier' })
+  -- stylua: ignore end
+
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'VeryLazy',
+    callback = function()
+      -- Setup some globals for debugging (lazy-loaded)
+      _G.dd = function(...)
+        Snacks.debug.inspect(...)
+      end
+      _G.bt = function()
+        Snacks.debug.backtrace()
+      end
+      vim.print = _G.dd -- Override print to use snacks for `:=` command
+
+      -- Create some toggle mappings
+      Snacks.toggle.option('spell', { name = '[T]oggle [S]pelling' }):map '<leader>ts'
+      -- Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
+      -- Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
+      -- Snacks.toggle.diagnostics():map '<leader>ud'
+      -- Snacks.toggle.line_number():map '<leader>ul'
+      -- Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map '<leader>uc'
+      -- Snacks.toggle.treesitter():map '<leader>uT'
+      -- Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>ub'
+      -- Snacks.toggle.inlay_hints():map '<leader>uh'
+    end,
+  })
 end
 
 local function leap()
@@ -2455,7 +2507,7 @@ local function blink_completion()
       },
       windows = {
         autocomplete = {
-          draw = 'reversed',
+          -- draw = 'reversed',
           winblend = vim.o.pumblend,
           -- border = 'padded',
         },
@@ -2662,6 +2714,7 @@ end
 
 -- Lazy load plugins
 local function setup_plugins()
+  snacks()
   noice()
   plugins_that_should_be_the_default()
   which_key()
@@ -2685,7 +2738,7 @@ local function setup_plugins()
   zen_mode()
   nvim_recorder()
   snipe()
-  toggleterm()
+  -- toggleterm()
   leap()
   flit()
   nvim_ufo()
