@@ -2,13 +2,6 @@
 -- Enable Neovim's built-in loader
 vim.loader.enable()
 
--- TODO:
--- 1. incremental seelction for treesitter -- DONE: There was a default macos keybind for ^Space that was causing issues
--- 2. included file not showing up in codecompanion chat -- Looks like it's not supported by codecompanion?
--- 3. ability to toggle diagnostics -- DONE
--- 4. lazygit breaks if path name contains brackets
--- 5. trigger nvim with <c-space> -- DONE: There was a default macos keybind for ^Space that was causing issues
-
 local add, now, later -- mini.deps will be setup later
 -- colors, look at colors()
 local light_theme, dark_theme
