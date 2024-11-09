@@ -1434,7 +1434,7 @@ local function treesitter()
   add 'nvim-treesitter/nvim-treesitter'
   ---@diagnostic disable-next-line: missing-fields
   require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'vue', 'svelte' },
+    ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'vue', 'svelte', 'nu' },
 
     -- Autoinstall languages that are not installed
     auto_install = true,
@@ -1479,16 +1479,6 @@ local function treesitter()
     },
     filetype = 'blade',
   }
-  -- parser_config.nu = {
-  --   install_info = {
-  --     url = 'https://github.com/nushell/tree-sitter-nu',
-  --     files = { 'src/parser.c' },
-  --     branch = 'main',
-  --   },
-  --   filetype = 'nu',
-  -- }
-
-  add 'nushell/tree-sitter-nu'
 end
 
 local function autotag()
