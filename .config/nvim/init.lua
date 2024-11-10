@@ -3,7 +3,6 @@
 vim.loader.enable()
 
 -- TODO:
--- 1. update delta, bat to dynamically change themes based on neovim theme
 
 local add, now, later -- mini.deps will be setup later
 -- colors, look at colors()
@@ -30,6 +29,10 @@ local theme_config = {
     dark = 'catppuccin-frappe',
   },
   delta = {
+    light = 'catppuccin-latte',
+    dark = 'catppuccin-frappe',
+  },
+  yazi = {
     light = 'catppuccin-latte',
     dark = 'catppuccin-frappe',
   },
@@ -504,7 +507,17 @@ local function set_delta_theme(theme)
   if vim.v.shell_error ~= 0 then
     print('Error updating Delta theme for git: ' .. result)
   end
-  return
+end
+
+local function set_yazi_theme(theme)
+  local config_path = vim.fn.expand '~/.config/yazi/theme.toml'
+  local real_path = vim.fn.resolve(config_path)
+  local cmd = string.format('sed -i\'.bak\' \'s/use = "[^"]*"/use = "%s"/\' %s', theme, real_path)
+
+  local result = vim.fn.system { 'bash', '-c', cmd }
+  if vim.v.shell_error ~= 0 then
+    print('Error updating Yazi theme for git: ' .. result)
+  end
 end
 
 local function tokyonight()
@@ -630,6 +643,8 @@ local function catppuccin()
     theme_config.zellij.light = 'catppuccin-latte'
     theme_config.delta.dark = 'catppuccin-frappe'
     theme_config.delta.light = 'catppuccin-latte'
+    theme_config.yazi.dark = 'catppuccin-frappe'
+    theme_config.yazi.light = 'catppuccin-latte'
     set_from_os()
   end
 
@@ -746,11 +761,13 @@ local function colors()
         set_ghostty_theme(theme_config.ghostty.light, theme_config.ghostty.custom_theme)
         set_zellij_theme(theme_config.zellij.light)
         set_delta_theme(theme_config.delta.light)
+        set_yazi_theme(theme_config.yazi.light)
       else
         vim.fn.system('kitty +kitten themes ' .. theme_config.kitty.dark)
         set_ghostty_theme(theme_config.ghostty.dark, theme_config.ghostty.custom_theme)
         set_zellij_theme(theme_config.zellij.dark)
         set_delta_theme(theme_config.delta.dark)
+        set_yazi_theme(theme_config.yazi.dark)
       end
     end,
   })

@@ -64,6 +64,9 @@ install ~/Developer/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
 install ~/Developer/dotfiles/.config/fish/themes ~/.config/fish/themes
 install ~/Developer/dotfiles/.config/fish/fish_plugins ~/.config/fish/fish_plugins
 
+# yazi
+install ~/Developer/dotfiles/.config/yazi ~/.config/yazi
+
 # delta
 install ~/Developer/dotfiles/.config/delta ~/.config/delta
 
