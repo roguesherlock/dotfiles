@@ -251,6 +251,10 @@ if.app-id = 'com.spotify.client'
 run = 'move-node-to-workspace M'        # mnemonics M - Music
 
 [[on-window-detected]]
+if.app-id = 'com.apple.Music'
+run = 'move-node-to-workspace M'        # mnemonics M - Music
+
+[[on-window-detected]]
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace N'        # mnemonics N - Notion
 
