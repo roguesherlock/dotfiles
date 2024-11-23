@@ -1577,7 +1577,7 @@ local function lsp()
       'lua_ls',
       'astro',
       -- 'prettier',
-      -- 'biome',
+      'biome',
       'eslint',
       'vtsls',
       'denols',
@@ -1881,7 +1881,7 @@ local function lsp()
   setup_lsp 'jsonls'
   setup_lsp 'html'
   setup_lsp 'astro'
-  -- setup_lsp 'biome'
+  setup_lsp 'biome'
   setup_lsp 'eslint'
   setup_lsp('lua_ls', {
     Lua = {
@@ -1912,6 +1912,9 @@ local function conform()
     for _, client in pairs(lsp_clients) do
       if client.name == 'denols' then
         return { 'deno_fmt' }
+      end
+      if client.name == 'biome' then
+        return { 'biome' }
       end
     end
     return { 'prettier' }
@@ -2507,6 +2510,16 @@ local function completion()
 end
 
 local function blink_completion()
+  local function build_blink(params)
+    vim.notify('Building blink.cmp', vim.log.levels.INFO)
+    local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = params.path }):wait()
+    if obj.code == 0 then
+      vim.notify('Building blink.cmp done', vim.log.levels.INFO)
+    else
+      vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
+    end
+  end
+
   add {
     source = 'saghen/blink.cmp',
     depends = {
@@ -2514,22 +2527,22 @@ local function blink_completion()
       -- TODO: codecompnaion breaks with this
       -- 'saghen/blink.compat',
     },
-    checkout = 'v0.5.1',
+    -- NOTE: use checkout for prebuilt binary and hooks for building it diy
+    -- checkout = 'v0.5.1',
+    hooks = {
+      post_install = build_blink,
+      post_checkout = build_blink,
+    },
   }
 
   vim.g.completion = 'blink'
 
   later(function()
     require('blink.cmp').setup {
-      accept = {
-        auto_brackets = {
-          enabled = true,
-        },
-      },
+      accept = { auto_brackets = { enabled = true } },
+      trigger = { signature_help = { enabled = true } },
       sources = {
-        completion = {
-          enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
-        },
+        completion = { enabled_providers = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' } },
         providers = {
           -- dont show LuaLS require statements when lazydev has items
           lsp = { fallback_for = { 'lazydev' } },
@@ -2542,12 +2555,8 @@ local function blink_completion()
           winblend = vim.o.pumblend,
           -- border = 'padded',
         },
-        documentation = {
-          auto_show = true,
-        },
-        ghost_text = {
-          enabled = true,
-        },
+        documentation = { auto_show = true },
+        ghost_text = { enabled = true },
       },
     }
   end)
