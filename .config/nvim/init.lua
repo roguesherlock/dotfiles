@@ -800,10 +800,16 @@ local function plugins_that_should_be_the_default()
 end
 
 local function which_key()
-  add 'folke/which-key.nvim'
+  add {
+    source = 'folke/which-key.nvim',
+    -- TODO: update this later
+    checkout = '68e37e12913a66b60073906f5d3f14dee0de19f2',
+    monitor = 'main',
+  }
   vim.opt.timeout = true
   vim.opt.timeoutlen = 300
-  require('which-key').setup {
+  local wk = require 'which-key'
+  wk.setup {
     preset = 'helix',
     -- Document existing key chains
     spec = {
@@ -823,6 +829,9 @@ local function which_key()
       { 'w', proxy = '<c-w>', group = '[W]indow' },
     },
   }
+  map('n', '<leader>?', function()
+    wk.show { global = false }
+  end, { desc = '[?] Show buffer keymaps' })
 end
 
 local function supermaven()
