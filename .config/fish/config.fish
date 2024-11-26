@@ -135,10 +135,13 @@ if status is-interactive
 
     # successor to nvm
     set -gx FNM_LOGLEVEL quiet
-    fnm env --use-on-cd --resolve-engines | source
+    # fnm env --use-on-cd --resolve-engines | source
     direnv hook fish | source
     mise activate fish | source
     fzf --fish | source
+
+    #magical shell history
+	atuin init fish | source
 
     if test "$TERM_PROGRAM" != WarpTerminal
         if type starship >/dev/null 2>&1
