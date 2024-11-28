@@ -2153,7 +2153,23 @@ end
 local function snipe()
   add 'leath-dub/snipe.nvim'
 
-  require('snipe').setup {}
+  require('snipe').setup {
+    ui = {
+      -- position = 'center',
+    },
+    hints = {
+      -- Charaters to use for hints (NOTE: make sure they don't collide with the navigation keymaps)
+      dictionary = 'sadflewvrcmnpghioty',
+    },
+    navigate = {
+      next_page = '<c-n>',
+      prev_page = '<c-p>',
+      close_buffer = '<c-d>',
+      open_vsplit = '<c-v>',
+      open_hsplit = '<c-h>',
+      cancel_snipe = 'q',
+    },
+  }
 
   map('n', 'gb', function()
     require('snipe').open_buffer_menu()
