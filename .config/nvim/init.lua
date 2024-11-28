@@ -802,8 +802,6 @@ end
 local function which_key()
   add {
     source = 'folke/which-key.nvim',
-    -- TODO: update this later
-    checkout = '68e37e12913a66b60073906f5d3f14dee0de19f2',
     monitor = 'main',
   }
   vim.opt.timeout = true
@@ -2384,7 +2382,7 @@ local function dashboard()
         section = 'Sessions',
       },
       -- starter.sections.sessions(5, true),
-      starter.sections.recent_files(5, false),
+      starter.sections.recent_files(5, true),
       -- starter.sections.recent_files(10, true),
     },
     content_hooks = {
