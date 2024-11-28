@@ -10,6 +10,7 @@
                 "rules": [
                     {
                         "description": "Right Command -> Right Option + Right Shift + Right Control",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -28,6 +29,7 @@
                     },
                     {
                         "description": "Right Option -> Right Option + Right Shift + Right Control + Right Command",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
