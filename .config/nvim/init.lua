@@ -592,9 +592,9 @@ local function catppuccin()
     flavour = 'auto',
     background = { -- :h background
       light = 'latte',
-      dark = 'frappe',
+      dark = 'mocha',
     },
-    transparent_background = false,
+    transparent_background = true,
     term_colors = true,
     integrations = {
       cmp = true,
@@ -635,15 +635,15 @@ local function catppuccin()
   local set_theme = function()
     theme_config.nvim.dark = 'catppuccin'
     theme_config.nvim.light = 'catppuccin'
-    theme_config.ghostty.dark = 'catppuccin-frappe'
+    theme_config.ghostty.dark = 'catppuccin-mocha'
     theme_config.ghostty.light = 'catppuccin-latte'
-    theme_config.kitty.dark = 'Catppuccin-Frappe'
+    theme_config.kitty.dark = 'Catppuccin-Mocha'
     theme_config.kitty.light = 'Catppuccin-Latte'
-    theme_config.zellij.dark = 'catppuccin-frappe'
+    theme_config.zellij.dark = 'catppuccin-mocha'
     theme_config.zellij.light = 'catppuccin-latte'
-    theme_config.delta.dark = 'catppuccin-frappe'
+    theme_config.delta.dark = 'catppuccin-mocha'
     theme_config.delta.light = 'catppuccin-latte'
-    theme_config.yazi.dark = 'catppuccin-frappe'
+    theme_config.yazi.dark = 'catppuccin-mocha'
     theme_config.yazi.light = 'catppuccin-latte'
     set_from_os()
   end
@@ -695,6 +695,7 @@ end
 local function gruvbox_material()
   add 'sainnhe/gruvbox-material'
   vim.g.gruvbox_material_enable_italic = true
+  vim.g.gruvbox_material_transparent_background = true
   -- vim.g.gruvbox_material_background = 'hard'
 
   local set_theme = function()
@@ -704,6 +705,12 @@ local function gruvbox_material()
     theme_config.ghostty.light = 'GruvboxLight'
     theme_config.kitty.dark = 'Modus Vivendi'
     theme_config.kitty.light = 'Modus Operandi'
+    -- theme_config.zellij.dark = 'gruvbox-dark'
+    -- theme_config.zellij.light = 'gruvbox-light'
+    -- theme_config.delta.dark = 'gruvbox-dark'
+    -- theme_config.delta.light = 'gruvbox-light'
+    -- theme_config.yazi.dark = 'gruvbbox-dark'
+    -- theme_config.yazi.light = 'gruvbox-light'
     set_from_os()
   end
 
