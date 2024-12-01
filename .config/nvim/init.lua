@@ -592,7 +592,7 @@ local function catppuccin()
     flavour = 'auto',
     background = { -- :h background
       light = 'latte',
-      dark = 'mocha',
+      dark = 'frappe',
     },
     transparent_background = true,
     term_colors = true,
@@ -635,15 +635,15 @@ local function catppuccin()
   local set_theme = function()
     theme_config.nvim.dark = 'catppuccin'
     theme_config.nvim.light = 'catppuccin'
-    theme_config.ghostty.dark = 'catppuccin-mocha'
+    theme_config.ghostty.dark = 'catppuccin-frappe'
     theme_config.ghostty.light = 'catppuccin-latte'
-    theme_config.kitty.dark = 'Catppuccin-Mocha'
+    theme_config.kitty.dark = 'Catppuccin-Frappe'
     theme_config.kitty.light = 'Catppuccin-Latte'
-    theme_config.zellij.dark = 'catppuccin-mocha'
+    theme_config.zellij.dark = 'catppuccin-frappe'
     theme_config.zellij.light = 'catppuccin-latte'
-    theme_config.delta.dark = 'catppuccin-mocha'
+    theme_config.delta.dark = 'catppuccin-frappe'
     theme_config.delta.light = 'catppuccin-latte'
-    theme_config.yazi.dark = 'catppuccin-mocha'
+    theme_config.yazi.dark = 'catppuccin-frappe'
     theme_config.yazi.light = 'catppuccin-latte'
     set_from_os()
   end
@@ -701,8 +701,10 @@ local function gruvbox_material()
   local set_theme = function()
     theme_config.nvim.dark = 'gruvbox-material'
     theme_config.nvim.light = 'gruvbox-material'
-    theme_config.ghostty.dark = 'GruvboxDark'
-    theme_config.ghostty.light = 'GruvboxLight'
+    -- theme_config.ghostty.dark = 'GruvboxDark'
+    -- theme_config.ghostty.light = 'GruvboxLight'
+    theme_config.ghostty.dark = 'Builtin Pastel Dark'
+    theme_config.ghostty.light = 'Builtin Tango Light'
     theme_config.kitty.dark = 'Modus Vivendi'
     theme_config.kitty.light = 'Modus Operandi'
     -- theme_config.zellij.dark = 'gruvbox-dark'
@@ -1874,6 +1876,7 @@ local function lsp()
       'typescriptreact',
       'typescript.tsx',
       'vue',
+      'svelte',
     },
   })
 
