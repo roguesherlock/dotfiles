@@ -2225,6 +2225,8 @@ local function snacks()
   add 'folke/snacks.nvim'
   local sn = require 'snacks'
   sn.setup {
+    big_file = {},
+    quickfix = {},
     notifier = { enabled = false },
   }
 -- stylua: ignore start
