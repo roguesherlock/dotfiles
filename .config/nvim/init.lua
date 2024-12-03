@@ -273,7 +273,7 @@ local function setup_autocommands()
   -- [[ Autosave ]] --
   vim.api.nvim_create_autocmd({
     'FocusLost',
-    'InsertLeave',
+    -- 'InsertLeave',
     'BufEnter',
     'BufLeave',
   }, {
@@ -2225,8 +2225,6 @@ local function snacks()
   add 'folke/snacks.nvim'
   local sn = require 'snacks'
   sn.setup {
-    big_file = {},
-    quickfix = {},
     notifier = { enabled = false },
   }
 -- stylua: ignore start
