@@ -3,6 +3,8 @@
 vim.loader.enable()
 
 -- TODO:
+-- autosave on focus doesn't work perfectly with zellij
+-- also it seems to save twice?
 
 local add, now, later -- mini.deps will be setup later
 -- colors, look at colors()
@@ -594,7 +596,7 @@ local function catppuccin()
       light = 'latte',
       dark = 'frappe',
     },
-    transparent_background = true,
+    -- transparent_background = true,
     term_colors = true,
     integrations = {
       cmp = true,
