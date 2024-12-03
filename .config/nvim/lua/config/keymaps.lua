@@ -26,3 +26,5 @@ end, { desc = "Toggle file [E]xplorer" })
 map("n", ",", "za", { desc = "Toggle fold" })
 
 map("n", "<leader>tw", "<cmd>set wrap!<cr>", { desc = "[T]oggle [W]rap" })
+
+map("n", "E", vim.diagnostic.open_float, { desc = "Show line diagnostics" })

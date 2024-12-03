@@ -1,5 +1,21 @@
 return {
   {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy", -- Or `LspAttach`
+    priority = 1000, -- needs to be loaded in first
+    config = function()
+      require("tiny-inline-diagnostic").setup()
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = {
+        virtual_text = false,
+      },
+    },
+  },
+  {
     "chrisgrieser/nvim-recorder",
     keys = {
       -- these must match the keys in the mapping config below
@@ -15,6 +31,7 @@ return {
   },
   {
     "leath-dub/snipe.nvim",
+    enabled = false,
     keys = {
       {
         "gb",
