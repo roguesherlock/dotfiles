@@ -28,3 +28,13 @@ map("n", ",", "za", { desc = "Toggle fold" })
 map("n", "<leader>tw", "<cmd>set wrap!<cr>", { desc = "[T]oggle [W]rap" })
 
 map("n", "E", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+
+-- TODO: Figure out why the fuck does lazyvim override my keymaps
+-- vim.schedule(function()
+--   map("n", "<leader>ff", "<cmd>FzfLua git_files<cr>", {
+--     desc = "Find Files (git_files)",
+--     noremap = true,
+--     silent = true,
+--     buffer = -1, -- Apply to all buffers
+--   })
+-- end)
