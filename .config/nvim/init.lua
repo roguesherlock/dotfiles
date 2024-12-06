@@ -10,5 +10,6 @@
 --  8. Ability to ask ai for errors from typescript
 --  9. Ability to search all files in the cwd (projec)
 -- 10. Figure out why the fuck does lazyvim override my keymaps
+-- 11. Set import preferences for typescript lsp
 
 require("config.lazy")

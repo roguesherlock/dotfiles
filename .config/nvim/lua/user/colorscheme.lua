@@ -1,15 +1,21 @@
 ---@class user.colorscheme
 local M = {}
+-- Set this as early as possible
+-- TODO: figure how to do this for other os
+vim.opt.background = vim.fn.system([[defaults read -g AppleInterfaceStyle 2>/dev/null]]):find("Dark") and "dark"
+  or "light"
 
 -- colors, look at colors()
-local theme_config = {
+M.config = {
   opts = {
     enable_auto_switch = true,
     default_light = false,
+    -- if enabled, would also set the theme when toggling the theme rather than just the background
+    set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "modus_light",
-    dark = "modus_dark",
+    light = "modus",
+    dark = "modus",
   },
   ghostty = {
     light = "modus_light",
@@ -34,34 +40,67 @@ local theme_config = {
   },
 }
 
--- TODO: auto switch theme to light/dark based on macos appearance
--- https://github.com/jascha030/macos-nvim-dark-mode
-local os_is_dark = function()
-  return (vim.fn.system(
-    [[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
-  )):find("dark") ~= nil
+function M.os_is_dark()
+  -- return (vim.fn.system(
+  --   [[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
+  -- )):find("dark") ~= nil
+  local handle = io.popen([[defaults read -g AppleInterfaceStyle 2>/dev/null]])
+  local result = handle and handle:read("*a"):gsub("%s+", "") or ""
+  if handle then
+    handle:close()
+  end
+  if result == "Dark" then
+    return true
+  else
+    return false
+  end
 end
 
 ---@param light boolean
-local set_colorscheme = function(light)
+function M.set_colorscheme(light)
+  local background = "dark"
+  local colorscheme = M.config.nvim.dark
   if light then
-    vim.opt.background = "light"
-    vim.cmd("colorscheme " .. theme_config.nvim.light)
-  else
-    vim.opt.background = "dark"
-    vim.cmd("colorscheme " .. theme_config.nvim.dark)
+    background = "light"
+    colorscheme = M.config.nvim.light
+  end
+  vim.opt.background = background
+  if M.config.opts.set_theme_on_auto_switch then
+    vim.cmd("colorscheme " .. colorscheme)
   end
 end
 
-local set_from_os = function()
-  if not theme_config.opts.enable_auto_switch then
-    set_colorscheme(theme_config.opts.default_light)
+function M.set_from_os()
+  if not M.config.opts.enable_auto_switch then
+    M.set_colorscheme(M.config.opts.default_light)
   end
-  if os_is_dark() then
-    set_colorscheme(false)
+  if M.os_is_dark() then
+    M.set_colorscheme(false)
   else
-    set_colorscheme(true)
+    M.set_colorscheme(true)
   end
+end
+
+function M.get_colorscheme()
+  if not M.config.opts.enable_auto_switch then
+    if M.config.opts.default_light then
+      return M.config.nvim.light
+    else
+      return M.config.nvim.dark
+    end
+  end
+
+  if M.os_is_dark() then
+    return M.config.nvim.dark
+  else
+    return M.config.nvim.light
+  end
+
+  -- if vim.o.background == "light" then
+  --   return M.config.nvim.light
+  -- else
+  --   return M.config.nvim.dark
+  -- end
 end
 
 local function switch_theme(theme)
@@ -173,47 +212,50 @@ local function set_yazi_theme(theme)
   end
 end
 
-local function colors()
-  vim.opt.background = "dark"
+function M.setup(config)
+  -- Validate config is a table
+  vim.validate({ config = { config, "table", true } })
+
+  -- Merge user config with defaults
+  M.config = vim.tbl_deep_extend("force", vim.deepcopy(M.config), config or {})
+
+  M.set_from_os()
 
   local term = os.getenv("TERM")
   vim.api.nvim_create_autocmd("Signal", {
     pattern = "*",
     callback = function()
-      set_from_os()
+      M.set_from_os()
     end,
   })
 
   vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
     callback = function()
-      if vim.o.background == "light" then
-        vim.fn.system("kitty +kitten themes " .. theme_config.kitty.light)
-        set_ghostty_theme(theme_config.ghostty.light, theme_config.ghostty.custom_theme)
-        set_zellij_theme(theme_config.zellij.light)
-        set_delta_theme(theme_config.delta.light)
-        set_yazi_theme(theme_config.yazi.light)
-      else
-        vim.fn.system("kitty +kitten themes " .. theme_config.kitty.dark)
-        set_ghostty_theme(theme_config.ghostty.dark, theme_config.ghostty.custom_theme)
-        set_zellij_theme(theme_config.zellij.dark)
-        set_delta_theme(theme_config.delta.dark)
-        set_yazi_theme(theme_config.yazi.dark)
-      end
+      vim.defer_fn(function()
+        if vim.o.background == "light" then
+          vim.fn.system("kitty +kitten themes " .. M.config.kitty.light)
+          set_ghostty_theme(M.config.ghostty.light, M.config.ghostty.custom_theme)
+          set_zellij_theme(M.config.zellij.light)
+          set_delta_theme(M.config.delta.light)
+          set_yazi_theme(M.config.yazi.light)
+        else
+          vim.fn.system("kitty +kitten themes " .. M.config.kitty.dark)
+          set_ghostty_theme(M.config.ghostty.dark, M.config.ghostty.custom_theme)
+          set_zellij_theme(M.config.zellij.dark)
+          set_delta_theme(M.config.delta.dark)
+          set_yazi_theme(M.config.yazi.dark)
+        end
+      end, 0)
     end,
   })
 
   vim.api.nvim_create_user_command("Light", function()
-    set_colorscheme(true)
+    M.set_colorscheme(true)
   end, {})
   vim.api.nvim_create_user_command("Dark", function()
-    set_colorscheme(false)
+    M.set_colorscheme(false)
   end, {})
-
-  vim.api.nvim_command("Catppuccin")
-  -- set_from_os()
 end
 
-colors()
-
-
+return M
