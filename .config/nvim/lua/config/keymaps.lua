@@ -29,6 +29,18 @@ map("n", "<leader>tw", "<cmd>set wrap!<cr>", { desc = "[T]oggle [W]rap" })
 
 map("n", "E", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 
+map("n", "<leader>cx", ":.lua<CR>", { desc = "[C]ode E[x]ecute lua" })
+map("v", "<leader>cx", ":lua =<CR>", { desc = "[C]ode E[x]ecute lua" })
+
+map("n", "<leader>tt", function()
+  local colorscheme = require("user.colorscheme")
+  if vim.o.background == "light" then
+    colorscheme.set_colorscheme(false)
+  else
+    colorscheme.set_colorscheme(true)
+  end
+end, { desc = "[T]oggle [T]heme" })
+
 -- TODO: Figure out why the fuck does lazyvim override my keymaps
 -- vim.schedule(function()
 --   map("n", "<leader>ff", "<cmd>FzfLua git_files<cr>", {
