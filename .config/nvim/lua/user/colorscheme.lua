@@ -132,7 +132,13 @@ function M.setup(config)
     pattern = "*",
     callback = function()
       print("Receieved system theme change signal")
-      M.set_from_os()
+      vim.schedule(function()
+        M.set_from_os()
+        -- Force UI refresh
+        vim.cmd("redrawstatus!")
+        -- Optional: force complete redraw if needed
+        -- vim.cmd("redraw!")
+      end)
     end,
   })
 
