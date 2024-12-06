@@ -1,30 +1,30 @@
--- ~/.hammerspoon/init.lua (or add to your existing config)
+-- ~/.hammerspoon/init.lua
 
--- Watch for system appearance changes
+-- Add debug logging
 local function updateNvimTheme()
-	-- Find all nvim processes and send SIGUSR1
 	local output, status = hs.execute("pgrep nvim")
+	print("Found nvim processes:", output) -- Debug print
+
 	if status then
 		for pid in output:gmatch("%d+") do
-			hs.execute("kill -SIGUSR1 " .. pid)
+			print("Sending SIGUSR1 to:", pid) -- Debug print
+			local result = hs.execute("kill -SIGUSR1 " .. pid)
+			print("Signal result:", result) -- Debug print
 		end
+	else
+		print("No nvim processes found") -- Debug print
 	end
 end
 
--- Set up the appearance watcher
+-- Set up the appearance watcher with debug
 local appearanceWatcher = hs.distributednotifications.new(function(name, object, userInfo)
+	print("Notification received:", name) -- Debug print
 	if name == "AppleInterfaceThemeChangedNotification" then
+		print("Theme change detected") -- Debug print
 		updateNvimTheme()
 	end
-end)
+end, "AppleInterfaceThemeChangedNotification")
 
-appearanceWatcher:start()
-
--- Optional: Add a menu bar item to manually trigger theme update
-local menuItem = hs.menubar.new()
-if menuItem then
-	menuItem:setTitle("🎨")
-	menuItem:setClickCallback(function()
-		updateNvimTheme()
-	end)
-end
+-- Verify watcher is started
+local success = appearanceWatcher:start()
+print("Watcher started:", success) -- Debug print
