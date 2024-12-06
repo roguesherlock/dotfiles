@@ -144,6 +144,9 @@ install ~/Developer/dotfiles/.config/nushell ~/.config/nushell
 install ~/Developer/dotfiles/.config/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
 install ~/Developer/dotfiles/.config/nushell/env.nu ~/Library/Application\ Support/nushell/env.nu
 
+# hammerspoon
+install ~/Developer/dotfiles/.config/hammerspoon ~/.hammerspoon
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
