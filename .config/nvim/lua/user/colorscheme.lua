@@ -131,14 +131,9 @@ function M.setup(config)
   vim.api.nvim_create_autocmd("Signal", {
     pattern = "*",
     callback = function()
-      print("Signal detected")
+      print("Receieved system theme change signal")
       M.set_from_os()
     end,
-  })
-
-  vim.api.nvim_create_autocmd("ColorScheme", {
-    pattern = "*",
-    callback = function() end,
   })
 
   vim.api.nvim_create_user_command("Light", function()
