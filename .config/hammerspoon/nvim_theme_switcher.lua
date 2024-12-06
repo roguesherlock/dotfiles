@@ -1,28 +1,23 @@
-local function updateNvimTheme()
+-- Make updateNvimTheme global to ensure it's available
+_G.updateNvimTheme = function()
 	local output, status = hs.execute("pgrep nvim")
-	print("Found nvim processes:", output) -- Debug print
-
+	-- print("[DEBUG] Found nvim processes:", output)
 	if status then
 		for pid in output:gmatch("%d+") do
-			print("Sending SIGUSR1 to:", pid) -- Debug print
-			local result = hs.execute("kill -SIGUSR1 " .. pid, true)
-			print("Signal result:", result) -- Debug print
+			-- print("[DEBUG] Sending SIGUSR1 to:", pid)
+			-- 30 = SIGUSR1 (only on macos)
+			-- hs.execute("kill -SIGUSR1 " .. pid, true)
+			local result = hs.execute("kill -s 30 " .. pid)
+			-- print("[DEBUG] Signal result:", result)
 		end
-	else
-		print("No nvim processes found") -- Debug print
 	end
 end
 
--- Set up the appearance watcher with debug
-local appearanceWatcher = hs.distributednotifications.new(function(name)
-	print("[DEBUG] Distributed notification received:", name)
-	if name == "AppleInterfaceThemeChangedNotification" then
-		print("[DEBUG] Theme change detected")
-		updateNvimTheme()
-	else
-		print("[DEBUG] Ignored notification:", name)
-	end
-end, "AppleInterfaceThemeChangedNotification")
-
-local success = appearanceWatcher:start()
-print("[DEBUG] Watcher started:", success)
+-- Set up the appearance watcher and store in global scope
+_G.appearanceWatcher = hs.distributednotifications
+	.new(function(name)
+		-- print("[DEBUG] Received notification:", name)
+		_G.updateNvimTheme()
+	end, "AppleInterfaceThemeChangedNotification")
+	:start()
+-- print("[DEBUG] Appearance watcher started")
