@@ -131,7 +131,7 @@ function M.setup(config)
   vim.api.nvim_create_autocmd("Signal", {
     pattern = "*",
     callback = function()
-      print("Receieved system theme change signal")
+      print("Theme updated from os")
       vim.schedule(function()
         M.set_from_os()
         -- Force UI refresh
