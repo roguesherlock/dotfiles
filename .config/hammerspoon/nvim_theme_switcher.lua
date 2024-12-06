@@ -1,6 +1,3 @@
--- ~/.hammerspoon/init.lua
-
--- Add debug logging
 local function updateNvimTheme()
 	local output, status = hs.execute("pgrep nvim")
 	print("Found nvim processes:", output) -- Debug print
@@ -8,7 +5,7 @@ local function updateNvimTheme()
 	if status then
 		for pid in output:gmatch("%d+") do
 			print("Sending SIGUSR1 to:", pid) -- Debug print
-			local result = hs.execute("kill -SIGUSR1 " .. pid)
+			local result = hs.execute("kill -SIGUSR1 " .. pid, true)
 			print("Signal result:", result) -- Debug print
 		end
 	else
@@ -17,14 +14,15 @@ local function updateNvimTheme()
 end
 
 -- Set up the appearance watcher with debug
-local appearanceWatcher = hs.distributednotifications.new(function(name, object, userInfo)
-	print("Notification received:", name) -- Debug print
+local appearanceWatcher = hs.distributednotifications.new(function(name)
+	print("[DEBUG] Distributed notification received:", name)
 	if name == "AppleInterfaceThemeChangedNotification" then
-		print("Theme change detected") -- Debug print
+		print("[DEBUG] Theme change detected")
 		updateNvimTheme()
+	else
+		print("[DEBUG] Ignored notification:", name)
 	end
 end, "AppleInterfaceThemeChangedNotification")
 
--- Verify watcher is started
 local success = appearanceWatcher:start()
-print("Watcher started:", success) -- Debug print
+print("[DEBUG] Watcher started:", success)
