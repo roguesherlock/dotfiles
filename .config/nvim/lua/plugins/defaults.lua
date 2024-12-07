@@ -4,10 +4,10 @@ return {
     opts = {
       icons = {
         diagnostics = {
-          Error = "E",
-          Warn = "W",
-          Hint = "H",
-          -- Info = " ",
+          Error = "●",
+          Warn = "●",
+          Hint = "●",
+          Info = "●",
         },
       },
     },
