@@ -1,8 +1,16 @@
 return {
   {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        blade = { 'blade-formatter' },
+      }
+    }
+  },
+  {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy", -- Or `LspAttach`
-    priority = 1000, -- needs to be loaded in first
+    priority = 1000,    -- needs to be loaded in first
     config = function()
       require("tiny-inline-diagnostic").setup()
     end,
@@ -81,9 +89,9 @@ return {
     "NeogitOrg/neogit",
     enabled = false,
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",         -- required
       "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim", -- optional
+      "sindrets/diffview.nvim",        -- optional
     },
     config = function()
       require("neogit").setup({
@@ -142,7 +150,7 @@ return {
       local ufo = require("ufo")
 
       vim.o.foldcolumn = "1" -- '0' is not bad
-      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
       -- global handler
