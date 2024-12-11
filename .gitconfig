@@ -53,7 +53,7 @@ colorMoved = default
 autoStash = true
 
 [pull]
-rebase = true
+rebase = false
 
 [push]
 default = upstream
