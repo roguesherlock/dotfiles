@@ -18,8 +18,8 @@ M.config = {
     dark = "modus",
   },
   ghostty = {
-    light = "modus_light",
-    dark = "modus_dark",
+    light = "xcodelighthc",
+    dark = "Builtin Pastel Dark",
     custom_theme = false,
   },
   kitty = {
@@ -69,15 +69,14 @@ function M.set_colorscheme(light)
     vim.cmd("colorscheme " .. colorscheme)
   end
   vim.defer_fn(function()
+    M.set_ghostty_theme(M.config.ghostty, M.config.ghostty.custom_theme)
     if light then
       vim.fn.system("kitty +kitten themes " .. M.config.kitty.light)
-      M.set_ghostty_theme(M.config.ghostty.light, M.config.ghostty.custom_theme)
       M.set_zellij_theme(M.config.zellij.light)
       M.set_delta_theme(M.config.delta.light)
       M.set_yazi_theme(M.config.yazi.light)
     else
       vim.fn.system("kitty +kitten themes " .. M.config.kitty.dark)
-      M.set_ghostty_theme(M.config.ghostty.dark, M.config.ghostty.custom_theme)
       M.set_zellij_theme(M.config.zellij.dark)
       M.set_delta_theme(M.config.delta.dark)
       M.set_yazi_theme(M.config.yazi.dark)
@@ -156,7 +155,8 @@ function M.set_ghostty_theme(theme, is_custom_theme)
     -- vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_light_theme .. "/' (readlink ~/.config/ghostty/config)")
     local config_path = vim.fn.expand("~/.config/ghostty/config")
     local real_path = vim.fn.resolve(config_path)
-    local cmd = string.format("sed -i'.bak' 's/theme = .*/theme = %s/' %s", theme, real_path)
+    local light_dark_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
+    local cmd = string.format("sed -i'.bak' 's/theme = .*/theme = %s/' %s", light_dark_theme, real_path)
     local result = vim.fn.system({ "bash", "-c", cmd })
     if vim.v.shell_error ~= 0 then
       print("Error updating Ghostty theme: " .. result)

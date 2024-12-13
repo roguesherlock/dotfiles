@@ -6,13 +6,14 @@
 # font-variation-bold = wght=800
 # font-variation-italic = wght=450
 # font-variation-bold-italic = wght=800
-font-family = "CommitMono"
-font-size = 14
-adjust-cell-height = 20%
+# font-family = "CommitMono"
+# font-size = 14
+# adjust-cell-height = 20%
 # window-padding-x = 0
 # window-padding-y = 0
 window-padding-balance = true
-theme = modus_dark
+theme = light:xcodelighthc,dark:Builtin Pastel Dark
+window-theme = light:xcodelighthc,dark:Builtin Pastel Dark
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 window-colorspace = display-p3
@@ -85,12 +86,12 @@ auto-update = download
 # keybind = ctrl+shift+right=unbind        # Resize "Right";
 # keybind = ctrl+shift+up=unbind           # Resize "Up";
 # keybind = ctrl+shift+down=unbind         # Resize "Down";
-keybind=clear
-keybind = super+v=paste_from_clipboard
-keybind = super+zero=reset_font_size
-keybind = super+shift+n=new_window
-keybind = super+shift+comma=reload_config
-keybind = super+minus=decrease_font_size:1
-keybind = super+plus=increase_font_size:1
-keybind = super+equal=increase_font_size:1
-keybind = super+ctrl+f=toggle_fullscreen
+# keybind=clear
+# keybind = super+v=paste_from_clipboard
+# keybind = super+zero=reset_font_size
+# keybind = super+shift+n=new_window
+# keybind = super+shift+comma=reload_config
+# keybind = super+minus=decrease_font_size:1
+# keybind = super+plus=increase_font_size:1
+# keybind = super+equal=increase_font_size:1
+# keybind = super+ctrl+f=toggle_fullscreen
