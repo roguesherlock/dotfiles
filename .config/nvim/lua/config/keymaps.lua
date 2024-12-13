@@ -21,7 +21,7 @@ map({ "n", "v" }, "<leader>e", function()
       MiniFiles.open()
     end
   end
-end, { desc = "Toggle file [E]xplorer" })
+end, { desc = "Toggle file [E]xplorer", noremap = true })
 
 map("n", ",", "za", { desc = "Toggle fold" })
 
@@ -50,3 +50,5 @@ end, { desc = "[T]oggle [T]heme" })
 --     buffer = -1, -- Apply to all buffers
 --   })
 -- end)
+
+map("n", "<leader>cL", ":LspRestart<cr>", { desc = "Restart LSP server" })

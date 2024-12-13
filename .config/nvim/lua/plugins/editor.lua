@@ -1,27 +1,11 @@
 return {
   {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        blade = { 'blade-formatter' },
-      }
-    }
-  },
-  {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy", -- Or `LspAttach`
-    priority = 1000,    -- needs to be loaded in first
+    priority = 1000, -- needs to be loaded in first
     config = function()
       require("tiny-inline-diagnostic").setup()
     end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      diagnostics = {
-        virtual_text = false,
-      },
-    },
   },
   {
     "chrisgrieser/nvim-recorder",
@@ -64,15 +48,15 @@ return {
       },
     },
   },
-  {
-    "folke/zen-mode.nvim",
-    dependencies = {
-      "folke/twilight.nvim",
-    },
-    keys = {
-      { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" },
-    },
-  },
+  -- {
+  --   "folke/zen-mode.nvim",
+  --   dependencies = {
+  --     "folke/twilight.nvim",
+  --   },
+  --   keys = {
+  --     { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" },
+  --   },
+  -- },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -83,26 +67,6 @@ return {
           ["<C-k>"] = "move_cursor_up",
         },
       },
-    },
-  },
-  {
-    "NeogitOrg/neogit",
-    enabled = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim",        -- optional
-    },
-    config = function()
-      require("neogit").setup({
-        integrations = {
-          telescope = true,
-          diffview = true,
-        },
-      })
-    end,
-    keys = {
-      { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
     },
   },
   {
@@ -150,7 +114,7 @@ return {
       local ufo = require("ufo")
 
       vim.o.foldcolumn = "1" -- '0' is not bad
-      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
       -- global handler
