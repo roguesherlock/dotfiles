@@ -28,15 +28,15 @@ M.config = {
   },
   zellij = {
     light = "catppuccin-latte",
-    dark = "catppuccin-mocha",
+    dark = "catppuccin-frappe",
   },
   delta = {
     light = "catppuccin-latte",
-    dark = "catppuccin-mocha",
+    dark = "catppuccin-frappe",
   },
   yazi = {
     light = "catppuccin-latte",
-    dark = "catppuccin-mocha",
+    dark = "catppuccin-frappe",
   },
 }
 
