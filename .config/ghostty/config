@@ -12,10 +12,11 @@
 # window-padding-x = 0
 # window-padding-y = 0
 window-padding-balance = true
-theme = light:catppuccin-latte,dark:catppuccin-mocha
+theme = light:xcodelighthc,dark:Builtin Pastel Dark
 window-theme = system
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
+macos-titlebar-style = tabs
 window-colorspace = display-p3
 # background-opacity = 0.85
 # background-blur-radius = 26
