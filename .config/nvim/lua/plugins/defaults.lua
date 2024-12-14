@@ -35,6 +35,13 @@ return {
         enabled = false,
         only_scope = true,
       },
+      animate = {
+        -- easing = "outQuart",
+        -- easing = "outQuint",
+        easing = "outExpo",
+        duration = 10, -- ms per step
+        fps = 120,
+      },
     },
   },
 }

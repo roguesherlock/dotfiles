@@ -14,12 +14,16 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "modus",
-    dark = "modus",
+    -- light = "modus",
+    -- dark = "modus",
+    light = "catppuccin",
+    dark = "catppuccin",
   },
   ghostty = {
-    light = "xcodelighthc",
-    dark = "Builtin Pastel Dark",
+    -- light = "xcodelighthc",
+    -- dark = "Builtin Pastel Dark",
+    light = "catppuccin-latte",
+    dark = "catppuccin-mocha",
     custom_theme = false,
   },
   kitty = {
@@ -28,15 +32,15 @@ M.config = {
   },
   zellij = {
     light = "catppuccin-latte",
-    dark = "catppuccin-frappe",
+    dark = "catppuccin-mocha",
   },
   delta = {
     light = "catppuccin-latte",
-    dark = "catppuccin-frappe",
+    dark = "catppuccin-mocha",
   },
   yazi = {
     light = "catppuccin-latte",
-    dark = "catppuccin-frappe",
+    dark = "catppuccin-mocha",
   },
 }
 
@@ -156,7 +160,8 @@ function M.set_ghostty_theme(theme, is_custom_theme)
     local config_path = vim.fn.expand("~/.config/ghostty/config")
     local real_path = vim.fn.resolve(config_path)
     local light_dark_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
-    local cmd = string.format("sed -i'.bak' 's/theme = .*/theme = %s/' %s", light_dark_theme, real_path)
+    -- local cmd = string.format("sed -i'.bak' 's/theme = .*/theme = %s/' %s", light_dark_theme, real_path)
+    local cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", light_dark_theme, real_path)
     local result = vim.fn.system({ "bash", "-c", cmd })
     if vim.v.shell_error ~= 0 then
       print("Error updating Ghostty theme: " .. result)
