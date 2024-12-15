@@ -5,8 +5,8 @@
 vim.api.nvim_create_autocmd({
   "FocusLost",
   -- 'InsertLeave',
-  "BufEnter",
-  "BufLeave",
+  -- "BufEnter",
+  -- "BufLeave",
 }, {
   pattern = {
     "*",
