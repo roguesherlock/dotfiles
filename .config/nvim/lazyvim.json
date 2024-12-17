@@ -10,6 +10,7 @@
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.nushell",
+    "lazyvim.plugins.extras.lang.ocaml",
     "lazyvim.plugins.extras.lang.php",
     "lazyvim.plugins.extras.lang.prisma",
     "lazyvim.plugins.extras.lang.svelte",
