@@ -8,8 +8,8 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-map("n", "<D-s>", ":w<CR>", { desc = "Save file" })
-map("n", "<esc><esc>", ":w<CR>", { desc = "Save file" })
+map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+-- map("n", "<esc><esc>", "<cmd>w<CR>", { desc = "Save file" })
 
 map({ "n", "v" }, "<leader>e", function()
   local MiniFiles = require("mini.files")
