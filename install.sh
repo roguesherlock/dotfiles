@@ -61,7 +61,6 @@ mkdir -p ~/.config
 #fish
 mkdir -p ~/.config/fish/
 install ~/Developer/dotfiles/.config/fish/config.fish ~/.config/fish/config.fish
-install ~/Developer/dotfiles/.config/fish/themes ~/.config/fish/themes
 install ~/Developer/dotfiles/.config/fish/fish_plugins ~/.config/fish/fish_plugins
 
 # yazi
