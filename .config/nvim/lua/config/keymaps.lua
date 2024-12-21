@@ -9,7 +9,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-map({ "i", "x", "n", "s" }, "<esc><esc>", "<cmd>w<CR>", { desc = "Save file" })
+-- map({ "i", "x", "n", "s" }, "<esc><esc>", "<cmd>w<CR>", { desc = "Save file" })
 
 map({ "n", "v" }, "<leader>e", function()
   local MiniFiles = require("mini.files")
