@@ -31,11 +31,48 @@ return {
               },
             },
           },
+          slash_commands = {
+            ["buffer"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+            ["file"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+            ["help"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+            ["symbols"] = {
+              opts = {
+                provider = "fzf_lua",
+              },
+            },
+          },
         },
       },
       display = {
         diff = {
           provider = "mini_diff",
+        },
+      },
+    },
+  },
+  {
+    "saghen/blink.cmp",
+    opts = {
+      sources = {
+        default = { "codecompanion" },
+        providers = {
+          codecompanion = {
+            name = "CodeCompanion",
+            module = "codecompanion.providers.completion.blink",
+            enabled = true,
+          },
         },
       },
     },
