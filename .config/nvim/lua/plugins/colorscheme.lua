@@ -30,6 +30,9 @@ return {
     opts = {},
   },
   {
+    dir = vim.fn.stdpath("config") .. "/local/plastic.nvim",
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "modus",
