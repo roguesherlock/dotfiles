@@ -23,15 +23,27 @@ return {
     --   end,
     -- },
   },
+  -- {
+  --   "0xstepit/flow.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  -- },
   {
-    "0xstepit/flow.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
+    "rebelot/kanagawa.nvim",
+    opts = {
+      -- transparent = true,
+    },
   },
   {
-    dir = vim.fn.stdpath("config") .. "/local/plastic.nvim",
+    "sainnhe/everforest",
+    config = function()
+      -- vim.g.everforest_transparent_background = 2
+    end,
   },
+  -- {
+  --   dir = vim.fn.stdpath("config") .. "/local/plastic.nvim",
+  -- },
   {
     "LazyVim/LazyVim",
     opts = {
