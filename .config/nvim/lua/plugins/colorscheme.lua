@@ -29,18 +29,27 @@ return {
   --   priority = 1000,
   --   opts = {},
   -- },
+  -- {
+  --   "comfysage/evergarden",
+  --   priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
+  --   opts = {
+  --     -- transparent_background = true,
+  --     variant = "medium", -- 'hard'|'medium'|'soft'
+  --     overrides = {}, -- add custom overrides
+  --   },
+  -- },
   {
-    "rebelot/kanagawa.nvim",
-    opts = {
-      -- transparent = true,
-    },
+    "rose-pine/neovim",
+    name = "rose-pine",
+    priority = 1000,
   },
-  {
-    "sainnhe/everforest",
-    config = function()
-      -- vim.g.everforest_transparent_background = 2
-    end,
-  },
+  -- {
+  --   "zenbones-theme/zenbones.nvim",
+  --   dependencies = {
+  --     "rktjmp/lush.nvim",
+  --   },
+  --   priority = 1000,
+  -- },
   -- {
   --   dir = vim.fn.stdpath("config") .. "/local/plastic.nvim",
   -- },

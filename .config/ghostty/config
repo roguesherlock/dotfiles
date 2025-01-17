@@ -1,5 +1,5 @@
 # font-family = "Maple Mono"
-font-family = "Input Mono Narrow"
+# font-family = "Input Mono Narrow"
 # font-family = "JuliaMono"
 # font-family = "Geist Mono"
 # font-family = "CommitMono"
@@ -9,7 +9,7 @@ adjust-cell-height = 20%
 # window-padding-x = 0
 # window-padding-y = 0
 window-padding-balance = true
-theme = light:xcodelighthc,dark:Builtin Pastel Dark
+theme = light:xcodelighthc,dark:rose-pine
 window-theme = system
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
@@ -19,6 +19,7 @@ window-colorspace = display-p3
 # background-blur-radius = 26
 # macos-titlebar-style = tabs
 window-save-state = always
+font-thicken=true
 
 # custom-shader = ./shaders/retro-terminal.glsl
 # custom-shader = ./shaders/just-snow.glsl
