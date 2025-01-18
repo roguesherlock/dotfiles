@@ -36,6 +36,9 @@ require("lazy").setup({
             ghostty = {
               dark = "rose-pine",
             },
+            kitty = {
+              dark = "Rosé Pine",
+            },
           })
         end,
       },

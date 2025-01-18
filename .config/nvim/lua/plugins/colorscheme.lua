@@ -54,6 +54,11 @@ return {
   --   dir = vim.fn.stdpath("config") .. "/local/plastic.nvim",
   -- },
   {
+    "nickkadutskyi/jb.nvim",
+    priority = 1000,
+    opts = {},
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "modus",
