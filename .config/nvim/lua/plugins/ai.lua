@@ -15,6 +15,20 @@ return {
     },
     config = true,
     opts = {
+      adapters = {
+        deepseek = function()
+          return require("codecompanion.adapters").extend("deepseek", {
+            env = {
+              api_key = "DEEPSEEK_API_KEY", -- See note above about using cmd for secure API key storage
+            },
+            schema = {
+              model = {
+                default = "deepseek-reasoner",
+              },
+            },
+          })
+        end,
+      },
       strategies = {
         chat = {
           adapter = "anthropic",
