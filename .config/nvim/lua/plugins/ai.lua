@@ -31,7 +31,7 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "anthropic",
+          adapter = "deepseek-reasoner",
           keymaps = {
             close = {
               modes = {
