@@ -146,6 +146,9 @@ install ~/Developer/dotfiles/.config/nushell/env.nu ~/Library/Application\ Suppo
 # hammerspoon
 install ~/Developer/dotfiles/.config/hammerspoon ~/.hammerspoon
 
+# waveterm
+install ~/Developer/dotfiles/.config/waveterm ~/.config/waveterm
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
