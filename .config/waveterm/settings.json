@@ -1,3 +1,5 @@
 {
-  "autoupdate:channel": "latest"
+  "autoupdate:channel": "latest",
+  "term:fontsize": "13",
+  "term:fontfamily": "Input Mono Narrow"
 }
