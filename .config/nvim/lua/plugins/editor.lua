@@ -8,6 +8,12 @@ return {
     },
   },
   {
+    "ibhagwan/fzf-lua",
+    keys = {
+      { "<leader><space>", "<cmd>FzfLua git_files<cr>", desc = "Find Files (git-files)" },
+    },
+  },
+  {
     "echasnovski/mini.pairs",
     opts = {
       modes = { insert = true, command = false, terminal = false },
@@ -38,7 +44,7 @@ return {
   },
   {
     "leath-dub/snipe.nvim",
-    enabled = false,
+    enabled = true,
     keys = {
       {
         "gb",
