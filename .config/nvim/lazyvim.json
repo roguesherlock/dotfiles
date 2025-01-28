@@ -1,6 +1,6 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.ai.supermaven",
+    "lazyvim.plugins.extras.ai.codeium",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.editor.mini-files",

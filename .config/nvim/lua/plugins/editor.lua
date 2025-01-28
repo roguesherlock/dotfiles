@@ -8,6 +8,12 @@ return {
     },
   },
   {
+    "echasnovski/mini.pairs",
+    opts = {
+      modes = { insert = true, command = false, terminal = false },
+    },
+  },
+  {
     "rachartier/tiny-inline-diagnostic.nvim",
     enabled = false,
     event = "VeryLazy", -- Or `LspAttach`
