@@ -15,23 +15,8 @@ return {
     },
     config = true,
     opts = {
-      adapters = {
-        deepseek = function()
-          return require("codecompanion.adapters").extend("deepseek", {
-            env = {
-              api_key = "DEEPSEEK_API_KEY", -- See note above about using cmd for secure API key storage
-            },
-            schema = {
-              model = {
-                default = "deepseek-reasoner",
-              },
-            },
-          })
-        end,
-      },
       strategies = {
         chat = {
-          adapter = "deepseek-reasoner",
           keymaps = {
             close = {
               modes = {
@@ -45,50 +30,13 @@ return {
               },
             },
           },
-          slash_commands = {
-            ["buffer"] = {
-              opts = {
-                provider = "fzf_lua",
-              },
-            },
-            ["file"] = {
-              opts = {
-                provider = "fzf_lua",
-              },
-            },
-            ["help"] = {
-              opts = {
-                provider = "fzf_lua",
-              },
-            },
-            ["symbols"] = {
-              opts = {
-                provider = "fzf_lua",
-              },
-            },
-          },
         },
       },
-      display = {
-        diff = {
-          provider = "mini_diff",
-        },
-      },
-    },
-  },
-  {
-    "saghen/blink.cmp",
-    opts = {
-      sources = {
-        default = { "codecompanion" },
-        providers = {
-          codecompanion = {
-            name = "CodeCompanion",
-            module = "codecompanion.providers.completion.blink",
-            enabled = true,
-          },
-        },
-      },
+      -- display = {
+      --   diff = {
+      --     provider = "mini_diff",
+      --   },
+      -- },
     },
   },
   {

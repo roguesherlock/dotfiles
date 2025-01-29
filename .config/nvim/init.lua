@@ -11,5 +11,7 @@
 --  9. Ability to search all files in the cwd (projec)
 -- 10. Figure out why the fuck does lazyvim override my keymaps
 -- 11. Set import preferences for typescript lsp
+-- 12. Don't use ai completions with blink.nvim
+-- 13. blink.nvim shouldn't insert when moving between options with ctrl-n/p
 
 require("config.lazy")

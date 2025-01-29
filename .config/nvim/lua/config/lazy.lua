@@ -30,15 +30,15 @@ require("lazy").setup({
         priority = 1000,
         config = function()
           require("user.colorscheme").setup({
-            nvim = {
-              dark = "rose-pine",
-            },
-            ghostty = {
-              dark = "rose-pine",
-            },
-            kitty = {
-              dark = "Rosé Pine",
-            },
+            -- nvim = {
+            --   dark = "rose-pine",
+            -- },
+            -- ghostty = {
+            --   dark = "rose-pine",
+            -- },
+            -- kitty = {
+            --   dark = "Rosé Pine",
+            -- },
           })
         end,
       },
