@@ -1,25 +1,5 @@
 return {
   {
-    "saghen/blink.cmp",
-    opts = {
-      keymap = {
-        preset = "default",
-      },
-    },
-  },
-  {
-    "ibhagwan/fzf-lua",
-    keys = {
-      { "<leader><space>", "<cmd>FzfLua git_files<cr>", desc = "Find Files (git-files)" },
-    },
-  },
-  {
-    "echasnovski/mini.pairs",
-    opts = {
-      modes = { insert = true, command = false, terminal = false },
-    },
-  },
-  {
     "rachartier/tiny-inline-diagnostic.nvim",
     enabled = false,
     event = "VeryLazy", -- Or `LspAttach`
@@ -78,18 +58,6 @@ return {
   --     { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" },
   --   },
   -- },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      window = {
-        position = "right",
-        fuzzy_finder_mappings = {
-          ["<C-j>"] = "move_cursor_down",
-          ["<C-k>"] = "move_cursor_up",
-        },
-      },
-    },
-  },
   {
     "stevearc/conform.nvim",
     opts = {
