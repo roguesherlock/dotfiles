@@ -6,7 +6,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       -- The following are optional:
-      { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
+      -- { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
     },
     keys = {
       { "<leader>ap", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "[A]i Actions [P]rompt" },
@@ -32,11 +32,14 @@ return {
           },
         },
       },
-      -- display = {
-      --   diff = {
-      --     provider = "mini_diff",
-      --   },
-      -- },
+      display = {
+        chat = {
+          show_settings = true,
+        },
+        -- diff = {
+        --   provider = "mini_diff",
+        -- },
+      },
     },
   },
   {
