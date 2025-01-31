@@ -44,23 +44,23 @@ return {
       },
     },
   },
-  {
-    "Exafunction/codeium.nvim",
-    opts = {
-      virtual_text = {
-        idle_delay = 0,
-        -- enabled = true,
-        -- key_bindings = {
-        --   -- Accept the current completion.
-        --   accept = "<Tab>",
-        --   -- Cycle to the next completion.
-        --   next = "<M-]>",
-        --   -- Cycle to the previous completion.
-        --   prev = "<M-[>",
-        -- },
-      },
-    },
-  },
+  -- {
+  --   "Exafunction/codeium.nvim",
+  --   opts = {
+  --     virtual_text = {
+  --       idle_delay = 0,
+  --       -- enabled = true,
+  --       -- key_bindings = {
+  --       --   -- Accept the current completion.
+  --       --   accept = "<Tab>",
+  --       --   -- Cycle to the next completion.
+  --       --   next = "<M-]>",
+  --       --   -- Cycle to the previous completion.
+  --       --   prev = "<M-[>",
+  --       -- },
+  --     },
+  --   },
+  -- },
   {
     "akinsho/bufferline.nvim",
     enabled = false,

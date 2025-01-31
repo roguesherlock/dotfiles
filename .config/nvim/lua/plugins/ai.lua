@@ -43,6 +43,24 @@ return {
     },
   },
   {
+    "PLAZMAMA/bunnyhop.nvim",
+    lazy = false, -- This plugin does not support lazy loading for now
+    -- Setting the keybinding for hopping to the predicted location.
+    -- Change it to whatever suits you.
+    keys = {
+      {
+        "<C-h>",
+        function()
+          require("bunnyhop").hop()
+        end,
+        desc = "[H]op to predicted location.",
+      },
+    },
+    opts = {}, -- if using copilot
+    -- Or
+    -- opts = {adapter = "hugging_face", api_key = "HF_API_KEY", model = "Qwen/Qwen2.5-Coder-32B-Instruct"}, -- if using hugging face
+  },
+  {
     "yetone/avante.nvim",
     enabled = false,
     event = "VeryLazy",
