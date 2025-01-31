@@ -17,6 +17,7 @@ return {
     opts = {
       strategies = {
         chat = {
+          adapter = "anthropic",
           keymaps = {
             close = {
               modes = {
@@ -31,10 +32,13 @@ return {
             },
           },
         },
+        inline = {
+          adapter = "anthropic",
+        },
       },
       display = {
         chat = {
-          show_settings = true,
+          -- show_settings = true,
         },
         -- diff = {
         --   provider = "mini_diff",
@@ -44,6 +48,7 @@ return {
   },
   {
     "PLAZMAMA/bunnyhop.nvim",
+    enabled = false,
     lazy = false, -- This plugin does not support lazy loading for now
     -- Setting the keybinding for hopping to the predicted location.
     -- Change it to whatever suits you.
