@@ -1,5 +1,11 @@
 return {
   {
+    "dlants/magenta.nvim",
+    lazy = false, -- you could also bind to <leader>mt
+    build = "bun install --frozen-lockfile",
+    opts = {},
+  },
+  {
     "olimorris/codecompanion.nvim",
     enabled = true,
     dependencies = {
