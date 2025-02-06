@@ -96,7 +96,7 @@ return {
   -- fold
   {
     "kevinhwang91/nvim-ufo",
-    enabled = false,
+    enabled = true,
     dependencies = {
       { "kevinhwang91/promise-async" },
     },
@@ -107,26 +107,23 @@ return {
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
-      -- global handler
-      -- `handler` is the 2nd parameter of `setFoldVirtTextHandler`,
-      -- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
       ufo.setup({
-        close_fold_kinds_for_ft = {
-          default = { "imports", "comment" },
-          json = { "array" },
-          c = { "comment", "region" },
-        },
-        open_fold_hl_timeout = 0,
-        provider_selector = function(_, filetype)
-          return { "treesitter", "indent" }
-        end,
-        fold_virt_text_handler = function(virt_text, lnum, end_lnum, width, truncate)
-          local _start = lnum - 1
-          local _end = end_lnum - 1
-          local start_text = vim.api.nvim_buf_get_text(0, _start, 0, _start, -1, {})[1]
-          local final_text = vim.trim(vim.api.nvim_buf_get_text(0, _end, 0, _end, -1, {})[1])
-          return start_text .. " ⋯ " .. final_text .. (" 󰁂 %d "):format(end_lnum - lnum)
-        end,
+        -- close_fold_kinds_for_ft = {
+        --   default = { "imports", "comment" },
+        --   json = { "array" },
+        --   c = { "comment", "region" },
+        -- },
+        -- open_fold_hl_timeout = 0,
+        -- provider_selector = function(_, filetype, buftype)
+        --   return { "treesitter", "indent" }
+        -- end,
+        -- fold_virt_text_handler = function(virt_text, lnum, end_lnum, width, truncate)
+        --   local _start = lnum - 1
+        --   local _end = end_lnum - 1
+        --   local start_text = vim.api.nvim_buf_get_text(0, _start, 0, _start, -1, {})[1]
+        --   local final_text = vim.trim(vim.api.nvim_buf_get_text(0, _end, 0, _end, -1, {})[1])
+        --   return start_text .. " ⋯ " .. final_text .. (" 󰁂 %d "):format(end_lnum - lnum)
+        -- end,
       })
 
       vim.keymap.set("n", "zR", require("ufo").openAllFolds)
