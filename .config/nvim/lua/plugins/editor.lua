@@ -10,6 +10,7 @@ return {
   },
   {
     "chrisgrieser/nvim-recorder",
+    enabled = false,
     keys = {
       -- these must match the keys in the mapping config below
       { "q", desc = " Start Recording" },

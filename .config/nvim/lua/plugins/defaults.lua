@@ -23,7 +23,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     keys = {
-      { "<leader><space>", "<cmd>FzfLua git_files<cr>", desc = "Find Files (git-files)" },
+      { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Find Files" },
     },
   },
   {
