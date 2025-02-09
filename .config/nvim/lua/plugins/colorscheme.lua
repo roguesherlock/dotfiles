@@ -50,6 +50,8 @@ return {
     name = "rose-pine",
     priority = 1000,
   },
+  { "savq/melange-nvim", priority = 1000 },
+  { "ribru17/bamboo.nvim", enabled = false, priority = 1000 },
   -- {
   --   "zenbones-theme/zenbones.nvim",
   --   dependencies = {
@@ -62,6 +64,7 @@ return {
   -- },
   {
     "nickkadutskyi/jb.nvim",
+    enabled = false,
     priority = 1000,
     opts = {},
   },
