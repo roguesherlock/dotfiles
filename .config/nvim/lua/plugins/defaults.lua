@@ -20,12 +20,12 @@ return {
       },
     },
   },
-  {
-    "ibhagwan/fzf-lua",
-    keys = {
-      { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Find Files" },
-    },
-  },
+  -- {
+  --   "ibhagwan/fzf-lua",
+  --   keys = {
+  --     { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Find Files" },
+  --   },
+  -- },
   {
     "echasnovski/mini.pairs",
     opts = {
@@ -34,6 +34,7 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
     opts = {
       window = {
         position = "right",
@@ -76,6 +77,19 @@ return {
   },
   {
     "folke/snacks.nvim",
+    keys = {
+      -- we want to set root = false here cause by default this falls back to individual packages in typescript monorepos
+      { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files" },
+      { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (cwd)" },
+      { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (Root Dir)" },
+      { "<leader>sW", LazyVim.pick("grep_word"), desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
+      {
+        "<leader>sw",
+        LazyVim.pick("grep_word", { root = false }),
+        desc = "Visual selection or word (Root Dir)",
+        mode = { "n", "x" },
+      },
+    },
     opts = {
       notifier = {
         enabled = false,

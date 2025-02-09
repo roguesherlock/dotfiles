@@ -1,6 +1,7 @@
 return {
   {
     "dmmulroy/tsc.nvim",
+    enabled = false,
     config = true,
     cmd = "TSC",
     keys = {
