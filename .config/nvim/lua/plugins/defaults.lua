@@ -79,7 +79,11 @@ return {
     "folke/snacks.nvim",
     keys = {
       -- we want to set root = false here cause by default this falls back to individual packages in typescript monorepos
-      { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files" },
+      {
+        "<leader><space>",
+        LazyVim.pick("git_files", { show_untracked = true, untracked = true }),
+        desc = "Find Files (Git)",
+      },
       { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (cwd)" },
       { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (Root Dir)" },
       { "<leader>sW", LazyVim.pick("grep_word"), desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
