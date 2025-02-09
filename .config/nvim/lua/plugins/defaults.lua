@@ -81,7 +81,9 @@ return {
       -- we want to set root = false here cause by default this falls back to individual packages in typescript monorepos
       {
         "<leader><space>",
-        LazyVim.pick("git_files", { show_untracked = true, untracked = true }),
+        function()
+          Snacks.picker.git_files({ untracked = true })
+        end,
         desc = "Find Files (Git)",
       },
       { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (cwd)" },

@@ -21,6 +21,10 @@ window-colorspace = display-p3
 window-save-state = always
 font-thicken=true
 
+quick-terminal-position = center
+quick-terminal-animation-duration = 0
+keybind = super+o=toggle_quick_terminal
+
 # custom-shader = ./shaders/retro-terminal.glsl
 # custom-shader = ./shaders/just-snow.glsl
 # custom-shader = ./shaders/starfield.glsl
