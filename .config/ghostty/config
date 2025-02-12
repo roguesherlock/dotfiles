@@ -2,8 +2,9 @@
 # font-family = "Input Mono Narrow"
 # font-family = "JuliaMono"
 # font-family = "Geist Mono"
-font-family = "CommitMono"
-# font-size = 14
+# font-family = "CommitMono"
+font-family = "Iosevka Term"
+font-size = 14
 # font-thicken = true
 adjust-cell-height = 10%
 # window-padding-x = 0

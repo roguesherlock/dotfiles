@@ -17,7 +17,7 @@ end
 
 config.term = "wezterm"
 
-config.font = wezterm.font("Geist Mono")
+-- config.font = wezterm.font("Geist Mono", { weight = "Medium" })
 config.font_size = 13.0
 config.line_height = 1.2
 
@@ -43,16 +43,13 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
-config.adjust_window_size_when_changing_font_size = false
+-- config.adjust_window_size_when_changing_font_size = false
 
-config.hide_tab_bar_if_only_one_tab = true
-config.enable_scroll_bar = false
+-- config.hide_tab_bar_if_only_one_tab = true
+-- config.enable_scroll_bar = false
 
--- config.enable_kitty_keyboard = true
--- config.enable_csi_u_key_encoding = false
-
-config.window_background_opacity = 0.95
-config.macos_window_background_blur = 24
+-- config.window_background_opacity = 0.95
+-- config.macos_window_background_blur = 24
 
 -- and finally, return the configuration to wezterm
 return config
