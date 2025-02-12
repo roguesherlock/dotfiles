@@ -1,5 +1,13 @@
 ---@class user.colorscheme
 local M = {}
+
+-- Cache for OS theme state
+local os_theme_cache = {
+  last_check = 0,
+  is_dark = nil,
+  check_interval = 1000, -- ms
+}
+
 -- Set this as early as possible
 -- TODO: figure how to do this for other os
 vim.opt.background = vim.fn.system([[defaults read -g AppleInterfaceStyle 2>/dev/null]]):find("Dark") and "dark"
@@ -41,35 +49,35 @@ M.config = {
 }
 
 function M.os_is_dark()
-  -- return (vim.fn.system(
-  --   [[echo $(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo 'dark' || echo 'light')]]
-  -- )):find("dark") ~= nil
-  local handle = io.popen([[defaults read -g AppleInterfaceStyle 2>/dev/null]])
-  local result = handle and handle:read("*a"):gsub("%s+", "") or ""
-  if handle then
-    handle:close()
+  local current_time = vim.uv.now()
+  if current_time - os_theme_cache.last_check > os_theme_cache.check_interval then
+    local handle = io.popen([[defaults read -g AppleInterfaceStyle 2>/dev/null]])
+    local result = handle and handle:read("*a"):gsub("%s+", "") or ""
+    if handle then
+      handle:close()
+    end
+    os_theme_cache.is_dark = result == "Dark"
+    os_theme_cache.last_check = current_time
   end
-  if result == "Dark" then
-    return true
-  else
-    return false
-  end
+  return os_theme_cache.is_dark
 end
 
 ---@param light boolean
 function M.set_colorscheme(light)
-  local background = "dark"
-  local colorscheme = M.config.nvim.dark
-  if light then
-    background = "light"
-    colorscheme = M.config.nvim.light
-  end
+  local background = light and "light" or "dark"
+  local colorscheme = light and M.config.nvim.light or M.config.nvim.dark
+
   vim.opt.background = background
   if M.config.opts.set_theme_on_auto_switch then
     vim.cmd("colorscheme " .. colorscheme)
   end
+
+  -- Defer terminal theme updates
   vim.defer_fn(function()
+    -- Update Ghostty
     M.set_ghostty_theme(M.config.ghostty, M.config.ghostty.custom_theme)
+
+    -- Update other terminals
     if light then
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
       vim.fn.system("kitten @ load-config")
@@ -90,33 +98,14 @@ function M.set_from_os()
   if not M.config.opts.enable_auto_switch then
     M.set_colorscheme(M.config.opts.default_light)
   end
-  if M.os_is_dark() then
-    M.set_colorscheme(false)
-  else
-    M.set_colorscheme(true)
-  end
+  M.set_colorscheme(not M.os_is_dark())
 end
 
 function M.get_colorscheme()
   if not M.config.opts.enable_auto_switch then
-    if M.config.opts.default_light then
-      return M.config.nvim.light
-    else
-      return M.config.nvim.dark
-    end
+    return M.config.opts.default_light and M.config.nvim.light or M.config.nvim.dark
   end
-
-  if M.os_is_dark() then
-    return M.config.nvim.dark
-  else
-    return M.config.nvim.light
-  end
-
-  -- if vim.o.background == "light" then
-  --   return M.config.nvim.light
-  -- else
-  --   return M.config.nvim.dark
-  -- end
+  return M.os_is_dark() and M.config.nvim.dark or M.config.nvim.light
 end
 
 function M.setup(config)
@@ -128,7 +117,7 @@ function M.setup(config)
 
   M.set_from_os()
 
-  local term = os.getenv("TERM")
+  -- local term = os.getenv("TERM")
   vim.api.nvim_create_autocmd("Signal", {
     pattern = "*",
     callback = function()
