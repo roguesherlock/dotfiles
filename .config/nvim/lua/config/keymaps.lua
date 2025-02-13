@@ -8,6 +8,8 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+-- don't overide the register when pasting over a visual selection
+map("x", "p", '"_dP')
 map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 -- map({ "i", "x", "n", "s" }, "<esc><esc>", "<cmd>w<CR>", { desc = "Save file" })
 
