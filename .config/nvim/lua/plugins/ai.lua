@@ -1,14 +1,104 @@
 return {
   {
-    "dlants/magenta.nvim",
+    "giuxtaposition/blink-cmp-copilot",
     enabled = false,
+  },
+  {
+    "saghen/blink.cmp",
+    dependencies = { "fang2hou/blink-copilot" },
+    opts = {
+      sources = {
+        default = { "copilot" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
+    },
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    enabled = false,
+  },
+  {
+    "github/copilot.vim",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    event = "BufWinEnter",
+    init = function()
+      if vim.g.ai_cmp then
+        vim.g.copilot_no_maps = true
+      end
+    end,
+    config = function()
+      if vim.g.ai_cmp then
+        -- Block the normal Copilot suggestions
+        vim.api.nvim_create_augroup("github_copilot", { clear = true })
+        for _, event in pairs({ "FileType", "BufUnload", "BufEnter" }) do
+          vim.api.nvim_create_autocmd({ event }, {
+            group = "github_copilot",
+            callback = function()
+              vim.fn["copilot#On" .. event]()
+            end,
+          })
+        end
+      end
+    end,
+  },
+  {
+    "dlants/magenta.nvim",
+    enabled = true,
     lazy = false, -- you could also bind to <leader>mt
     build = "bun install --frozen-lockfile",
-    opts = {},
+    keys = {
+      { "<leader>aa", "<cmd>Magenta toggle<cr>", mode = { "n" }, desc = "Toggle [A]i chat" },
+      { "<leader>as", "<cmd>Magenta abort<cr>", mode = { "n" }, desc = " [A]i [S]top current operation" },
+      { "<leader>ac", "<cmd>Magenta clear<cr>", mode = { "n" }, desc = "[A]i [C]lear chat buffer" },
+      { "<leader>ae", "<cmd>Magenta start-inline-edit<cr>", mode = { "n" }, desc = "[A]i [E]dit inline" },
+      { "<leader>ae", "<cmd>Magenta start-inline-edit-selection<cr>", mode = { "v" }, desc = "[A]i [E]dit inline" },
+      {
+        "<leader>ab",
+        "<cmd>Magenta paste-selection<cr>",
+        mode = { "v" },
+        desc = "Add selection to [A]i [C]hat buffer",
+      },
+      {
+        "<leader>ab",
+        function()
+          require("magenta.actions").add_buffer_to_context()
+        end,
+        mode = { "n" },
+        desc = "[A]i add [B]uffer to chat",
+      },
+      {
+        "<leader>af",
+        function()
+          require("magenta.actions").pick_context_files()
+        end,
+        mode = { "n" },
+        desc = "[A]i add [F]iles to chat",
+      },
+      {
+        "<leader>ap",
+        function()
+          require("magenta.actions").pick_provider()
+        end,
+        mode = { "n" },
+        desc = "[A]i pick [P]rovider",
+      },
+    },
+    opts = {
+      default_keymaps = false,
+      sidebar_position = "right",
+    },
   },
   {
     "olimorris/codecompanion.nvim",
-    enabled = true,
+    enabled = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
