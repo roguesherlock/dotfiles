@@ -1,5 +1,11 @@
 return {
   {
+    "folke/tokyonight.nvim",
+    opts = {
+      day_brightness = 0.1,
+    },
+  },
+  {
     "miikanissi/modus-themes.nvim",
     lazy = false,
     priority = 1000,
@@ -11,23 +17,31 @@ return {
       --     italic = true,
       --   },
       -- },
-      --   on_highlights = function(h, c)
-      --     h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
-      --     local bg = h.LineNr and h.LineNr.bg or c.bg_main
-      --     h.DiagnosticSignWarn = { bg = bg, fg = c.yellow }
-      --     h.DiagnosticSignError = { bg = bg, fg = c.red }
-      --     h.DiagnosticSignHint = { bg = bg, fg = c.cyan }
-      --     h.DiagnosticSignInfo = { bg = bg, fg = c.blue }
-      --     -- NOTE: this is for all the todo diagnostics
-      --     -- h.SignColumn = { bg = bg }
-      --     -- h.TodoSignTEST = { bg = bg, fg = c.red }
-      --     -- h.TodoSignPERF = { bg = bg, fg = c.yellow }
-      --     -- h.TodoSignFIX = { bg = bg, fg = c.green }
-      --     -- h.TodoSignWARN = { bg = bg, fg = c.yellow }
-      --     -- h.TodoSignHACK = { bg = bg, fg = c.red }
-      --     -- h.TodoSignNOTE = { bg = bg, fg = c.cyan }
-      --     -- h.TodoSignTODO = { bg = bg, fg = c.blue }
-      --   end,
+      -- on_highlights = function(h, c)
+      --   -- local bg_main = options.transparent and c.none or c.bg_main
+      --   -- local bg_main = c.bg_active or c.bg_main
+      --   -- h.SnacksPickerInputBorder = { fg = c.border, bg = bg_main }
+      --   -- h.SnacksPickerInputTitle = { fg = c.fg_dim, bg = bg_main }
+      --   -- h.SnacksPickerBoxTitle = { fg = c.fg_dim, bg = bg_main }
+      --   -- -- h.SnacksPickerToggle = {  }
+      --   -- h.SnacksPickerPickWinCurrent = { fg = c.fg_main, bg = bg_main, bold = true }
+      --   -- h.SnacksPickerPickWin = { fg = c.fg_main, bg = bg_main, bold = true }
+      --
+      --   -- h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
+      --   -- h.DiagnosticSignWarn = { bg = bg, fg = c.yellow }
+      --   -- h.DiagnosticSignError = { bg = bg, fg = c.red }
+      --   -- h.DiagnosticSignHint = { bg = bg, fg = c.cyan }
+      --   -- h.DiagnosticSignInfo = { bg = bg, fg = c.blue }
+      --   -- NOTE: this is for all the todo diagnostics
+      --   -- h.SignColumn = { bg = bg }
+      --   -- h.TodoSignTEST = { bg = bg, fg = c.red }
+      --   -- h.TodoSignPERF = { bg = bg, fg = c.yellow }
+      --   -- h.TodoSignFIX = { bg = bg, fg = c.green }
+      --   -- h.TodoSignWARN = { bg = bg, fg = c.yellow }
+      --   -- h.TodoSignHACK = { bg = bg, fg = c.red }
+      --   -- h.TodoSignNOTE = { bg = bg, fg = c.cyan }
+      --   -- h.TodoSignTODO = { bg = bg, fg = c.blue }
+      -- end,
     },
   },
   -- {
