@@ -31,12 +31,23 @@ require("lazy").setup({
         config = function()
           require("user.colorscheme").setup({
             nvim = {
-              light = "melange",
-              dark = "melange",
+              -- light = "tokyonight",
+              -- dark = "tokyonight",
+              -- light = "modus",
+              -- dark = "modus",
+
+              -- light = "melange",
+              -- dark = "melange",
             },
             ghostty = {
-              light = "Melange_Light",
-              dark = "Melange_Dark",
+              -- light = "Github-Light-High-Contrast",
+              -- dark = "Github-Dark-High-Contrast",
+
+              -- light = "Melange_Light",
+              -- dark = "Melange_Dark",
+
+              -- light = "tokyonight-day",
+              -- dark = "tokyonight",
             },
             -- kitty = {
             --   dark = "Rosé Pine",
