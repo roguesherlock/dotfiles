@@ -149,6 +149,9 @@ install ~/Developer/dotfiles/.config/hammerspoon ~/.hammerspoon
 # waveterm
 install ~/Developer/dotfiles/.config/waveterm ~/.config/waveterm
 
+# atuin
+install ~/Developer/dotfiles/.config/atuin ~/.config/atuin
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
