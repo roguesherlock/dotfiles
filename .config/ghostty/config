@@ -3,7 +3,7 @@
 # font-family = "JuliaMono"
 # font-family = "Geist Mono"
 # font-family = "CommitMono"
-font-family = "Iosevka"
+font-family = "Iosevka Term"
 font-size = 14
 # font-thicken = true
 adjust-cell-height = 10%
