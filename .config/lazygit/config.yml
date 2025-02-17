@@ -176,7 +176,7 @@ keybinding:
     copyCommitAttributeToClipboard: "y"
     openLogMenu: <c-l>
     openInBrowser: o
-    viewBisectOptions: b
+    viewBisectOptions: B
   stash:
     popStash: g
   commitFiles:

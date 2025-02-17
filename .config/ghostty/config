@@ -3,14 +3,14 @@
 # font-family = "JuliaMono"
 # font-family = "Geist Mono"
 # font-family = "CommitMono"
-font-family = "Iosevka Term"
+font-family = "Iosevka"
 font-size = 14
 # font-thicken = true
 adjust-cell-height = 10%
 # window-padding-x = 0
 # window-padding-y = 0
 window-padding-balance = true
-theme = light:Melange_Light,dark:Melange_Dark
+theme = light:xcodelighthc,dark:Builtin Pastel Dark
 window-theme = system
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
