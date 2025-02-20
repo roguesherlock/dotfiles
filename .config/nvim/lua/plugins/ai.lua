@@ -51,7 +51,7 @@ return {
   },
   {
     "dlants/magenta.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false, -- you could also bind to <leader>mt
     build = "bun install --frozen-lockfile",
     keys = {
@@ -98,13 +98,7 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    enabled = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      -- The following are optional:
-      -- { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
-    },
+    enabled = true,
     keys = {
       { "<leader>ap", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "[A]i Actions [P]rompt" },
       { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Toggle [A]i Chat" },

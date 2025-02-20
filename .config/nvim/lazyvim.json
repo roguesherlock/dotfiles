@@ -5,17 +5,11 @@
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.editor.snacks_explorer",
-    "lazyvim.plugins.extras.editor.snacks_picker",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.astro",
-    "lazyvim.plugins.extras.lang.clojure",
     "lazyvim.plugins.extras.lang.git",
-    "lazyvim.plugins.extras.lang.gleam",
-    "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
-    "lazyvim.plugins.extras.lang.nushell",
-    "lazyvim.plugins.extras.lang.ocaml",
     "lazyvim.plugins.extras.lang.php",
     "lazyvim.plugins.extras.lang.prisma",
     "lazyvim.plugins.extras.lang.svelte",
@@ -32,3 +26,4 @@
   },
   "version": 8
 }
+
