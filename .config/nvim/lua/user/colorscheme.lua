@@ -1,18 +1,6 @@
 ---@class user.colorscheme
 local M = {}
 
--- Cache for OS theme state
-local os_theme_cache = {
-  last_check = 0,
-  is_dark = nil,
-  check_interval = 1000, -- ms
-}
-
--- Set this as early as possible
--- TODO: figure how to do this for other os
-vim.opt.background = vim.fn.system([[defaults read -g AppleInterfaceStyle 2>/dev/null]]):find("Dark") and "dark"
-  or "light"
-
 -- colors, look at colors()
 M.config = {
   opts = {
@@ -49,17 +37,7 @@ M.config = {
 }
 
 function M.os_is_dark()
-  local current_time = vim.uv.now()
-  if current_time - os_theme_cache.last_check > os_theme_cache.check_interval then
-    local handle = io.popen([[defaults read -g AppleInterfaceStyle 2>/dev/null]])
-    local result = handle and handle:read("*a"):gsub("%s+", "") or ""
-    if handle then
-      handle:close()
-    end
-    os_theme_cache.is_dark = result == "Dark"
-    os_theme_cache.last_check = current_time
-  end
-  return os_theme_cache.is_dark
+  return vim.fn.system([[defaults read -g AppleInterfaceStyle 2>/dev/null]]):find("Dark") and true or false
 end
 
 ---@param light boolean
@@ -115,13 +93,13 @@ function M.setup(config)
   -- Merge user config with defaults
   M.config = vim.tbl_deep_extend("force", vim.deepcopy(M.config), config or {})
 
+  -- Set initial theme
   M.set_from_os()
 
-  -- local term = os.getenv("TERM")
+  -- Create autocommands
   vim.api.nvim_create_autocmd("Signal", {
     pattern = "*",
     callback = function()
-      print("Theme updated from os")
       vim.schedule(function()
         M.set_from_os()
         -- Force UI refresh
@@ -155,66 +133,6 @@ function M.set_ghostty_theme(theme, is_custom_theme)
     end
     return
   end
-  -- local function switch__theme(theme)
-  --   local theme_name, theme_type = theme:match("([^_]*)_([^_]*)")
-  --   if theme_type == "light" then
-  --     theme_type = "dark"
-  --   else
-  --     theme_type = "light"
-  --   end
-  --   return theme_name .. "_" .. theme_type
-  -- end
-  -- local base_config_path = vim.fn.expand("~/.config/ghostty/config")
-  -- local theme_file_path = vim.fn.expand("~/.config/ghostty/" .. theme .. ".conf")
-  --
-  -- -- Check if the theme file exists
-  -- if vim.fn.filereadable(theme_file_path) == 0 then
-  --   print("Theme file not found: " .. theme_file_path)
-  --   return
-  -- end
-  --
-  -- local currentTheme = switch_theme(theme)
-  --
-  -- -- Read the content of the theme file
-  -- local theme_content = vim.fn.readfile(theme_file_path)
-  --
-  -- -- Read the current content of the base config file
-  -- local base_config_content = vim.fn.readfile(base_config_path)
-  --
-  -- -- Find the start and end indices of the current theme section
-  -- local start_index, end_index
-  -- local in_theme_section = false
-  -- for i, line in ipairs(base_config_content) do
-  --   if line:match("^# %s*" .. theme .. "$") then
-  --     return
-  --   elseif line:match("^# %s*" .. currentTheme .. "$") then
-  --     start_index = i
-  --     in_theme_section = true
-  --   elseif line:match("^# End*$") and in_theme_section then
-  --     end_index = i
-  --     break
-  --   end
-  -- end
-  --
-  -- -- Remove the current theme section if found
-  -- if start_index and end_index then
-  --   for i = end_index, start_index, -1 do
-  --     table.remove(base_config_content, i)
-  --   end
-  -- end
-  --
-  -- -- Insert the new theme content at the position where the old theme was removed
-  -- -- or at the end if no theme section was found
-  -- local insert_position = start_index or (#base_config_content + 1)
-  -- for i, line in ipairs(theme_content) do
-  --   table.insert(base_config_content, insert_position, line)
-  --   insert_position = insert_position + 1
-  -- end
-  --
-  -- -- Write the updated content back to the base config file
-  -- vim.fn.writefile(base_config_content, base_config_path)
-  --
-  -- -- print("Theme set to: " .. theme)
 end
 
 function M.set_zellij_theme(theme)
