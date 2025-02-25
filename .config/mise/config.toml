@@ -1,3 +1,4 @@
 [tools]
+neovim = "nightly"
 node = "lts"
 # neovim = "nightly"
