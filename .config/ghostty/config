@@ -19,13 +19,20 @@ macos-titlebar-style = tabs
 window-colorspace = display-p3
 # background-opacity = 0.85
 # background-blur-radius = 26
-# macos-titlebar-style = tabs
 window-save-state = always
 font-thicken=true
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
 keybind = super+o=toggle_quick_terminal
+
+keybind = super+h=goto_split:previous
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+l=goto_split:next
+keybind = super+l=goto_split:next
+keybind = super+enter=toggle_split_zoom
+keybind = super+shift+enter=toggle_fullscreen
 
 # custom-shader = ./shaders/retro-terminal.glsl
 # custom-shader = ./shaders/just-snow.glsl
