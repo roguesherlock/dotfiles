@@ -5,14 +5,14 @@
 # font-family = "CommitMono"
 font-family = "Iosevka Term"
 font-size = 14
-# font-thicken = true
+font-thicken = true
 adjust-cell-height = 10%
-# window-padding-x = 0
-# window-padding-y = 0
+window-padding-x = 0
+window-padding-y = 0
 window-padding-balance = true
 theme = light:xcodelighthc,dark:Builtin Pastel Dark
 window-theme = system
-macos-icon="glass"
+# macos-icon="glass"
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 macos-titlebar-style = native
@@ -20,7 +20,6 @@ window-colorspace = display-p3
 # background-opacity = 0.85
 # background-blur-radius = 26
 window-save-state = always
-font-thicken=true
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
