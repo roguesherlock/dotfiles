@@ -152,6 +152,11 @@ install ~/Developer/dotfiles/.config/waveterm ~/.config/waveterm
 # atuin
 install ~/Developer/dotfiles/.config/atuin ~/.config/atuin
 
+# zed
+mkdir -p ~/.config/zed
+install ~/Developer/dotfiles/.config/zed/settings.json ~/.config/zed/settings.json
+install ~/Developer/dotfiles/.config/zed/keymap.json ~/.config/zed/keymap.json
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd

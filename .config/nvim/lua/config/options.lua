@@ -4,4 +4,3 @@
 vim.g.snacks_animate = false
 vim.g.trouble_lualine = false
 vim.g.lazyvim_picker = "snacks"
-vim.g.lazyvim_php_lsp = "intelephense"

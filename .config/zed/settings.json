@@ -1,0 +1,56 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "assistant": {
+    "version": "2",
+    "default_open_ai_model": "claude-3-5-sonnet-20240620",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    }
+  },
+  "theme": {
+    "mode": "system",
+    "dark": "One Dark",
+    "light": "One Light"
+  },
+  "project_panel": {
+    "button": true,
+    "default_width": 240,
+    "dock": "left",
+    "file_icons": true,
+    "folder_icons": false,
+    "git_status": true,
+    "indent_size": 20,
+    "auto_reveal_entries": true,
+    "auto_fold_dirs": true
+    // "scrollbar": {
+    //   "show": "always"
+    // }
+  },
+  "ui_font_family": "Inter",
+  // "buffer_font_family": "CommitMono",
+  "buffer_font_family": "Iosevka",
+  // "buffer_font_family": "Geist Mono",
+  // "buffer_font_family": "JuliaMono",
+  // "buffer_font_family": "Pixel Code",
+  // "buffer_font_family": "Input Mono Narrow",
+  // "buffer_font_family": "JetBrains Mono",
+  "vim_mode": true,
+  "autosave": "on_focus_change",
+  // "auto_signature_help": true,
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  }
+}
