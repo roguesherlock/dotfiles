@@ -111,6 +111,13 @@ return {
         duration = 10, -- ms per step
         fps = 120,
       },
+      picker = {
+        formatters = {
+          file = {
+            truncate = 80,
+          },
+        },
+      },
     },
   },
 }
