@@ -14,8 +14,8 @@
     "version": "2",
     "default_open_ai_model": "claude-3-5-sonnet-20240620",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "google",
+      "model": "gemini-2.5-pro-exp-03-25"
     }
   },
   "theme": {
@@ -39,7 +39,7 @@
   },
   "ui_font_family": "Inter",
   // "buffer_font_family": "CommitMono",
-  "buffer_font_family": "Iosevka",
+  "buffer_font_family": "JetBrains Mono",
   // "buffer_font_family": "Geist Mono",
   // "buffer_font_family": "JuliaMono",
   // "buffer_font_family": "Pixel Code",

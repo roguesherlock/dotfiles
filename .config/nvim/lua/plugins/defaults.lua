@@ -71,7 +71,8 @@ return {
     opts = {
       inlay_hints = { enabled = false },
       diagnostics = {
-        virtual_text = false,
+        virtual_text = { current_line = true, severity = { min = "INFO", max = "WARN" } },
+        virtual_lines = { current_line = true, severity = { min = "ERROR" } },
       },
     },
   },
