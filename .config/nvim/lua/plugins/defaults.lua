@@ -78,25 +78,25 @@ return {
   },
   {
     "folke/snacks.nvim",
-    keys = {
-      -- we want to set root = false here cause by default this falls back to individual packages in typescript monorepos
-      {
-        "<leader><space>",
-        function()
-          Snacks.picker.git_files({ untracked = true })
-        end,
-        desc = "Find Files (Git)",
-      },
-      { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (cwd)" },
-      { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (Root Dir)" },
-      { "<leader>sW", LazyVim.pick("grep_word"), desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
-      {
-        "<leader>sw",
-        LazyVim.pick("grep_word", { root = false }),
-        desc = "Visual selection or word (Root Dir)",
-        mode = { "n", "x" },
-      },
-    },
+    -- keys = {
+    --   -- we want to set root = false here cause by default this falls back to individual packages in typescript monorepos
+    --   {
+    --     "<leader><space>",
+    --     function()
+    --       Snacks.picker.git_files({ untracked = true })
+    --     end,
+    --     desc = "Find Files (Git)",
+    --   },
+    --   { "<leader>sG", LazyVim.pick("live_grep"), desc = "Grep (cwd)" },
+    --   { "<leader>sg", LazyVim.pick("live_grep", { root = false }), desc = "Grep (Root Dir)" },
+    --   { "<leader>sW", LazyVim.pick("grep_word"), desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
+    --   {
+    --     "<leader>sw",
+    --     LazyVim.pick("grep_word", { root = false }),
+    --     desc = "Visual selection or word (Root Dir)",
+    --     mode = { "n", "x" },
+    --   },
+    -- },
     opts = {
       notifier = {
         enabled = false,
@@ -113,6 +113,7 @@ return {
         fps = 120,
       },
       picker = {
+        enabled = false,
         formatters = {
           file = {
             truncate = 80,

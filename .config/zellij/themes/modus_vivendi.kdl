@@ -1,0 +1,138 @@
+// ~/.config/zellij/themes/modus-vivendi.kdl
+// Based on the Modus Vivendi Emacs theme by Protesilaos Stavrou
+// https://github.com/protesilaos/modus-themes
+
+themes {
+    modus_vivendi {
+        // Base colors
+        fg 255 255 255   // fg-main: #ffffff
+        bg 0 0 0         // bg-main: #000000
+        black 0 0 0      // term black: #000000
+        red 255 95 89    // red: #ff5f59
+        green 68 188 68  // green: #44bc44
+        yellow 208 188 0 // yellow: #d0bc00
+        blue 47 175 255  // blue: #2fafff
+        magenta 254 172 208 // magenta: #feacd0
+        cyan 0 211 208   // cyan: #00d3d0
+        white 152 152 152 // fg-dim: #989898 (using fg-dim for white)
+        orange 254 196 63 // yellow-warmer: #fec43f (using warmer yellow for orange)
+
+        // UI elements mapping
+        text_unselected {
+            base 255 255 255 // fg-main: #ffffff
+            background 0 0 0   // bg-main: #000000
+            emphasis_0 255 95 89 // red: #ff5f59
+            emphasis_1 47 175 255 // blue: #2fafff
+            emphasis_2 68 188 68 // green: #44bc44
+            emphasis_3 254 172 208 // magenta: #feacd0
+        }
+        text_selected {
+            base 255 255 255 // fg-region: #ffffff
+            background 90 90 90  // bg-region: #5a5a5a
+            emphasis_0 255 95 89 // red: #ff5f59
+            emphasis_1 47 175 255 // blue: #2fafff
+            emphasis_2 68 188 68 // green: #44bc44
+            emphasis_3 254 172 208 // magenta: #feacd0
+        }
+        ribbon_selected {
+            base 255 255 255 // fg-mode-line-active: #ffffff
+            background 80 80 80  // bg-mode-line-active: #505050
+            emphasis_0 255 95 89 // red: #ff5f59
+            emphasis_1 47 175 255 // blue: #2fafff
+            emphasis_2 208 188 0 // yellow: #d0bc00
+            emphasis_3 254 172 208 // magenta: #feacd0
+        }
+        ribbon_unselected {
+            base 150 150 150 // fg-mode-line-inactive: #969696
+            background 45 45 45  // bg-mode-line-inactive: #2d2d2d
+            emphasis_0 255 95 89 // red: #ff5f59
+            emphasis_1 47 175 255 // blue: #2fafff
+            emphasis_2 68 188 68 // green: #44bc44
+            emphasis_3 254 172 208 // magenta: #feacd0
+        }
+        table_title {
+            base 68 188 68   // green: #44bc44
+            background 0 0 0   // bg-main: #000000
+            emphasis_0 255 95 89 // red: #ff5f59
+            emphasis_1 47 175 255 // blue: #2fafff
+            emphasis_2 208 188 0 // yellow: #d0bc00
+            emphasis_3 254 172 208 // magenta: #feacd0
+        }
+        table_cell_selected { // Same as text_selected
+            base 255 255 255
+            background 90 90 90
+            emphasis_0 255 95 89
+            emphasis_1 47 175 255
+            emphasis_2 68 188 68
+            emphasis_3 254 172 208
+        }
+        table_cell_unselected { // Same as text_unselected
+            base 255 255 255
+            background 0 0 0
+            emphasis_0 255 95 89
+            emphasis_1 47 175 255
+            emphasis_2 68 188 68
+            emphasis_3 254 172 208
+        }
+        list_selected { // Same as text_selected
+            base 255 255 255
+            background 90 90 90
+            emphasis_0 255 95 89
+            emphasis_1 47 175 255
+            emphasis_2 68 188 68
+            emphasis_3 254 172 208
+        }
+        list_unselected { // Same as text_unselected
+            base 255 255 255
+            background 0 0 0
+            emphasis_0 255 95 89
+            emphasis_1 47 175 255
+            emphasis_2 68 188 68
+            emphasis_3 254 172 208
+        }
+        frame_selected { // Use cooler blue for active frame
+            base 0 188 255   // blue-cooler: #00bcff
+            background 0 0 0   // bg-main: #000000 (or 0 for terminal default)
+            emphasis_0 255 95 89 // red: #ff5f59
+            emphasis_1 68 188 68 // green: #44bc44
+            emphasis_2 208 188 0 // yellow: #d0bc00
+            emphasis_3 254 172 208 // magenta: #feacd0
+        }
+        frame_highlight { // Use warmer yellow for highlight/action
+            base 254 196 63  // yellow-warmer: #fec43f
+            background 0 0 0   // bg-main: #000000 (or 0 for terminal default)
+            emphasis_0 254 196 63
+            emphasis_1 254 196 63
+            emphasis_2 254 196 63
+            emphasis_3 254 196 63
+        }
+        exit_code_success {
+            base 68 188 68   // green: #44bc44
+            background 0 0 0   // bg-main: #000000 (or 0)
+            emphasis_0 47 175 255 // blue: #2fafff
+            emphasis_1 254 172 208 // magenta: #feacd0
+            emphasis_2 0 211 208   // cyan: #00d3d0
+            emphasis_3 208 188 0 // yellow: #d0bc00
+        }
+        exit_code_error {
+            base 255 95 89   // red: #ff5f59
+            background 0 0 0   // bg-main: #000000 (or 0)
+            emphasis_0 47 175 255 // blue: #2fafff
+            emphasis_1 254 172 208 // magenta: #feacd0
+            emphasis_2 0 211 208   // cyan: #00d3d0
+            emphasis_3 208 188 0 // yellow: #d0bc00
+        }
+        multiplayer_user_colors { // Cycle through distinct accents
+            player_1 255 95 89   // red: #ff5f59
+            player_2 68 188 68   // green: #44bc44
+            player_3 208 188 0   // yellow: #d0bc00
+            player_4 47 175 255  // blue: #2fafff
+            player_5 254 172 208 // magenta: #feacd0
+            player_6 0 211 208   // cyan: #00d3d0
+            player_7 219 123 95  // rust: #db7b5f
+            player_8 144 153 217 // indigo: #9099d9
+            player_9 207 127 167 // maroon: #cf7fa7
+            player_10 156 189 111 // olive: #9cbd6f
+        }
+    }
+}

@@ -138,6 +138,17 @@ return {
     },
   },
   {
+    "0xrusowsky/nvim-ctx-ingest",
+    opts = {},
+    keys = {
+      {
+        "<leader>ai",
+        "<cmd>CtxIngest<cr>",
+        desc = "[A]i [I]nsert Context",
+      },
+    },
+  },
+  {
     "PLAZMAMA/bunnyhop.nvim",
     enabled = false,
     lazy = false, -- This plugin does not support lazy loading for now

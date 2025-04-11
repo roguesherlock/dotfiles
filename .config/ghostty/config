@@ -9,6 +9,7 @@ theme = light:xcodelighthc,dark:Builtin Pastel Dark
 window-theme = system
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
+macos-titlebar-style = hidden
 window-colorspace = display-p3
 # background-opacity = 0.85
 # background-blur-radius = 26
@@ -16,23 +17,23 @@ window-save-state = always
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
-keybind = super+o=toggle_quick_terminal
-
-keybind = super+h=goto_split:previous
-keybind = super+j=goto_split:down
-keybind = super+k=goto_split:up
-keybind = super+l=goto_split:next
-keybind = super+l=goto_split:next
-keybind = super+enter=toggle_split_zoom
-keybind = super+shift+enter=toggle_fullscreen
+# keybind = super+o=toggle_quick_terminal
+# 
+# keybind = super+h=goto_split:previous
+# keybind = super+j=goto_split:down
+# keybind = super+k=goto_split:up
+# keybind = super+l=goto_split:next
+# keybind = super+l=goto_split:next
+# keybind = super+enter=toggle_split_zoom
+# keybind = super+shift+enter=toggle_fullscreen
 
 # zellij keybinds
-# keybind=clear
-# keybind = super+v=paste_from_clipboard
-# keybind = super+zero=reset_font_size
-# keybind = super+shift+n=new_window
-# keybind = super+shift+comma=reload_config
-# keybind = super+minus=decrease_font_size:1
-# keybind = super+plus=increase_font_size:1
-# keybind = super+equal=increase_font_size:1
-# keybind = super+ctrl+f=toggle_fullscreen
+keybind=clear
+keybind = super+v=paste_from_clipboard
+keybind = super+zero=reset_font_size
+keybind = super+shift+n=new_window
+keybind = super+shift+comma=reload_config
+keybind = super+minus=decrease_font_size:1
+keybind = super+plus=increase_font_size:1
+keybind = super+equal=increase_font_size:1
+keybind = super+ctrl+f=toggle_fullscreen

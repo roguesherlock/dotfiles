@@ -23,8 +23,8 @@ M.config = {
     dark = "Modus Vivendi",
   },
   zellij = {
-    light = "catppuccin-latte",
-    dark = "catppuccin-frappe",
+    light = "modus_operandi",
+    dark = "modus_vivendi",
   },
   delta = {
     light = "catppuccin-latte",
