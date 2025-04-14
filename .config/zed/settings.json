@@ -36,10 +36,10 @@
   },
   "ui_font_size": 13,
   "ui_font_family": "Inter",
-  "buffer_font_family": "Input Mono Narrow",
+  "buffer_font_size": 13,
+  "buffer_font_family": "JetBrains Mono",
   "vim_mode": true,
   "autosave": "on_focus_change",
-  // "auto_signature_help": true,
   "git": {
     "inline_blame": {
       "enabled": false
