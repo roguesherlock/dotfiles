@@ -28,9 +28,9 @@
     }
   },
   {
-    "context": "ProjectPanel && not_editing",
+    "context": "Editor",
     "bindings": {
-      "q": "workspace::ToggleLeftDock"
+      "cmd-/": "workspace::ToggleRightDock"
     }
   }
 ]
