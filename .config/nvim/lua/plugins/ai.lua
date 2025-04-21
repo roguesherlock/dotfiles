@@ -98,7 +98,7 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    enabled = true,
+    enabled = not vim.g.vscode,
     keys = {
       { "<leader>ap", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "[A]i Actions [P]rompt" },
       { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Toggle [A]i Chat" },
@@ -139,6 +139,7 @@ return {
   },
   {
     "0xrusowsky/nvim-ctx-ingest",
+    enabled = not vim.g.vscode,
     opts = {},
     keys = {
       {

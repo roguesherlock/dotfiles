@@ -14,6 +14,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    enabled = not vim.g.vscode,
     opts = {
       keymap = {
         preset = "default",
@@ -34,7 +35,7 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
+    enabled = not vim.g.vscode,
     opts = {
       window = {
         position = "right",

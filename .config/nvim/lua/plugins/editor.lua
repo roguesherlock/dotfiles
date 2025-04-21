@@ -59,7 +59,7 @@ return {
   },
   {
     "leath-dub/snipe.nvim",
-    enabled = true,
+    enabled = not vim.g.vscode,
     keys = {
       {
         "gb",
@@ -95,6 +95,7 @@ return {
   -- },
   {
     "stevearc/conform.nvim",
+    enabled = not vim.g.vscode,
     opts = {
       formatters_by_ft = {
         blade = { "blade-formatter" },
