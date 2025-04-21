@@ -5,13 +5,16 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "cmd-shift-g": "git_panel::ToggleFocus"
     }
   },
   {
-    "context": "Editor && VimControl && vim_mode == normal && !VimWaiting && !menu",
+    "context": "Dock",
     "bindings": {
-      "space z": "workspace::ToggleZoom"
+      "cmd-1": "project_panel::ToggleFocus",
+      "cmd-2": "git_panel::ToggleFocus",
+      "cmd-3": "outline_panel::ToggleFocus"
     }
   },
   {
@@ -22,8 +25,32 @@
     }
   },
   {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // Put key bindings here if you want them to work in normal & visual mode.
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward",
+      "ctrl-space": "vim::SelectLargerSyntaxNode",
+      "cmd-enter": "workspace::ToggleZoom"
+    }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "backspace": "vim::SelectSmallerSyntaxNode",
+      "shift-s": ["vim::PushAddSurrounds", {}]
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space": "editor::ToggleFold"
+    }
+  },
+  {
     "context": "Terminal",
     "bindings": {
+      "cmd-enter": "workspace::ToggleZoom",
       "cmd-t": "workspace::NewTerminal"
     }
   },
@@ -31,6 +58,14 @@
     "context": "Editor",
     "bindings": {
       "cmd-/": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "GitPanel && menu",
+    "bindings": {
+      "shift-p": "git::Push",
+      "p": "git::Pull",
+      "c": "git::CheckoutBranch"
     }
   }
 ]

@@ -7,15 +7,65 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "context_servers": {
+    "convex": {
+      "command": {
+        "path": "bunx",
+        "args": ["-y", "convex@latest", "mcp", "start"],
+        "env": null
+      },
+      "settings": {}
+    },
+    "context7": {
+      "command": {
+        "path": "bunx",
+        "args": ["-y", "@upstash/context7-mcp@latest"],
+        "env": null
+      },
+      "settings": {}
+    }
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },
   "assistant": {
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "create_directory": true,
+          "open": true,
+          "terminal": true,
+          "batch_tool": true,
+          "code_actions": true,
+          "code_symbols": true,
+          "contents": true,
+          "copy_path": true,
+          "create_file": true,
+          "delete_path": false,
+          "diagnostics": true,
+          "find_replace_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "path_search": true,
+          "read_file": true,
+          "regex_search": true,
+          "rename": true,
+          "symbol_info": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      }
+    },
+    "always_allow_tool_actions": true,
     "version": "2",
     "default_open_ai_model": "claude-3-5-sonnet-20240620",
     "default_model": {
-      "provider": "google",
-      "model": "gemini-2.5-pro-exp-03-25"
+      "provider": "openai",
+      "model": "o3"
     }
   },
   "theme": {
@@ -34,9 +84,9 @@
     "auto_reveal_entries": true,
     "auto_fold_dirs": true
   },
-  "ui_font_size": 13,
-  "ui_font_family": "Inter",
-  "buffer_font_size": 13,
+  "ui_font_size": 14,
+  "ui_font_family": "JetBrains Mono",
+  "buffer_font_size": 14,
   "buffer_font_family": "JetBrains Mono",
   "vim_mode": true,
   "autosave": "on_focus_change",
