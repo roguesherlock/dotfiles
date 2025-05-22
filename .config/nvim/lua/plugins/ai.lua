@@ -77,6 +77,20 @@ return {
         desc = "[A]i add [B]uffer to chat",
       },
       {
+        "<leader>ab",
+        "<cmd>Magenta paste-selection<cr>",
+        mode = { "v" },
+        desc = "Add selection to [A]i [C]hat buffer",
+      },
+      {
+        "<leader>ab",
+        function()
+          require("magenta.actions").add_buffer_to_context()
+        end,
+        mode = { "n" },
+        desc = "[A]i add [B]uffer to chat",
+      },
+      {
         "<leader>af",
         function()
           require("magenta.actions").pick_context_files()
@@ -95,7 +109,37 @@ return {
     },
     opts = {
       default_keymaps = false,
-      sidebar_position = "right",
+      sidebarPosition = "right",
+      sidebarKeymaps = {
+        normal = {
+          ["<CR>"] = ":Magenta send<CR>",
+          ["q"] = ":Magenta toggle<CR>",
+        },
+      },
+      displayKeymaps = {
+        normal = {
+          ["-"] = ":Magenta threads-overview<CR>",
+          ["q"] = ":Magenta toggle<CR>",
+        },
+      },
+      inlineKeymaps = {
+        normal = {
+          ["<CR>"] = function(target_bufnr)
+            vim.cmd("Magenta submit-inline-edit " .. target_bufnr)
+          end,
+          ["q"] = function(target_bufnr)
+            pcall(vim.api.nvim_buf_delete, target_bufnr, { force = true })
+          end,
+        },
+        autoContext = {
+          "context.md",
+          "claude.md",
+          "agent.md",
+          "agents.md",
+          ".cursor/rules",
+          ".magenta/*.md",
+        },
+      },
     },
   },
   {
