@@ -51,13 +51,15 @@ return {
   -- },
   {
     "dlants/magenta.nvim",
-    enabled = false,
+    enabled = not vim.g.vscode,
+    -- enabled = false,
     lazy = false, -- you could also bind to <leader>mt
-    build = "bun install --frozen-lockfile",
+    build = "npm install --frozen-lockfile",
     keys = {
       { "<leader>aa", "<cmd>Magenta toggle<cr>", mode = { "n" }, desc = "Toggle [A]i chat" },
+      { "<leader>an", "<cmd>Magenta new-thread<cr>", mode = { "n" }, desc = "[A]i [N]ew thread" },
       { "<leader>as", "<cmd>Magenta abort<cr>", mode = { "n" }, desc = " [A]i [S]top current operation" },
-      { "<leader>ac", "<cmd>Magenta clear<cr>", mode = { "n" }, desc = "[A]i [C]lear chat buffer" },
+      { "<leader>ac", "<cmd>Magenta clear<cr>", mode = { "n" }, desc = "[A]i [C]lear state" },
       { "<leader>ae", "<cmd>Magenta start-inline-edit<cr>", mode = { "n" }, desc = "[A]i [E]dit inline" },
       { "<leader>ae", "<cmd>Magenta start-inline-edit-selection<cr>", mode = { "v" }, desc = "[A]i [E]dit inline" },
       {
@@ -98,7 +100,8 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    enabled = not vim.g.vscode,
+    -- enabled = not vim.g.vscode,
+    enabled = false,
     keys = {
       { "<leader>ap", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "[A]i Actions [P]rompt" },
       { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Toggle [A]i Chat" },

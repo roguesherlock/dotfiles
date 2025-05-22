@@ -5,8 +5,7 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "cmd-shift-g": "git_panel::ToggleFocus"
+      "ctrl-j": "workspace::ActivatePaneDown"
     }
   },
   {
@@ -21,7 +20,8 @@
     "context": "Editor && VimControl && !VimWaiting && !VimObject",
     "bindings": {
       "alt-j": "editor::MoveLineDown",
-      "alt-k": "editor::MoveLineUp"
+      "alt-k": "editor::MoveLineUp",
+      "cmd-i": "assistant::InlineAssist"
     }
   },
   {
@@ -31,7 +31,9 @@
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
       "ctrl-space": "vim::SelectLargerSyntaxNode",
-      "cmd-enter": "workspace::ToggleZoom"
+      "cmd-enter": "workspace::ToggleZoom",
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }]
     }
   },
   {
@@ -44,7 +46,21 @@
   {
     "context": "vim_mode == normal",
     "bindings": {
-      "space": "editor::ToggleFold"
+      ",": "editor::ToggleFold",
+      "space e": "project_panel::ToggleFocus",
+      "space g g": "git_panel::ToggleFocus",
+      "space w d": "pane::CloseAllItems",
+      "space w v": "pane::SplitVertical",
+      "space x x": "diagnostics::Deploy",
+      "shift-e": "editor::Hover"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-space": "editor::ShowCompletions",
+      "tab": "editor::AcceptEditPrediction",
+      "ctrl-l": "editor::AcceptPartialEditPrediction"
     }
   },
   {
@@ -63,9 +79,32 @@
   {
     "context": "GitPanel && menu",
     "bindings": {
-      "shift-p": "git::Push",
-      "p": "git::Pull",
-      "c": "git::CheckoutBranch"
+      "ctrl-c": "git::CheckoutBranch",
+      "ctrl-p": "git::Pull",
+      "ctrl-shift-p": "git::Push",
+      "ctrl-j": "git_panel::FocusEditor",
+      "q": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "GitPanel > Editor",
+    "bindings": {
+      "ctrl-c": "git::CheckoutBranch",
+      "ctrl-p": "git::Pull",
+      "ctrl-shift-p": "git::Push",
+      "ctrl-k": "git_panel::FocusChanges"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "q": "workspace::CloseActiveDock"
+    }
+  },
+  {
+    "context": "Diagnostics > Editor && vim_mode == normal",
+    "bindings": {
+      "q": "pane::CloseActiveItem"
     }
   }
 ]
