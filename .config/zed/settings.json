@@ -12,11 +12,11 @@
     "model_parameters": [],
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-thinking-latest"
+      "model": "claude-sonnet-4-thinking-latest"
     },
     "commit_message_model": {
       "provider": "google",
-      "model": "gemini-2.5-flash-preview-04-17"
+      "model": "gemini-2.5-flash-preview-05-20"
     },
     "version": "2"
   },
