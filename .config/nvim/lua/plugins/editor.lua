@@ -130,4 +130,9 @@ return {
       }
     end,
   },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    enabled = not vim.g.vscode,
+    build = ":UpdateRemotePlugins",
+  },
 }

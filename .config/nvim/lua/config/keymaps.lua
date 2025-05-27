@@ -10,6 +10,35 @@ end
 
 -- return early if we're in vscode
 if vim.g.vscode then
+  local vscode = require("vscode")
+
+  vim.notify = vscode.notify
+
+  map({ "n" }, "[[", function()
+    vscode.action("editor.action.wordHighlight.prev")
+  end)
+
+  map({ "n" }, "]]", function()
+    vscode.action("editor.action.wordHighlight.next")
+  end)
+
+  map("n", ",", "za", { desc = "Toggle fold" })
+  map("n", ",", function()
+    vscode.action("editor.toggleFold")
+  end, { desc = "[W]indow Split [V]ertical" })
+
+  map("n", "<leader>tw", function()
+    vscode.action("editor.action.toggleWordWrap")
+  end, { desc = "[T]oggle [W]rap" })
+
+  map("n", "<leader>wv", function()
+    vscode.action("workbench.action.splitEditor")
+  end, { desc = "[W]indow Split [V]ertical" })
+
+  map("n", "<leader>wd", function()
+    vscode.action("workbench.action.closeEditorsInGroup")
+  end, { desc = "[W]indow [D]elete" })
+
   return
 end
 
