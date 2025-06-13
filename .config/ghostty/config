@@ -1,11 +1,12 @@
-font-family = "Iosevka Term"
+# font-family = "Iosevka Term"
+font-family = "Geist Mono"
 font-size = 14
 # font-thicken = true
-adjust-cell-height = 10%
+adjust-cell-height = 25%
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = light:xcodelighthc,dark:Builtin Pastel Dark
+theme = light:catppuccin-latte,dark:catppuccin-mocha
 window-theme = system
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
@@ -17,8 +18,9 @@ window-save-state = always
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
+keybind = shift+enter=text:\n
 # keybind = super+o=toggle_quick_terminal
-# 
+#
 # keybind = super+h=goto_split:previous
 # keybind = super+j=goto_split:down
 # keybind = super+k=goto_split:up

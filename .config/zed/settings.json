@@ -8,11 +8,12 @@
 // from the command palette or from `Zed` application menu.
 {
   "agent": {
+    "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking-latest"
+      "provider": "openai",
+      "model": "o3"
     },
     "commit_message_model": {
       "provider": "google",
@@ -20,6 +21,7 @@
     },
     "version": "2"
   },
+  "edit_prediction_provider": "supermaven",
   "context_servers": {
     // "convex": {
     //   "command": {
@@ -29,10 +31,18 @@
     //   },
     //   "settings": {}
     // },
-    "context7": {
+    // "context7": {
+    //   "command": {
+    //     "path": "bunx",
+    //     "args": ["-y", "@upstash/context7-mcp@latest"],
+    //     "env": null
+    //   },
+    //   "settings": {}
+    // },
+    "effect docs": {
       "command": {
-        "path": "bunx",
-        "args": ["-y", "@upstash/context7-mcp@latest"],
+        "path": "docker",
+        "args": ["run", "--rm", "-i", "timsmart/effect-mcp"],
         "env": null
       },
       "settings": {}
@@ -57,7 +67,7 @@
     "auto_reveal_entries": true,
     "auto_fold_dirs": true
   },
-  "ui_font_size": 14,
+  "ui_font_size": 13,
   "ui_font_family": "Geist Mono",
   "buffer_font_size": 14,
   "buffer_font_family": "Geist Mono",

@@ -1,5 +1,13 @@
 [
   {
+    "context": "Editor && edit_prediction_conflict",
+    "bindings": {
+      // Here we bind tab to accept even when there's a language server completion
+      // or the cursor isn't at the correct indentation level
+      "tab": "editor::AcceptEditPrediction"
+    }
+  },
+  {
     "context": "Dock || Terminal || Editor || ProjectPanel",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
