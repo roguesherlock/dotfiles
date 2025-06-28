@@ -60,15 +60,18 @@
       "space w d": "pane::CloseAllItems",
       "space w v": "pane::SplitVertical",
       "space x x": "diagnostics::Deploy",
-      "shift-e": "editor::Hover"
+      "shift-e": "editor::Hover",
+      "[ [": "vim::MoveToPrevious",
+      "] ]": "vim::MoveToNext",
+      "[ e": "editor::GoToPreviousDiagnostic",
+      "] e": "editor::GoToDiagnostic"
     }
   },
   {
     "context": "vim_mode == insert",
     "bindings": {
       "ctrl-space": "editor::ShowCompletions",
-      "tab": "editor::AcceptEditPrediction",
-      "ctrl-l": "editor::AcceptPartialEditPrediction"
+      "tab": "editor::AcceptEditPrediction"
     }
   },
   {

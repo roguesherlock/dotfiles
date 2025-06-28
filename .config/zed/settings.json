@@ -12,8 +12,8 @@
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "openai",
-      "model": "o3"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     },
     "commit_message_model": {
       "provider": "google",
@@ -40,10 +40,10 @@
     //   "settings": {}
     // },
     "effect docs": {
+      "source": "custom",
       "command": {
-        "path": "docker",
-        "args": ["run", "--rm", "-i", "timsmart/effect-mcp"],
-        "env": null
+        "path": "bunx",
+        "args": ["-y", "effect-mcp"]
       },
       "settings": {}
     }
@@ -94,8 +94,13 @@
         "typescript": {
           "preferences": {
             "importModuleSpecifier": "non-relative"
+          },
+          "updateImportsOnFileMove": {
+            "enabled": "always"
           }
-        }
+          // "preferGoToSourceDefinition": true
+        },
+        "autoUseWorkspaceTsdk": true
       }
     }
   }
