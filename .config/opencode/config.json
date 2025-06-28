@@ -1,0 +1,6 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "system",
+  "autoshare": false,
+  "autoupdate": true
+}
