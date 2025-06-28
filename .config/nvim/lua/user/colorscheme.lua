@@ -10,14 +10,14 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "catppuccin",
-    dark = "catppuccin",
+    light = "modus",
+    dark = "modus",
   },
   ghostty = {
-    -- light = "xcodelighthc",
-    -- dark = "Builtin Pastel Dark",
-    light = "catppuccin-latte",
-    dark = "catppuccin-mocha",
+    light = "xcodelighthc",
+    dark = "Builtin Pastel Dark",
+    -- light = "catppuccin-latte",
+    -- dark = "catppuccin-mocha",
     custom_theme = false,
   },
   kitty = {

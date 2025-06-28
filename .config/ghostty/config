@@ -1,33 +1,35 @@
 # font-family = "Iosevka Term"
 font-family = "Geist Mono"
 font-size = 14
-# font-thicken = true
+font-thicken = true
+font-thicken-strength = 30
 adjust-cell-height = 25%
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = light:catppuccin-latte,dark:catppuccin-mocha
+theme = light:xcodelighthc,dark:Builtin Pastel Dark
 window-theme = system
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 # macos-titlebar-style = hidden
 window-colorspace = display-p3
-# background-opacity = 0.85
-# background-blur-radius = 26
+background-opacity = 0.85
+background-blur-radius = 26
 window-save-state = always
+unfocused-split-opacity=0.95
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
 keybind = shift+enter=text:\n
-# keybind = super+o=toggle_quick_terminal
-#
-# keybind = super+h=goto_split:previous
-# keybind = super+j=goto_split:down
-# keybind = super+k=goto_split:up
-# keybind = super+l=goto_split:next
-# keybind = super+l=goto_split:next
-# keybind = super+enter=toggle_split_zoom
-# keybind = super+shift+enter=toggle_fullscreen
+keybind = super+o=toggle_quick_terminal
+
+keybind = super+h=goto_split:previous
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+l=goto_split:next
+keybind = super+l=goto_split:next
+keybind = super+enter=toggle_split_zoom
+keybind = super+shift+enter=toggle_fullscreen
 
 # zellij keybinds
 # keybind=clear
