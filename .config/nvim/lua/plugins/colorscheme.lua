@@ -86,27 +86,4 @@ return {
     --     vim.cmd.colorscheme('zenbones')
     -- end
   },
-  { "ribru17/bamboo.nvim", enabled = false, priority = 1000 },
-  -- {
-  --   "zenbones-theme/zenbones.nvim",
-  --   dependencies = {
-  --     "rktjmp/lush.nvim",
-  --   },
-  --   priority = 1000,
-  -- },
-  -- {
-  --   dir = vim.fn.stdpath("config") .. "/local/plastic.nvim",
-  -- },
-  {
-    "nickkadutskyi/jb.nvim",
-    enabled = false,
-    priority = 1000,
-    opts = {},
-  },
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "modus",
-  --   },
-  -- },
 }
