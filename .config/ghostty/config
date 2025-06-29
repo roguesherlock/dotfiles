@@ -8,7 +8,6 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 theme = light:xcodelighthc,dark:Builtin Pastel Dark
-window-theme = catppuccin-frappe
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 # macos-titlebar-style = hidden
