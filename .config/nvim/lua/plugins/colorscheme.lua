@@ -10,6 +10,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
+      transparent = true,
       -- line_nr_column_background = false,
       -- sign_column_background = false,
       -- styles = {
@@ -17,36 +18,36 @@ return {
       --     italic = true,
       --   },
       -- },
-      on_highlights = function(h, c)
-        local bg = c.bg_dim
-
-        h.SnacksPickerBorder = { fg = c.border, bg = bg }
-        h.SnacksPickerFooter = { bg = bg }
-        h.SnacksPickerTitle = { bg = bg, fg = c.border_highlight }
-        h.SnacksPicker = { bg = bg }
-        h.SnacksPickerCol = { bg = bg }
-        h.SnacksPickerTree = { bg = bg }
-
-        h.NoiceCmdlinePopup = { bg = c.bg_main }
-        h.NoiceCmdlineIcon = { bg = c.bg_main }
-        h.NoiceCmdlinePopupBorder = { bg = c.bg_main }
-
-        -- h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
-        local bg_sidebar = c.bg_sidebar
-        h.DiagnosticSignWarn = { bg = bg_sidebar, fg = c.yellow }
-        h.DiagnosticSignError = { bg = bg_sidebar, fg = c.red }
-        h.DiagnosticSignHint = { bg = bg_sidebar, fg = c.cyan }
-        h.DiagnosticSignInfo = { bg = bg_sidebar, fg = c.blue }
-        -- NOTE: this is for all the todo diagnostics
-        h.SignColumn = { bg = bg_sidebar }
-        h.TodoSignTEST = { bg = bg_sidebar, fg = c.red }
-        h.TodoSignPERF = { bg = bg_sidebar, fg = c.yellow }
-        h.TodoSignFIX = { bg = bg_sidebar, fg = c.green }
-        h.TodoSignWARN = { bg = bg_sidebar, fg = c.yellow }
-        h.TodoSignHACK = { bg = bg_sidebar, fg = c.red }
-        h.TodoSignNOTE = { bg = bg_sidebar, fg = c.cyan }
-        h.TodoSignTODO = { bg = bg_sidebar, fg = c.blue }
-      end,
+      -- on_highlights = function(h, c)
+      --   local bg = c.bg_dim
+      --
+      --   h.SnacksPickerBorder = { fg = c.border, bg = bg }
+      --   h.SnacksPickerFooter = { bg = bg }
+      --   h.SnacksPickerTitle = { bg = bg, fg = c.border_highlight }
+      --   h.SnacksPicker = { bg = bg }
+      --   h.SnacksPickerCol = { bg = bg }
+      --   h.SnacksPickerTree = { bg = bg }
+      --
+      --   h.NoiceCmdlinePopup = { bg = c.bg_main }
+      --   h.NoiceCmdlineIcon = { bg = c.bg_main }
+      --   h.NoiceCmdlinePopupBorder = { bg = c.bg_main }
+      --
+      --   -- h.LeapLabel = { fg = c.fg_main, bg = c.bg_yellow_intense }
+      --   local bg_sidebar = c.bg_sidebar
+      --   h.DiagnosticSignWarn = { bg = bg_sidebar, fg = c.yellow }
+      --   h.DiagnosticSignError = { bg = bg_sidebar, fg = c.red }
+      --   h.DiagnosticSignHint = { bg = bg_sidebar, fg = c.cyan }
+      --   h.DiagnosticSignInfo = { bg = bg_sidebar, fg = c.blue }
+      --   -- NOTE: this is for all the todo diagnostics
+      --   h.SignColumn = { bg = bg_sidebar }
+      --   h.TodoSignTEST = { bg = bg_sidebar, fg = c.red }
+      --   h.TodoSignPERF = { bg = bg_sidebar, fg = c.yellow }
+      --   h.TodoSignFIX = { bg = bg_sidebar, fg = c.green }
+      --   h.TodoSignWARN = { bg = bg_sidebar, fg = c.yellow }
+      --   h.TodoSignHACK = { bg = bg_sidebar, fg = c.red }
+      --   h.TodoSignNOTE = { bg = bg_sidebar, fg = c.cyan }
+      --   h.TodoSignTODO = { bg = bg_sidebar, fg = c.blue }
+      -- end,
     },
   },
   -- {
@@ -74,16 +75,8 @@ return {
   {
     "zenbones-theme/zenbones.nvim",
     enabled = false,
-    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-    -- In Vim, compat mode is turned on as Lush only works in Neovim.
     dependencies = "rktjmp/lush.nvim",
     lazy = false,
     priority = 1000,
-    -- you can set set configuration options here
-    -- config = function()
-    --     vim.g.zenbones_darken_comments = 45
-    --     vim.cmd.colorscheme('zenbones')
-    -- end
   },
 }

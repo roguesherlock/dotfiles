@@ -14,8 +14,8 @@ M.config = {
     dark = "modus",
   },
   ghostty = {
-    light = "xcodelighthc",
-    dark = "Builtin Pastel Dark",
+    light = "Github-Light-Default",
+    dark = "Github-Dark-Default",
     -- light = "catppuccin-latte",
     -- dark = "catppuccin-mocha",
     custom_theme = false,

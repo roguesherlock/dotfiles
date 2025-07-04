@@ -18,34 +18,13 @@
     "commit_message_model": {
       "provider": "google",
       "model": "gemini-2.5-flash-preview-05-20"
-    },
-    "version": "2"
+    }
   },
-  "edit_prediction_provider": "supermaven",
   "context_servers": {
-    // "convex": {
-    //   "command": {
-    //     "path": "bunx",
-    //     "args": ["-y", "convex@latest", "mcp", "start"],
-    //     "env": null
-    //   },
-    //   "settings": {}
-    // },
-    // "context7": {
-    //   "command": {
-    //     "path": "bunx",
-    //     "args": ["-y", "@upstash/context7-mcp@latest"],
-    //     "env": null
-    //   },
-    //   "settings": {}
-    // },
     "effect docs": {
       "source": "custom",
-      "command": {
-        "path": "bunx",
-        "args": ["-y", "effect-mcp"]
-      },
-      "settings": {}
+      "command": "bunx",
+      "args": ["-y", "effect-mcp"]
     }
   },
   "theme": {
@@ -53,7 +32,7 @@
     "dark": "One Dark",
     "light": "One Light"
   },
-  "collab_panel": {
+  "collaboration_panel": {
     "button": false
   },
   "project_panel": {
@@ -66,6 +45,9 @@
     "indent_size": 20,
     "auto_reveal_entries": true,
     "auto_fold_dirs": true
+  },
+  "features": {
+    "edit_prediction_provider": "supermaven"
   },
   "ui_font_size": 13,
   "ui_font_family": "Geist Mono",
