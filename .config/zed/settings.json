@@ -46,9 +46,9 @@
     "auto_reveal_entries": true,
     "auto_fold_dirs": true
   },
-  "features": {
-    "edit_prediction_provider": "supermaven"
-  },
+  // "features": {
+  //   "edit_prediction_provider": "supermaven"
+  // },
   "ui_font_size": 13,
   "ui_font_family": "Geist Mono",
   "buffer_font_size": 14,
