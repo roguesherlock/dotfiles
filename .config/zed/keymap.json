@@ -17,11 +17,10 @@
     }
   },
   {
-    "context": "Dock",
     "bindings": {
       "cmd-1": "project_panel::ToggleFocus",
       "cmd-2": "git_panel::ToggleFocus",
-      "cmd-3": "outline_panel::ToggleFocus"
+      "cmd-3": "agent::ToggleFocus"
     }
   },
   {
