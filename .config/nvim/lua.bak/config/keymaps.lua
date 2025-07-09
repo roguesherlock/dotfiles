@@ -1,0 +1,90 @@
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+local function map(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.noremap = opts.noremap == nil and true or opts.noremap
+  opts.silent = opts.silent == nil and true or opts.silent
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
+
+-- return early if we're in vscode
+if vim.g.vscode then
+  local vscode = require("vscode")
+
+  vim.notify = vscode.notify
+
+  map({ "n" }, "[[", function()
+    vscode.action("editor.action.wordHighlight.prev")
+  end)
+
+  map({ "n" }, "]]", function()
+    vscode.action("editor.action.wordHighlight.next")
+  end)
+
+  map("n", ",", "za", { desc = "Toggle fold" })
+  map("n", ",", function()
+    vscode.action("editor.toggleFold")
+  end, { desc = "[W]indow Split [V]ertical" })
+
+  map("n", "<leader>tw", function()
+    vscode.action("editor.action.toggleWordWrap")
+  end, { desc = "[T]oggle [W]rap" })
+
+  map("n", "<leader>wv", function()
+    vscode.action("workbench.action.splitEditor")
+  end, { desc = "[W]indow Split [V]ertical" })
+
+  map("n", "<leader>wd", function()
+    vscode.action("workbench.action.closeEditorsInGroup")
+  end, { desc = "[W]indow [D]elete" })
+
+  return
+end
+
+-- don't overide the register when pasting over a visual selection
+map("x", "p", '"_dP')
+map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+-- map({ "i", "x", "n", "s" }, "<esc><esc>", "<cmd>w<CR>", { desc = "Save file" })
+
+map({ "n", "v" }, "<leader>e", function()
+  local MiniFiles = require("mini.files")
+  if not MiniFiles.close() then
+    local is_buffer_a_file = (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "")
+    if is_buffer_a_file then
+      MiniFiles.open(vim.api.nvim_buf_get_name(0))
+    else
+      MiniFiles.open()
+    end
+  end
+end, { desc = "Toggle file [E]xplorer", noremap = true })
+
+map("n", ",", "za", { desc = "Toggle fold" })
+
+map("n", "<leader>tw", "<cmd>set wrap!<cr>", { desc = "[T]oggle [W]rap" })
+
+map("n", "E", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+
+map("n", "<leader>cx", ":.lua<CR>", { desc = "[C]ode E[x]ecute lua" })
+map("v", "<leader>cx", ":lua =<CR>", { desc = "[C]ode E[x]ecute lua" })
+
+map("n", "<leader>tt", function()
+  local colorscheme = require("user.colorscheme")
+  if vim.o.background == "light" then
+    colorscheme.set_colorscheme(false)
+  else
+    colorscheme.set_colorscheme(true)
+  end
+end, { desc = "[T]oggle [T]heme" })
+
+-- TODO: Figure out why the fuck does lazyvim override my keymaps
+-- vim.schedule(function()
+--   map("n", "<leader>ff", "<cmd>FzfLua git_files<cr>", {
+--     desc = "Find Files (git_files)",
+--     noremap = true,
+--     silent = true,
+--     buffer = -1, -- Apply to all buffers
+--   })
+-- end)
+
+map("n", "<leader>cL", ":LspRestart<cr>", { desc = "Restart LSP server" })
