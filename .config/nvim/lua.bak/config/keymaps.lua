@@ -1,6 +1,8 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- Set leader keys
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+
+-- Helper function for mapping
 local function map(mode, lhs, rhs, opts)
   opts = opts or {}
   opts.noremap = opts.noremap == nil and true or opts.noremap
@@ -8,83 +10,129 @@ local function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- return early if we're in vscode
-if vim.g.vscode then
-  local vscode = require("vscode")
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
 
-  vim.notify = vscode.notify
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
-  map({ "n" }, "[[", function()
-    vscode.action("editor.action.wordHighlight.prev")
-  end)
+-- buffers
+map("n", "<S-h>", "<cmd>e #<cr>", { desc = "Other Buffer" })
+map("n", "<S-l>", "<cmd>e #<cr>", { desc = "Other Buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev [B]uffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next [B]uffer" })
+map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "[B]uffer [N]ew" })
 
-  map({ "n" }, "]]", function()
-    vscode.action("editor.action.wordHighlight.next")
-  end)
+--keywordprg
+-- See `:help 'keywordprg'`
+map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
-  map("n", ",", "za", { desc = "Toggle fold" })
-  map("n", ",", function()
-    vscode.action("editor.toggleFold")
-  end, { desc = "[W]indow Split [V]ertical" })
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-  map("n", "<leader>tw", function()
-    vscode.action("editor.action.toggleWordWrap")
-  end, { desc = "[T]oggle [W]rap" })
+-- Diagnostic keymaps
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
-  map("n", "<leader>wv", function()
-    vscode.action("workbench.action.splitEditor")
-  end, { desc = "[W]indow Split [V]ertical" })
+-- quickfix list
+map("n", "<leader>xx", "<cmd>copen<cr>", { desc = "Open [X]Quikfi[X] list" })
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open [L]ocal [X]Quikfi[X] list" })
 
-  map("n", "<leader>wd", function()
-    vscode.action("workbench.action.closeEditorsInGroup")
-  end, { desc = "[W]indow [D]elete" })
-
-  return
-end
-
--- don't overide the register when pasting over a visual selection
-map("x", "p", '"_dP')
-map({ "i", "x", "n", "s" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
--- map({ "i", "x", "n", "s" }, "<esc><esc>", "<cmd>w<CR>", { desc = "Save file" })
-
-map({ "n", "v" }, "<leader>e", function()
-  local MiniFiles = require("mini.files")
-  if not MiniFiles.close() then
-    local is_buffer_a_file = (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "")
-    if is_buffer_a_file then
-      MiniFiles.open(vim.api.nvim_buf_get_name(0))
-    else
-      MiniFiles.open()
+-- quit
+local function quit_with_prompt()
+  local modified_buffers = {}
+  for _, buf in ipairs(vim.fn.getbufinfo({ bufmodified = 1 })) do
+    if buf.changed == 1 then
+      table.insert(modified_buffers, buf)
     end
   end
-end, { desc = "Toggle file [E]xplorer", noremap = true })
 
+  if #modified_buffers == 0 then
+    vim.cmd("qa")
+    return
+  end
+
+  for _, buf in ipairs(modified_buffers) do
+    local choice = vim.fn.confirm("Save changes to " .. buf.name .. "?", "&Yes\n&No\n&Cancel", 1)
+    if choice == 1 then -- Yes
+      vim.api.nvim_buf_call(buf.bufnr, function()
+        vim.cmd("write")
+      end)
+    elseif choice == 2 then -- No
+      vim.cmd("qa!")
+      -- Do nothing, continue to next buffer
+    else -- Cancel or any other input
+      return -- Stop the quit process
+    end
+  end
+
+  vim.cmd("qa")
+end
+map("n", "<leader>wq", quit_with_prompt, { desc = "[W]orkspace [Q]uit All" })
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+--  See `:help wincmd` for a list of all window commands
+map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<leader>wv", "<C-w><C-v>", { desc = "Split [W]indow [V]ertically" })
+map("n", "<leader>wd", "<C-w>q", { desc = "[W]indow [D]elete" })
+
+-- Save
+map("n", "<D-s>", ":w<CR>", { desc = "Save file" })
+map("n", "<esc><esc>", ":w<CR>", { desc = "Save file" })
+
+map("n", "J", "mzJ`z", { desc = "Delete line and join with next line" })
+
+-- cursor should stay centered while scrolling through results
+map("n", "n", "nzzzv", { desc = "Move to next search result and keep window centered" })
+map("n", "N", "Nzzzv", { desc = "Move to previous search result and keep window centered" })
+
+-- Move lines
+map("n", "<a-j>", ":m .+1<cr>==", { desc = "Move line down" })
+map("n", "<a-k>", ":m .-2<cr>==", { desc = "Move line up" })
+
+map("v", "<a-j>", ":m '>+1<cr>gv=gv", { desc = "Move line down" })
+map("v", "<a-k>", ":m '<-2<cr>gv=gv", { desc = "Move line up" })
+
+-- Highlight matches with +
+map("n", "+", "*N", { desc = "Highlight all matches" })
+
+-- Use <c-g> to change ocurrences of a word/selection one by one
+map("n", "<c-g>", "*`'cgn", { desc = "Change next ocurrence" })
+map("v", "<c-g>", "y<cmd>let @/=escape(@\", '/')<cr>\"_cgn", { desc = "Change next ocurrence (visual)" })
+
+-- Block indentation (easier)
+map("n", ">", ">>", { desc = "Indent right" })
+map("n", "<", "<<", { desc = "Indent left" })
+map("v", ">", ">gv", { desc = "Indent selection right" })
+map("v", "<", "<gv", { desc = "Indent selection left" })
+
+-- paste without overwriting register
+map("v", "p", '"_dP')
+
+-- Fold --
 map("n", ",", "za", { desc = "Toggle fold" })
 
+-- Resize --
+map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- Toggle wrap
 map("n", "<leader>tw", "<cmd>set wrap!<cr>", { desc = "[T]oggle [W]rap" })
 
-map("n", "E", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-
-map("n", "<leader>cx", ":.lua<CR>", { desc = "[C]ode E[x]ecute lua" })
-map("v", "<leader>cx", ":lua =<CR>", { desc = "[C]ode E[x]ecute lua" })
-
-map("n", "<leader>tt", function()
-  local colorscheme = require("user.colorscheme")
-  if vim.o.background == "light" then
-    colorscheme.set_colorscheme(false)
-  else
-    colorscheme.set_colorscheme(true)
-  end
-end, { desc = "[T]oggle [T]heme" })
-
--- TODO: Figure out why the fuck does lazyvim override my keymaps
--- vim.schedule(function()
---   map("n", "<leader>ff", "<cmd>FzfLua git_files<cr>", {
---     desc = "Find Files (git_files)",
---     noremap = true,
---     silent = true,
---     buffer = -1, -- Apply to all buffers
---   })
--- end)
-
-map("n", "<leader>cL", ":LspRestart<cr>", { desc = "Restart LSP server" })
+-- Export the map function for use in plugin configs
+return { map = map }

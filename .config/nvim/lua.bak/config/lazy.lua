@@ -1,3 +1,4 @@
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -14,71 +15,29 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- add LazyVim and import its plugins
-    {
-      "LazyVim/LazyVim",
-      import = "lazyvim.plugins",
-    },
-    -- import/override with your plugins
+    -- Import plugins from lua/plugins/
     { import = "plugins" },
-    {
-      {
-        dir = "~/.config/nvim/lua",
-        name = "user.colorscheme",
-        priority = 1000,
-        config = function()
-          require("user.colorscheme").setup({
-            nvim = {
-              -- light = "tokyonight",
-              -- dark = "tokyonight",
-              -- light = "modus",
-              -- dark = "modus",
-
-              -- light = "melange",
-              -- dark = "melange",
-            },
-            ghostty = {
-              -- light = "Github-Light-High-Contrast",
-              -- dark = "Github-Dark-High-Contrast",
-
-              -- light = "Melange_Light",
-              -- dark = "Melange_Dark",
-
-              -- light = "tokyonight-day",
-              -- dark = "tokyonight",
-            },
-            -- kitty = {
-            --   dark = "Rosé Pine",
-            -- },
-          })
-        end,
-      },
-    },
   },
   defaults = {
-    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
-    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+    -- By default, plugins will be lazy-loaded. Set to false to load during startup.
     lazy = false,
     -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
     -- have outdated releases, which may break your Neovim install.
     version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "miikanissi/modus-themes.nvim", "habamax" } },
+  install = { colorscheme = { "habamax" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
-  }, -- automatically check for plugin updates
+  },
   performance = {
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
