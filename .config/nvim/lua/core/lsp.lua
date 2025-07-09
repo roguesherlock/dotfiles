@@ -1,4 +1,6 @@
 vim.diagnostic.config({
+  virtual_text = { current_line = true, severity = { min = "INFO", max = "WARN" } },
+  virtual_lines = { current_line = true, severity = { min = "ERROR" } },
   severity_sort = true,
   float = {
     border = "rounded",
@@ -10,10 +12,6 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.WARN] = "●",
       [vim.diagnostic.severity.INFO] = "●",
       [vim.diagnostic.severity.HINT] = "●",
-    },
-    numhl = {
-      [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-      [vim.diagnostic.severity.WARN] = "WarningMsg",
     },
   },
 })
@@ -90,6 +88,7 @@ local vue_ls_config = {
     end
   end,
 }
+
 vim.lsp.config("vtsls", vtsls_config)
 vim.lsp.config("vue_ls", vue_ls_config)
 vim.lsp.enable({ "vtsls", "vue_ls" })
