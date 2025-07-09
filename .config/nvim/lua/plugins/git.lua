@@ -92,9 +92,8 @@ return {
         graph_style = "kitty",
       })
 
-      local map = require("config.keymaps").map
+      local map = require("user.util").map
       map("n", "<leader>gn", "<cmd>Neogit<cr>", { desc = "[G]it Open [N]eogit" })
     end,
   },
 }
-

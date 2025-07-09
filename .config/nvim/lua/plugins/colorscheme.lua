@@ -1,5 +1,13 @@
 return {
   {
+    dir = "~/.config/nvim/lua",
+    name = "user.colorscheme",
+    priority = 1000,
+    config = function()
+      require("user.colorscheme").setup({})
+    end,
+  },
+  {
     "folke/tokyonight.nvim",
     opts = {
       day_brightness = 0.2,

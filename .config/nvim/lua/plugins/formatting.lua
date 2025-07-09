@@ -5,7 +5,7 @@ return {
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     config = function()
-      local map = require("config.keymaps").map
+      local map = require("user.util").map
 
       -- use deno_fmt if in deno project, otherwise prettier
       local javascript_formatter = function(bufnr)
@@ -109,4 +109,3 @@ return {
     end,
   },
 }
-

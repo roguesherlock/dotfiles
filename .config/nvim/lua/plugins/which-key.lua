@@ -26,7 +26,7 @@ return {
           { "w", proxy = "<c-w>", group = "[W]indow" },
         },
       })
-      local map = require("config.keymaps").map
+      local map = require("user.util").map
       map("n", "<leader>?", function()
         wk.show({ global = false })
       end, { desc = "[?] Show buffer keymaps" })

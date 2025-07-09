@@ -1,30 +1,4 @@
 return {
-  { "echasnovski/mini.comment" },
-  { "echasnovski/mini.indentscope" },
-  {
-    "saghen/blink.indent",
-    enabled = false,
-    opts = {},
-  },
-  { "echasnovski/mini.ai" },
-  -- { "echasnovski/mini.pairs", enabled = false },
-  {
-    "saghen/blink.pairs",
-    version = "*",
-    dependencies = "saghen/blink.download",
-    opts = {},
-  },
-  { "echasnovski/mini.hipatterns" },
-  { "echasnovski/mini.splitjoin" },
-  -- Snacks for various utilities
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    opts = {
-      notifier = { enabled = false },
-    },
-    keys = {},
-  },
 
   -- Overseer for task running
   {
@@ -66,7 +40,7 @@ return {
         },
       })
 
-      local map = require("config.keymaps").map
+      local map = require("user.util").map
       map("n", "<leader>wtl", "<cmd>OverseerToggle<cr>", { desc = "[W]orkspace [T]asks [L]ist" })
       map("n", "<leader>wtr", "<cmd>OverseerRun<cr>", { desc = "[W]orkspace [T]asks [R]un" })
       map("n", "<leader>wtq", "<cmd>OverseerQuickAction<cr>", { desc = "[W]orkspace [T]asks [Q]uick Run" })
@@ -110,30 +84,26 @@ return {
       })
     end,
   },
-
-  -- Markdown rendering
+  -- Zen mode for distraction-free writing
   {
-    "OXY2DEV/markview.nvim",
-    ft = { "markdown", "quarto", "rmd", "codecompanion", "Avante", "avante" },
+    "folke/zen-mode.nvim",
+    dependencies = { "folke/twilight.nvim" },
+    cmd = "ZenMode",
     config = function()
-      require("markview").setup({
-        filetypes = { "markdown", "quarto", "rmd", "codecompanion", "Avante", "avante" },
-      })
+      local map = require("user.util").map
+      map("n", "<leader>z", ":ZenMode<cr>", { desc = "Toggle [Z]en mode" })
     end,
   },
-
-  -- Multi-cursor support
+  -- Nvim recorder for macros
   {
-    "smoka7/multicursors.nvim",
-    dependencies = {
-      "nvimtools/hydra.nvim",
-    },
-    cmd = "MCstart",
+    "chrisgrieser/nvim-recorder",
     config = function()
-      require("multicursors").setup({})
-
-      local map = require("config.keymaps").map
-      map({ "n", "v" }, "<leader>m", "<cmd>MCstart<cr>", { desc = "Multi Cursor" })
+      require("recorder").setup({
+        mapping = {
+          startStopRecording = "q",
+          playMacro = "Q",
+        },
+      })
     end,
   },
 }

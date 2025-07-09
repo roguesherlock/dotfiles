@@ -1,138 +1,198 @@
 return {
+  { "windwp/nvim-ts-autotag" },
+  { "echasnovski/mini.comment" },
+  { "echasnovski/mini.indentscope" },
   {
-    "bassamsdata/namu.nvim",
+    "saghen/blink.indent",
     enabled = false,
-    config = function()
-      require("namu").setup({
-        -- Enable the modules you want
-        namu_symbols = {
-          enable = true,
-          options = {}, -- here you can configure namu
-        },
-        -- Optional: Enable other modules if needed
-        colorscheme = {
-          enable = false,
-          options = {
-            -- NOTE: if you activate persist, then please remove any vim.cmd("colorscheme ...") in your config, no needed anymore
-            persist = true, -- very efficient mechanism to Remember selected colorscheme
-            write_shada = false, -- If you open multiple nvim instances, then probably you need to enable this
-          },
-        },
-        ui_select = { enable = false }, -- vim.ui.select() wrapper
-      })
-      -- === Suggested Keymaps: ===
-      local namu = require("namu.namu_symbols")
-      local colorscheme = require("namu.colorscheme")
-      vim.keymap.set("n", "<leader>ss", namu.show, {
-        desc = "Jump to LSP symbol",
-        silent = true,
-      })
-      vim.keymap.set("n", "<leader>th", colorscheme.show, {
-        desc = "Colorscheme Picker",
-        silent = true,
-      })
-    end,
+    opts = {},
   },
+  { "echasnovski/mini.ai" },
+  -- { "echasnovski/mini.pairs", enabled = false },
   {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    enabled = false,
-    event = "VeryLazy", -- Or `LspAttach`
-    priority = 1000, -- needs to be loaded in first
-    config = function()
-      require("tiny-inline-diagnostic").setup()
-    end,
+    "saghen/blink.pairs",
+    version = "*",
+    dependencies = "saghen/blink.download",
+    opts = {},
   },
+  { "echasnovski/mini.hipatterns" },
+  { "echasnovski/mini.splitjoin" },
+  -- Snacks for various utilities
   {
-    "chrisgrieser/nvim-recorder",
-    enabled = false,
-    keys = {
-      -- these must match the keys in the mapping config below
-      { "q", desc = " Start Recording" },
-      { "Q", desc = " Play Recording" },
-    },
+    "folke/snacks.nvim",
+    priority = 1000,
     opts = {
-      mapping = {
-        startStopRecording = "q",
-        playMacro = "Q",
+      indent = {
+        enabled = false,
       },
+      notifier = { enabled = false },
     },
-  },
-  {
-    "leath-dub/snipe.nvim",
-    enabled = not vim.g.vscode,
     keys = {
       {
-        "gb",
+        "<leader>gg",
         function()
-          require("snipe").open_buffer_menu()
+          Snacks.lazygit()
         end,
-        desc = "Open Snipe buffer menu",
+        desc = "Lazygit",
       },
-    },
-    opts = {
-      hints = {
-        -- Charaters to use for hints (NOTE: make sure they don't collide with the navigation keymaps)
-        dictionary = "sadflewvrcmnpghioty",
+      {
+        "<c-/>",
+        function()
+          Snacks.terminal()
+        end,
+        desc = "Toggle Terminal",
       },
-      navigate = {
-        next_page = "<c-n>",
-        prev_page = "<c-p>",
-        close_buffer = "<c-d>",
-        open_vsplit = "<c-v>",
-        open_hsplit = "<c-h>",
-        cancel_snipe = "q",
+      {
+        "<c-_>",
+        function()
+          Snacks.terminal()
+        end,
+        desc = "which_key_ignore",
+      },
+      {
+        "]]",
+        function()
+          Snacks.words.jump(vim.v.count1)
+        end,
+        desc = "Next Reference",
+        mode = { "n", "t" },
+      },
+      {
+        "[[",
+        function()
+          Snacks.words.jump(-vim.v.count1)
+        end,
+        desc = "Prev Reference",
+        mode = { "n", "t" },
+      },
+      {
+        "<leader>n",
+        function()
+          Snacks.notifier.show_history()
+        end,
+        desc = "Notification History",
+      },
+      {
+        "<leader>bd",
+        function()
+          Snacks.bufdelete()
+        end,
+        desc = "Delete Buffer",
+      },
+      {
+        "<leader>gB",
+        function()
+          Snacks.gitbrowse()
+        end,
+        desc = "Git Browse",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>.",
+        function()
+          Snacks.scratch()
+        end,
+        desc = "Toggle Scratch Buffer",
       },
     },
   },
-  -- {
-  --   "folke/zen-mode.nvim",
-  --   dependencies = {
-  --     "folke/twilight.nvim",
-  --   },
-  --   keys = {
-  --     { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" },
-  --   },
-  -- },
+  -- Trouble for diagnostics
   {
-    "stevearc/conform.nvim",
-    enabled = not vim.g.vscode,
-    opts = {
-      formatters_by_ft = {
-        blade = { "blade-formatter" },
-        php = { "pint" },
-      },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "blade",
-      },
-    },
-    config = function(_, opts)
-      -- Blade --
-      -- Filetypes --
-      vim.filetype.add({
-        pattern = {
-          [".*%.blade%.php"] = "blade",
-        },
-      })
-      require("nvim-treesitter.configs").setup(opts)
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config.blade = {
-        install_info = {
-          url = "https://github.com/EmranMR/tree-sitter-blade",
-          files = { "src/parser.c" },
-          branch = "main",
-        },
-        filetype = "blade",
-      }
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    config = function()
+      require("trouble").setup({})
+      local map = require("user.util").map
+      map("n", "<leader>d", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Toggle trouble diagnostics" })
+      map("n", "<leader>q", "<cmd>Trouble qflist toggle<cr>", { desc = "Toggle trouble [Q]uickfix" })
     end,
   },
+
+  -- Noice for better UI
   {
-    "luckasRanarison/tailwind-tools.nvim",
-    enabled = not vim.g.vscode,
-    build = ":UpdateRemotePlugins",
+    "folke/noice.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      require("noice").setup({
+        notify = {
+          enabled = false,
+        },
+        lsp = {
+          hover = {
+            silent = true,
+          },
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          },
+        },
+        views = {
+          mini = {
+            win_options = {
+              winblend = 0,
+            },
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true, -- add a border to hover docs and signature help
+        },
+      })
+    end,
+  },
+  -- Todo comments
+  {
+    "folke/todo-comments.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("todo-comments").setup({
+        signs = false,
+      })
+      local map = require("user.util").map
+      map("n", "]t", function()
+        require("todo-comments").jump_next({ "FIX", "TODO" })
+      end, { desc = "Next todo comment" })
+
+      map("n", "[t", function()
+        require("todo-comments").jump_prev({ "FIX", "TODO" })
+      end, { desc = "Previous todo comment" })
+
+      map("n", "<leader>xt", "<cmd>TodoQuickFix<cr>", { desc = "Open Todo" })
+    end,
+  },
+
+  -- Markdown rendering
+  {
+    "OXY2DEV/markview.nvim",
+    ft = { "markdown", "quarto", "rmd", "codecompanion", "Avante", "avante" },
+    config = function()
+      require("markview").setup({
+        filetypes = { "markdown", "quarto", "rmd", "codecompanion", "Avante", "avante" },
+      })
+    end,
+  },
+
+  -- Multi-cursor support
+  {
+    "smoka7/multicursors.nvim",
+    dependencies = {
+      "nvimtools/hydra.nvim",
+    },
+    cmd = "MCstart",
+    config = function()
+      require("multicursors").setup({})
+
+      local map = require("user.util").map
+      map({ "n", "v" }, "<leader>m", "<cmd>MCstart<cr>", { desc = "Multi Cursor" })
+    end,
   },
 }
