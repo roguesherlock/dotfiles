@@ -14,8 +14,8 @@ M.config = {
     dark = "modus",
   },
   ghostty = {
-    light = "Builtin Tango Light",
-    dark = "Builtin Pastel Dark",
+    light = "Github-Light-High-Contrast",
+    dark = "Github-Dark-High-Contrast",
     -- light = "catppuccin-latte",
     -- dark = "catppuccin-mocha",
     custom_theme = false,
