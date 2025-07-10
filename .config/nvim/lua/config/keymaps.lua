@@ -75,13 +75,15 @@ map("n", "<leader>wq", quit_with_prompt, { desc = "[W]orkspace [Q]uit All" })
 -- or just use <C-\><C-n> to exit terminal mode
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+-- NOTE: we use `w` keybind for window management
 --  See `:help wincmd` for a list of all window commands
-map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-map("n", "<leader>wv", "<C-w><C-v>", { desc = "Split [W]indow [V]ertically" })
-map("n", "<leader>wd", "<C-w>q", { desc = "[W]indow [D]elete" })
+-- map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+-- map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+-- map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+-- map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- map("n", "<leader>wv", "<C-w><C-v>", { desc = "Split [W]indow [V]ertically" })
+-- map("n", "<leader>wd", "<C-w>q", { desc = "[W]indow [D]elete" })
+map("n", "wm", "<C-w>|", { desc = "[W]indow [M]aximize" })
 
 -- Save
 map("n", "<D-s>", ":w<CR>", { desc = "Save file" })
@@ -117,7 +119,7 @@ map("v", "<", "<gv", { desc = "Indent selection left" })
 map("v", "p", '"_dP')
 
 -- Fold --
-map("n", ",", "za", { desc = "Toggle fold" })
+map("n", "<leader>,", "za", { desc = "Toggle fold" })
 
 -- Resize --
 map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })

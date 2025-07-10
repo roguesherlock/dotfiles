@@ -83,6 +83,7 @@ return {
       "sindrets/diffview.nvim",
     },
     cmd = "Neogit",
+    event = "VeryLazy",
     config = function()
       require("neogit").setup({
         integrations = {

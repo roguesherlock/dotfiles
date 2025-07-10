@@ -10,6 +10,7 @@ return {
   -- Harpoon for quick file navigation
   {
     "ThePrimeagen/harpoon",
+    event = "VeryLazy",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -42,7 +43,7 @@ return {
   -- Snipe for buffer navigation
   {
     "leath-dub/snipe.nvim",
-    keys = { "gb" },
+    event = "VeryLazy",
     config = function()
       require("snipe").setup({
         ui = {

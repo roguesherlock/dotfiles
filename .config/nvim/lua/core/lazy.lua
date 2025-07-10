@@ -21,7 +21,7 @@ require("lazy").setup({
     -- Import plugins from lua/plugins/
     { import = "plugins" },
   },
-  install = { colorscheme = { "habamax" } },
+  install = { colorscheme = { "modus" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
   },

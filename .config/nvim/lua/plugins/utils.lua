@@ -3,6 +3,7 @@ return {
   -- Overseer for task running
   {
     "stevearc/overseer.nvim",
+    event = "VeryLazy",
     cmd = {
       "OverseerRun",
       "OverseerToggle",
@@ -87,6 +88,7 @@ return {
   -- Zen mode for distraction-free writing
   {
     "folke/zen-mode.nvim",
+    event = "VeryLazy",
     dependencies = { "folke/twilight.nvim" },
     cmd = "ZenMode",
     config = function()

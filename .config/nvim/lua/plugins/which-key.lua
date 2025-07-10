@@ -16,7 +16,7 @@ return {
           { "<leader>s", group = "[S]earch" },
           { "<leader>b", group = "[B]uffer" },
           { "<leader>g", group = "[G]it" },
-          { "<leader>w", group = "[W]orkspace" },
+          { "<leader>w", group = "[W]orkspace / [W]indow" },
           { "<leader>wt", group = "[W]orkspace [T]asks" },
           { "<leader>t", group = "[T]oggle" },
           { "<leader>tg", group = "[T]oggle [G]it" },

@@ -1,11 +1,14 @@
 return {
   { "windwp/nvim-ts-autotag" },
   { "echasnovski/mini.comment" },
-  { "echasnovski/mini.indentscope" },
   {
     "saghen/blink.indent",
-    enabled = false,
-    opts = {},
+    enabled = true,
+    opts = {
+      static = {
+        enabled = false,
+      },
+    },
   },
   { "echasnovski/mini.ai" },
   -- { "echasnovski/mini.pairs", enabled = false },
@@ -22,10 +25,18 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     opts = {
-      indent = {
-        enabled = false,
-      },
+      bigfile = { enabled = true },
+      dashboard = { enabled = false },
+      explorer = { enabled = false },
+      indent = { enabled = false },
+      input = { enabled = false },
       notifier = { enabled = false },
+      picker = { enabled = false },
+      quickfile = { enabled = true },
+      scope = { enabled = false },
+      scroll = { enabled = false },
+      statuscolumn = { enabled = false },
+      words = { enabled = true },
     },
     keys = {
       {
@@ -41,6 +52,7 @@ return {
           Snacks.terminal()
         end,
         desc = "Toggle Terminal",
+        mode = { "n", "t" },
       },
       {
         "<c-_>",
@@ -100,6 +112,7 @@ return {
   {
     "folke/trouble.nvim",
     cmd = "Trouble",
+    event = "VeryLazy",
     config = function()
       require("trouble").setup({})
       local map = require("user.util").map
@@ -184,6 +197,7 @@ return {
   -- Multi-cursor support
   {
     "smoka7/multicursors.nvim",
+    event = "VeryLazy",
     dependencies = {
       "nvimtools/hydra.nvim",
     },

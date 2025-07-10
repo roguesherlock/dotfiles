@@ -2,7 +2,7 @@ return {
   -- Supermaven AI completion
   {
     "supermaven-inc/supermaven-nvim",
-    event = "InsertEnter",
+    event = { "InsertEnter", "VeryLazy" },
     config = function()
       require("supermaven-nvim").setup({ log_level = "off" })
       local map = require("user.util").map
@@ -21,6 +21,7 @@ return {
   -- CodeCompanion AI chat
   {
     "olimorris/codecompanion.nvim",
+    event = "VeryLazy",
     cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat" },
     config = function()
       require("codecompanion").setup({
