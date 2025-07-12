@@ -40,14 +40,15 @@
       "ctrl-space": "vim::SelectLargerSyntaxNode",
       "cmd-enter": "workspace::ToggleZoom",
       "j": ["vim::Down", { "display_lines": true }],
-      "k": ["vim::Up", { "display_lines": true }]
+      "k": ["vim::Up", { "display_lines": true }],
+      "space g B": "editor::CopyPermalinkToLine"
     }
   },
   {
     "context": "vim_mode == visual",
     "bindings": {
       "backspace": "vim::SelectSmallerSyntaxNode",
-      "shift-s": ["vim::PushAddSurrounds", {}]
+      "shift-s": "vim::PushAddSurrounds"
     }
   },
   {

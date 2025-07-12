@@ -7,6 +7,7 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "folke/tokyonight.nvim",
     opts = {
@@ -58,33 +59,28 @@ return {
       -- end,
     },
   },
-  -- {
-  --   "0xstepit/flow.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  -- },
-  -- {
-  --   "comfysage/evergarden",
-  --   priority = 1000, -- Colorscheme plugin is loaded first before any other plugins
-  --   opts = {
-  --     -- transparent_background = true,
-  --     variant = "medium", -- 'hard'|'medium'|'soft'
-  --     overrides = {}, -- add custom overrides
-  --   },
-  -- },
   {
     "rose-pine/neovim",
     name = "rose-pine",
     priority = 1000,
     enabled = false,
   },
-  { "savq/melange-nvim", priority = 1000 },
+  { "savq/melange-nvim", lazy = false, priority = 1000 },
   {
-    "zenbones-theme/zenbones.nvim",
-    enabled = false,
-    dependencies = "rktjmp/lush.nvim",
+    "sainnhe/gruvbox-material",
     lazy = false,
     priority = 1000,
+    config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.gruvbox_material_enable_italic = true
+    end,
+  },
+  {
+    "zenbones-theme/zenbones.nvim",
+    enabled = true,
+    lazy = false,
+    priority = 1000,
+    dependencies = "rktjmp/lush.nvim",
   },
 }

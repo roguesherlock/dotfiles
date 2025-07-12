@@ -35,10 +35,13 @@
   "collaboration_panel": {
     "button": false
   },
+  "git_panel": {
+    // "dock": "right"
+  },
   "project_panel": {
     "button": true,
     "default_width": 240,
-    "dock": "left",
+    // "dock": "right",
     "file_icons": true,
     "folder_icons": false,
     "git_status": true,

@@ -15,7 +15,7 @@ M.config = {
   },
   ghostty = {
     light = "Github-Light-High-Contrast",
-    dark = "Github-Dark-High-Contrast",
+    dark = "Black Metal",
     -- light = "catppuccin-latte",
     -- dark = "catppuccin-mocha",
     custom_theme = false,
