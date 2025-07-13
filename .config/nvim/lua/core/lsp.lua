@@ -1,6 +1,10 @@
 vim.diagnostic.config({
   virtual_text = { current_line = true, severity = { min = "INFO", max = "WARN" } },
   virtual_lines = { current_line = true, severity = { min = "ERROR" } },
+  update_in_insert = false,
+  -- It is annoying to see too many errors when in insert mode,
+  -- virtual_text = { current_line = true, severity = { min = "ERROR" } },
+  -- virtual_lines = { current_line = true, severity = { min = "ERROR" } },
   severity_sort = true,
   float = {
     border = "rounded",
@@ -96,12 +100,20 @@ vim.lsp.enable({ "vtsls", "vue_ls" })
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
   callback = function(event)
-    local map = function(keys, func, desc)
-      vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+    local map = function(keys, func, desc, mode)
+      vim.keymap.set(mode or "n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
     end
 
-    -- defaults:
+    -- GLOBAL DEFAULTS
     -- https://neovim.io/doc/user/news-0.11.html#_defaults
+    -- These GLOBAL keymaps are created unconditionally when Nvim starts:
+    -- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
+    -- - "gra" is mapped in Normal and Visual mode to |vim.lsp.buf.code_action()|
+    -- - "grr" is mapped in Normal mode to |vim.lsp.buf.references()|
+    -- - "gri" is mapped in Normal mode to |vim.lsp.buf.implementation()|
+    -- - "gO" is mapped in Normal mode to |vim.lsp.buf.document_symbol()|
+    -- - "grt" is mapped in Normal mode to |vim.lsp.buf.type_definition()|
+    -- - CTRL-S is mapped in Insert mode to |vim.lsp.buf.signature_help()|
 
     -- Rename the variable under your cursor.
     --  Most Language Servers support renaming across files, etc.
@@ -109,10 +121,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Execute a code action, usually your cursor needs to be on top of an error
     -- or a suggestion from your LSP for this to activate.
-    map("g.", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
+    map("g.", "<cmd>FzfLua lsp_code_actions<cr>", "Code Action", { "n", "x" })
 
     -- Find references for the word under your cursor.
-    map("grr", "<cmd>FzfLua lsp_references<cr>", "[G]oto [R]efe[r]ences")
+    map("grr", "<cmd>FzfLua lsp_references<cr>", "[G]oto [R]eference all [R]eferences")
 
     -- Jump to the implementation of the word under your cursor.
     --  Useful when your language has ways of declaring types without an actual implementation.
@@ -125,15 +137,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- WARN: This is not Goto Definition, this is Goto Declaration.
     --  For example, in C this would take you to the header.
-    map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+    map("gD", "<cmd>FzfLua lsp_declarations<cr>", "[G]oto [D]eclaration")
 
     -- Fuzzy find all the symbols in your current document.
     --  Symbols are things like variables, functions, types, etc.
-    map("gO", "<cmd>FzfLua lsp_document_symbols<cr>", "[G]oto D[O]cument Symbols")
+    map("grd", "<cmd>FzfLua lsp_document_symbols<cr>", "[G]oto [R]eference [D]ocument Symbols")
 
     -- Fuzzy find all the symbols in your current workspace.
     --  Similar to document symbols, except searches over your entire project.
-    map("gW", "<cmd>FzfLua lsp_workspace_symbols<cr>", "[G]oto [W]orkspace Symbols")
+    map("grw", "<cmd>FzfLua lsp_workspace_symbols<cr>", "[G]oto [R]eference [W]orkspace Symbols")
 
     -- Jump to the type of the word under your cursor.
     --  Useful when you're not sure what type a variable is and you want to see

@@ -21,6 +21,7 @@ return {
   -- CodeCompanion AI chat
   {
     "olimorris/codecompanion.nvim",
+    enabled = false,
     event = "VeryLazy",
     cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat" },
     config = function()

@@ -92,12 +92,6 @@ return {
       -- end,
     },
   },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    priority = 1000,
-    enabled = false,
-  },
   { "savq/melange-nvim", lazy = false, priority = 1000 },
   {
     "sainnhe/gruvbox-material",
@@ -108,12 +102,5 @@ return {
       -- directly inside the plugin declaration.
       vim.g.gruvbox_material_enable_italic = true
     end,
-  },
-  {
-    "zenbones-theme/zenbones.nvim",
-    enabled = true,
-    lazy = false,
-    priority = 1000,
-    dependencies = "rktjmp/lush.nvim",
   },
 }

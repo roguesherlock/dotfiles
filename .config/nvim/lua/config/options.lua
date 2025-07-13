@@ -1,10 +1,20 @@
 -- Enable Neovim's built-in loader
 vim.loader.enable()
 
+-- Set leader keys
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
+
+-- Enable auto write
+vim.opt.autowrite = true
+
+-- Enable smooth scroll
+vim.opt.smoothscroll = true
 
 -- Make line numbers default
 vim.opt.number = true
@@ -27,6 +37,8 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.smartindent = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
@@ -62,7 +74,8 @@ vim.opt.path:append("**")
 vim.opt.wildmenu = true
 vim.opt.wildignore:append("**/node_modules/**,**/dist/**")
 
--- Set tabstop, shiftwidth, and softtabstop to 4 spaces
+-- Set tabstop, shiftwidth, and softtabstop to 2 spaces
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2

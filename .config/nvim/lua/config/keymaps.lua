@@ -1,7 +1,3 @@
--- Set leader keys
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
 local map = require("user.util").map
 
 -- [[ Basic Keymaps ]]
@@ -119,7 +115,7 @@ map("v", "<", "<gv", { desc = "Indent selection left" })
 map("v", "p", '"_dP')
 
 -- Fold --
-map("n", "<leader>,", "za", { desc = "Toggle fold" })
+map("n", ",", "za", { desc = "Toggle fold" })
 
 -- Resize --
 map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
