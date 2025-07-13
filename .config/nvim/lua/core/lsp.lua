@@ -112,11 +112,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("g.", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
 
     -- Find references for the word under your cursor.
-    map("grr", "<cmd>FzfLua lsp_references<cr>", "[G]oto [R]eferences")
+    map("grr", "<cmd>FzfLua lsp_references<cr>", "[G]oto [R]efe[r]ences")
 
     -- Jump to the implementation of the word under your cursor.
     --  Useful when your language has ways of declaring types without an actual implementation.
-    map("gri", "<cmd>FzfLua lsp_implementations<cr>", "[G]oto [I]mplementation")
+    map("gri", "<cmd>FzfLua lsp_implementations<cr>", "[G]oto [R]eference [I]mplementation")
 
     -- Jump to the definition of the word under your cursor.
     --  This is where a variable was first declared, or where a function is defined, etc.
@@ -138,7 +138,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Jump to the type of the word under your cursor.
     --  Useful when you're not sure what type a variable is and you want to see
     --  the definition of its *type*, not where it was *defined*.
-    map("grt", "<cmd>FzfLua lsp_typedefs<cr>", "[G]oto [T]ype Definition")
+    map("grt", "<cmd>FzfLua lsp_typedefs<cr>", "[G]oto [R]eference [T]ype Definition")
 
     -- Fuzzy find all the symbols in your current workspace.
     --  Similar to document symbols, except searches over your entire project.

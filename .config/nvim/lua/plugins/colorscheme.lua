@@ -7,7 +7,40 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    opts = {
+      integrations = {
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = true,
+        mini = {
+          enabled = true,
+          indentscope_color = "",
+        },
+        blink_cmp = {
+          style = "bordered",
+        },
+        diffview = true,
+        flash = true,
+        fzf = true,
+        harpoon = true,
+        grug_far = true,
+        leap = true,
+        markdown = true,
+        markview = true,
+        mason = true,
+        noice = true,
+        copilot_vim = true,
+        overseer = true,
+        lsp_trouble = true,
+        which_key = true,
+      },
+    },
+  },
   {
     "folke/tokyonight.nvim",
     opts = {
