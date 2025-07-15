@@ -160,6 +160,10 @@ install ~/Developer/dotfiles/.config/zed/keymap.json ~/.config/zed/keymap.json
 # opencode
 install ~/Developer/dotfiles/.config/opencode ~/.config/opencode
 
+# warp
+mkdir -p ~/.warp
+install ~/Developer/dotfiles/.config/warp/keybindings.yaml ~/.warp/keybindings.yaml
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
