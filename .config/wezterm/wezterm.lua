@@ -18,9 +18,9 @@ end
 config.term = "wezterm"
 
 -- config.font = wezterm.font("Geist Mono", { weight = "Medium" })
-config.font = wezterm.font("Iosevka Term")
+-- config.font = wezterm.font("Geist Mono")
 config.font_size = 14.0
--- config.line_height = 1.2
+config.line_height = 1.2
 
 -- config.colors = colors
 -- config.window_frame = window_frame
