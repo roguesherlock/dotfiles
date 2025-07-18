@@ -79,7 +79,7 @@
       "settings": {
         "typescript": {
           "preferences": {
-            "importModuleSpecifier": "non-relative"
+            "importModuleSpecifier": "auto"
           },
           "updateImportsOnFileMove": {
             "enabled": "always"

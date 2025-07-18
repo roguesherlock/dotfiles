@@ -86,6 +86,16 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard
+-- Configure swapfile directories (create if they don't exist)
+local swap_dir = vim.fn.stdpath("state") .. "/swap"
+if vim.fn.isdirectory(swap_dir) == 0 then
+  vim.fn.mkdir(swap_dir, "p")
+end
+vim.opt.directory = swap_dir .. "//,."
+
+-- Auto-reload files changed outside of vim
+vim.opt.autoread = true
+
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
 end)

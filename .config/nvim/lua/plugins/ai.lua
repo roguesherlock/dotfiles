@@ -86,9 +86,10 @@ return {
     end,
   },
 
+  -- Magenta AI
   {
     "dlants/magenta.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false, -- you could also bind to <leader>mt
     build = "bun install --frozen-lockfile",
     keys = {
@@ -176,6 +177,33 @@ return {
           ".magenta/*.md",
         },
       },
+    },
+  },
+
+  -- opencode integration
+  {
+    "NickvanDyke/opencode.nvim",
+    dependencies = {
+      "folke/snacks.nvim",
+    },
+    opts = {
+      auto_reload = true, -- Automatically reload buffers edited by opencode
+      auto_focus = true, -- Focus the opencode window after prompting
+    },
+    -- stylua: ignore
+    keys = {
+      -- opencode.nvim exposes a general, flexible API — customize it to your workflow!
+      -- But here are some examples to get you started :)
+      { '<leader>at', function() require('opencode').toggle() end, desc = '[A]i [T]oggle opencode', },
+      { '<leader>aa', function() require('opencode').ask() end, desc = '[A] [a]sk opencode', mode = { 'n', 'v' }, },
+      { '<leader>aA', function() require('opencode').ask('@file ') end, desc = '[A]i [A]sk opencode about current file', mode = { 'n', 'v' }, },
+      { '<leader>an', function() require('opencode').command('/new') end, desc = '[A]i [N]ew session', },
+      { '<leader>ae', function() require('opencode').prompt('Explain @cursor and its context') end, desc = '[A]i [E]xplain code near cursor' },
+      { '<leader>ar', function() require('opencode').prompt('Review @file for correctness and readability') end, desc = '[A]i [R]eview file', },
+      { '<leader>af', function() require('opencode').prompt('Fix these @diagnostics') end, desc = '[A]i [F]ix errors', },
+      { '<leader>ao', function() require('opencode').prompt('Optimize @selection for performance and readability') end, desc = '[A]i [O]ptimize selection', mode = 'v', },
+      { '<leader>ad', function() require('opencode').prompt('Add documentation comments for @selection') end, desc = '[A]i [D]ocument selection', mode = 'v', },
+      { '<leader>ax', function() require('opencode').prompt('Add tests for @selection') end, desc = '[A]i [T]est selection', mode = 'v', },
     },
   },
 }

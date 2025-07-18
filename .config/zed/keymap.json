@@ -21,7 +21,9 @@
       "cmd-1": "project_panel::ToggleFocus",
       "cmd-2": "git_panel::ToggleFocus",
       "cmd-3": "editor::ToggleFocus",
-      "cmd-4": "agent::ToggleFocus"
+      "cmd-4": "agent::ToggleFocus",
+      "cmd-5": "terminal_panel::ToggleFocus",
+      "cmd-6": "debug_panel::ToggleFocus"
     }
   },
   {
