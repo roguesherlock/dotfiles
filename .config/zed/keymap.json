@@ -20,7 +20,8 @@
     "bindings": {
       "cmd-1": "project_panel::ToggleFocus",
       "cmd-2": "git_panel::ToggleFocus",
-      "cmd-3": "agent::ToggleFocus"
+      "cmd-3": "editor::ToggleFocus",
+      "cmd-4": "agent::ToggleFocus"
     }
   },
   {
@@ -63,8 +64,8 @@
       "shift-e": "editor::Hover",
       "[ [": "vim::MoveToPrevious",
       "] ]": "vim::MoveToNext",
-      "[ e": "editor::GoToPreviousDiagnostic",
-      "] e": "editor::GoToDiagnostic"
+      "[ e": ["editor::GoToPreviousDiagnostic", { "severity": "error" }],
+      "] e": ["editor::GoToDiagnostic", { "severity": "error" }]
     }
   },
   {
