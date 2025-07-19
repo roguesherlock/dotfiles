@@ -38,74 +38,17 @@ return {
       statuscolumn = { enabled = false },
       words = { enabled = true },
     },
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>gg",
-        function()
-          Snacks.lazygit()
-        end,
-        desc = "Lazygit",
-      },
-      {
-        "<c-/>",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "Toggle Terminal",
-        mode = { "n", "t" },
-      },
-      {
-        "<c-_>",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "which_key_ignore",
-      },
-      {
-        "]]",
-        function()
-          Snacks.words.jump(vim.v.count1)
-        end,
-        desc = "Next Reference",
-        mode = { "n", "t" },
-      },
-      {
-        "[[",
-        function()
-          Snacks.words.jump(-vim.v.count1)
-        end,
-        desc = "Prev Reference",
-        mode = { "n", "t" },
-      },
-      {
-        "<leader>n",
-        function()
-          Snacks.notifier.show_history()
-        end,
-        desc = "Notification History",
-      },
-      {
-        "<leader>bd",
-        function()
-          Snacks.bufdelete()
-        end,
-        desc = "Delete Buffer",
-      },
-      {
-        "<leader>gB",
-        function()
-          Snacks.gitbrowse()
-        end,
-        desc = "Git Browse",
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>.",
-        function()
-          Snacks.scratch()
-        end,
-        desc = "Toggle Scratch Buffer",
-      },
+      { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit", },
+      { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal", mode = { "n", "t" }, },
+      { "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore", },
+      { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
+      { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
+      { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History", },
+      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer", },
+      { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" }, },
+      { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer", },
     },
   },
   -- Trouble for diagnostics
@@ -171,15 +114,11 @@ return {
         signs = false,
       })
       local map = require("user.util").map
-      map("n", "]t", function()
-        require("todo-comments").jump_next({ "FIX", "TODO" })
-      end, { desc = "Next todo comment" })
-
-      map("n", "[t", function()
-        require("todo-comments").jump_prev({ "FIX", "TODO" })
-      end, { desc = "Previous todo comment" })
-
+      -- stylua: ignore start
+      map("n", "]t", function() require("todo-comments").jump_next({ "FIX", "TODO" }) end, { desc = "Next todo comment" })
+      map("n", "[t", function() require("todo-comments").jump_prev({ "FIX", "TODO" }) end, { desc = "Previous todo comment" })
       map("n", "<leader>xt", "<cmd>TodoQuickFix<cr>", { desc = "Open Todo" })
+      -- stylua: ignore end
     end,
   },
 
@@ -189,7 +128,9 @@ return {
     ft = { "markdown", "quarto", "rmd", "codecompanion", "Avante", "avante" },
     config = function()
       require("markview").setup({
-        filetypes = { "markdown", "quarto", "rmd", "codecompanion", "Avante", "avante" },
+        preview = {
+          filetypes = { "markdown", "quarto", "rmd", "codecompanion", "Avante", "avante" },
+        },
       })
     end,
   },

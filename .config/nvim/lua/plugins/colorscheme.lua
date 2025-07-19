@@ -103,9 +103,4 @@ return {
       vim.g.gruvbox_material_enable_italic = true
     end,
   },
-  {
-    "adibhanna/forest-night.nvim",
-    lazy = false,
-    priority = 1000,
-  },
 }

@@ -49,5 +49,9 @@ return {
       { "<leader>s.", "<cmd>FzfLua history<cr>", { desc = '[S]earch Recent Files ("." for repeat)' } },
       { "<leader>sb", "<cmd>FzfLua buffers<cr>", { desc = "[S]earch existing [B]uffers" } },
     },
+    config = function(_, opts)
+      require("fzf-lua").setup(opts)
+      require("fzf-lua").register_ui_select()
+    end,
   },
 }

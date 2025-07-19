@@ -47,12 +47,9 @@ return {
 
         -- Actions
         -- visual mode
-        map("v", "<leader>ghs", function()
-          gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end, { desc = "[G]it [H]unk [S]tage " })
-        map("v", "<leader>ghr", function()
-          gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end, { desc = "[G]it [H]unk [R]eset " })
+        -- stylua: ignore start
+        map("v", "<leader>ghs", function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, { desc = "[G]it [H]unk [S]tage " })
+        map("v", "<leader>ghr", function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, { desc = "[G]it [H]unk [R]eset " })
         -- normal mode
         map("n", "<leader>ghs", gitsigns.stage_hunk, { desc = "[G]it [H]unk [S]tage" })
         map("n", "<leader>ghr", gitsigns.reset_hunk, { desc = "[G]it [H]unk [R]eset" })
@@ -62,12 +59,11 @@ return {
         map("n", "<leader>ghp", gitsigns.preview_hunk, { desc = "[G]it [H]unk [p]review" })
         map("n", "<leader>gb", gitsigns.blame_line, { desc = "[G]it [B]lame line" })
         map("n", "<leader>gd", gitsigns.diffthis, { desc = "[G]it [D]iff against index" })
-        map("n", "<leader>gD", function()
-          gitsigns.diffthis("@")
-        end, { desc = "[G]it [D]iff against last commit" })
+        map("n", "<leader>gD", function() gitsigns.diffthis("@") end, { desc = "[G]it [D]iff against last commit" })
         -- Toggles
         map("n", "<leader>tgb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle [G]it show [B]lame line" })
         map("n", "<leader>tgD", gitsigns.toggle_deleted, { desc = "[T]oggle [G]it show [D]eleted" })
+        -- stylua: ignore end
       end,
     },
   },

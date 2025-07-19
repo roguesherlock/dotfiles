@@ -1,3 +1,4 @@
 ---
+"workspace:toggle_ai_assistant": none
 "editor_view:insert_autosuggestion": tab
 "input:open_completion_suggestions": ctrl-space

@@ -7,9 +7,13 @@ return {
     version = "*",
     build = "cargo build --release",
     event = "InsertEnter",
-    config = function()
+    opts = {
+      keymap = { preset = "default" },
+
+    },
+    config = function(_, opts)
       vim.g.completion = "blink"
-      require("blink.cmp").setup({})
+      require("blink.cmp").setup(opts)
     end,
   },
 }

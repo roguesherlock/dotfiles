@@ -11,7 +11,7 @@ M.config = {
   },
   nvim = {
     light = "modus",
-    dark = "modus",
+    dark = "catppuccin",
   },
   ghostty = {
     light = "Github-Light-High-Contrast",
