@@ -131,6 +131,9 @@ map("n", "E", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 map("n", "<leader>cx", ":.lua<CR>", { desc = "[C]ode E[x]ecute lua" })
 map("v", "<leader>cx", ":lua =<CR>", { desc = "[C]ode E[x]ecute lua" })
 
+map("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "[L]oad [L]azy" })
+map("n", "<leader>lm", "<cmd>Mason<CR>", { desc = "[L]oad [M]ason" })
+
 map("n", "<leader>tt", function()
   local colorscheme = require("user.colorscheme")
   if vim.o.background == "light" then

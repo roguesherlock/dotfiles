@@ -160,6 +160,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --  Similar to document symbols, except searches over your entire project.
     map("]e", "<cmd>FzfLua lsp_workspace_symbols<cr>", "[G]oto [W]orkspace Symbols")
 
+    map("<leader>lr", "<cmd>LspRestart<cr>", "[L]sp [R]estart")
+    map("<leader>li", "<cmd>LspInfo<cr>", "[l]sp [I]nfo")
+    map("<leader>lg", "<cmd>LspLog<cr>", "[l]sp lo[g]")
+
     -- NOTE: Snacks.nvim does this
     --
     -- local function client_supports_method(client, method, bufnr)
