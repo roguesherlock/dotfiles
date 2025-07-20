@@ -1,6 +1,8 @@
+local virtual_text_config = { current_line = true, severity = { min = "INFO", max = "WARN" } }
+local virtual_lines_config = { current_line = true, severity = { min = "ERROR" } }
 vim.diagnostic.config({
-  virtual_text = { current_line = true, severity = { min = "INFO", max = "WARN" } },
-  virtual_lines = { current_line = true, severity = { min = "ERROR" } },
+  virtual_text = virtual_text_config,
+  virtual_lines = virtual_lines_config,
   update_in_insert = false,
   -- It is annoying to see too many errors when in insert mode,
   -- virtual_text = { current_line = true, severity = { min = "ERROR" } },
@@ -163,44 +165,55 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>lr", "<cmd>LspRestart<cr>", "[L]sp [R]estart")
     map("<leader>li", "<cmd>LspInfo<cr>", "[l]sp [I]nfo")
     map("<leader>lg", "<cmd>LspLog<cr>", "[l]sp lo[g]")
+    map("<leader>tld", function()
+      local config = vim.diagnostic.config().virtual_lines
+      if config then
+        vim.diagnostic.config({ virtual_lines = false, virtual_text = false, underline = false })
+      else
+        vim.diagnostic.config({
+          virtual_lines = virtual_lines_config,
+          virtual_text = virtual_text_config,
+          underline = true,
+        })
+      end
+    end, "[T]oggle [l]sp [d]iagnostics")
 
     -- NOTE: Snacks.nvim does this
-    --
-    -- local function client_supports_method(client, method, bufnr)
-    --   if vim.fn.has("nvim-0.11") == 1 then
-    --     return client:supports_method(method, bufnr)
-    --   else
-    --     return client.supports_method(method, { bufnr = bufnr })
-    --   end
-    -- end
-    --
-    -- local client = vim.lsp.get_client_by_id(event.data.client_id)
-    -- if
-    --   client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
-    -- then
-    --   local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
-    --
-    --   -- When cursor stops moving: Highlights all instances of the symbol under the cursor
-    --   -- When cursor moves: Clears the highlighting
-    --   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-    --     buffer = event.buf,
-    --     group = highlight_augroup,
-    --     callback = vim.lsp.buf.document_highlight,
-    --   })
-    --   vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-    --     buffer = event.buf,
-    --     group = highlight_augroup,
-    --     callback = vim.lsp.buf.clear_references,
-    --   })
-    --
-    --   -- When LSP detaches: Clears the highlighting
-    --   vim.api.nvim_create_autocmd("LspDetach", {
-    --     group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
-    --     callback = function(event2)
-    --       vim.lsp.buf.clear_references()
-    --       vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
-    --     end,
-    --   })
-    -- end
+    local function client_supports_method(client, method, bufnr)
+      if vim.fn.has("nvim-0.11") == 1 then
+        return client:supports_method(method, bufnr)
+      else
+        return client.supports_method(method, { bufnr = bufnr })
+      end
+    end
+
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if
+      client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+    then
+      local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
+
+      -- When cursor stops moving: Highlights all instances of the symbol under the cursor
+      -- When cursor moves: Clears the highlighting
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.clear_references,
+      })
+
+      -- When LSP detaches: Clears the highlighting
+      vim.api.nvim_create_autocmd("LspDetach", {
+        group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
+        callback = function(event2)
+          vim.lsp.buf.clear_references()
+          vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
+        end,
+      })
+    end
   end,
 })

@@ -148,9 +148,6 @@ return {
   {
     "NickvanDyke/opencode.nvim",
     enabled = false,
-    dependencies = {
-      "folke/snacks.nvim",
-    },
     opts = {
       auto_reload = true, -- Automatically reload buffers edited by opencode
       auto_focus = true, -- Focus the opencode window after prompting
