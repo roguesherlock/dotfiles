@@ -10,6 +10,9 @@ vim.g.maplocalleader = "\\"
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Disable line wrapping by default
+vim.opt.wrap = false
+
 -- Enable auto write
 vim.opt.autowrite = true
 

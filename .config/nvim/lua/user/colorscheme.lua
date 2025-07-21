@@ -10,7 +10,7 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "modus",
+    light = "catppuccin",
     dark = "catppuccin",
   },
   ghostty = {
