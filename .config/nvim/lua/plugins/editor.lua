@@ -150,4 +150,12 @@ return {
       map({ "n", "v" }, "<leader>m", "<cmd>MCstart<cr>", { desc = "Multi Cursor" })
     end,
   },
+  -- Terminal
+  {
+    "waiting-for-dev/ergoterm.nvim",
+    enabled = false,
+    config = function()
+      require("ergoterm").setup()
+    end,
+  },
 }

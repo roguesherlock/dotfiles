@@ -63,6 +63,9 @@
       "space w d": "pane::CloseAllItems",
       "space w v": "pane::SplitVertical",
       "space x x": "diagnostics::Deploy",
+      "space l R": "editor::RestartLanguageServer",
+      "space l d": "editor::ToggleDiagnostics",
+      "space t h": "editor::ToggleInlayHints",
       "shift-e": "editor::Hover",
       "[ [": "vim::MoveToPrevious",
       "] ]": "vim::MoveToNext",
@@ -74,7 +77,8 @@
     "context": "vim_mode == insert",
     "bindings": {
       "ctrl-space": "editor::ShowCompletions",
-      "tab": "editor::AcceptEditPrediction"
+      "tab": "editor::AcceptEditPrediction",
+      "ctrl-k": "editor::ShowSignatureHelp"
     }
   },
   {

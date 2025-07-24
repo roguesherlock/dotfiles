@@ -89,7 +89,7 @@ return {
   -- Magenta AI
   {
     "dlants/magenta.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false, -- you could also bind to <leader>mt
     build = "npm install --frozen-lockfile",
     -- stylua: ignore
@@ -147,7 +147,7 @@ return {
   -- opencode integration
   {
     "NickvanDyke/opencode.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       auto_reload = true, -- Automatically reload buffers edited by opencode
       auto_focus = true, -- Focus the opencode window after prompting

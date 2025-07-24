@@ -54,9 +54,11 @@
   //   "edit_prediction_provider": "supermaven"
   // },
   "ui_font_size": 13,
-  "ui_font_family": "Geist Mono",
+  // "ui_font_family": "Geist Mono",
+  "ui_font_family": "JetBrains Mono",
   "buffer_font_size": 14,
-  "buffer_font_family": "Geist Mono",
+  // "buffer_font_family": "Geist Mono",
+  "buffer_font_family": "JetBrains Mono",
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": true,
