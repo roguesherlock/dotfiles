@@ -16,8 +16,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
-    event = { "VeryLazy" },
-    lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
+    -- event = { "VeryLazy" },
+    lazy = false,
     init = function(plugin)
       -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
       -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
@@ -36,6 +36,7 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
+      auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
       ensure_installed = {
