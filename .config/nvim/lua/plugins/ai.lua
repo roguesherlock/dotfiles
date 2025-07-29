@@ -1,6 +1,8 @@
 return {
+  { "augmentcode/augment.vim" },
   -- Supermaven AI completion
   {
+    enabled = false,
     "supermaven-inc/supermaven-nvim",
     event = { "InsertEnter", "VeryLazy" },
     config = function()

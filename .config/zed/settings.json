@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "agent": {
-    "default_profile": "write",
+    "default_profile": "ask",
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true,
     "model_parameters": [],
@@ -26,12 +26,27 @@
       "source": "custom",
       "command": "bunx",
       "args": ["-y", "effect-mcp"]
+    },
+    "motion": {
+      "source": "custom",
+      "command": "bunx",
+      "args": ["-y", "motion-ai"]
     }
   },
   "theme": {
     "mode": "system",
     "dark": "One Dark",
     "light": "One Light"
+  },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "font_style": "italic"
+      },
+      "comment.doc": {
+        "font_style": "italic"
+      }
+    }
   },
   "collaboration_panel": {
     "button": false
@@ -55,10 +70,10 @@
   // },
   "ui_font_size": 13,
   // "ui_font_family": "Geist Mono",
-  "ui_font_family": "JetBrains Mono",
+  "ui_font_family": "IBM Plex Mono",
   "buffer_font_size": 14,
   // "buffer_font_family": "Geist Mono",
-  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_family": "IBM Plex Mono",
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": true,
