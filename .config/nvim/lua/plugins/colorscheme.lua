@@ -7,6 +7,7 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
+  { "nyoom-engineering/oxocarbon.nvim", priority = 1000, enabled = false },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -260,6 +261,9 @@ return {
   },
   {
     "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+    },
   },
   {
     "miikanissi/modus-themes.nvim",
