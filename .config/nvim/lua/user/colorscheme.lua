@@ -10,8 +10,8 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "catppuccin-mocha",
-    dark = "catppuccin-mocha",
+    light = "catppuccin",
+    dark = "catppuccin",
   },
   ghostty = {
     light = "Github-Light-High-Contrast",

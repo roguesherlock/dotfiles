@@ -40,35 +40,163 @@ return {
         lsp_trouble = true,
         which_key = true,
       },
+      highlight_overrides = {
+        latte = function(colors)
+          return {
+            -- surface0 and 1 is used as a background color most of the time,
+            -- but also as a foreground color in some cases. This makes it
+            -- impossible to ensure contrast in all cases.
+            -- For this reason, we replace all surface foreground colors with
+            -- other surface colors to increase contrast.
+            -- (surface2 is a rare color which is exclusively used as a
+            -- foreground color)
+            --
+            -- surface0:
+            SnacksIndent = { fg = colors.surface1 },
+            IblIndent = { fg = colors.surface1 },
+
+            -- surface1:
+            SignColumn = { fg = colors.surface2 }, -- column where |signs| are displayed
+            SignColumnSB = { fg = colors.surface2 }, -- column where |signs| are displayed
+
+            LineNr = { fg = colors.surface2 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' o…
+            TreesitterContextLineNumber = { fg = colors.surface2 },
+            CursorLineNr = { fg = colors.blue }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+
+            DapUIUnavailable = { fg = colors.surface2 },
+
+            GitSignsCurrentLineBlame = { fg = colors.surface2 },
+
+            -- More contrast menus:
+            Pmenu = { bg = colors.mantle, fg = colors.overlay2 }, -- Popup menu: normal item.
+            PmenuSel = { bg = colors.surface1, style = { "bold" } }, -- Popup menu: selected item.
+
+            -- More contrast for window separator:
+            WinSeparator = { fg = colors.surface2 }, -- Separator between windows.
+          }
+        end,
+        mocha = function(colors)
+          return {
+            -- surface0 and 1 is used as a background color most of the time,
+            -- but also as a foreground color in some cases. This makes it
+            -- impossible to ensure contrast in all cases.
+            -- For this reason, we replace all surface foreground colors with
+            -- other surface colors to increase contrast.
+            -- (surface2 is a rare color which is exclusively used as a
+            -- foreground color)
+            --
+            -- surface0:
+            SnacksIndent = { fg = colors.surface1 },
+            IblIndent = { fg = colors.surface1 },
+
+            -- surface1:
+            SignColumn = { fg = colors.surface2 }, -- column where |signs| are displayed
+            SignColumnSB = { fg = colors.surface2 }, -- column where |signs| are displayed
+
+            LineNr = { fg = colors.surface2 }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' o…
+            TreesitterContextLineNumber = { fg = colors.surface2 },
+            CursorLineNr = { fg = colors.blue }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+
+            DapUIUnavailable = { fg = colors.surface2 },
+
+            GitSignsCurrentLineBlame = { fg = colors.surface2 },
+
+            -- More contrast menus:
+            Pmenu = { bg = colors.mantle, fg = colors.overlay2 }, -- Popup menu: normal item.
+            PmenuSel = { bg = colors.surface1, style = { "bold" } }, -- Popup menu: selected item.
+
+            -- More contrast for window separator:
+            WinSeparator = { fg = colors.surface2 }, -- Separator between windows.
+          }
+        end,
+      },
       color_overrides = {
-        mocha = {
-          rosewater = "#808080", -- gray
-          flamingo = "#ffc0ff", -- pastel pink
-          mauve = "#ffffff", -- whitest white
-          pink = "#ff40ff", -- deep pink
-          red = "#ff0000", -- reddest red
-          maroon = "#d000ff", -- light purple
-          peach = "#ff8000", -- more orange
-          yellow = "#ff0080", -- yellow is gross, make it peach
-          green = "#ff80ff", -- equidistant pink
-          teal = "#00ffff", -- true teal
-          sky = "#0080ff", -- light(er) blue
-          sapphire = "#a000ff", -- dark purple
-          blue = "#8080ff", -- gray blue
-          lavender = "#ff00ff", -- pinkest pink
-          text = "#cc00cc", -- pinks all the way down
-          subtext1 = "#bb00bb",
-          subtext0 = "#aa00aa",
-          overlay2 = "#990099",
-          overlay1 = "#880088",
-          overlay0 = "#770077",
-          surface2 = "#660066",
-          surface1 = "#550055",
-          surface0 = "#440044",
-          crust = "#330033",
-          mantle = "#220022",
-          base = "#110011",
+        latte = {
+          mauve = "#6A67B4",
+          pink = "#6A67B4",
+          flamingo = "#A352A0",
+          rosewater = "#A352A0",
+          red = "#C34165",
+          maroon = "#C34165",
+          yellow = "#8A7400",
+          peach = "#AC591C",
+          green = "#288043",
+          teal = "#007E7D",
+          sky = "#007E7D",
+          sapphire = "#007E7D",
+          blue = "#1675AB",
+          lavender = "#1675AB",
+          text = "#706F7A",
+          subtext1 = "#757480",
+          subtext0 = "#757480",
+          overlay2 = "#797985",
+          overlay1 = "#7E7D8A",
+          overlay0 = "#84828F",
+          surface2 = "#9C8282",
+          surface1 = "#EBDFD3",
+          surface0 = "#EBDFD3",
+          base = "#FAF4ED",
+          mantle = "#FCF9F5",
+          crust = "#FCF9F5",
         },
+        mocha = {
+          mauve = "#A19DD4",
+          pink = "#A19DD4",
+          flamingo = "#C394C2",
+          rosewater = "#C394C2",
+          red = "#DF8BA0",
+          maroon = "#DF8BA0",
+          yellow = "#C7B96F",
+          peach = "#C79A76",
+          green = "#75B087",
+          teal = "#5EB1AF",
+          sky = "#5EB1AF",
+          sapphire = "#5EB1AF",
+          blue = "#7AA8CE",
+          lavender = "#7AA8CE",
+          text = "#A2A2A9",
+          subtext1 = "#878794",
+          subtext0 = "#878794",
+          overlay2 = "#7D7D7D",
+          overlay1 = "#808084",
+          overlay0 = "#84848C",
+          surface2 = "#7C7992",
+          surface1 = "#37363E",
+          surface0 = "#37363E",
+          base = "#191724",
+          mantle = "#0B0A0F",
+          crust = "#0B0A0F",
+        },
+        -- dark pink version
+        -- mocha = {
+        --   rosewater = "#808080", -- gray
+        --   flamingo = "#ffc0ff", -- pastel pink
+        --   mauve = "#ffffff", -- whitest white
+        --   pink = "#ff40ff", -- deep pink
+        --   red = "#ff0000", -- reddest red
+        --   maroon = "#d000ff", -- light purple
+        --   peach = "#ff8000", -- more orange
+        --   yellow = "#ff0080", -- yellow is gross, make it peach
+        --   green = "#ff80ff", -- equidistant pink
+        --   teal = "#00ffff", -- true teal
+        --   sky = "#0080ff", -- light(er) blue
+        --   sapphire = "#a000ff", -- dark purple
+        --   blue = "#8080ff", -- gray blue
+        --   lavender = "#ff00ff", -- pinkest pink
+        --   text = "#cc00cc", -- pinks all the way down
+        --   subtext1 = "#bb00bb",
+        --   subtext0 = "#aa00aa",
+        --   overlay2 = "#990099",
+        --   overlay1 = "#880088",
+        --   overlay0 = "#770077",
+        --   surface2 = "#660066",
+        --   surface1 = "#550055",
+        --   surface0 = "#440044",
+        --   crust = "#330033",
+        --   mantle = "#220022",
+        --   base = "#110011",
+        -- },
+        -- everforest version
         -- mocha = {
         --   -- custom everforest dark hard port
         --   rosewater = "#fed1cb",
