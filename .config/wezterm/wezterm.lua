@@ -88,12 +88,12 @@ config.keys = {
 	{
 		key = "[",
 		mods = "CMD",
-		action = wezterm.action.ActivatePaneDirection("Prev"),
+		action = wezterm.action.ActivateTabRelative(-1),
 	},
 	{
 		key = "]",
 		mods = "CMD",
-		action = wezterm.action.ActivatePaneDirection("Next"),
+		action = wezterm.action.ActivateTabRelative(1),
 	},
 }
 
