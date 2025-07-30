@@ -89,7 +89,10 @@ local function on_attach(client, bufnr)
 
   -- Execute a code action, usually your cursor needs to be on top of an error
   -- or a suggestion from your LSP for this to activate.
-  map("g.", "<cmd>FzfLua lsp_code_actions<cr>", "Code Action", { "n", "x" })
+  -- map("g.", "<cmd>FzfLua lsp_code_actions<cr>", "Code Action", { "n", "x" })
+  map("g.", function()
+    require("tiny-code-action").code_action()
+  end, "Code Action", { "n", "x" })
 
   -- Find references for the word under your cursor.
   map("grr", "<cmd>FzfLua lsp_references<cr>", "[G]oto [R]eference all [R]eferences")
