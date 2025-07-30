@@ -102,3 +102,6 @@ vim.opt.autoread = true
 vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
 end)
+
+-- set border radius for all floating windows
+vim.o.winborder = "rounded"
