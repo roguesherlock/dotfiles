@@ -28,6 +28,30 @@ bar.apply_to_config(config)
 -- session management
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 workspace_switcher.apply_to_config(config)
+workspace_switcher.get_choices = function(opts)
+	if opts == nil then
+		opts = { extra_args = "" }
+	end
+	local choices = {}
+
+	choices, opts.workspace_ids = workspace_switcher.choices.get_workspace_elements(choices)
+	-- choices = workspace_switcher.choices.get_zoxide_elements(choices, opts)
+	local success, stdout, stderr =
+		wezterm.run_child_process({ "/usr/local/bin/fish", "-c", "fd -t d -d 1 . ~/Developer" })
+	if not success then
+		wezterm.log_error(stderr)
+	end
+	for _, path in ipairs(wezterm.split_by_newlines(stdout)) do
+		local updated_path = string.gsub(path, wezterm.home_dir, "~")
+		if not opts.workspace_ids[updated_path] then
+			table.insert(choices, {
+				id = path,
+				label = updated_path,
+			})
+		end
+	end
+	return choices
+end
 
 -- keybinds
 config.keys = {
