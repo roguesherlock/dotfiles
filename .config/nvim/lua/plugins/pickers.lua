@@ -42,7 +42,7 @@ return {
       { "<leader><leader>", "<cmd>FzfLua files<cr>", desc = "Search Files" },
       { "<leader>ss", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "[S]earch [S]ymbols " },
       { "<leader>sw", "<cmd>FzfLua grep<cr>", desc = "[S]earch current [W]ord" },
-      { "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "[S]earch current [W]ord", mode = { "v" } },
+      { "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "[S]earch current [W]ord", mode = { "x" } },
       { "<leader>sm", "<cmd>FzfLua marks<cr>", desc = "[S]earch [M]arks" },
       { "<leader>sg", "<cmd>FzfLua live_grep<cr>", desc = "[S]earch by [G]rep" },
       { "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "[S]earch [D]iagnostics" },
