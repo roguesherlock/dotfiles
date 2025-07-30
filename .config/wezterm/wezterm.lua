@@ -4,10 +4,12 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("Geist Mono", { weight = 450 })
+config.font = wezterm.font("Geist Mono", { weight = 480 })
 config.font_size = 14.0
 config.line_height = 1.4
 
+config.underline_position = -8
+config.underline_thickness = 3
 config.window_decorations = "RESIZE"
 config.window_padding = {
 	left = 0,
