@@ -40,15 +40,15 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit", },
-      { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal", mode = { "n", "t" }, },
-      { "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore", },
-      { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
-      { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
-      { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History", },
-      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer", },
-      { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" }, },
-      { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer", },
+      { "<leader>gg", function() require("snacks").lazygit() end, desc = "Lazygit", },
+      { "<c-/>", function() require("snacks").terminal() end, desc = "Toggle Terminal", mode = { "n", "t" }, },
+      { "<c-_>", function() require("snacks").terminal() end, desc = "which_key_ignore", },
+      { "]]", function() require("snacks").words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" }, },
+      { "[[", function() require("snacks").words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" }, },
+      { "<leader>n", function() require("snacks").notifier.show_history() end, desc = "Notification History", },
+      { "<leader>bd", function() require("snacks").bufdelete() end, desc = "Delete Buffer", },
+      { "<leader>gB", function() require("snacks").gitbrowse() end, desc = "Git Browse", mode = { "n", "v" }, },
+      { "<leader>.", function() require("snacks").scratch() end, desc = "Toggle Scratch Buffer", },
     },
   },
   -- Trouble for diagnostics
@@ -63,6 +63,14 @@ return {
       map("n", "<leader>q", "<cmd>Trouble qflist toggle<cr>", { desc = "Toggle trouble [Q]uickfix" })
     end,
   },
+  {
+    enabled = false,
+    "j-hui/fidget.nvim",
+    commit = "e4e71e9",
+    opts = {
+      -- options
+    },
+  },
 
   -- Noice for better UI
   {
@@ -71,20 +79,29 @@ return {
       "MunifTanjim/nui.nvim",
     },
     event = "VeryLazy",
+    -- stylua: ignore
+    keys = {
+      { "<leader>sn","<cmd>NoiceFzf<cr>" , desc = "[S]earch [N]oice", },
+    },
     config = function()
       require("noice").setup({
         notify = {
-          enabled = false,
+          view = "mini",
         },
         lsp = {
           hover = {
-            silent = true,
+            enabled = false,
+          },
+          signature = {
+            enabled = false,
+          },
+          message = {
+            view = "mini",
           },
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+            -- ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            -- ["vim.lsp.util.stylize_markdown"] = true,
           },
         },
         views = {
