@@ -73,121 +73,119 @@ vim.lsp.config("vtsls", vtsls_config)
 vim.lsp.config("vue_ls", vue_ls_config)
 vim.lsp.enable({ "vtsls", "vue_ls" })
 
+local methods = vim.lsp.protocol.Methods
+
+--- Sets up LSP keymaps and autocommands for the given buffer.
+---@param client vim.lsp.Client
+---@param bufnr integer
+local function on_attach(client, bufnr)
+  local map = function(keys, func, desc, mode)
+    vim.keymap.set(mode or "n", keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+  end
+
+  -- Rename the variable under your cursor.
+  --  Most Language Servers support renaming across files, etc.
+  map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+
+  -- Execute a code action, usually your cursor needs to be on top of an error
+  -- or a suggestion from your LSP for this to activate.
+  map("g.", "<cmd>FzfLua lsp_code_actions<cr>", "Code Action", { "n", "x" })
+
+  -- Find references for the word under your cursor.
+  map("grr", "<cmd>FzfLua lsp_references<cr>", "[G]oto [R]eference all [R]eferences")
+
+  -- Jump to the implementation of the word under your cursor.
+  --  Useful when your language has ways of declaring types without an actual implementation.
+  map("gri", "<cmd>FzfLua lsp_implementations<cr>", "[G]oto [R]eference [I]mplementation")
+
+  -- Jump to the definition of the word under your cursor.
+  --  This is where a variable was first declared, or where a function is defined, etc.
+  --  To jump back, press <C-t>.
+  map("gd", "<cmd>FzfLua lsp_definitions<cr>", "[G]oto [D]efinition")
+
+  -- Peek the definition of the word under your cursor.
+  map("gD", "<cmd>FzfLua lsp_definitions jump1=false <cr>", "[G]oto [D]efinition (Peek)")
+
+  -- Fuzzy find all the symbols in your current document.
+  --  Symbols are things like variables, functions, types, etc.
+  map("grd", "<cmd>FzfLua lsp_document_symbols<cr>", "[G]oto [R]eference [D]ocument Symbols")
+
+  -- Fuzzy find all the symbols in your current workspace.
+  --  Similar to document symbols, except searches over your entire project.
+  map("grw", "<cmd>FzfLua lsp_workspace_symbols<cr>", "[G]oto [R]eference [W]orkspace Symbols")
+
+  -- Jump to the type of the word under your cursor.
+  --  Useful when you're not sure what type a variable is and you want to see
+  --  the definition of its *type*, not where it was *defined*.
+  map("grt", "<cmd>FzfLua lsp_typedefs<cr>", "[G]oto [R]eference [T]ype Definition")
+
+    -- stylua: ignore
+    map("[e", function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, "Previeous [E]rror")
+    -- stylua: ignore
+    map("]e", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, "Next [E]rror")
+  map("<leader>lr", "<cmd>LspRestart<cr>", "[L]sp [R]estart")
+  map("<leader>li", "<cmd>LspInfo<cr>", "[l]sp [I]nfo")
+  map("<leader>lg", "<cmd>LspLog<cr>", "[l]sp lo[g]")
+  map("<leader>tld", function()
+    local config = vim.diagnostic.config().virtual_lines
+    if config then
+      vim.diagnostic.config({ virtual_lines = false, virtual_text = false, underline = false })
+    else
+      vim.diagnostic.config({
+        virtual_lines = virtual_lines_config,
+        virtual_text = virtual_text_config,
+        underline = true,
+      })
+    end
+  end, "[T]oggle [l]sp [d]iagnostics")
+
+  -- NOTE: Snacks.nvim does this I think
+  if client:supports_method(methods.textDocument_documentHighlight) then
+    local under_cursor_highlights_group = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
+    vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
+      group = under_cursor_highlights_group,
+      desc = "Highlight references under the cursor",
+      buffer = bufnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ "CursorMoved", "InsertEnter", "BufLeave" }, {
+      group = under_cursor_highlights_group,
+      desc = "Clear highlight references",
+      buffer = bufnr,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
+  desc = "Configure LSP keymaps",
   group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
   callback = function(event)
-    local map = function(keys, func, desc, mode)
-      vim.keymap.set(mode or "n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-    end
-
-    -- GLOBAL DEFAULTS
-    -- https://neovim.io/doc/user/news-0.11.html#_defaults
-    -- These GLOBAL keymaps are created unconditionally when Nvim starts:
-    -- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
-    -- - "gra" is mapped in Normal and Visual mode to |vim.lsp.buf.code_action()|
-    -- - "grr" is mapped in Normal mode to |vim.lsp.buf.references()|
-    -- - "gri" is mapped in Normal mode to |vim.lsp.buf.implementation()|
-    -- - "gO" is mapped in Normal mode to |vim.lsp.buf.document_symbol()|
-    -- - "grt" is mapped in Normal mode to |vim.lsp.buf.type_definition()|
-    -- - CTRL-S is mapped in Insert mode to |vim.lsp.buf.signature_help()|
-
-    -- Rename the variable under your cursor.
-    --  Most Language Servers support renaming across files, etc.
-    map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
-
-    -- Execute a code action, usually your cursor needs to be on top of an error
-    -- or a suggestion from your LSP for this to activate.
-    map("g.", "<cmd>FzfLua lsp_code_actions<cr>", "Code Action", { "n", "x" })
-
-    -- Find references for the word under your cursor.
-    map("grr", "<cmd>FzfLua lsp_references<cr>", "[G]oto [R]eference all [R]eferences")
-
-    -- Jump to the implementation of the word under your cursor.
-    --  Useful when your language has ways of declaring types without an actual implementation.
-    map("gri", "<cmd>FzfLua lsp_implementations<cr>", "[G]oto [R]eference [I]mplementation")
-
-    -- Jump to the definition of the word under your cursor.
-    --  This is where a variable was first declared, or where a function is defined, etc.
-    --  To jump back, press <C-t>.
-    map("gd", "<cmd>FzfLua lsp_definitions<cr>", "[G]oto [D]efinition")
-
-    -- WARN: This is not Goto Definition, this is Goto Declaration.
-    --  For example, in C this would take you to the header.
-    map("gD", "<cmd>FzfLua lsp_declarations<cr>", "[G]oto [D]eclaration")
-
-    -- Fuzzy find all the symbols in your current document.
-    --  Symbols are things like variables, functions, types, etc.
-    map("grd", "<cmd>FzfLua lsp_document_symbols<cr>", "[G]oto [R]eference [D]ocument Symbols")
-
-    -- Fuzzy find all the symbols in your current workspace.
-    --  Similar to document symbols, except searches over your entire project.
-    map("grw", "<cmd>FzfLua lsp_workspace_symbols<cr>", "[G]oto [R]eference [W]orkspace Symbols")
-
-    -- Jump to the type of the word under your cursor.
-    --  Useful when you're not sure what type a variable is and you want to see
-    --  the definition of its *type*, not where it was *defined*.
-    map("grt", "<cmd>FzfLua lsp_typedefs<cr>", "[G]oto [R]eference [T]ype Definition")
-
-    -- Fuzzy find all the symbols in your current workspace.
-    --  Similar to document symbols, except searches over your entire project.
-    map("[e", "<cmd>FzfLua lsp_workspace_symbols<cr>", "[G]oto [W]orkspace Symbols")
-
-    -- Fuzzy find all the symbols in your current workspace.
-    --  Similar to document symbols, except searches over your entire project.
-    map("]e", "<cmd>FzfLua lsp_workspace_symbols<cr>", "[G]oto [W]orkspace Symbols")
-
-    map("<leader>lr", "<cmd>LspRestart<cr>", "[L]sp [R]estart")
-    map("<leader>li", "<cmd>LspInfo<cr>", "[l]sp [I]nfo")
-    map("<leader>lg", "<cmd>LspLog<cr>", "[l]sp lo[g]")
-    map("<leader>tld", function()
-      local config = vim.diagnostic.config().virtual_lines
-      if config then
-        vim.diagnostic.config({ virtual_lines = false, virtual_text = false, underline = false })
-      else
-        vim.diagnostic.config({
-          virtual_lines = virtual_lines_config,
-          virtual_text = virtual_text_config,
-          underline = true,
-        })
-      end
-    end, "[T]oggle [l]sp [d]iagnostics")
-
-    -- NOTE: Snacks.nvim does this
-    local function client_supports_method(client, method, bufnr)
-      if vim.fn.has("nvim-0.11") == 1 then
-        return client:supports_method(method, bufnr)
-      else
-        return client.supports_method(method, { bufnr = bufnr })
-      end
-    end
-
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if
-      client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
-    then
-      local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
 
-      -- When cursor stops moving: Highlights all instances of the symbol under the cursor
-      -- When cursor moves: Clears the highlighting
-      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-        buffer = event.buf,
-        group = highlight_augroup,
-        callback = vim.lsp.buf.document_highlight,
-      })
-      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-        buffer = event.buf,
-        group = highlight_augroup,
-        callback = vim.lsp.buf.clear_references,
-      })
-
-      -- When LSP detaches: Clears the highlighting
-      vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
-        callback = function(event2)
-          vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
-        end,
-      })
+    -- I don't think this can happen but it's a wild world out there.
+    if not client then
+      return
     end
+
+    on_attach(client, event.buf)
   end,
 })
+
+local hover = vim.lsp.buf.hover
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.buf.hover = function()
+  return hover({
+    max_height = math.floor(vim.o.lines * 0.5),
+    max_width = math.floor(vim.o.columns * 0.4),
+  })
+end
+
+local signature_help = vim.lsp.buf.signature_help
+---@diagnostic disable-next-line: duplicate-set-field
+vim.lsp.buf.signature_help = function()
+  return signature_help({
+    max_height = math.floor(vim.o.lines * 0.5),
+    max_width = math.floor(vim.o.columns * 0.4),
+  })
+end
