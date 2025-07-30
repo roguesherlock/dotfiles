@@ -68,20 +68,20 @@ return {
       map("n", "<leader>tf", function()
         if vim.b.disable_autoformat then
           vim.b.disable_autoformat = false
-          print("Enabled buffer autoformat")
+          vim.notify("Enabled buffer autoformat", vim.log.levels.INFO)
         else
           vim.b.disable_autoformat = true
-          print("Disabled buffer autoformat")
+          vim.notify("Disabled buffer autoformat", vim.log.levels.INFO)
         end
       end, { desc = "[T]oggle Buffer [F]ormat" })
 
       map("n", "<leader>tF", function()
         if vim.g.disable_autoformat then
           vim.g.disable_autoformat = false
-          print("Enabled workspace autoformat")
+          vim.notify("Enabled workspace autoformat", vim.log.levels.INFO)
         else
           vim.g.disable_autoformat = true
-          print("Disabled workspace autoformat")
+          vim.notify("Disabled workspace autoformat", vim.log.levels.INFO)
         end
       end, { desc = "[T]oggle Workspace [F]ormat" })
     end,
