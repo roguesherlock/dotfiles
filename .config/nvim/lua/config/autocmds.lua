@@ -89,6 +89,7 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
     "neotest-output-panel",
     "dbout",
     "gitsigns-blame",
+    "diffview",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -105,4 +106,3 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
     end)
   end,
 })
-

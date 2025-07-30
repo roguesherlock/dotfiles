@@ -88,4 +88,27 @@ return {
       map("n", "<leader>gn", "<cmd>Neogit<cr>", { desc = "[G]it Open [N]eogit" })
     end,
   },
+  {
+    "sindrets/diffview.nvim",
+    keys = {
+      { "<leader>gdf", "<cmd>DiffviewFileHistory<cr>", desc = "[G]it [D]iff [F]ile" },
+      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "[G]it [D]iffview [O]pen" },
+    },
+    opts = {
+      keymaps = {
+        view = {
+          -- stylua: ignore
+          { "n", "q", function() require("diffview.actions").close() end, { desc = "Close" }, },
+        },
+        file_panel = {
+          -- stylua: ignore
+          { "n", "q", function() require("diffview.actions").close() end, { desc = "Close" }, },
+        },
+        file_history_panel = {
+          -- stylua: ignore
+          { "n", "q", function() require("diffview.actions").close() end, { desc = "Close" }, },
+        },
+      },
+    },
+  },
 }
