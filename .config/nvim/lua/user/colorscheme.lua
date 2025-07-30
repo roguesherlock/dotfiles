@@ -24,6 +24,10 @@ M.config = {
     light = "Modus Operandi",
     dark = "Modus Vivendi",
   },
+  wezterm = {
+    light = "Modus Operandi (Gogh)",
+    dark = "Modus Vivendi (Gogh)",
+  },
   zellij = {
     light = "modus_operandi",
     dark = "modus_vivendi",
@@ -64,12 +68,14 @@ function M.set_colorscheme(light)
       M.set_zellij_theme(M.config.zellij.light)
       M.set_delta_theme(M.config.delta.light)
       M.set_yazi_theme(M.config.yazi.light)
+      M.set_wezterm_theme(M.config.wezterm.light)
     else
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
       vim.fn.system("kitten @ load-config")
       M.set_zellij_theme(M.config.zellij.dark)
       M.set_delta_theme(M.config.delta.dark)
       M.set_yazi_theme(M.config.yazi.dark)
+      M.set_wezterm_theme(M.config.wezterm.dark)
     end
   end, 0)
 end
@@ -131,7 +137,7 @@ function M.set_ghostty_theme(theme, is_custom_theme)
     local cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", light_dark_theme, real_path)
     local result = vim.fn.system({ "bash", "-c", cmd })
     if vim.v.shell_error ~= 0 then
-      print("Error updating Ghostty theme: " .. result)
+      vim.notify("Error updating Ghostty theme: " .. result, vim.log.levels.WARN)
     end
     return
   end
@@ -143,7 +149,7 @@ function M.set_zellij_theme(theme)
   local cmd = string.format('sed -i\'.bak\' \'s/theme "[^"]*"/theme "%s"/\' %s', theme, real_path)
   local result = vim.fn.system({ "bash", "-c", cmd })
   if vim.v.shell_error ~= 0 then
-    print("Error updating Zellij theme: " .. result)
+    vim.notify("Error updating Zellij theme: " .. result, vim.log.levels.WARN)
   end
 end
 
@@ -154,7 +160,7 @@ function M.set_delta_theme(theme)
 
   local result = vim.fn.system({ "bash", "-c", cmd })
   if vim.v.shell_error ~= 0 then
-    print("Error updating Delta theme for git: " .. result)
+    vim.notify("Error updating Delta theme for git: " .. result, vim.log.levels.WARN)
   end
 end
 
@@ -165,7 +171,18 @@ function M.set_yazi_theme(theme)
 
   local result = vim.fn.system({ "bash", "-c", cmd })
   if vim.v.shell_error ~= 0 then
-    print("Error updating Yazi theme for git: " .. result)
+    vim.notify("Error updating Yazi theme for git: " .. result, vim.log.levels.WARN)
+  end
+end
+
+function M.set_wezterm_theme(theme)
+  local config_path = vim.fn.expand("~/.config/wezterm/wezterm.lua")
+  local real_path = vim.fn.resolve(config_path)
+  local cmd = string.format('sed -i\'.bak\' \'s/color_scheme = "[^"]*"/color_scheme = "%s"/\' %s', theme, real_path)
+
+  local result = vim.fn.system({ "bash", "-c", cmd })
+  if vim.v.shell_error ~= 0 then
+    vim.notify("Error updating Wezterm theme: " .. result, vim.log.levels.WARN)
   end
 end
 

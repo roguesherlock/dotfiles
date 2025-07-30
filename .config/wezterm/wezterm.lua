@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 config.font = wezterm.font("Geist Mono", { weight = 480 })
 config.font_size = 14.0
 config.line_height = 1.4
-
+config.color_scheme = "Modus Vivendi (Gogh)"
 config.underline_position = -8
 config.underline_thickness = 3
 config.window_decorations = "RESIZE"
