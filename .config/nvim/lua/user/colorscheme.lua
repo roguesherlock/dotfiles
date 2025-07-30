@@ -10,8 +10,8 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "modus",
-    dark = "modus",
+    light = "cyberdream",
+    dark = "cyberdream",
   },
   ghostty = {
     light = "Github-Light-High-Contrast",

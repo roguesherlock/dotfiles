@@ -1,5 +1,6 @@
 # font-family = "Iosevka Term"
 font-family = "Geist Mono"
+# font-family = "Maple Mono"
 font-size = 14
 font-thicken = true
 font-thicken-strength = 30
@@ -15,7 +16,7 @@ macos-option-as-alt = true
 macos-non-native-fullscreen = true
 macos-titlebar-style = "native"
 # window-colorspace = display-p3
-background-opacity = 0.50
+background-opacity = 0.80
 background-blur-radius = 26
 window-save-state = always
 unfocused-split-opacity=0.95
