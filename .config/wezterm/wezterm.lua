@@ -1,13 +1,36 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+-- Returns a bool based on whether the host operating system's
+-- appearance is light or dark.
+local function is_dark()
+	-- wezterm.gui is not always available, depending on what
+	-- environment wezterm is operating in. Just return true
+	-- if it's not defined.
+	if wezterm.gui then
+		-- Some systems report appearance like "Dark High Contrast"
+		-- so let's just look for the string "Dark" and if we find
+		-- it assume appearance is dark.
+		return wezterm.gui.get_appearance():find("Dark")
+	end
+	return true
+end
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
 config.font = wezterm.font("Geist Mono", { weight = 480 })
 config.font_size = 14.0
 config.line_height = 1.4
-config.color_scheme = "Modus Vivendi (Gogh)"
+config.window_frame = {
+	font = wezterm.font({ family = "Inter Display", weight = 500 }),
+	font_size = 11,
+}
+if is_dark() then
+	config.color_scheme = "Modus Vivendi (Gogh)"
+else
+	config.color_scheme = "Modus Vivendi (Gogh)"
+end
 config.underline_position = -8
 config.underline_thickness = 3
 config.window_decorations = "RESIZE"
@@ -23,7 +46,23 @@ config.macos_window_background_blur = 26
 
 -- top bar
 local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
-bar.apply_to_config(config)
+bar.apply_to_config(config, {
+	modules = {
+		workspace = {
+			color = 6,
+		},
+		zoom = {
+			enabled = true,
+		},
+		hostname = {
+			enabled = false,
+			color = 7,
+		},
+		username = {
+			enabled = false,
+		},
+	},
+})
 
 -- session management
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
@@ -94,6 +133,26 @@ config.keys = {
 		key = "]",
 		mods = "CMD",
 		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		key = "l",
+		mods = "CMD",
+		action = wezterm.action.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "h",
+		mods = "CMD",
+		action = wezterm.action.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "k",
+		mods = "CMD",
+		action = wezterm.action.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "j",
+		mods = "CMD",
+		action = wezterm.action.ActivatePaneDirection("Down"),
 	},
 }
 

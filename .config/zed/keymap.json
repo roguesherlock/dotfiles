@@ -8,7 +8,7 @@
     }
   },
   {
-    "context": "Dock || Terminal || Editor || ProjectPanel",
+    "context": "Dock || Terminal || Editor || ProjectPanel || EmptyPane || SharedScreen || MarkdownPreview",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
@@ -58,8 +58,15 @@
     "context": "vim_mode == normal",
     "bindings": {
       ",": "editor::ToggleFold",
+      "g D": "editor::GoToDefinitionSplit",
+      "g b p": "pane::TogglePinTab",
+      "g b q": ["pane::CloseAllItems", { "close_pinned": false }],
       "space e": "project_panel::ToggleFocus",
-      "space g g": "git_panel::ToggleFocus",
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" }
+      ],
+      "space g G": "git_panel::ToggleFocus",
       "space w d": "pane::CloseAllItems",
       "space w v": "pane::SplitVertical",
       "space x x": "diagnostics::Deploy",

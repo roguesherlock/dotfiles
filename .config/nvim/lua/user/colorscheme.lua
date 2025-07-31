@@ -10,8 +10,8 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "cyberdream",
-    dark = "cyberdream",
+    light = "modus",
+    dark = "modus",
   },
   ghostty = {
     light = "Github-Light-High-Contrast",
@@ -68,14 +68,14 @@ function M.set_colorscheme(light)
       M.set_zellij_theme(M.config.zellij.light)
       M.set_delta_theme(M.config.delta.light)
       M.set_yazi_theme(M.config.yazi.light)
-      M.set_wezterm_theme(M.config.wezterm.light)
+      -- M.set_wezterm_theme(M.config.wezterm.light)
     else
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
       vim.fn.system("kitten @ load-config")
       M.set_zellij_theme(M.config.zellij.dark)
       M.set_delta_theme(M.config.delta.dark)
       M.set_yazi_theme(M.config.yazi.dark)
-      M.set_wezterm_theme(M.config.wezterm.dark)
+      -- M.set_wezterm_theme(M.config.wezterm.dark)
     end
   end, 0)
 end
