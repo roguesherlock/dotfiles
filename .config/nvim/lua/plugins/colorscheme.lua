@@ -8,15 +8,35 @@ return {
     end,
   },
   {
-    "scottmckendry/cyberdream.nvim",
+    "hyperb1iss/silkcircuit-nvim",
     lazy = false,
     priority = 1000,
     opts = {
-      variant = "auto",
       transparent = true,
-      italic_comments = true,
-      borderless_pickers = true,
-    },
+    }
+  },
+  {
+    "vague2k/vague.nvim",
+    priority = 1000,
+    opts = {
+      transparent = true
+    }
+  },
+  {
+    "webhooked/kanso.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = true,
+      background = {    -- map the value of 'background' option to a theme
+        dark = "zen",   -- try "zen", "mist" or "pearl" !
+        light = "pearl" -- try "zen", "mist" or "pearl" !
+      },
+      foreground = {
+        dark = "default",   -- Use default colors in dark mode
+        light = "saturated" -- Use higher saturation in light mode
+      },
+    }
   },
   {
     "catppuccin/nvim",
@@ -340,7 +360,7 @@ return {
       vim.g.gruvbox_material_foreground = "mix"
       vim.g.gruvbox_material_background = "hard"
       vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
-      vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
+      vim.g.gruvbox_material_float_style = "dim"  -- Background of floating windows
       -- vim.g.gruvbox_material_diagnostic_virtual_text = "highlighted"
       -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
       vim.g.gruvbox_material_current_word = "grey background"

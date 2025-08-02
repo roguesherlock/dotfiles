@@ -4,8 +4,7 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
-    version = "*",
-    build = "cargo build --release",
+    version = '1.*',
     event = "InsertEnter",
     opts = {
       keymap = { preset = "default", ["<cr>"] = { "select_and_accept", "fallback" } },
@@ -15,9 +14,5 @@ return {
       },
       sources = {},
     },
-    config = function(_, opts)
-      vim.g.completion = "blink"
-      require("blink.cmp").setup(opts)
-    end,
   },
 }

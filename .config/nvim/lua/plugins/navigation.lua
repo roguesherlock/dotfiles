@@ -4,6 +4,10 @@ return {
     "ggandor/leap.nvim",
     config = function()
       require("leap").set_default_mappings()
+      local map = require("user.util").map
+      map({ 'n', 'x', 'o' }, "r", function()
+        require('leap.remote').action()
+      end, { desc = "Leap remote action" })
     end,
   },
 

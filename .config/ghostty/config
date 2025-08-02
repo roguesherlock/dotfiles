@@ -1,6 +1,7 @@
 # font-family = "Iosevka Term"
-font-family = "Geist Mono"
+# font-family = "Geist Mono"
 # font-family = "Maple Mono"
+font-family = "Berkeley Mono Variable"
 font-size = 14
 font-thicken = true
 font-thicken-strength = 30

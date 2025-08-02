@@ -1,5 +1,6 @@
-local virtual_text_config = { current_line = true, severity = { min = "INFO", max = "WARN" } }
-local virtual_lines_config = { current_line = true, severity = { min = "ERROR" } }
+local virtual_text_config = { current_line = true }
+-- local virtual_lines_config = { current_line = true, severity = { min = "ERROR" } }
+local virtual_lines_config = false
 vim.diagnostic.config({
   virtual_text = virtual_text_config,
   virtual_lines = virtual_lines_config,
@@ -46,7 +47,7 @@ vim.api.nvim_create_user_command("LspRestart", function()
 end, {})
 
 local vue_language_server_path = vim.fn.stdpath("data")
-  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+    .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
 local vue_plugin = {
   name = "@vue/typescript-plugin",
@@ -122,10 +123,11 @@ local function on_attach(client, bufnr)
   --  the definition of its *type*, not where it was *defined*.
   map("grt", "<cmd>FzfLua lsp_typedefs<cr>", "[G]oto [R]eference [T]ype Definition")
 
-    -- stylua: ignore
-    map("[e", function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end, "Previeous [E]rror")
-    -- stylua: ignore
-    map("]e", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, "Next [E]rror")
+  -- stylua: ignore
+  map("[e", function() vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR }) end,
+    "Previeous [E]rror")
+  -- stylua: ignore
+  map("]e", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, "Next [E]rror")
   map("<leader>lr", "<cmd>LspRestart<cr>", "[L]sp [R]estart")
   map("<leader>li", "<cmd>LspInfo<cr>", "[l]sp [I]nfo")
   map("<leader>lg", "<cmd>LspLog<cr>", "[l]sp lo[g]")
