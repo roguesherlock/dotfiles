@@ -9,18 +9,13 @@ return {
   },
   {
     "hyperb1iss/silkcircuit-nvim",
+    name="silkcircuit",
     lazy = false,
     priority = 1000,
-    opts = {
-      transparent = true,
-    }
   },
   {
     "vague2k/vague.nvim",
     priority = 1000,
-    opts = {
-      transparent = true
-    }
   },
   {
     "webhooked/kanso.nvim",

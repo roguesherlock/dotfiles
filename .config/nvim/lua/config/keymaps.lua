@@ -53,8 +53,8 @@ local function quit_with_prompt()
       end)
     elseif choice == 2 then -- No
       vim.cmd("qa!")
-    -- Do nothing, continue to next buffer
-    else -- Cancel or any other input
+      -- Do nothing, continue to next buffer
+    else     -- Cancel or any other input
       return -- Stop the quit process
     end
   end

@@ -3,15 +3,22 @@ return {
     "dmtrKovalenko/fff.nvim",
     build = "cargo build --release",
     opts = {
-      -- pass here all the options
+      prompt = '> ',
     },
     keys = {
       {
         "<leader><leader>",
         function()
-          require("fff").toggle()
+          require("fff").find_in_git_root()
         end,
         desc = "Search Files"
+      },
+            {
+        "<leader>sf",
+        function()
+          require("fff").find_files()
+        end,
+        desc = "[S]earch [F]iles"
       },
     },
   },
@@ -54,7 +61,7 @@ return {
       { "<leader>sa", "<cmd>FzfLua autocmds<cr>",             desc = "[S]earch [A]utocmds" },
       { "<leader>sh", "<cmd>FzfLua help<cr>",                 desc = "[S]earch [H]elp" },
       { "<leader>sk", "<cmd>FzfLua keymaps<cr>",              desc = "[S]earch [K]eymaps" },
-      { "<leader>sf", "<cmd>FzfLua git_files",                desc = "[S]earch Git [F]iles" },
+      -- { "<leader>sf", "<cmd>FzfLua git_files",                desc = "[S]earch Git [F]iles" },
       -- { "<leader><leader>", "<cmd>FzfLua files<cr>",                desc = "Search Files" },
       { "<leader>ss", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "[S]earch [S]ymbols " },
       { "<leader>sw", "<cmd>FzfLua grep<cr>",                 desc = "[S]earch current [W]ord" },
