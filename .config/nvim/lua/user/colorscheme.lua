@@ -37,8 +37,10 @@ M.config = {
     dark = "catppuccin-frappe",
   },
   yazi = {
-    light = "catppuccin-latte",
-    dark = "catppuccin-frappe",
+    -- light = "catppuccin-latte",
+    -- dark = "catppuccin-frappe",
+    light = "kanso-pearl",
+    dark = "kanso-zen",
   },
 }
 

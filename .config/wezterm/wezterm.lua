@@ -16,21 +16,61 @@ local function is_dark()
 	return true
 end
 
+local function get_colorscheme(appearance)
+	local config = {}
+	if appearance:find("Dark") then
+		config.color_scheme = "Modus Vivendi (Gogh)"
+		local result, mod = pcall(require, "lua/kanso-zen")
+		if result then
+			config.force_reverse_video_cursor = mod.force_reverse_video_cursor
+			config.colors = mod.colors
+		end
+	else
+		config.color_scheme = "Modus Operandi (Gogh)"
+		local result, mod = pcall(require, "lua/kanso-pearl")
+		if result then
+			config.force_reverse_video_cursor = mod.force_reverse_video_cursor
+			config.colors = mod.colors
+		end
+	end
+	return config
+end
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("Geist Mono", { weight = 480 })
+-- config.font = wezterm.font("Geist Mono", { weight = 480 })
+config.font = wezterm.font("Berkeley Mono Variable")
 config.font_size = 14.0
-config.line_height = 1.4
+config.line_height = 1.2
 config.window_frame = {
 	font = wezterm.font({ family = "Inter Display", weight = 500 }),
 	font_size = 11,
 }
-if is_dark() then
-	config.color_scheme = "Modus Vivendi (Gogh)"
-else
-	config.color_scheme = "Modus Vivendi (Gogh)"
+
+-- Deep merge function
+local function deep_merge(target, source)
+	for key, value in pairs(source) do
+		if type(value) == "table" and type(target[key]) == "table" then
+			deep_merge(target[key], value)
+		else
+			target[key] = value
+		end
+	end
+	return target
 end
+
+local initial_appearnce = "Dark"
+if wezterm.gui then
+	-- Some systems report appearance like "Dark High Contrast"
+	-- so let's just look for the string "Dark" and if we find
+	-- it assume appearance is dark.
+	initial_appearnce = wezterm.gui.get_appearance()
+end
+
+local colors_config = get_colorscheme(initial_appearnce)
+deep_merge(config, colors_config)
+
 config.underline_position = -8
 config.underline_thickness = 3
 config.window_decorations = "RESIZE"
@@ -155,5 +195,32 @@ config.keys = {
 		action = wezterm.action.ActivatePaneDirection("Down"),
 	},
 }
+
+wezterm.on("window-config-reloaded", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local colors = get_colorscheme(window:get_appearance())
+	-- TODO: figure out a way to do this nicely
+	bar.apply_to_config(overrides, {
+		modules = {
+			workspace = {
+				color = 6,
+			},
+			zoom = {
+				enabled = true,
+			},
+			hostname = {
+				enabled = false,
+				color = 7,
+			},
+			username = {
+				enabled = false,
+			},
+		},
+	})
+
+	deep_merge(overrides, colors)
+
+	window:set_config_overrides(overrides)
+end)
 
 return config
