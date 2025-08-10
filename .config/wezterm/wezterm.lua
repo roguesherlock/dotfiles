@@ -71,7 +71,7 @@ end
 local colors_config = get_colorscheme(initial_appearnce)
 deep_merge(config, colors_config)
 
-config.underline_position = -8
+config.underline_position = -6
 config.underline_thickness = 3
 config.window_decorations = "RESIZE"
 config.window_padding = {
