@@ -9,7 +9,7 @@ return {
         "buffer",
         opts = {
           hotkeys = true,
-          auto_preview = true, -- Enable or disable automatic preview
+          auto_preview = false, -- Enable or disable automatic preview
 
           -- Use numeric labels.
           -- hotkeys_mode = function(titles)
