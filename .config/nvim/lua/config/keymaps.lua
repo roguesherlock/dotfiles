@@ -16,6 +16,17 @@ map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev [B]uffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next [B]uffer" })
 map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "[B]uffer [N]ew" })
 
+map("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "[T]ab [C]lose" })
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "[T]ab [O]nly" })
+map("n", "<leader><tab><tab>", "<cmd>tablast<cr>", { desc = "[T]ab [L]ast" })
+-- go to tab at index 1..9
+for i = 1, 9 do
+  map("n", "<leader><tab>" .. i, function()
+    vim.cmd.tabn(i)
+  end, { desc = "Go to tab " .. i })
+end
+
 --keywordprg
 -- See `:help 'keywordprg'`
 map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
@@ -54,7 +65,7 @@ local function quit_with_prompt()
     elseif choice == 2 then -- No
       vim.cmd("qa!")
       -- Do nothing, continue to next buffer
-    else     -- Cancel or any other input
+    else -- Cancel or any other input
       return -- Stop the quit process
     end
   end
