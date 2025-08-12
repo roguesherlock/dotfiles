@@ -8,18 +8,24 @@ return {
     end,
   },
   {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "hyperb1iss/silkcircuit-nvim",
     name = "silkcircuit",
-    lazy = false,
+    lazy = true,
     priority = 1000,
   },
   {
     "vague2k/vague.nvim",
     priority = 1000,
+    lazy = true,
   },
   {
     "webhooked/kanso.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {
       -- transparent = true,
@@ -37,6 +43,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
+    lazy = true,
     opts = {
       -- transparent_background = true,
       float = {
@@ -293,6 +300,8 @@ return {
   },
   {
     "folke/tokyonight.nvim",
+    lazy = true,
+    priority = 1000,
     opts = {
       -- transparent = true,
     },

@@ -3,6 +3,9 @@ local map = require("user.util").map
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- restart nvim
+map("n", "<leader>R", "<cmd>restart<cr>", { desc = "Restart Nvim" })
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -22,7 +25,7 @@ map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "[T]ab [O]nly" })
 map("n", "<leader><tab><tab>", "<cmd>tablast<cr>", { desc = "[T]ab [L]ast" })
 -- go to tab at index 1..9
 for i = 1, 9 do
-  map("n", "<leader><tab>" .. i, function()
+  map("n", "<leader>" .. i, function()
     vim.cmd.tabn(i)
   end, { desc = "Go to tab " .. i })
 end

@@ -70,6 +70,7 @@ return {
   -- Neogit for git interface
   {
     "NeogitOrg/neogit",
+    enabled = false,
     dependencies = {
       "sindrets/diffview.nvim",
     },

@@ -20,18 +20,18 @@ local function get_colorscheme(appearance)
 	local config = {}
 	if appearance:find("Dark") then
 		config.color_scheme = "Modus Vivendi (Gogh)"
-		local result, mod = pcall(require, "lua/kanso-zen")
-		if result then
-			config.force_reverse_video_cursor = mod.force_reverse_video_cursor
-			config.colors = mod.colors
-		end
+		-- local result, mod = pcall(require, "lua/kanso-zen")
+		-- if result then
+		-- 	config.force_reverse_video_cursor = mod.force_reverse_video_cursor
+		-- 	config.colors = mod.colors
+		-- end
 	else
 		config.color_scheme = "Modus Operandi (Gogh)"
-		local result, mod = pcall(require, "lua/kanso-pearl")
-		if result then
-			config.force_reverse_video_cursor = mod.force_reverse_video_cursor
-			config.colors = mod.colors
-		end
+		-- local result, mod = pcall(require, "lua/kanso-pearl")
+		-- if result then
+		-- 	config.force_reverse_video_cursor = mod.force_reverse_video_cursor
+		-- 	config.colors = mod.colors
+		-- end
 	end
 	return config
 end
@@ -199,6 +199,11 @@ config.keys = {
 wezterm.on("window-config-reloaded", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
 	local colors = get_colorscheme(window:get_appearance())
+
+	if overrides.color_scheme == colors.color_scheme then
+		return
+	end
+
 	-- TODO: figure out a way to do this nicely
 	bar.apply_to_config(overrides, {
 		modules = {

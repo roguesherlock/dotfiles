@@ -5,8 +5,8 @@ return {
     config = function()
       require("leap").set_default_mappings()
       local map = require("user.util").map
-      map({ 'n', 'x', 'o' }, "r", function()
-        require('leap.remote').action()
+      map({ "n", "x", "o" }, "r", function()
+        require("leap.remote").action()
       end, { desc = "Leap remote action" })
     end,
   },
@@ -16,6 +16,7 @@ return {
     "ThePrimeagen/harpoon",
     event = "VeryLazy",
     branch = "harpoon2",
+    enabled = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("harpoon").setup({
