@@ -10,8 +10,8 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "vscode",
-    dark = "vscode",
+    light = "kanso",
+    dark = "kanso",
   },
   ghostty = {
     light = "Github-Light-High-Contrast",
