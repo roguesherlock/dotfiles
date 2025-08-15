@@ -19,10 +19,10 @@ map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev [B]uffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next [B]uffer" })
 map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "[B]uffer [N]ew" })
 
-map("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "[T]ab [C]lose" })
-map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "[T]ab [O]nly" })
-map("n", "<leader><tab><tab>", "<cmd>tablast<cr>", { desc = "[T]ab [L]ast" })
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
+map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
+map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab [O]nly" })
+map("n", "<leader>tt", "<cmd>tablast<cr>", { desc = "[T]ab [L]ast" })
 -- go to tab at index 1..9
 for i = 1, 9 do
   map("n", "<leader>" .. i, function()
@@ -92,7 +92,8 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 -- map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 -- map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 -- map("n", "<leader>wv", "<C-w><C-v>", { desc = "Split [W]indow [V]ertically" })
--- map("n", "<leader>wd", "<C-w>q", { desc = "[W]indow [D]elete" })
+-- map("n", "<leader>wq", "<C-w>q", { desc = "[W]indow [D]elete" })
+-- map("n", "<leader>wo", "<C-w>o", { desc = "[W]indow [O]nly" })
 map("n", "wm", "<C-w>|", { desc = "[W]indow [M]aximize" })
 
 -- Save

@@ -76,6 +76,124 @@ vim.lsp.enable({ "vtsls", "vue_ls" })
 
 local methods = vim.lsp.protocol.Methods
 
+-- Navigate LSP references for the word under cursor
+local ref_state = {}
+
+---@param bufnr integer
+---@return table
+local function get_buf_references(bufnr)
+  -- Use current window id for position params to avoid invalid win errors
+  local params = vim.lsp.util.make_position_params(0)
+  params.context = { includeDeclaration = true }
+
+  local results = vim.lsp.buf_request_sync(bufnr, methods.textDocument_references, params, 800)
+  if not results then
+    return {}
+  end
+
+  local items = {}
+  local seen = {}
+
+  for client_id, res in pairs(results) do
+    if res and res.result then
+      local client = vim.lsp.get_client_by_id(client_id)
+      local enc = client and client.offset_encoding or "utf-16"
+      for _, loc in ipairs(res.result) do
+        local uri = loc.uri or loc.targetUri
+        local range = loc.range or loc.targetRange or loc.targetSelectionRange
+        if uri and range then
+          local lbuf = vim.uri_to_bufnr(uri)
+          if lbuf == bufnr then
+            local lnum = (range.start.line or 0) + 1
+            local col = vim.lsp.util._get_line_byte_from_position(bufnr, range.start, enc)
+            local key = string.format("%d:%d", lnum, col)
+            if not seen[key] then
+              table.insert(items, { lnum = lnum, col = col, location = loc, enc = enc })
+              seen[key] = true
+            end
+          end
+        end
+      end
+    end
+  end
+
+  table.sort(items, function(a, b)
+    if a.lnum == b.lnum then
+      return a.col < b.col
+    end
+    return a.lnum < b.lnum
+  end)
+
+  return items
+end
+
+---@param bufnr integer
+---@param direction integer -- 1 for next, -1 for previous
+local function cycle_references(bufnr, direction)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  local word = vim.fn.expand("<cword>")
+  local tick = vim.api.nvim_buf_get_changedtick(bufnr)
+
+  local state = ref_state[bufnr]
+  if not state or state.word ~= word or state.tick ~= tick then
+    state = { word = word, items = get_buf_references(bufnr), index = nil, tick = tick }
+    ref_state[bufnr] = state
+  end
+
+  local items = state.items or {}
+  if #items == 0 then
+    vim.notify("No LSP references found", vim.log.levels.INFO)
+    return
+  end
+
+  local cur = vim.api.nvim_win_get_cursor(0) -- {lnum, col0}
+  local cur_lnum, cur_col = cur[1], cur[2]
+  local target_idx
+
+  if direction > 0 then
+    for i, item in ipairs(items) do
+      if item.lnum > cur_lnum or (item.lnum == cur_lnum and item.col > cur_col) then
+        target_idx = i
+        break
+      end
+    end
+    target_idx = target_idx or 1 -- wrap
+  else
+    for i = #items, 1, -1 do
+      local item = items[i]
+      if item.lnum < cur_lnum then
+        target_idx = i
+        break
+      elseif item.lnum == cur_lnum then
+        -- If cursor is after this reference (and not inside it), pick this
+        if cur_col > item.col then
+          local inside = false
+          if item.location and item.location.range then
+            local end_col = vim.lsp.util._get_line_byte_from_position(bufnr, item.location.range["end"], item.enc)
+            if cur_col < end_col then
+              inside = true
+            end
+          end
+          if not inside then
+            target_idx = i
+            break
+          end
+        end
+        -- otherwise continue to earlier items
+      end
+    end
+    target_idx = target_idx or #items -- wrap
+  end
+
+  local item = items[target_idx]
+  state.index = target_idx
+  if item.location then
+    vim.lsp.util.jump_to_location(item.location, item.enc)
+  else
+    vim.api.nvim_win_set_cursor(0, { item.lnum, math.max(0, item.col) })
+  end
+end
+
 --- Sets up LSP keymaps and autocommands for the given buffer.
 ---@param client vim.lsp.Client
 ---@param bufnr integer
@@ -128,6 +246,15 @@ local function on_attach(client, bufnr)
     "Previeous [E]rror")
   -- stylua: ignore
   map("]e", function() vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR }) end, "Next [E]rror")
+  -- Navigate LSP references in current buffer
+  if client:supports_method(methods.textDocument_references) then
+    map("]]", function()
+      cycle_references(bufnr, 1)
+    end, "Next LSP reference in buffer")
+    map("[[", function()
+      cycle_references(bufnr, -1)
+    end, "Previous LSP reference in buffer")
+  end
   map("<leader>lr", "<cmd>LspRestart<cr>", "[L]sp [R]estart")
   map("<leader>li", "<cmd>LspInfo<cr>", "[l]sp [I]nfo")
   map("<leader>lg", "<cmd>LspLog<cr>", "[l]sp lo[g]")
