@@ -87,10 +87,10 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- NOTE: we use `w` keybind for window management
 --  See `:help wincmd` for a list of all window commands
--- map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
--- map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
--- map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
--- map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 -- map("n", "<leader>wv", "<C-w><C-v>", { desc = "Split [W]indow [V]ertically" })
 -- map("n", "<leader>wq", "<C-w>q", { desc = "[W]indow [D]elete" })
 -- map("n", "<leader>wo", "<C-w>o", { desc = "[W]indow [O]nly" })
