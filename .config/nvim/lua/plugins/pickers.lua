@@ -4,6 +4,11 @@ return {
     build = "cargo build --release",
     opts = {
       prompt = "> ",
+      layout = {
+        prompt_position = "top",
+        width = 0.5,
+        preview_position = "bottom",
+      },
     },
     keys = {
       {

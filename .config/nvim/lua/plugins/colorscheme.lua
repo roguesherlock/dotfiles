@@ -25,7 +25,7 @@ return {
   },
   {
     "webhooked/kanso.nvim",
-    lazy = false,
+    event = "VeryLazy",
     priority = 1000,
     opts = {
       -- transparent = true,
@@ -319,6 +319,10 @@ return {
       --     italic = true,
       --   },
       -- },
+      on_colors = function(colors)
+        -- colors.bg_main = colors.bg_dim
+        colors.bg_main = colors.bg_alt
+      end,
       -- on_highlights = function(h, c)
       --   local bg = c.bg_dim
       --
