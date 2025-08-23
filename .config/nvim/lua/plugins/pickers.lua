@@ -9,6 +9,9 @@ return {
         width = 0.5,
         preview_position = "bottom",
       },
+      preview = {
+        enabled = false,
+      },
     },
     keys = {
       {

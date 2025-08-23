@@ -16,11 +16,12 @@ theme = light:Github-Light-High-Contrast,dark:Black Metal
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 window-colorspace = display-p3
-background-opacity = 0.90
-background-blur-radius = 20
+# background-opacity = 0.90
+# background-blur-radius = 20
 window-save-state = always
 unfocused-split-opacity=0.85
 auto-update-channel=tip
+custom-shader=./shaders/cursor_smear.glsl
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0

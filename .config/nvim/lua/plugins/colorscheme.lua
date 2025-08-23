@@ -8,12 +8,19 @@ return {
     end,
   },
   {
+    "ronisbr/nano-theme.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    enabled = false,
+  },
+  {
     "Mofiqul/vscode.nvim",
     event = "VeryLazy",
     priority = 1000,
   },
   {
     "hyperb1iss/silkcircuit-nvim",
+    enabled = false,
     name = "silkcircuit",
     event = "VeryLazy",
     priority = 1000,
