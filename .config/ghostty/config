@@ -1,7 +1,7 @@
 # font-family = "Iosevka Term"
 # font-family = "Geist Mono"
 # font-family = "Maple Mono"
-font-family = "Berkeley Mono Variable"
+# font-family = "Berkeley Mono Variable"
 font-size = 13
 font-thicken = true
 font-thicken-strength = 30
@@ -22,6 +22,7 @@ window-save-state = always
 unfocused-split-opacity=0.85
 auto-update-channel=tip
 custom-shader=./shaders/cursor_smear.glsl
+minimum-contrast=2
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
