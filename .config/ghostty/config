@@ -2,9 +2,10 @@
 # font-family = "Geist Mono"
 # font-family = "Maple Mono"
 # font-family = "Berkeley Mono Variable"
+# font-family = "Input Mono Narrow"
 font-size = 13
 font-thicken = true
-font-thicken-strength = 30
+font-thicken-strength = 10
 adjust-cell-height = 25%
 adjust-underline-position = 6
 adjust-underline-thickness = 40%
@@ -16,13 +17,12 @@ theme = light:Github-Light-High-Contrast,dark:Black Metal
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 window-colorspace = display-p3
-# background-opacity = 0.90
-# background-blur-radius = 20
+background-opacity = 0.90
+background-blur-radius = 20
 window-save-state = always
 unfocused-split-opacity=0.85
 auto-update-channel=tip
 custom-shader=./shaders/cursor_smear.glsl
-minimum-contrast=2
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0

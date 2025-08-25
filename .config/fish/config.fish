@@ -45,25 +45,6 @@ if status is-interactive
 
 end
 
-# New Hey
-# alias new_hey 'touch ~/Developer/aaakash.xyz/src/content/heys/(date -I).md && echo ---\ndate:\ (date -I)\n--- > ~/Developer/aaakash.xyz/src/content/heys/(date +"%Y-%m-%d").md'
-function new_hey
-    if test -z $argv[1]
-        set date (date -I)
-    else
-        set date $argv[1]
-    end
-    set filename "$date.md"
-    set filepath "$HOME/Developer/akashpomal.com/src/content/heys/$filename"
-    if test -f $filepath
-        echo "File $filepath already exists"
-        return
-    end
-    touch $filepath # Create file with default value if empty
-    echo ---\ndate: $date\n--- >$filepath # Add frontmatter
-    echo "File $filepath created" # Print message
-end
-
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
