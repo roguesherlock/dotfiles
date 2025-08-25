@@ -13,23 +13,23 @@ return {
         enabled = false,
       },
     },
-    keys = {
-      {
-        "<leader><leader>",
-        function()
-          require("fff").find_in_git_root()
-        end,
-        desc = "Search Files",
-      },
-      {
-        "<leader>sf",
-        function()
-          -- require("fff").find_in_git_root()
-          require("fff").find_files()
-        end,
-        desc = "[S]earch [F]iles",
-      },
-    },
+    -- keys = {
+    --   {
+    --     "<leader><leader>",
+    --     function()
+    --       require("fff").find_in_git_root()
+    --     end,
+    --     desc = "Search Files",
+    --   },
+    --   {
+    --     "<leader>sf",
+    --     function()
+    --       -- require("fff").find_in_git_root()
+    --       require("fff").find_files()
+    --     end,
+    --     desc = "[S]earch [F]iles",
+    --   },
+    -- },
   },
   {
     "echasnovski/mini.pick",
@@ -112,7 +112,7 @@ return {
       { "<leader>sC", "<cmd>FzfLua commands<cr>", desc = "Commands" },
       { "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "[S]earch [d]iagnostics" },
       { "<leader>sD", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "[S]earch [D]iagnostics in workspace" },
-      -- { "<leader>sf", "<cmd>FzfLua git_files",                desc = "[S]earch Git [F]iles" },
+      { "<leader>sf", "<cmd>FzfLua git_files<cr>",                desc = "[S]earch Git [F]iles" },
       { "<leader>sg", "<cmd>FzfLua live_grep<cr>", desc = "[S]earch by [G]rep" },
       { "<leader>sh", "<cmd>FzfLua help<cr>", desc = "[S]earch [H]elp" },
       { "<leader>sH", "<cmd>FzfLua highlights<cr>", desc = "[S]earch [H]ighlights" },
@@ -127,7 +127,7 @@ return {
       { "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "[S]earch current [W]ord", mode = { "x" }, },
       { '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "[S]earch [R]egisters" },
       { "<leader>s.", "<cmd>FzfLua history<cr>", desc = '[S]earch Recent Files ("." for repeat)' },
-      -- { "<leader><leader>", "<cmd>FzfLua global<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
+      { "<leader><leader>", "<cmd>FzfLua global<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
       -- stylua: ignore end
     },
     config = function(_, opts)
