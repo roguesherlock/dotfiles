@@ -66,7 +66,7 @@ return {
   },
 
   {
-    "echasnovski/mini.starter",
+    "nvim-mini/mini.starter",
     config = function()
       local starter = require("mini.starter")
       local pad = string.rep(" ", 22)

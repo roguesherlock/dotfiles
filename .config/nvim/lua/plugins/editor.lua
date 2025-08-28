@@ -1,6 +1,6 @@
 return {
   { "windwp/nvim-ts-autotag" },
-  { "echasnovski/mini.comment" },
+  { "nvim-mini/mini.comment" },
   {
     "saghen/blink.indent",
     enabled = true,
@@ -10,16 +10,16 @@ return {
       },
     },
   },
-  { "echasnovski/mini.ai" },
-  -- { "echasnovski/mini.pairs", enabled = false },
+  { "nvim-mini/mini.ai" },
+  -- { "nvim-mini/mini.pairs", enabled = false },
   {
     "saghen/blink.pairs",
     version = "*",
     dependencies = "saghen/blink.download",
     opts = {},
   },
-  { "echasnovski/mini.hipatterns" },
-  { "echasnovski/mini.splitjoin" },
+  { "nvim-mini/mini.hipatterns" },
+  { "nvim-mini/mini.splitjoin" },
   -- Snacks for various utilities
   {
     "folke/snacks.nvim",

@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     config = function()
       local hipatterns = require("mini.hipatterns")
       hipatterns.setup({
@@ -18,7 +18,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.files",
+    "nvim-mini/mini.files",
     keys = {
       {
         "<leader>e",
@@ -47,13 +47,13 @@ return {
       },
     },
   },
-  { "echasnovski/mini.bracketed", opts = {
+  { "nvim-mini/mini.bracketed", opts = {
     window = { suffix = "W", options = {} },
   } },
-  { "echasnovski/mini.extra" },
-  { "echasnovski/mini.icons" },
+  { "nvim-mini/mini.extra" },
+  { "nvim-mini/mini.icons" },
   {
-    "echasnovski/mini.statusline",
+    "nvim-mini/mini.statusline",
     config = function()
       local statusline = require("mini.statusline")
       local icons = require("mini.icons")
@@ -103,7 +103,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = {
       mappings = {
         add = "gsa", -- Add surrounding in Normal and Visual modes
