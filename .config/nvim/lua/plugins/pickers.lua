@@ -108,8 +108,8 @@ return {
       { "<leader>sa", "<cmd>FzfLua autocmds<cr>", desc = "Auto Commands" },
       { "<leader>sb", "<cmd>FzfLua grep_curbuf<cr>", desc = "[S]earch in current [b]uffer" },
       { "<leader>sB", "<cmd>FzfLua buffers<cr>", desc = "[S]earch existing [B]uffers" },
-      { "<leader>sc", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
-      { "<leader>sC", "<cmd>FzfLua commands<cr>", desc = "Commands" },
+      { "<leader>sC", "<cmd>FzfLua command_history<cr>", desc = "[S]earch [C]ommand History" },
+      { "<leader>sc", "<cmd>FzfLua commands<cr>", desc = "[S]earch [C]ommands" },
       { "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "[S]earch [d]iagnostics" },
       { "<leader>sD", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "[S]earch [D]iagnostics in workspace" },
       -- { "<leader>sf", "<cmd>FzfLua git_files<cr>",                desc = "[S]earch Git [F]iles" },
@@ -127,6 +127,7 @@ return {
       { "<leader>sw", "<cmd>FzfLua grep_visual<cr>", desc = "[S]earch current [W]ord", mode = { "x" }, },
       { '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "[S]earch [R]egisters" },
       { "<leader>s.", "<cmd>FzfLua history<cr>", desc = '[S]earch Recent Files ("." for repeat)' },
+      { "<leader>st", "<cmd>FzfLua colorschemes<cr>", desc = '[S]earch [T]hemes' },
       -- { "<leader><leader>", "<cmd>FzfLua global<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
       -- stylua: ignore end
     },

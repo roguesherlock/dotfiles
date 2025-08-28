@@ -13,11 +13,48 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
+  -- {
+  --   "EdenEast/nightfox.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "AlexvZyl/nordic.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "projekt0n/github-nvim-theme",
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
   {
-    "EdenEast/nightfox.nvim",
-    event = "VeryLazy",
+    "sainnhe/gruvbox-material",
+    lazy = false,
     priority = 1000,
   },
+  -- {
+  --   "neanias/everforest-nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   config = function()
+  --     require("everforest").setup({
+  --       -- transparent_background_level = 2,
+  --       italics = true,
+  --     })
+  --   end,
+  -- },
+  -- {
+  --   "loctvl842/monokai-pro.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "ribru17/bamboo.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {},
+  -- },
   -- {
   --   "Mofiqul/vscode.nvim",
   --   enabled = false,
@@ -59,6 +96,11 @@ return {
     priority = 1000,
     event = "VeryLazy",
     opts = {
+      -- latte, frappe, macchiato, mocha
+      background = { -- :h background
+        light = "latte",
+        dark = "frappe",
+      },
       -- transparent_background = true,
       float = {
         -- transparent = true, -- enable transparent floating windows
@@ -78,7 +120,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = true,
+      -- transparent = true,
       line_nr_column_background = false,
       sign_column_background = false,
       -- styles = {
@@ -88,7 +130,7 @@ return {
       -- },
       on_colors = function(colors)
         -- colors.bg_main = colors.bg_dim
-        colors.bg_main = colors.bg_alt
+        colors.bg_main = colors.bg_dim
       end,
       -- on_highlights = function(h, c)
       --   local bg = c.bg_dim

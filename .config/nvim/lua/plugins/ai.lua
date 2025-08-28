@@ -151,7 +151,7 @@ return {
     enabled = true,
     opts = {
       auto_reload = true, -- Automatically reload buffers edited by opencode
-      auto_focus = true,  -- Focus the opencode window after prompting
+      auto_focus = true, -- Focus the opencode window after prompting
     },
     -- stylua: ignore
     keys = {

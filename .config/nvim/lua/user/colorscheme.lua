@@ -10,14 +10,17 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "lunaperche",
-    dark = "lunaperche",
+    light = "catppuccin-frappe",
+    dark = "catppuccin-frappe",
   },
   ghostty = {
-    light = "Github-Light-High-Contrast",
-    dark = "Black Metal",
+    -- light = "Github-Light-High-Contrast",
+    -- dark = "Black Metal",
+    -- light = "Everforest Dark - Hard",
+    -- dark = "Everforest Dark - Hard",
     -- light = "catppuccin-latte",
-    -- dark = "catppuccin-mocha",
+    light = "catppuccin-frappe",
+    dark = "catppuccin-frappe",
     custom_theme = false,
   },
   kitty = {
@@ -33,14 +36,16 @@ M.config = {
     dark = "modus_vivendi",
   },
   delta = {
-    light = "catppuccin-latte",
+    -- light = "catppuccin-latte",
+    light = "catppuccin-frappe",
     dark = "catppuccin-frappe",
   },
   yazi = {
     -- light = "catppuccin-latte",
-    -- dark = "catppuccin-frappe",
-    light = "kanso-pearl",
-    dark = "kanso-zen",
+    light = "catppuccin-frappe",
+    dark = "catppuccin-frappe",
+    -- light = "kanso-pearl",
+    -- dark = "kanso-zen",
   },
 }
 
@@ -85,8 +90,9 @@ end
 function M.set_from_os()
   if not M.config.opts.enable_auto_switch then
     M.set_colorscheme(M.config.opts.default_light)
+  else
+    M.set_colorscheme(not M.os_is_dark())
   end
-  M.set_colorscheme(not M.os_is_dark())
 end
 
 function M.get_colorscheme()
