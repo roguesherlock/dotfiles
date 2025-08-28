@@ -58,6 +58,7 @@ return {
           graphql = { "prettier" },
           markdown = javascript_formatter,
           yaml = javascript_formatter,
+          php = { "pint" },
         },
       })
 

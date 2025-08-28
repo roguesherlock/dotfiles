@@ -72,6 +72,14 @@ local vue_ls_config = {}
 
 vim.lsp.config("vtsls", vtsls_config)
 vim.lsp.config("vue_ls", vue_ls_config)
+vim.lsp.config("tailwindcss", {
+  emmetCompletions = true,
+  classFunctions = { "tw", "clsx", "cn", "tw\\.[a-z-]+" },
+  includeLanguages = {
+    php = "html",
+    blade = "html",
+  },
+})
 vim.lsp.enable({ "vtsls", "vue_ls" })
 
 local methods = vim.lsp.protocol.Methods
