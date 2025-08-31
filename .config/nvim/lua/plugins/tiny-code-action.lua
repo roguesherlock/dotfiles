@@ -11,16 +11,16 @@ return {
         opts = {
           hotkeys = true,
           auto_preview = false, -- Enable or disable automatic preview
-
+          auto_accept = true,
           -- Use numeric labels.
-          -- hotkeys_mode = function(titles)
-          --   return vim
-          --     .iter(ipairs(titles))
-          --     :map(function(i)
-          --       return tostring(i)
-          --     end)
-          --     :totable()
-          -- end,
+          hotkeys_mode = function(titles)
+            return vim
+              .iter(ipairs(titles))
+              :map(function(i)
+                return tostring(i)
+              end)
+              :totable()
+          end,
         },
       },
     },

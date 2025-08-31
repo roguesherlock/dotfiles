@@ -1,9 +1,4 @@
 return {
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {},
-  },
   -- Overseer for task running
   {
     "stevearc/overseer.nvim",
