@@ -70,7 +70,7 @@ return {
   -- Neogit for git interface
   {
     "NeogitOrg/neogit",
-    enabled = false,
+    enabled = true,
     dependencies = {
       "sindrets/diffview.nvim",
     },
@@ -80,7 +80,6 @@ return {
       require("neogit").setup({
         integrations = {
           diffview = true,
-          mini_pick = true,
         },
         graph_style = "kitty",
       })

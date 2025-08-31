@@ -9,7 +9,6 @@ return {
   },
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
-  --   enabled = false,
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
@@ -19,30 +18,9 @@ return {
   --   priority = 1000,
   -- },
   -- {
-  --   "AlexvZyl/nordic.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
-  -- {
-  --   "projekt0n/github-nvim-theme",
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
-  {
-    "sainnhe/gruvbox-material",
-    lazy = false,
-    priority = 1000,
-  },
-  -- {
-  --   "neanias/everforest-nvim",
+  --   "sainnhe/gruvbox-material",
   --   event = "VeryLazy",
   --   priority = 1000,
-  --   config = function()
-  --     require("everforest").setup({
-  --       -- transparent_background_level = 2,
-  --       italics = true,
-  --     })
-  --   end,
   -- },
   -- {
   --   "loctvl842/monokai-pro.nvim",
@@ -55,24 +33,20 @@ return {
   --   priority = 1000,
   --   opts = {},
   -- },
-  -- {
-  --   "Mofiqul/vscode.nvim",
-  --   enabled = false,
-  --   event = "VeryLazy",
-  --   priority = 1000,
-  -- },
+  {
+    "Mofiqul/vscode.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+  },
   -- {
   --   "hyperb1iss/silkcircuit-nvim",
-  --   enabled = false,
-  --   name = "silkcircuit",
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
   -- {
   --   "vague2k/vague.nvim",
-  --   enabled = false,
-  --   priority = 1000,
   --   event = "VeryLazy",
+  --   priority = 1000,
   -- },
   {
     "webhooked/kanso.nvim",
@@ -93,9 +67,11 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000,
     event = "VeryLazy",
+    priority = 1000,
     opts = {
+      term_colors = true,
+      auto_integrations = true,
       -- latte, frappe, macchiato, mocha
       background = { -- :h background
         light = "latte",
@@ -105,19 +81,29 @@ return {
       float = {
         -- transparent = true, -- enable transparent floating windows
       },
+      integrations = {
+        native_lsp = {
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+            ok = { "undercurl" },
+          },
+        },
+      },
     },
   },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   event = "VeryLazy",
-  --   priority = 1000,
-  --   opts = {
-  --     -- transparent = true,
-  --   },
-  -- },
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    opts = {
+      day_brightness = 0.2,
+    },
+  },
   {
     "miikanissi/modus-themes.nvim",
-    lazy = false,
+    event = "VeryLazy",
     priority = 1000,
     opts = {
       -- transparent = true,
@@ -128,10 +114,10 @@ return {
       --     italic = true,
       --   },
       -- },
-      on_colors = function(colors)
-        -- colors.bg_main = colors.bg_dim
-        colors.bg_main = colors.bg_dim
-      end,
+      -- on_colors = function(colors)
+      -- colors.bg_main = colors.bg_dim
+      -- colors.bg_main = colors.bg_alt
+      -- end,
       -- on_highlights = function(h, c)
       --   local bg = c.bg_dim
       --

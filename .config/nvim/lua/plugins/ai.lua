@@ -158,15 +158,32 @@ return {
       -- opencode.nvim exposes a general, flexible API — customize it to your workflow!
       -- But here are some examples to get you started :)
       { '<leader>at', function() require('opencode').toggle() end,                                                      desc = '[A]i [T]oggle opencode', },
-      { '<leader>aa', function() require('opencode').ask() end,                                                         desc = '[A] [a]sk opencode',                     mode = { 'n', 'v' }, },
-      { '<leader>aA', function() require('opencode').ask('@file ') end,                                                 desc = '[A]i [A]sk opencode about current file', mode = { 'n', 'v' }, },
+      { '<leader>aa', function() require('opencode').ask('@cursor: ') end,                                              desc = '[A] [a]sk opencode',                     mode = { 'n' }, },
+      { '<leader>aa', function() require('opencode').ask('@selection: ') end,                                           desc = '[A] [a]sk opencode',                     mode = { 'v' }, },
+      { '<leader>aA', function() require('opencode').ask('@buffer ') end,                                               desc = '[A]i [A]sk opencode about current buffer', mode = { 'n', 'v' }, },
       { '<leader>an', function() require('opencode').command('/new') end,                                               desc = '[A]i [N]ew session', },
       { '<leader>ae', function() require('opencode').prompt('Explain @cursor and its context') end,                     desc = '[A]i [E]xplain code near cursor' },
-      { '<leader>ar', function() require('opencode').prompt('Review @file for correctness and readability') end,        desc = '[A]i [R]eview file', },
-      { '<leader>af', function() require('opencode').prompt('Fix these @diagnostics') end,                              desc = '[A]i [F]ix errors', },
+      { '<leader>ar', function() require('opencode').prompt('Review @buffer for correctness and readability') end,      desc = '[A]i [R]eview file', },
+      { '<leader>af', function() require('opencode').prompt('Fix this @diagnostic') end,                                desc = '[A]i [f]ix error on current line', },
+      { '<leader>aF', function() require('opencode').prompt('Fix these @diagnostics') end,                              desc = '[A]i [F]ix all errors in current buffer', },
       { '<leader>ao', function() require('opencode').prompt('Optimize @selection for performance and readability') end, desc = '[A]i [O]ptimize selection',              mode = 'v', },
       { '<leader>ad', function() require('opencode').prompt('Add documentation comments for @selection') end,           desc = '[A]i [D]ocument selection',              mode = 'v', },
-      { '<leader>ax', function() require('opencode').prompt('Add tests for @selection') end,                            desc = '[A]i [T]est selection',                  mode = 'v', },
     },
+    config = function(_, opts)
+      require("opencode").setup(opts)
+
+      -- Listen for opencode events
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "OpencodeEvent",
+        callback = function(args)
+          -- See the available event types and their properties
+          -- vim.notify(vim.inspect(args.data), vim.log.levels.DEBUG)
+          -- Do something interesting, like show a notification when opencode finishes responding
+          if args.data.type == "session.idle" then
+            vim.notify("opencode finished responding", vim.log.levels.INFO)
+          end
+        end,
+      })
+    end,
   },
 }
