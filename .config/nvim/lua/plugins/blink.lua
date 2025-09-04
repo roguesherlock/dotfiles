@@ -22,7 +22,11 @@ return {
         },
         completion = {
           menu = {
-            auto_show = true,
+            auto_show = function(ctx)
+              return vim.fn.getcmdtype() == ":"
+              -- enable for inputs as well, with:
+              -- or vim.fn.getcmdtype() == '@'
+            end,
           },
         },
       },
