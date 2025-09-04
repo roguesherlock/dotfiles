@@ -24,60 +24,23 @@ return {
     "olimorris/codecompanion.nvim",
     enabled = false,
     event = "VeryLazy",
-    cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat" },
-    config = function()
-      require("codecompanion").setup({
-        strategies = {
-          chat = {
-            adapter = "anthropic",
-            slash_commands = {
-              ["buffer"] = {
-                opts = {
-                  provider = "mini_pick",
-                },
-              },
-              ["fetch"] = {
-                opts = {
-                  provider = "mini_pick",
-                },
-              },
-              ["file"] = {
-                opts = {
-                  provider = "mini_pick",
-                },
-              },
-              ["help"] = {
-                opts = {
-                  provider = "mini_pick",
-                },
-              },
-              ["symbols"] = {
-                opts = {
-                  provider = "mini_pick",
-                },
-              },
-            },
-            keymaps = {
-              close = {
-                modes = {
-                  n = "q",
-                  i = "q",
-                },
-              },
-              stop = {
-                modes = {
-                  n = "<C-c>",
-                },
-              },
-            },
+    dependencies = {
+      "ravitemer/mcphub.nvim",
+    },
+    opts = {
+      extensions = {
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion",
+          opts = {
+            make_vars = true,
+            make_slash_commands = true,
+            show_result_in_chat = true,
           },
         },
-        display = {
-          diff = {
-            provider = "mini_diff",
-          },
-        },
-      })
+      },
+    },
+    config = function(_, opts)
+      require("codecompanion").setup(opts)
 
       local map = require("user.util").map
       map({ "n", "v" }, "<leader>ap", "<cmd>CodeCompanionActions<cr>", { desc = "[A]i Actions [P]rompt" })

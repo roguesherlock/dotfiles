@@ -11,40 +11,6 @@ return {
     end,
   },
 
-  -- Harpoon for quick file navigation
-  {
-    "ThePrimeagen/harpoon",
-    event = "VeryLazy",
-    branch = "harpoon2",
-    enabled = false,
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("harpoon").setup({
-        menu = {
-          width = vim.api.nvim_win_get_width(0) - 4,
-        },
-        settings = {
-          save_on_toggle = true,
-        },
-      })
-
-      local map = require("user.util").map
-      map("n", "<leader>H", function()
-        require("harpoon"):list():add()
-      end, { desc = "Add Harpoon File" })
-
-      map("n", "<leader>tp", function()
-        local harpoon = require("harpoon")
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end, { desc = "[T]oggle Har[P]oon Quick Menu" })
-
-      for i = 1, 5 do
-        map("n", "<leader>" .. i, function()
-          require("harpoon"):list():select(i)
-        end, { desc = "Harpoon to File " .. i })
-      end
-    end,
-  },
   -- Snipe for buffer navigation
   {
     "leath-dub/snipe.nvim",

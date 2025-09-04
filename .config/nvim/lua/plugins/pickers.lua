@@ -9,6 +9,13 @@ return {
         width = 0.5,
         preview_position = "bottom",
       },
+      debug = {
+        enabled = false, -- we expect your collaboration at least during the beta
+        show_scores = false, -- to help us optimize the scoring system, feel free to share your scores!
+      },
+      hl = {
+        prompt = "Normal",
+      },
       preview = {
         enabled = false,
       },
@@ -79,7 +86,7 @@ return {
       config.defaults.keymap.builtin["<c-f>"] = "preview-page-down"
       config.defaults.keymap.builtin["<c-b>"] = "preview-page-up"
       -- Trouble
-      config.defaults.actions.files["ctrl-t"] = require("trouble.sources.fzf").actions.open
+      -- config.defaults.actions.files["ctrl-t"] = require("trouble.sources.fzf").actions.open
 
       return {
         fzf_colors = true,
@@ -106,15 +113,15 @@ return {
       -- stylua: ignore start
       { "<leader>sa", "<cmd>FzfLua autocmds<cr>", desc = "[S]earch [A]utocmds" },
       { "<leader>sa", "<cmd>FzfLua autocmds<cr>", desc = "Auto Commands" },
-      { "<leader>sb", "<cmd>FzfLua grep_curbuf<cr>", desc = "[S]earch in current [b]uffer" },
-      { "<leader>sB", "<cmd>FzfLua buffers<cr>", desc = "[S]earch existing [B]uffers" },
+      { "<leader>sB", "<cmd>FzfLua grep_curbuf<cr>", desc = "[S]earch in current [B]uffer" },
+      { "<leader>sb", "<cmd>FzfLua buffers<cr>", desc = "[S]earch existing [b]uffers" },
       { "<leader>sC", "<cmd>FzfLua command_history<cr>", desc = "[S]earch [C]ommand History" },
       { "<leader>sc", "<cmd>FzfLua commands<cr>", desc = "[S]earch [C]ommands" },
       { "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "[S]earch [d]iagnostics" },
       { "<leader>sD", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "[S]earch [D]iagnostics in workspace" },
       -- { "<leader>sf", "<cmd>FzfLua git_files<cr>",                desc = "[S]earch Git [F]iles" },
       { "<leader>sg", "<cmd>FzfLua live_grep<cr>", desc = "[S]earch by [G]rep" },
-      { "<leader>sh", "<cmd>FzfLua help<cr>", desc = "[S]earch [H]elp" },
+      { "<leader>sh", "<cmd>FzfLua helptags<cr>", desc = "[S]earch [H]elp" },
       { "<leader>sH", "<cmd>FzfLua highlights<cr>", desc = "[S]earch [H]ighlights" },
       { "<leader>sj", "<cmd>FzfLua jumps<cr>", desc = "[S]earch [J]umps" },
       { "<leader>sk", "<cmd>FzfLua keymaps<cr>", desc = "[S]earch [K]eymaps" },

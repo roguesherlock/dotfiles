@@ -7,6 +7,10 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
+  {
+    "tinted-theming/tinted-vim",
+    enabled = false,
+  },
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
   --   event = "VeryLazy",

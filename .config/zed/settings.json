@@ -66,6 +66,7 @@
     "auto_reveal_entries": true,
     "auto_fold_dirs": true
   },
+  "excerpt_context_lines": 10,
   // "features": {
   //   "edit_prediction_provider": "supermaven"
   // },

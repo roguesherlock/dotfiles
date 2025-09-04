@@ -53,40 +53,27 @@ return {
 
   -- Dashboard/session management
   {
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    config = function()
-      require("persistence").setup({})
-    end,
+    "rmagatti/auto-session",
+    lazy = false,
+    keys = {
+      { "<leader>wf", "<cmd>AutoSession search<CR>", desc = "[W]orkspace [F]ind" },
+      { "<leader>ws", "<cmd>AutoSession save<CR>", desc = "[W]orkspace [S]ave " },
+      { "<leader>wa", "<cmd>AutoSession toggle<CR>", desc = "[W]orkspace [A]utosave" },
+    },
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      git_use_branch_name = true,
+      git_auto_restore_on_branch_change = true,
+      load_on_setup = true,
+    },
   },
 
-  {
-    "nvim-mini/mini.starter",
-    config = function()
-      local starter = require("mini.starter")
-      local pad = string.rep(" ", 22)
-      starter.setup({
-        evaluate_single = true,
-        items = {
-          starter.sections.builtin_actions(),
-          {
-            name = "Restore session",
-            action = [[lua require("persistence").load()]],
-            section = "Sessions",
-          },
-          starter.sections.recent_files(5, true),
-        },
-        content_hooks = {
-          starter.gen_hook.adding_bullet(pad .. "░ ", false),
-          starter.gen_hook.indexing("all", { "Builtin actions", "Sessions" }),
-          starter.gen_hook.aligning("center", "center"),
-        },
-      })
-    end,
-  },
   -- Zen mode for distraction-free writing
   {
     "folke/zen-mode.nvim",
+    enabled = false,
     event = "VeryLazy",
     dependencies = { "folke/twilight.nvim" },
     cmd = "ZenMode",

@@ -1,6 +1,5 @@
 return {
   { "windwp/nvim-ts-autotag" },
-  { "nvim-mini/mini.comment" },
   {
     "saghen/blink.indent",
     enabled = true,
@@ -10,16 +9,12 @@ return {
       },
     },
   },
-  { "nvim-mini/mini.ai" },
-  -- { "nvim-mini/mini.pairs", enabled = false },
   {
     "saghen/blink.pairs",
     version = "*",
     dependencies = "saghen/blink.download",
     opts = {},
   },
-  { "nvim-mini/mini.hipatterns" },
-  { "nvim-mini/mini.splitjoin" },
   -- Snacks for various utilities
   {
     "folke/snacks.nvim",
@@ -42,9 +37,6 @@ return {
     keys = {
       { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit", },
       { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal", mode = { "n", "t" }, },
-      { "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore", },
-      -- { "]]", function() Snacks.words.jump(1) end, desc = "Next Reference", mode = { "n", "t" }, },
-      -- { "[[", function() Snacks.words.jump(-vim.v.count1)  end, desc = "Prev Reference", mode = { "n", "t" }, },
       { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History", },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer", },
       { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" }, },
@@ -54,6 +46,7 @@ return {
   -- Trouble for diagnostics
   {
     "folke/trouble.nvim",
+    enabled = false,
     cmd = "Trouble",
     event = "VeryLazy",
     config = function()
@@ -64,17 +57,19 @@ return {
     end,
   },
   {
-    enabled = false,
     "j-hui/fidget.nvim",
-    commit = "e4e71e9",
+    enabled = true,
     opts = {
-      -- options
+      notification = {
+        override_vim_notify = true, -- Automatically override vim.notify() with Fidget
+      },
     },
   },
 
   -- Noice for better UI
   {
     "folke/noice.nvim",
+    enabled = false,
     dependencies = {
       "MunifTanjim/nui.nvim",
     },

@@ -18,6 +18,9 @@ map("n", "<S-l>", "<cmd>e #<cr>", { desc = "Other Buffer" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev [B]uffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next [B]uffer" })
 map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "[B]uffer [N]ew" })
+-- Delete all buffers except the current one
+map("n", "<leader>bD", "<cmd>bufdo bd<cr>", { desc = "[B]uffer [D]elete All" })
+map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Delete other buffers" })
 
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
 map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
@@ -39,11 +42,18 @@ map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+map("n", "<leader>q", function()
+  vim.diagnostic.setloclist({ severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Open local buffer errors [Q]uickfix list" })
+map("n", "<leader>Q", vim.diagnostic.setloclist, { desc = "Open local buffer diagnostics [Q]uickfix list" })
+map("n", "<leader>d", function()
+  vim.diagnostic.setqflist({ severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Open all buffer errors [D]iagnostic list" })
+map("n", "<leader>D", vim.diagnostic.setqflist, { desc = "Open all buffer [D]iagnostics list" })
 
 -- quickfix list
 map("n", "<leader>xx", "<cmd>copen<cr>", { desc = "Open [X]Quikfi[X] list" })
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open [L]ocal [X]Quikfi[X] list" })
+map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open [X]local [l]ist" })
 
 -- quit
 local function quit_with_prompt()

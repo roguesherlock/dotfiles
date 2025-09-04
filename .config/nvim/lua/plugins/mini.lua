@@ -50,10 +50,15 @@ return {
   { "nvim-mini/mini.bracketed", opts = {
     window = { suffix = "W", options = {} },
   } },
+  { "nvim-mini/mini.splitjoin" },
   { "nvim-mini/mini.extra" },
   { "nvim-mini/mini.icons" },
+  { "nvim-mini/mini.comment" },
+  { "nvim-mini/mini.ai" },
+  { "nvim-mini/mini.pairs", enabled = false },
   {
     "nvim-mini/mini.statusline",
+    enabled = false,
     config = function()
       local statusline = require("mini.statusline")
       local icons = require("mini.icons")
@@ -117,5 +122,44 @@ return {
         suffix_next = "n", -- Suffix to search with "next" method
       },
     },
+  },
+  {
+    "nvim-mini/mini.starter",
+    enabled = false,
+    config = function()
+      local starter = require("mini.starter")
+      local pad = string.rep(" ", 22)
+      starter.setup({
+        evaluate_single = true,
+        items = {
+          starter.sections.builtin_actions(),
+          {
+            name = "Find files",
+            action = function()
+              local bufnr = vim.api.nvim_get_current_buf()
+              starter.close(bufnr)
+              require("fff").find_files()
+            end,
+            section = "Builtin actions",
+          },
+          {
+            name = "Grep live",
+            action = "FzfLua live_grep",
+            section = "Builtin actions",
+          },
+          {
+            name = "Restore session",
+            action = [[lua require("persistence").load()]],
+            section = "Sessions",
+          },
+          starter.sections.recent_files(5, true),
+        },
+        content_hooks = {
+          starter.gen_hook.adding_bullet(pad .. "░ ", false),
+          starter.gen_hook.indexing("all", { "Builtin actions", "Sessions" }),
+          starter.gen_hook.aligning("center", "center"),
+        },
+      })
+    end,
   },
 }
