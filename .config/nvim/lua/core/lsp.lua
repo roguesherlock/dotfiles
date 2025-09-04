@@ -218,7 +218,7 @@ local function cycle_references(bufnr, direction)
   local item = items[target_idx]
   state.index = target_idx
   if item.location then
-    vim.lsp.util.jump_to_location(item.location, item.enc)
+    vim.lsp.util.show_document(item.location, item.enc, { focus = true })
   else
     vim.api.nvim_win_set_cursor(0, { item.lnum, math.max(0, item.col) })
   end

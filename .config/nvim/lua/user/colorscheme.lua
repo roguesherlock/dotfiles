@@ -12,8 +12,10 @@ M.config = {
   nvim = {
     -- light = "modus",
     -- dark = "modus",
-    light = "tokyonight",
-    dark = "tokyonight",
+    -- light = "tokyonight",
+    -- dark = "tokyonight",
+    light = "default",
+    dark = "default",
   },
   ghostty = {
     -- light = "Github-Light-High-Contrast",
