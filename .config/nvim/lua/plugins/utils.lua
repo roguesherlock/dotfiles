@@ -2,18 +2,9 @@ return {
   -- Overseer for task running
   {
     "stevearc/overseer.nvim",
-    event = "VeryLazy",
-    cmd = {
-      "OverseerRun",
-      "OverseerToggle",
-      "OverseerInfo",
-      "OverseerBuild",
-      "OverseerQuickAction",
-      "OverseerTaskAction",
-      "OverseerClearCache",
-    },
     config = function()
-      require("overseer").setup({
+      local overseer = require("overseer")
+      overseer.setup({
         dap = false,
         task_list = {
           bindings = {
@@ -41,13 +32,51 @@ return {
       })
 
       local map = require("user.util").map
-      map("n", "<leader>wtl", "<cmd>OverseerToggle<cr>", { desc = "[W]orkspace [T]asks [L]ist" })
-      map("n", "<leader>wtr", "<cmd>OverseerRun<cr>", { desc = "[W]orkspace [T]asks [R]un" })
-      map("n", "<leader>wtq", "<cmd>OverseerQuickAction<cr>", { desc = "[W]orkspace [T]asks [Q]uick Run" })
-      map("n", "<leader>wti", "<cmd>OverseerInfo<cr>", { desc = "[W]orkspace [T]asks [I]nfo" })
-      map("n", "<leader>wtb", "<cmd>OverseerBuild<cr>", { desc = "[W]orkspace [T]asks [B]uilder" })
-      map("n", "<leader>wta", "<cmd>OverseerTaskAction<cr>", { desc = "[W]orkspace [T]asks [A]ction" })
-      map("n", "<leader>wtc", "<cmd>OverseerClearCache<cr>", { desc = "[W]orkspace [T]asks [C]lear cache" })
+      map("n", "<c-\\>", "<cmd>OverseerToggle<cr>", { desc = "[o]verseer [o]pen" })
+      map("n", "<leader>oo", "<cmd>OverseerToggle<cr>", { desc = "[o]verseer [o]pen" })
+      map("n", "<leader>ol", "<cmd>OverseerToggle<cr>", { desc = "[o]verseer [l]ist" })
+      map("n", "<leader>oc", "<cmd>OverseerRunCmd<cr>", { desc = "[o]verseer Run [c]ommand" })
+      map("n", "<leader>or", "<cmd>OverseerQuickAction<cr>", { desc = "[o]verseer [r]un" })
+      map("n", "<leader>oR", "<cmd>OverseerRun<cr>", { desc = "[o]verseer [R]un" })
+      map("n", "<leader>oi", "<cmd>OverseerInfo<cr>", { desc = "[o]verseer [i]nfo" })
+      map("n", "<leader>ob", "<cmd>OverseerBuild<cr>", { desc = "[o]verseer [b]uild" })
+      map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>", { desc = "[o]verseer [a]ction" })
+      map("n", "<leader>oD", "<cmd>OverseerClearCache<cr>", { desc = "[o]verseer [D]elete cache" })
+
+      map("n", "<leader>wtd", function()
+        overseer.run_template({ name = "npm dev" })
+        -- overseer.run_template({ name = "npm dev" }, function(task)
+        --   if task then
+        --     overseer.run_action(task, "open float")
+        --   end
+        -- end)
+      end, { desc = "[w]orkspace [t]asks [d]ev" })
+
+      map("n", "<leader>wtb", function()
+        overseer.run_template({ name = "npm build" })
+        -- overseer.run_template({ name = "npm build" }, function(task)
+        --   if task then
+        --     overseer.run_action(task, "open float")
+        --   end
+        -- end)
+      end, { desc = "[w]orkspace [t]asks [b]uild" })
+
+      map("n", "<leader>wtt", function()
+        overseer.run_template({ name = "npm typecheck" })
+        -- overseer.run_template({ name = "npm typecheck" }, function(task)
+        --   if task then
+        --     overseer.run_action(task, "open float")
+        --   end
+        -- end)
+      end, { desc = "[w]orkspace [t]asks [t]ype check" })
+
+      -- map("n", "<leader>wti", function()
+      --   overseer.run_template({ name = "ni" }, function(task)
+      --     if task then
+      --       overseer.run_action(task, "open float")
+      --     end
+      --   end)
+      -- end, { desc = "[w]orkspace [t]asks [i]nstall" })
     end,
   },
 
