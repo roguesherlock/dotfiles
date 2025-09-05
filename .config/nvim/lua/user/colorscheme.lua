@@ -118,13 +118,15 @@ function M.setup(config)
   -- Merge user config with defaults
   M.config = vim.tbl_deep_extend("force", vim.deepcopy(M.config), config or {})
 
+  local group = vim.api.nvim_create_augroup("user-colorscheme", { clear = true })
   -- Set initial theme
   M.set_from_os()
-  M.setup_termbg_sync()
+  M.setup_termbg_sync(group)
 
   -- Create autocommands
   vim.api.nvim_create_autocmd("Signal", {
     pattern = "*",
+    group = group,
     callback = function()
       vim.schedule(function()
         M.set_from_os()
@@ -208,13 +210,10 @@ end
 --- https://github.com/nvim-mini/mini.misc/blob/main/lua/mini/misc.lua
 ---
 --- What it does:
---- - Checks if terminal emulator supports OSC 11 control sequence through
----   appropriate `stdout`. Stops if not.
 --- - Creates autocommands for |ColorScheme| and |VimResume| events, which
 ---   change terminal background to have same color as |guibg| of |hl-Normal|.
---- - Creates autocommands for |VimLeavePre| and |VimSuspend| events which set
----   terminal background back to the color at the time this function was
----   called first time in current session.
+--- - Creates autocommands for |VimLeavePre| and |VimSuspend| events which resets
+---   terminal background back to it's original value.
 --- - Synchronizes background immediately to allow not depend on loading order.
 ---
 --- Primary use case is to remove possible "frame" around current Neovim instance
@@ -222,98 +221,27 @@ end
 --- used by terminal emulator itself.
 ---
 --- Works only on Neovim>=0.10.
-M.setup_termbg_sync = function()
-  -- Handling `'\027]11;?\007'` response was added in Neovim 0.10
-  if vim.fn.has("nvim-0.10") == 0 then
-    return vim.notify("`setup_termbg_sync()` requires Neovim>=0.10", "WARN")
+M.setup_termbg_sync = function(group)
+  -- Set up reset
+  local reset = function()
+    io.stdout:write("\027]111\027\\")
   end
+  vim.api.nvim_create_autocmd({ "VimLeavePre", "VimSuspend" }, { group = group, callback = reset })
 
-  -- Proceed only if there is a valid stdout to use
-  local has_stdout_tty = false
-  for _, ui in ipairs(vim.api.nvim_list_uis()) do
-    has_stdout_tty = has_stdout_tty or ui.stdout_tty
-  end
-  if not has_stdout_tty then
-    return
-  end
-
-  local augroup = vim.api.nvim_create_augroup("TermbgSync", { clear = true })
-  local track_au_id, bad_responses, had_proper_response = nil, {}, false
-  local f = function(args)
-    -- Process proper response only once
-    if had_proper_response then
-      return
+  -- Set up sync
+  local sync = function()
+    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+    if not normal.bg then
+      return reset()
     end
-
-    -- Neovim=0.10 uses string sequence as response, while Neovim>=0.11 sets it
-    -- in `sequence` table field
-    local seq = type(args.data) == "table" and args.data.sequence or args.data
-    local ok, termbg = pcall(M.parse_osc11, seq)
-    if not (ok and type(termbg) == "string") then
-      return table.insert(bad_responses, seq)
-    end
-    had_proper_response = true
-    pcall(vim.api.nvim_del_autocmd, track_au_id)
-
-    -- Set up reset to the color returned from the very first call
-    M.termbg_init = M.termbg_init or termbg
-    local reset = function()
-      io.stdout:write("\027]111" .. "\007")
-    end
-    vim.api.nvim_create_autocmd({ "VimLeavePre", "VimSuspend" }, { group = augroup, callback = reset })
-
-    -- Set up sync
-    local sync = function()
-      local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-      if normal.bg == nil then
-        return reset()
-      end
-      -- NOTE: use `io.stdout` instead of `io.write` to ensure correct target
-      -- Otherwise after `io.output(file); file:close()` there is an error
-      io.stdout:write(string.format("\027]11;#%06x\007", normal.bg))
-    end
-    vim.api.nvim_create_autocmd({ "VimResume", "ColorScheme" }, { group = augroup, callback = sync })
-
-    -- Sync immediately
-    sync()
+    -- NOTE: use `io.stdout` instead of `io.write` to ensure correct target
+    -- Otherwise after `io.output(file); file:close()` there is an error
+    io.stdout:write(string.format("\027]11;#%06x\007", normal.bg))
   end
+  vim.api.nvim_create_autocmd({ "VimResume", "ColorScheme" }, { group = group, callback = sync })
 
-  -- Ask about current background color and process the proper response.
-  -- NOTE: do not use `once = true` as Neovim itself triggers `TermResponse`
-  -- events during startup, so this should wait until the proper one.
-  track_au_id = vim.api.nvim_create_autocmd("TermResponse", { group = augroup, callback = f, nested = true })
-  io.stdout:write("\027]11;?\007")
-  vim.defer_fn(function()
-    if had_proper_response then
-      return
-    end
-    pcall(vim.api.nvim_del_augroup_by_id, augroup)
-    local bad_suffix = #bad_responses == 0 and "" or (", only these: " .. vim.inspect(bad_responses))
-    local msg = "`setup_termbg_sync()` did not get proper response from terminal emulator" .. bad_suffix
-    vim.notify(msg, "WARN")
-  end, 1000)
-end
-
--- Source: 'runtime/lua/vim/_defaults.lua' in Neovim source
-M.parse_osc11 = function(x)
-  local r, g, b = x:match("^\027%]11;rgb:(%x+)/(%x+)/(%x+)$")
-  if not (r and g and b) then
-    local a
-    r, g, b, a = x:match("^\027%]11;rgba:(%x+)/(%x+)/(%x+)/(%x+)$")
-    if not (a and a:len() <= 4) then
-      return
-    end
-  end
-  if not (r and g and b) then
-    return
-  end
-  if not (r:len() <= 4 and g:len() <= 4 and b:len() <= 4) then
-    return
-  end
-  local parse_osc_hex = function(c)
-    return c:len() == 1 and (c .. c) or c:sub(1, 2)
-  end
-  return "#" .. parse_osc_hex(r) .. parse_osc_hex(g) .. parse_osc_hex(b)
+  -- Sync immediately
+  sync()
 end
 
 return M
