@@ -106,17 +106,3 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
     end)
   end,
 })
-
-vim.api.nvim_create_autocmd("UIEnter", {
-  desc = "Set underline to undercurls",
-  group = vim.api.nvim_create_augroup("user-set-undercurls", { clear = true }),
-  callback = function()
-    vim.cmd([[ highlight Underlined cterm=undercurl gui=undercurl ]])
-    vim.cmd([[ highlight @markup.underline cterm=undercurl gui=undercurl ]])
-    vim.cmd([[ highlight DiagnosticUnderlineOk cterm=undercurl gui=undercurl ]])
-    vim.cmd([[ highlight DiagnosticUnderlineHint cterm=undercurl gui=undercurl ]])
-    vim.cmd([[ highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl ]])
-    vim.cmd([[ highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl ]])
-    vim.cmd([[ highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl ]])
-  end,
-})
