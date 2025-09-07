@@ -53,13 +53,14 @@ return {
         -- normal mode
         map("n", "<leader>ghs", gitsigns.stage_hunk, { desc = "[G]it [H]unk [S]tage" })
         map("n", "<leader>ghr", gitsigns.reset_hunk, { desc = "[G]it [H]unk [R]eset" })
-        map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "[G]it [S]tage buffer" })
         map("n", "<leader>ghu", gitsigns.undo_stage_hunk, { desc = "[G]it [H]unk [U]ndo stage" })
-        map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "[G]it [R]eset buffer" })
         map("n", "<leader>ghp", gitsigns.preview_hunk, { desc = "[G]it [H]unk [p]review" })
+        map("n", "<leader>ghi", gitsigns.preview_hunk_inline, { desc = "[G]it [H]unk Preview [I]nline" })
+        map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "[G]it [S]tage buffer" })
+        map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "[G]it [R]eset buffer" })
         map("n", "<leader>gb", gitsigns.blame_line, { desc = "[G]it [B]lame line" })
-        map("n", "<leader>gd", gitsigns.diffthis, { desc = "[G]it [D]iff against index" })
-        map("n", "<leader>gD", function() gitsigns.diffthis("@") end, { desc = "[G]it [D]iff against last commit" })
+        map("n", "<leader>gdf", gitsigns.diffthis, { desc = "[G]it [D]iff [F]ile against index" })
+        map("n", "<leader>gdF", function() gitsigns.diffthis("@") end, { desc = "[G]it [D]iff [F]ile against last commit" })
         -- Toggles
         map("n", "<leader>tgb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle [G]it show [B]lame line" })
         map("n", "<leader>tgD", gitsigns.toggle_deleted, { desc = "[T]oggle [G]it show [D]eleted" })
@@ -70,7 +71,7 @@ return {
   -- Neogit for git interface
   {
     "NeogitOrg/neogit",
-    enabled = true,
+    enabled = false,
     dependencies = {
       "sindrets/diffview.nvim",
     },
@@ -91,8 +92,8 @@ return {
   {
     "sindrets/diffview.nvim",
     keys = {
-      { "<leader>gdf", "<cmd>DiffviewFileHistory<cr>", desc = "[G]it [D]iff [F]ile" },
-      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "[G]it [D]iffview [O]pen" },
+      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "[G]it [D]iffview [o]pen" },
+      { "<leader>gdO", "<cmd>DiffviewFileHistory<cr>", desc = "[G]it [D]iffview [O]pen File History Panel" },
     },
     opts = {
       keymaps = {
