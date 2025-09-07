@@ -1,12 +1,15 @@
 # font-family = "Iosevka Term"
 # font-family = "Geist Mono"
 # font-family = "Maple Mono"
+# font-family = "JuliaMono"
 # font-family = "Berkeley Mono Variable"
 # font-family = "Input Mono Narrow"
+# font-family = "IBM Plex Mono"
+font-family = "CommitMono"
 font-size = 13
 font-thicken = true
 font-thicken-strength = 10
-adjust-cell-height = 25%
+adjust-cell-height = 35%
 adjust-underline-position = 6
 adjust-underline-thickness = 40%
 adjust-cursor-thickness = 150%

@@ -8,9 +8,15 @@ return {
     end,
   },
   {
-    "tinted-theming/tinted-vim",
-    enabled = false,
+    "darianmorat/gruvdark.nvim",
+    priority = 1000,
+    event = "VeryLazy",
+    opts = {},
   },
+  -- {
+  --   "tinted-theming/tinted-vim",
+  --   enabled = false,
+  -- },
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
   --   event = "VeryLazy",
@@ -101,6 +107,7 @@ return {
   {
     "folke/tokyonight.nvim",
     priority = 1000,
+    event = "VeryLazy",
     opts = {
       day_brightness = 0.2,
     },

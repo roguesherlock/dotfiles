@@ -7,14 +7,22 @@ return {
       static = {
         enabled = false,
       },
+      scope = {
+        highlights = { "BlinkIndent" },
+      },
     },
   },
   {
     "saghen/blink.pairs",
-    enabled = false,
-    version = "*",
-    dependencies = "saghen/blink.download",
-    opts = {},
+    enabled = true,
+    build = "cargo build --release",
+    --- @module 'blink.pairs'
+    --- @type blink.pairs.Config
+    opts = {
+      highlights = {
+        enabled = false,
+      },
+    },
   },
   -- Snacks for various utilities
   {
@@ -151,6 +159,7 @@ return {
   -- Multi-cursor support
   {
     "smoka7/multicursors.nvim",
+    enabled = false,
     event = "VeryLazy",
     dependencies = {
       "nvimtools/hydra.nvim",
