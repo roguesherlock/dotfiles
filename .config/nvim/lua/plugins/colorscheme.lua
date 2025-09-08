@@ -106,15 +106,15 @@ return {
   },
   {
     "folke/tokyonight.nvim",
+    -- event = "VeryLazy",
     priority = 1000,
-    event = "VeryLazy",
     opts = {
       day_brightness = 0.2,
     },
   },
   {
     "miikanissi/modus-themes.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     priority = 1000,
     opts = {
       -- transparent = true,
@@ -125,10 +125,10 @@ return {
       --     italic = true,
       --   },
       -- },
-      -- on_colors = function(colors)
-      -- colors.bg_main = colors.bg_dim
-      -- colors.bg_main = colors.bg_alt
-      -- end,
+      on_colors = function(colors)
+        -- colors.bg_main = colors.bg_dim
+        colors.bg_main = colors.bg_alt
+      end,
       -- on_highlights = function(h, c)
       --   local bg = c.bg_dim
       --

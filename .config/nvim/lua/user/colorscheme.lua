@@ -10,12 +10,12 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    -- light = "modus",
+    light = "modus",
     -- dark = "modus",
     -- light = "tokyonight",
-    -- dark = "tokyonight",
-    light = "default",
-    dark = "default",
+    dark = "tokyonight",
+    -- light = "default",
+    -- dark = "default",
   },
   ghostty = {
     light = "Github-Light-High-Contrast",
@@ -25,9 +25,9 @@ M.config = {
     custom_theme = false,
   },
   kitty = {
-    -- light = "Modus Operandi",
+    light = "Modus Operandi",
     -- dark = "Modus Vivendi",
-    light = "Tokyo Night Day",
+    -- light = "Tokyo Night Day",
     dark = "Tokyo Night",
   },
   wezterm = {

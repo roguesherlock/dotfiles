@@ -43,6 +43,7 @@ return {
       map("n", "<leader>oa", "<cmd>OverseerTaskAction<cr>", { desc = "[o]verseer [a]ction" })
       map("n", "<leader>oD", "<cmd>OverseerClearCache<cr>", { desc = "[o]verseer [D]elete cache" })
 
+      map("n", "<leader>wtl", "<cmd>OverseerToggle<cr>", { desc = "[w]orkspace [t]asks [l]ist" })
       map("n", "<leader>wtd", function()
         overseer.run_template({ name = "npm dev" })
         -- overseer.run_template({ name = "npm dev" }, function(task)

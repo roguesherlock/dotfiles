@@ -70,12 +70,12 @@
   // "features": {
   //   "edit_prediction_provider": "supermaven"
   // },
-  "ui_font_size": 13,
+  "ui_font_size": 14,
   // "ui_font_family": "Geist Mono",
   // "ui_font_family": "IBM Plex Mono",
   // "ui_font_family": "Berkeley Mono Variable",
   "ui_font_family": "JetBrains Mono",
-  "buffer_font_size": 13,
+  "buffer_font_size": 14,
   // "buffer_font_family": "Geist Mono",
   // "buffer_font_family": "IBM Plex Mono",
   // "buffer_font_family": "Berkeley Mono Variable",
