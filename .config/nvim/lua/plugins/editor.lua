@@ -69,17 +69,7 @@ return {
     "j-hui/fidget.nvim",
     enabled = true,
     opts = {
-      progress = {
-        display = {
-          progress_icon = {
-            "star",
-          },
-        },
-      },
       notification = {
-        window = {
-          x_padding = 2,
-        },
         override_vim_notify = true, -- Automatically override vim.notify() with Fidget
       },
     },
