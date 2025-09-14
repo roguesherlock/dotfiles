@@ -7,10 +7,10 @@
 # font-family = "IBM Plex Mono"
 font-family = "CommitMono"
 font-size = 13
-font-thicken = true
+# font-thicken = true
 font-thicken-strength = 10
 adjust-cell-height = 35%
-adjust-underline-position = 6
+adjust-underline-position = 2
 adjust-underline-thickness = 40%
 adjust-cursor-thickness = 150%
 window-padding-x = 0

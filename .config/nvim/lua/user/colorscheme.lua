@@ -11,9 +11,9 @@ M.config = {
   },
   nvim = {
     light = "modus",
-    -- dark = "modus",
+    dark = "modus",
     -- light = "tokyonight",
-    dark = "tokyonight",
+    -- dark = "tokyonight",
     -- light = "default",
     -- dark = "default",
   },
@@ -26,9 +26,9 @@ M.config = {
   },
   kitty = {
     light = "Modus Operandi",
-    -- dark = "Modus Vivendi",
+    dark = "Modus Vivendi",
     -- light = "Tokyo Night Day",
-    dark = "Tokyo Night",
+    -- dark = "Tokyo Night",
   },
   wezterm = {
     light = "Modus Operandi (Gogh)",
