@@ -5,11 +5,11 @@
 # font-family = "Berkeley Mono Variable"
 # font-family = "Input Mono Narrow"
 # font-family = "IBM Plex Mono"
-font-family = "CommitMono"
-font-size = 13
+# font-family = "CommitMono"
+font-size = 14
 # font-thicken = true
-font-thicken-strength = 10
-adjust-cell-height = 35%
+# font-thicken-strength = 10
+adjust-cell-height = 20%
 adjust-underline-position = 2
 adjust-underline-thickness = 40%
 adjust-cursor-thickness = 150%

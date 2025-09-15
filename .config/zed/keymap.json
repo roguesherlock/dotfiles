@@ -22,7 +22,7 @@
       "cmd-2": "git_panel::ToggleFocus",
       "cmd-3": "editor::ToggleFocus",
       "cmd-4": "agent::ToggleFocus",
-      "cmd-5": "terminal_panel::ToggleFocus",
+      "cmd-5": "terminal_panel::Toggle",
       "cmd-6": "debug_panel::ToggleFocus"
     }
   },
@@ -69,13 +69,14 @@
       "space g G": "git_panel::ToggleFocus",
       "space w d": "pane::CloseAllItems",
       "space w v": "pane::SplitVertical",
-      "space x x": "diagnostics::Deploy",
+      "space x x": "diagnostics::DeployCurrentFile",
+      "space x X": "diagnostics::Deploy",
       "space l R": "editor::RestartLanguageServer",
       "space l d": "editor::ToggleDiagnostics",
       "space t h": "editor::ToggleInlayHints",
       "shift-e": "editor::Hover",
-      "[ [": "vim::MoveToPrevious",
-      "] ]": "vim::MoveToNext",
+      "[ [": "editor::GoToPreviousDocumentHighlight",
+      "] ]": "editor::GoToNextDocumentHighlight",
       "[ e": ["editor::GoToPreviousDiagnostic", { "severity": "error" }],
       "] e": ["editor::GoToDiagnostic", { "severity": "error" }]
     }
