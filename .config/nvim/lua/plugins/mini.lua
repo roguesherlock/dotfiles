@@ -1,5 +1,35 @@
 return {
   {
+    "nvim-mini/mini.pick",
+    enabled = false,
+    opts = {
+      mappings = {
+        to_quickfix = {
+          char = "<c-q>",
+          func = function()
+            local items = MiniPick.get_picker_items() or {}
+            MiniPick.default_choose_marked(items)
+            MiniPick.stop()
+          end,
+        },
+      },
+    },
+    keys = {
+      { "<leader>sh", "<cmd>Pick help<cr>", desc = "[S]earch [H]elp" },
+      { "<leader>sk", "<cmd>Pick keymaps<cr>", desc = "[S]earch [K]eymaps" },
+      { "<leader>sf", "<cmd>Pick files tool='git'<cr>", desc = "[S]earch Git [F]iles" },
+      { "<leader><leader>", "<cmd>Pick files<cr>", desc = "Search Files" },
+      { "<leader>ss", "<cmd>Pick lsp<cr>", desc = "[S]earch [S]elect " },
+      { "<leader>sw", "<cmd>Pick grep<cr>", desc = "[S]earch current [W]ord" },
+      { "<leader>sm", "<cmd>Pick marks<cr>", desc = "[S]earch [M]arks" },
+      { "<leader>sg", "<cmd>Pick grep_live<cr>", desc = "[S]earch by [G]rep" },
+      { "<leader>sd", "<cmd>Pick diagnostic<cr>", desc = "[S]earch [D]iagnostics" },
+      { "<leader>sR", "<cmd>Pick resume<cr>", desc = "[S]earch [R]esume" },
+      { "<leader>s.", "<cmd>Pick history<cr>", desc = '[S]earch Recent Files ("." for repeat)' },
+      { "<leader>sb", "<cmd>Pick buffers<cr>", desc = "[S]earch existing [B]uffers" },
+    },
+  },
+  {
     "nvim-mini/mini.hipatterns",
     config = function()
       local hipatterns = require("mini.hipatterns")
@@ -46,6 +76,22 @@ return {
         width_preview = 60,
       },
     },
+    setup = function(_, opts)
+      local files = require("mini.files")
+      files.setup(opts)
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "MiniFilesActionRename",
+        description = "Notify lsp when renaming file",
+        group = vim.api.nvim_create_augroup("user-mini-files-rename", { clear = true }),
+        callback = function(event)
+          local ok, snacks = pcall(require, "snacks.nvim")
+          if not ok then
+            return
+          end
+          snacks.rename.on_rename_file(event.data.from, event.data.to)
+        end,
+      })
+    end,
   },
   { "nvim-mini/mini.bracketed", opts = {
     window = { suffix = "W", options = {} },

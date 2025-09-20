@@ -7,12 +7,12 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
-  {
-    "darianmorat/gruvdark.nvim",
-    priority = 1000,
-    event = "VeryLazy",
-    opts = {},
-  },
+  -- {
+  --   "darianmorat/gruvdark.nvim",
+  --   priority = 1000,
+  --   event = "VeryLazy",
+  --   opts = {},
+  -- },
   -- {
   --   "tinted-theming/tinted-vim",
   --   enabled = false,
@@ -43,11 +43,11 @@ return {
   --   priority = 1000,
   --   opts = {},
   -- },
-  {
-    "Mofiqul/vscode.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-  },
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  -- },
   -- {
   --   "hyperb1iss/silkcircuit-nvim",
   --   event = "VeryLazy",
@@ -58,26 +58,25 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  {
-    "webhooked/kanso.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    opts = {
-      -- transparent = true,
-      background = { -- map the value of 'background' option to a theme
-        dark = "zen", -- try "zen", "mist" or "pearl" !
-        light = "pearl", -- try "zen", "mist" or "pearl" !
-      },
-      foreground = {
-        dark = "default", -- Use default colors in dark mode
-        light = "saturated", -- Use higher saturation in light mode
-      },
-    },
-  },
+  -- {
+  --   "webhooked/kanso.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {
+  --     -- transparent = true,
+  --     background = { -- map the value of 'background' option to a theme
+  --       dark = "zen", -- try "zen", "mist" or "pearl" !
+  --       light = "pearl", -- try "zen", "mist" or "pearl" !
+  --     },
+  --     foreground = {
+  --       dark = "default", -- Use default colors in dark mode
+  --       light = "saturated", -- Use higher saturation in light mode
+  --     },
+  --   },
+  -- },
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    event = "VeryLazy",
     priority = 1000,
     opts = {
       term_colors = true,

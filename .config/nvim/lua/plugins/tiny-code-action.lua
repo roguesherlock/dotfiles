@@ -3,6 +3,7 @@ return {
   {
     "rachartier/tiny-code-action.nvim",
     event = "LspAttach",
+    enabled = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       backend = "delta",

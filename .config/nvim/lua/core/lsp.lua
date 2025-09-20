@@ -55,54 +55,80 @@ local vue_plugin = {
   languages = { "vue" },
   configNamespace = "typescript",
 }
-local vtsls_config = {
-  settings = {
-    vtsls = {
-      tsserver = {
-        globalPlugins = {
-          vue_plugin,
+
+local lsps = {
+  {
+    "vtsls",
+    {
+      settings = {
+        vtsls = {
+          tsserver = {
+            globalPlugins = {
+              vue_plugin,
+            },
+          },
+        },
+      },
+      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+    },
+  },
+  {
+    "vue_ls",
+  },
+  {
+    "tailwindcss",
+    {
+      emmetCompletions = true,
+      classFunctions = { "tw", "clsx", "cn", "tw\\.[a-z-]+" },
+      includeLanguages = {
+        php = "html",
+        blade = "html",
+      },
+    },
+  },
+  {
+    "lua_ls",
+    {
+      settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = {
+              "vim",
+              "require",
+            },
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+          },
+          telemetry = {
+            enable = false,
+          },
         },
       },
     },
   },
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  {
+    "phpactor",
+  },
+  {
+    "prismals",
+  },
 }
 
-local vue_ls_config = {}
-
-vim.lsp.config("vtsls", vtsls_config)
-vim.lsp.config("vue_ls", vue_ls_config)
-vim.lsp.config("tailwindcss", {
-  emmetCompletions = true,
-  classFunctions = { "tw", "clsx", "cn", "tw\\.[a-z-]+" },
-  includeLanguages = {
-    php = "html",
-    blade = "html",
-  },
+-- Add the same capabilities to ALL server configurations.
+-- Refer to :h vim.lsp.config() for more information.
+vim.lsp.config("*", {
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
 })
 
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = {
-          "vim",
-          "require",
-        },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
-vim.lsp.enable({ "vtsls", "vue_ls", "lua_ls" })
+for _, lsp in pairs(lsps) do
+  local name, config = lsp[1], lsp[2]
+  vim.lsp.config(name, config or {})
+  vim.lsp.enable(name)
+end
 
 local methods = vim.lsp.protocol.Methods
 
@@ -240,7 +266,7 @@ local function on_attach(client, bufnr)
   -- or a suggestion from your LSP for this to activate.
   -- map("g.", "<cmd>FzfLua lsp_code_actions<cr>", "Code Action", { "n", "x" })
   map("g.", function()
-    require("tiny-code-action").code_action()
+    vim.lsp.buf.code_action()
   end, "Code Action", { "n", "x" })
 
   -- Find references for the word under your cursor.

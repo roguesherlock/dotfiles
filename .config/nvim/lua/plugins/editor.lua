@@ -28,6 +28,7 @@ return {
   {
     "folke/snacks.nvim",
     priority = 1000,
+    lazy = false,
     opts = {
       bigfile = { enabled = true },
       dashboard = { enabled = false },
@@ -40,7 +41,7 @@ return {
       scope = { enabled = false },
       scroll = { enabled = false },
       statuscolumn = { enabled = false },
-      words = { enabled = true },
+      words = { enabled = false },
     },
     -- stylua: ignore
     keys = {

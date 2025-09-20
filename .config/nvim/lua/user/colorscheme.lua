@@ -10,39 +10,40 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    -- light = "modus",
-    -- dark = "modus",
+    light = "modus",
+    dark = "modus",
     -- light = "tokyonight",
     -- dark = "tokyonight",
-    light = "catppuccin-latte",
-    dark = "catppuccin-frappe",
+    -- light = "catppuccin-latte",
+    -- dark = "catppuccin-frappe",
     -- light = "default",
     -- dark = "default",
   },
   ghostty = {
-    light = "Github-Light-High-Contrast",
+    light = "Github Light High Contrast",
     dark = "Black Metal",
+    -- light = "Catppuccin Latte",
+    -- dark = "Catppuccin Frappe",
     -- light = "tokyonight-day",
     -- dark = "tokyonight",
-    custom_theme = false,
   },
   kitty = {
-    -- light = "Modus Operandi",
-    -- dark = "Modus Vivendi",
+    light = "Modus Operandi",
+    dark = "Modus Vivendi",
     -- light = "Tokyo Night Day",
     -- dark = "Tokyo Night",
-    light = "Catppuccin-Latte",
-    dark = "Catppuccin-Frappe",
+    -- light = "Catppuccin-Latte",
+    -- dark = "Catppuccin-Frappe",
   },
   wezterm = {
     light = "Modus Operandi (Gogh)",
     dark = "Modus Vivendi (Gogh)",
   },
   zellij = {
-    -- light = "modus_operandi",
-    -- dark = "modus_vivendi",
-    light = "tokyo-night-light",
-    dark = "tokyo-night",
+    light = "modus_operandi",
+    dark = "modus_vivendi",
+    -- light = "tokyo-night-light",
+    -- dark = "tokyo-night",
   },
   delta = {
     light = "catppuccin-latte",
@@ -79,12 +80,14 @@ function M.set_colorscheme(light)
   -- Defer terminal theme updates
   vim.defer_fn(function()
     -- Update Ghostty
-    M.set_ghostty_theme(M.config.ghostty, M.config.ghostty.custom_theme)
+    -- TODO: there's a bug where in ghostty where if we set both light,dark themes then it doesn't update the tab color when switching themes
+    -- M.set_ghostty_theme(M.config.ghostty)
 
     -- Update other terminals
     if light then
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
       vim.fn.system("kitten @ load-config")
+      M.set_ghostty_theme(M.config.ghostty.light)
       M.set_zellij_theme(M.config.zellij.light)
       M.set_delta_theme(M.config.delta.light)
       M.set_yazi_theme(M.config.yazi.light)
@@ -92,6 +95,7 @@ function M.set_colorscheme(light)
     else
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
       vim.fn.system("kitten @ load-config")
+      M.set_ghostty_theme(M.config.ghostty.dark)
       M.set_zellij_theme(M.config.zellij.dark)
       M.set_delta_theme(M.config.delta.dark)
       M.set_yazi_theme(M.config.yazi.dark)
@@ -117,7 +121,8 @@ end
 
 function M.setup(config)
   -- Validate config is a table
-  vim.validate({ config = { config, "table", true } })
+  -- vim.validate({ config = { config, "table", true } })
+  vim.validate("config", config, "table")
 
   -- Merge user config with defaults
   M.config = vim.tbl_deep_extend("force", vim.deepcopy(M.config), config or {})
@@ -150,20 +155,31 @@ function M.setup(config)
   end, {})
 end
 
-function M.set_ghostty_theme(theme, is_custom_theme)
-  is_custom_theme = is_custom_theme or false
-  if not is_custom_theme then
-    -- vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_light_theme .. "/' (readlink ~/.config/ghostty/config)")
-    local config_path = vim.fn.expand("~/.config/ghostty/config")
-    local real_path = vim.fn.resolve(config_path)
-    local light_dark_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
-    -- local cmd = string.format("sed -i'.bak' 's/theme = .*/theme = %s/' %s", light_dark_theme, real_path)
-    local cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", light_dark_theme, real_path)
-    local result = vim.fn.system({ "bash", "-c", cmd })
-    if vim.v.shell_error ~= 0 then
-      vim.notify("Error updating Ghostty theme: " .. result, vim.log.levels.WARN)
-    end
-    return
+function M.set_ghostty_theme(theme)
+  -- vim.fn.system("sed -i'.bak' 's/theme = .*/theme = " .. ghostty_light_theme .. "/' (readlink ~/.config/ghostty/config)")
+  local config_path = vim.fn.expand("~/.config/ghostty/config")
+  local real_path = vim.fn.resolve(config_path)
+  local cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", theme, real_path)
+  -- NOTE: There's a bug in ghostty where if we set both light,dark themes then it doesn't update the tab color when switching themes
+  -- local light_dark_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
+  -- local cmd = string.format("sed -i'.bak' 's/theme = .*/theme = %s/' %s", light_dark_theme, real_path)
+  -- local cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", light_dark_theme, real_path)
+  local result = vim.fn.system({ "bash", "-c", cmd })
+  -- Get Ghostty PID(s) from system command
+  local output = vim.fn.system("ps -axo pid=,args= | grep -i ghostty | grep -v grep")
+
+  -- Extract PIDs (one or more)
+  local pids = {}
+  for pid in output:gmatch("(%d+)") do
+    table.insert(pids, tonumber(pid))
+  end
+
+  for _, pid in ipairs(pids) do
+    vim.fn.system("kill -SIGUSR2 " .. pid)
+  end
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify("Error updating Ghostty theme: " .. result, vim.log.levels.WARN)
   end
 end
 

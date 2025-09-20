@@ -21,6 +21,10 @@ map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "[B]uffer [N]ew" })
 -- Delete all buffers except the current one
 map("n", "<leader>bD", "<cmd>bufdo bd<cr>", { desc = "[B]uffer [D]elete All" })
 map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Delete other buffers" })
+map("n", "<leader>yp", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+  vim.notify("Copied path: " .. vim.fn.expand("%:p"))
+end, { desc = "[Y]ank buffer [P]ath" })
 
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
 map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
