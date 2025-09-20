@@ -99,16 +99,95 @@ map("n", "<leader>wq", quit_with_prompt, { desc = "[W]orkspace [Q]uit All" })
 -- or just use <C-\><C-n> to exit terminal mode
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+--
+-- Window management
+--
+
 -- NOTE: we use `w` keybind for window management
 --  See `:help wincmd` for a list of all window commands
-map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+-- map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+-- map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+-- map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 -- map("n", "<leader>wv", "<C-w><C-v>", { desc = "Split [W]indow [V]ertically" })
 -- map("n", "<leader>wq", "<C-w>q", { desc = "[W]indow [D]elete" })
 -- map("n", "<leader>wo", "<C-w>o", { desc = "[W]indow [O]nly" })
-map("n", "wm", "<C-w>|", { desc = "[W]indow [M]aximize" })
+-- Window maximization toggle
+vim.g.maximized_win = nil
+vim.opt.winminwidth = 12
+local function toggle_window_maximize()
+  local current_win = vim.api.nvim_get_current_win()
+
+  -- If current window is already maximized, restore original layout
+  if vim.g.maximized_win == current_win then
+    vim.cmd("wincmd =") -- Equalize all windows
+    vim.g.maximized_win = nil
+  else
+    -- Store current window ID and maximize it, but keep minimal width for others
+    vim.g.maximized_win = current_win
+    -- -- Set current window to large width, others to minimum
+    -- local windows = vim.api.nvim_list_wins()
+    -- for _, win in ipairs(windows) do
+    --   if win ~= current_win and vim.api.nvim_win_is_valid(win) then
+    --     vim.api.nvim_win_set_width(win, 12) -- Keep 3 columns visible for other windows
+    --   end
+    -- end
+    -- -- Make current window take remaining space
+    -- vim.cmd("vertical resize 999")
+    vim.cmd("wincmd |")
+  end
+end
+
+-- Auto-maximize window when switching to it if another window is maximized
+local function auto_maximize_on_switch()
+  if vim.g.maximized_win and vim.g.maximized_win ~= vim.api.nvim_get_current_win() then
+    vim.g.maximized_win = vim.api.nvim_get_current_win()
+    -- -- Set current window to large width, others to minimum
+    -- local windows = vim.api.nvim_list_wins()
+    -- for _, win in ipairs(windows) do
+    --   if win ~= vim.g.maximized_win and vim.api.nvim_win_is_valid(win) then
+    --     vim.api.nvim_win_set_width(win, 12) -- Keep 3 columns visible for other windows
+    --   end
+    -- end
+    -- -- Make current window take remaining space
+    -- vim.cmd("vertical resize 999")
+    vim.cmd("wincmd |")
+  end
+end
+
+-- stylua: ignore start
+map("n", "wm", toggle_window_maximize, { desc = "[W]indow [M]aximize toggle" })
+map("n", "wh", function() vim.cmd("wincmd h"); auto_maximize_on_switch() end, { desc = "Move focus to the left window (auto-maximize)" })
+map("n", "wl", function() vim.cmd("wincmd l"); auto_maximize_on_switch() end, { desc = "Move focus to the right window (auto-maximize)" })
+map("n", "wj", function() vim.cmd("wincmd j"); auto_maximize_on_switch() end, { desc = "Move focus to the lower window (auto-maximize)" })
+map("n", "wk", function() vim.cmd("wincmd k"); auto_maximize_on_switch() end, { desc = "Move focus to the upper window (auto-maximize)" })
+map("n", "<C-h>", function() vim.cmd("wincmd h"); auto_maximize_on_switch() end, { desc = "Move focus to the left window (auto-maximize)" })
+map("n", "<C-l>", function() vim.cmd("wincmd l"); auto_maximize_on_switch() end, { desc = "Move focus to the right window (auto-maximize)" })
+map("n", "<C-j>", function() vim.cmd("wincmd j"); auto_maximize_on_switch() end, { desc = "Move focus to the lower window (auto-maximize)" })
+map("n", "<C-k>", function() vim.cmd("wincmd k"); auto_maximize_on_switch() end, { desc = "Move focus to the upper window (auto-maximize)" })
+-- stylua: ignore end
+
+-- Reset window maximization state when maximized window is closed
+vim.api.nvim_create_autocmd("WinClosed", {
+  callback = function()
+    if vim.g.maximized_win then
+      local win_exists = false
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if win == vim.g.maximized_win then
+          win_exists = true
+          break
+        end
+      end
+      if not win_exists then
+        vim.g.maximized_win = nil
+      end
+    end
+  end,
+})
+
+---
+--- End Window management
+---
 
 -- Save
 map("n", "<D-s>", ":w<CR>", { desc = "Save file" })
