@@ -61,6 +61,13 @@ map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open [X]local [l]ist" })
 
 -- quit
 local function quit_with_prompt()
+  -- local ok, term = pcall(require, "user.term")
+  -- if ok then
+  --   if term.check_open_processes() then
+  --     return
+  --   end
+  -- end
+
   local modified_buffers = {}
   for _, buf in ipairs(vim.fn.getbufinfo({ bufmodified = 1 })) do
     if buf.changed == 1 then

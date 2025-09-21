@@ -53,10 +53,17 @@ return {
   "ibhagwan/fzf-lua",
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other start plugins
+  dependencies = {
+    "elanmed/fzf-lua-frecency.nvim",
+  },
   opts = function(_, opts)
     local fzf = require("fzf-lua")
     local config = fzf.config
     local actions = fzf.actions
+    require("fzf-lua-frecency").setup({
+      cwd_only = true,
+      display_score = false,
+    })
     -- Quickfix
     config.defaults.keymap.fzf["ctrl-v"] = actions.file_vsplit
     config.defaults.keymap.fzf["ctrl-q"] = "select-all+accept"
@@ -76,13 +83,25 @@ return {
         ["--no-scrollbar"] = true,
         ["--layout"] = "reverse",
       },
+      globals = {
+        file_icons = "mini",
+        cwd_prompt = false,
+      },
+      global = dropdown({
+        winopts = { title = title("Search", "") },
+        line_query = true,
+      }),
       files = dropdown({
+        cwd_prompt = false,
         multiprocess = true,
+        line_query = true,
         winopts = { title = title("files", "") },
       }),
       buffers = dropdown({
-        fzf_opts = { ["--delimiter"] = "' '", ["--with-nth"] = "-1.." },
+        cwd_prompt = false,
+        prompt = "",
         winopts = { title = title("buffers", "󰈙") },
+        line_query = true,
       }),
       keymaps = dropdown({
         winopts = { title = title("keymaps", "") },
@@ -94,6 +113,7 @@ return {
         files = dropdown({
           cmd = "git ls-files --others --cached --exclude-standard",
           winopts = { title = title("git files", "") },
+          line_query = true,
         }),
         branches = dropdown({
           winopts = { title = title("branches", ""), height = 0.3, row = 0.4 },
@@ -115,17 +135,21 @@ return {
         },
       },
       lsp = {
-        code_actions = {
+        workspace_symbols = dropdown({
           winopts = {
-            relative = "cursor",
-            row = 1,
-            col = 0,
-            height = 0.4,
-            preview = { vertical = "down:70%" },
-            title = title("code actions", "", "@type"),
+            title = title("workspace symbols", ""),
           },
-          previewer = vim.fn.executable("delta") == 1 and "codeaction_native" or nil,
-        },
+        }),
+        document_symbols = dropdown({
+          winopts = {
+            title = title("symbols", ""),
+          },
+        }),
+        code_actions = cursor_dropdown({
+          winopts = {
+            title = title("code actions", "", "@type"),
+          },
+        }),
       },
     }
   end,
@@ -149,15 +173,18 @@ return {
       { "<leader>sm", "<cmd>FzfLua marks<cr>", desc = "[S]earch [M]arks" },
       { "<leader>sM", "<cmd>FzfLua man_pages<cr>", desc = "[S]earch [M]an Pages" },
       { "<leader>ss", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "[S]earch [S]ymbols " },
+      { "<leader>sS", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "[S]earch [S]ymbols " },
       { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "[S]earch current [W]ord", mode = { "n", "v" }, },
       { "<leader>sW", "<cmd>FzfLua grep_cWORD<cr>", desc = "[S]earch current [W]ord", mode = { "n", "v" }, },
       { "<leader>sv", "<cmd>FzfLua grep_visual<cr>", desc = "[S]earch [V]isual Selection", mode = { "n", "v" }, },
       { '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "[S]earch [R]egisters" },
       { "<leader>s.", "<cmd>FzfLua resume<cr>", desc = '[S]earch [R]esume' },
       { "<leader>st", "<cmd>FzfLua colorschemes<cr>", desc = '[S]earch [T]hemes' },
-      { "<leader><leader>", "<cmd>FzfLua files<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
-      { "<d-p>", "<cmd>FzfLua files<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
+      { "<leader><leader>", "<cmd>FzfLua combine pickers=buffers;frecency;lsp_live_workspace_symbols<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
+      { "<d-p>", "<cmd>FzfLua combine pickers=buffers;frecency;lsp_live_workspace_symbols<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
+      -- { "<d-p>", "<cmd>FzfLua global<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
       { "<leader>s?", "<cmd>FzfLua builtin<cr>", desc = "[S]earch [B]uiltin Commands" },
+      { "<leader>p", "<cmd>FzfLua registers<cr>", desc = "[P]aste from [R]egisters" },
     -- stylua: ignore end
   },
   config = function(_, opts)

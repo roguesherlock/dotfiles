@@ -1,6 +1,9 @@
 return {
   { "windwp/nvim-ts-autotag" },
   {
+    "windwp/nvim-autopairs",
+  },
+  {
     "saghen/blink.indent",
     enabled = true,
     opts = {
@@ -14,7 +17,7 @@ return {
   },
   {
     "saghen/blink.pairs",
-    enabled = true,
+    enabled = false,
     build = "cargo build --release",
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
@@ -29,6 +32,7 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    enabled = true,
     opts = {
       bigfile = { enabled = true },
       dashboard = { enabled = false },
@@ -47,7 +51,7 @@ return {
     keys = {
       { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit", },
       { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal", mode = { "n", "t" }, },
-      { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History", },
+      -- { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History", },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer", },
       { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" }, },
       { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer", },
