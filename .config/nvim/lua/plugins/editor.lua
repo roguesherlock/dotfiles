@@ -1,32 +1,5 @@
 return {
   { "windwp/nvim-ts-autotag" },
-  {
-    "windwp/nvim-autopairs",
-  },
-  {
-    "saghen/blink.indent",
-    enabled = true,
-    opts = {
-      static = {
-        enabled = false,
-      },
-      scope = {
-        highlights = { "BlinkIndent" },
-      },
-    },
-  },
-  {
-    "saghen/blink.pairs",
-    enabled = false,
-    build = "cargo build --release",
-    --- @module 'blink.pairs'
-    --- @type blink.pairs.Config
-    opts = {
-      highlights = {
-        enabled = false,
-      },
-    },
-  },
   -- Snacks for various utilities
   {
     "folke/snacks.nvim",

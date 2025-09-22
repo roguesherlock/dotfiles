@@ -1,5 +1,28 @@
 return {
   {
+    "saghen/blink.indent",
+    enabled = true,
+    opts = {
+      static = {
+        enabled = false,
+      },
+      scope = {
+        highlights = { "BlinkIndent" },
+      },
+    },
+  },
+  {
+    "saghen/blink.pairs",
+    build = "cargo build --release",
+    --- @module 'blink.pairs'
+    --- @type blink.pairs.Config
+    opts = {
+      highlights = {
+        enabled = false,
+      },
+    },
+  },
+  {
     "saghen/blink.cmp",
     dependencies = {
       "rafamadriz/friendly-snippets",

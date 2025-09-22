@@ -176,10 +176,9 @@ function M.set_ghostty_theme(theme)
 
   for _, pid in ipairs(pids) do
     vim.fn.system("kill -SIGUSR2 " .. pid)
-  end
-
-  if vim.v.shell_error ~= 0 then
-    vim.notify("Error updating Ghostty theme: " .. result, vim.log.levels.WARN)
+    if vim.v.shell_error ~= 0 then
+      vim.notify("Error updating Ghostty theme: " .. result, vim.log.levels.WARN)
+    end
   end
 end
 
