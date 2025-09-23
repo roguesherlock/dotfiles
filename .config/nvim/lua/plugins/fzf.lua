@@ -9,7 +9,7 @@ local function dropdown(opts, ...)
     winopts = {
       title_pos = opts["winopts"].title and "center" or nil,
       height = 0.70,
-      width = 0.45,
+      width = 0.55,
       row = 0.1,
       col = 0.5,
       preview = { hidden = "hidden", layout = "vertical", vertical = "up:50%" },
