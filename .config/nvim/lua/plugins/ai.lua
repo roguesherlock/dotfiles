@@ -1,8 +1,76 @@
 return {
   -- { "augmentcode/augment.vim" },
+  -- Sidekick
+  {
+    "folke/sidekick.nvim",
+    opts = {
+      -- add any options here
+      cli = {
+        mux = {
+          backend = "zellij",
+          enabled = false,
+        },
+      },
+    },
+    keys = {
+      {
+        "<tab>",
+        function()
+          -- if there is a next edit, jump to it, otherwise apply it if any
+          if not require("sidekick").nes_jump_or_apply() then
+            return "<Tab>" -- fallback to normal tab
+          end
+        end,
+        expr = true,
+        desc = "Goto/Apply Next Edit Suggestion",
+      },
+      {
+        "<c-.>",
+        function()
+          require("sidekick.cli").focus()
+        end,
+        desc = "Sidekick Switch Focus",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>aa",
+        function()
+          require("sidekick.cli").toggle({ focus = true })
+        end,
+        desc = "Sidekick Toggle CLI",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>ac",
+        function()
+          require("sidekick.cli").toggle({ name = "claude", focus = true })
+        end,
+        desc = "Sidekick Claude Toggle",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>ag",
+        function()
+          require("sidekick.cli").toggle({ name = "grok", focus = true })
+        end,
+        desc = "Sidekick Grok Toggle",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>ap",
+        function()
+          require("sidekick.cli").select_prompt()
+        end,
+        desc = "Sidekick Ask Prompt",
+        mode = { "n", "v" },
+      },
+    },
+  },
+
   -- Supermaven AI completion
   {
     "supermaven-inc/supermaven-nvim",
+    enabled = false,
     event = { "InsertEnter", "VeryLazy" },
     config = function()
       require("supermaven-nvim").setup({ log_level = "off" })
@@ -17,6 +85,38 @@ return {
         end
       end, { desc = "Accept Supermaven suggestion" })
     end,
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    enabled = false,
+    cmd = "Copilot",
+    event = { "InsertEnter", "VeryLazy" },
+    dependencies = {
+      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    },
+    opts = {
+      panel = {
+        enabled = false,
+        auto_refresh = false,
+      },
+      suggestion = {
+        enabled = false,
+      },
+      filetypes = {
+        markdown = true,
+        help = true,
+      },
+      nes = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept_and_goto = "<tab>",
+          accept = false,
+          dismiss = "<Esc>",
+        },
+      },
+    },
   },
 
   -- CodeCompanion AI chat
@@ -111,7 +211,7 @@ return {
   -- opencode integration
   {
     "NickvanDyke/opencode.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
       auto_reload = true, -- Automatically reload buffers edited by opencode
       auto_focus = true, -- Focus the opencode window after prompting

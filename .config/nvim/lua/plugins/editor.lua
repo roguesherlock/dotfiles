@@ -45,12 +45,12 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       notification = {
         override_vim_notify = true, -- Automatically override vim.notify() with Fidget
         window = {
-          max_width = 05.,
+          max_width = 0,
         },
       },
     },

@@ -1,4 +1,8 @@
 return {
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+  },
   -- Overseer for task running
   {
     "stevearc/overseer.nvim",
@@ -94,9 +98,13 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
-      -- git_use_branch_name = true,
-      -- git_auto_restore_on_branch_change = true,
+      git_use_branch_name = true,
+      git_auto_restore_on_branch_change = true,
       load_on_setup = true,
+      preserve_buffer_on_restore = function(bufnr)
+        local buf_type = vim.bo[bufnr].filetype
+        return buf_type == "snacks_terminal"
+      end,
     },
   },
 
