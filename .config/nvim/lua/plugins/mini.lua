@@ -1,4 +1,53 @@
+local one_dark = {
+  base00 = "#282c33", -- editor.background
+  base01 = "#2f343e", -- surface/background
+  base02 = "#363c46", -- element.hover
+  base03 = "#5d636f", -- comment
+  base04 = "#b2b9c6", -- bracket/delimiter (muted fg)
+  base05 = "#dce0e5", -- primary text
+  base06 = "#fafafa", -- bright white
+  base07 = "#ffffff", -- max white
+  base08 = "#d07277", -- red
+  base09 = "#bf956a", -- orange
+  base0A = "#dec184", -- yellow
+  base0B = "#a1c181", -- green
+  base0C = "#6eb4bf", -- cyan
+  base0D = "#74ade8", -- blue
+  base0E = "#b477cf", -- magenta
+  base0F = "#b1574b", -- brown/special
+}
+
+local one_light = {
+  base00 = "#fafafa", -- editor.background
+  base01 = "#ebebec", -- surface/background
+  base02 = "#dfdfe0", -- element.hover
+  base03 = "#a2a3a7", -- comment
+  base04 = "#58585a", -- muted text
+  base05 = "#242529", -- primary text
+  base06 = "#4d4f52", -- stronger text
+  base07 = "#747579", -- brightest fg step (for light scheme ladders)
+  base08 = "#d36151", -- red
+  base09 = "#ad6e25", -- orange
+  base0A = "#c18401", -- yellow
+  base0B = "#669f59", -- green
+  base0C = "#3882b7", -- cyan
+  base0D = "#5c78e2", -- blue
+  base0E = "#a449ab", -- magenta
+  base0F = "#b92b46", -- brown/special
+}
+
 return {
+  {
+    "nvim-mini/mini.base16",
+    enabled = false,
+    opts = {
+      palette = one_dark,
+      plugins = {
+        default = false,
+        ["nvim-mini/mini.nvim"] = true,
+      },
+    },
+  },
   {
     "nvim-mini/mini.pick",
     enabled = false,
