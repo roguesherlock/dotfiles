@@ -1,44 +1,10 @@
 return {
   {
-    "folke/which-key.nvim",
-    opts = {
-      spec = {
-        { "<BS>", desc = "Decrement Selection", mode = "x" },
-        { "<c-space>", desc = "Increment Selection", mode = { "x", "n" } },
-      },
-    },
-  },
-
-  -- Treesitter is a new parser generator tool that we can
-  -- use in Neovim to power faster and more accurate
-  -- syntax highlighting.
-  {
     "nvim-treesitter/nvim-treesitter",
-    version = false, -- last release is way too old and doesn't work on Windows
+    branch = "main",
     build = ":TSUpdate",
-    -- event = { "VeryLazy" },
     lazy = false,
-    init = function(plugin)
-      -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
-      -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
-      -- no longer trigger the **nvim-treesitter** module to be loaded in time.
-      -- Luckily, the only things that those plugins need are the custom queries, which we make available
-      -- during startup.
-      require("lazy.core.loader").add_to_rtp(plugin)
-      require("nvim-treesitter.query_predicates")
-    end,
-    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    keys = {
-      { "<c-space>", desc = "Increment Selection" },
-      { "<bs>", desc = "Decrement Selection", mode = "x" },
-    },
-    opts_extend = { "ensure_installed" },
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
     opts = {
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
       ensure_installed = {
         "bash",
         "c",
@@ -66,22 +32,60 @@ return {
         "xml",
         "yaml",
       },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
     },
-    ---@param opts TSConfig
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      local TS = require("nvim-treesitter")
+      TS.install(opts.ensure_installed)
+
+      -- local mr = require("mason-registry")
+      -- mr.refresh(function()
+      --   local p = mr.get_package("tree-sitter-cli")
+      --   if not p:is_installed() then
+      --     vim.notify("Installing `tree-sitter-cli` with `mason.nvim`...")
+      --     p:install(
+      --       nil,
+      --       vim.schedule_wrap(function(success)
+      --         if success then
+      --           vim.notify("Installed `tree-sitter-cli` with `mason.nvim`.")
+      --           TS.install(opts.ensure_installed)
+      --         else
+      --           vim.notify("Failed to install `tree-sitter-cli` with `mason.nvim`.")
+      --         end
+      --       end)
+      --     )
+      --   end
+      -- end)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter.setup", { clear = true }),
+        callback = function(ev)
+          local buf = ev.buf
+          local filetype = ev.match
+          -- replicate `fold = { enable = true }`
+          vim.wo.foldmethod = "expr"
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+          -- you need some mechanism to avoid running on buffers that do not
+          -- correspond to a language (like oil.nvim buffers), this implementation
+          -- checks if a parser exists for the current language
+          local language = vim.treesitter.language.get_lang(filetype) or filetype
+          if not vim.treesitter.language.add(language) then
+            return
+          end
+
+          -- replicate `fold = { enable = true }`
+          vim.wo.foldmethod = "expr"
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+          -- replicate `highlight = { enable = true }`
+          vim.treesitter.start(buf, language)
+
+          -- replicate `indent = { enable = true }`
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end,
   },
-
   -- Automatically add closing tags for HTML and JSX
   {
     "windwp/nvim-ts-autotag",

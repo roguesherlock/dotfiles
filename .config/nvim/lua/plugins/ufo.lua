@@ -2,6 +2,7 @@ return {
   -- UFO for better folding
   {
     "kevinhwang91/nvim-ufo",
+    enabled = false,
     dependencies = { "kevinhwang91/promise-async" },
     event = { "BufReadPost", "BufNewFile" },
     config = function()

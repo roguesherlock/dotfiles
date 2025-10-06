@@ -15,7 +15,7 @@ return {
   -- },
   -- {
   --   "tinted-theming/tinted-vim",
-  --   enabled = false,
+  --   -- enabled = false,
   -- },
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
