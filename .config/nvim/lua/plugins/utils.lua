@@ -99,7 +99,10 @@ return {
     ---@type AutoSession.Config
     opts = {
       git_use_branch_name = true,
-      git_auto_restore_on_branch_change = true,
+      -- TODO:: make this work
+      git_auto_restore_on_branch_change = false,
+      -- close_unsupported_windows = false,
+      -- bypass_save_filetypes = { "snacks_terminal", "alpha", "lazy", "mason", "notify", "toggleterm", "OverseerList" },
       load_on_setup = true,
       preserve_buffer_on_restore = function(bufnr)
         local buf_type = vim.bo[bufnr].filetype

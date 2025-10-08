@@ -163,7 +163,7 @@ return {
       end,
     },
   },
-  -- { "savq/melange-nvim", enabled = false, lazy = false, priority = 1000 },
+  -- { "savq/melange-nvim", lazy = false, priority = 1000 },
   -- {
   --   "sainnhe/gruvbox-material",
   --   lazy = false,

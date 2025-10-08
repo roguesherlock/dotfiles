@@ -1,4 +1,3 @@
----@class user.colorscheme
 local M = {}
 
 -- colors, look at colors()
@@ -112,47 +111,47 @@ function M.setup(config)
       end)
     end,
   })
-  vim.api.nvim_create_autocmd("ColorScheme", {
-    pattern = "*",
-    group = group,
-    callback = function()
-      vim.schedule(function()
-        local light = vim.o.background == "light"
-        -- Set underline to undercurls
-        vim.cmd([[ highlight Underlined cterm=undercurl gui=undercurl ]])
-        vim.cmd([[ highlight @markup.underline cterm=undercurl gui=undercurl ]])
-        vim.cmd([[ highlight DiagnosticUnderlineOk cterm=undercurl gui=undercurl ]])
-        vim.cmd([[ highlight DiagnosticUnderlineHint cterm=undercurl gui=undercurl ]])
-        vim.cmd([[ highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl ]])
-        vim.cmd([[ highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl ]])
-        vim.cmd([[ highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl ]])
-
-        -- Defer terminal theme updates
-        -- Update Ghostty
-        -- TODO: there's a bug where in ghostty where if we set both light,dark themes then it doesn't update the tab color when switching themes
-        -- M.set_ghostty_theme(M.config.ghostty)
-
-        -- Update other terminals
-        if light then
-          vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
-          vim.fn.system("kitten @ load-config")
-          M.set_ghostty_theme(M.config.ghostty.light)
-          M.set_zellij_theme(M.config.zellij.light)
-          M.set_delta_theme(M.config.delta.light)
-          M.set_yazi_theme(M.config.yazi.light)
-          -- M.set_wezterm_theme(M.config.wezterm.light)
-        else
-          vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
-          vim.fn.system("kitten @ load-config")
-          M.set_ghostty_theme(M.config.ghostty.dark)
-          M.set_zellij_theme(M.config.zellij.dark)
-          M.set_delta_theme(M.config.delta.dark)
-          M.set_yazi_theme(M.config.yazi.dark)
-          -- M.set_wezterm_theme(M.config.wezterm.dark)
-        end
-      end)
-    end,
-  })
+  -- vim.api.nvim_create_autocmd("ColorScheme", {
+  --   pattern = "*",
+  --   group = group,
+  --   callback = function()
+  --     vim.schedule(function()
+  --       local light = vim.o.background == "light"
+  --       -- Set underline to undercurls
+  --       vim.cmd([[ highlight Underlined cterm=undercurl gui=undercurl ]])
+  --       vim.cmd([[ highlight @markup.underline cterm=undercurl gui=undercurl ]])
+  --       vim.cmd([[ highlight DiagnosticUnderlineOk cterm=undercurl gui=undercurl ]])
+  --       vim.cmd([[ highlight DiagnosticUnderlineHint cterm=undercurl gui=undercurl ]])
+  --       vim.cmd([[ highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl ]])
+  --       vim.cmd([[ highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl ]])
+  --       vim.cmd([[ highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl ]])
+  --
+  --       -- Defer terminal theme updates
+  --       -- Update Ghostty
+  --       -- TODO: there's a bug where in ghostty where if we set both light,dark themes then it doesn't update the tab color when switching themes
+  --       -- M.set_ghostty_theme(M.config.ghostty)
+  --
+  --       -- Update other terminals
+  --       if light then
+  --         vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
+  --         vim.fn.system("kitten @ load-config")
+  --         M.set_ghostty_theme(M.config.ghostty.light)
+  --         M.set_zellij_theme(M.config.zellij.light)
+  --         M.set_delta_theme(M.config.delta.light)
+  --         M.set_yazi_theme(M.config.yazi.light)
+  --         -- M.set_wezterm_theme(M.config.wezterm.light)
+  --       else
+  --         vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
+  --         vim.fn.system("kitten @ load-config")
+  --         M.set_ghostty_theme(M.config.ghostty.dark)
+  --         M.set_zellij_theme(M.config.zellij.dark)
+  --         M.set_delta_theme(M.config.delta.dark)
+  --         M.set_yazi_theme(M.config.yazi.dark)
+  --         -- M.set_wezterm_theme(M.config.wezterm.dark)
+  --       end
+  --     end)
+  --   end,
+  -- })
 
   vim.api.nvim_create_user_command("Light", function()
     M.set_colorscheme(true)
@@ -256,6 +255,40 @@ M.setup_termbg_sync = function(group)
 
   -- Set up sync
   local sync = function()
+    local light = vim.o.background == "light"
+    -- Set underline to undercurls
+    vim.cmd([[ highlight Underlined cterm=undercurl gui=undercurl ]])
+    vim.cmd([[ highlight @markup.underline cterm=undercurl gui=undercurl ]])
+    vim.cmd([[ highlight DiagnosticUnderlineOk cterm=undercurl gui=undercurl ]])
+    vim.cmd([[ highlight DiagnosticUnderlineHint cterm=undercurl gui=undercurl ]])
+    vim.cmd([[ highlight DiagnosticUnderlineInfo cterm=undercurl gui=undercurl ]])
+    vim.cmd([[ highlight DiagnosticUnderlineWarn cterm=undercurl gui=undercurl ]])
+    vim.cmd([[ highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl ]])
+
+    -- Defer terminal theme updates
+    -- Update Ghostty
+    -- TODO: there's a bug where in ghostty where if we set both light,dark themes then it doesn't update the tab color when switching themes
+    -- M.set_ghostty_theme(M.config.ghostty)
+
+    -- Update other terminals
+    if light then
+      vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
+      vim.fn.system("kitten @ load-config")
+      M.set_ghostty_theme(M.config.ghostty.light)
+      M.set_zellij_theme(M.config.zellij.light)
+      M.set_delta_theme(M.config.delta.light)
+      M.set_yazi_theme(M.config.yazi.light)
+      -- M.set_wezterm_theme(M.config.wezterm.light)
+    else
+      vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
+      vim.fn.system("kitten @ load-config")
+      M.set_ghostty_theme(M.config.ghostty.dark)
+      M.set_zellij_theme(M.config.zellij.dark)
+      M.set_delta_theme(M.config.delta.dark)
+      M.set_yazi_theme(M.config.yazi.dark)
+      -- M.set_wezterm_theme(M.config.wezterm.dark)
+    end
+
     local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
     if not normal.bg then
       return reset()
