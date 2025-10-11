@@ -83,6 +83,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
+vim.opt.foldlevel = 99 -- keep folds open unless explicitly closed
 vim.opt.foldlevelstart = 99 -- open all folds by default
 
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

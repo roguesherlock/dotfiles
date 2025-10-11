@@ -64,6 +64,7 @@ return {
           -- replicate `fold = { enable = true }`
           vim.wo.foldmethod = "expr"
           vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.wo.foldlevel = 99 -- keep folds expanded on attach
 
           -- you need some mechanism to avoid running on buffers that do not
           -- correspond to a language (like oil.nvim buffers), this implementation
