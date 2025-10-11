@@ -123,9 +123,14 @@ end
 function M.set_ghostty_theme(theme)
   local config_path = vim.fn.expand("~/.config/ghostty/config")
   local real_path = vim.fn.resolve(config_path)
-  -- local cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", theme, real_path)
-  local light_dark_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
-  local cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", light_dark_theme, real_path)
+  local cmd = ""
+  if type(theme) == "string" then
+    cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", theme, real_path)
+  else
+    local light_dark_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
+    cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", light_dark_theme, real_path)
+  end
+
   local result = vim.fn.system({ "bash", "-c", cmd })
   -- Get Ghostty PID(s) from system command
   local output = vim.fn.system("ps -axo pid=,args= | grep -i ghostty | grep -v grep")
@@ -222,12 +227,14 @@ M.setup_termbg_sync = function(group)
     vim.cmd([[ highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl ]])
 
     -- Update Ghostty
-    M.set_ghostty_theme(M.config.ghostty)
+    -- TODO: there's a bug in ghostty which causes new tabs to not respect the theme change when using auto light/dark themes
+    -- M.set_ghostty_theme(M.config.ghostty)
 
     -- Update other terminals
     if light then
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
       vim.fn.system("kitten @ load-config")
+      M.set_ghostty_theme(M.config.ghostty.light)
       M.set_zellij_theme(M.config.zellij.light)
       M.set_delta_theme(M.config.delta.light)
       M.set_yazi_theme(M.config.yazi.light)
@@ -235,6 +242,7 @@ M.setup_termbg_sync = function(group)
     else
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
       vim.fn.system("kitten @ load-config")
+      M.set_ghostty_theme(M.config.ghostty.dark)
       M.set_zellij_theme(M.config.zellij.dark)
       M.set_delta_theme(M.config.delta.dark)
       M.set_yazi_theme(M.config.yazi.dark)
