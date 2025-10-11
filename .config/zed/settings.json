@@ -7,6 +7,14 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "audio": {
+    "experimental.auto_microphone_volume": true,
+    "experimental.rodio_audio": true
+  },
+  "auto_signature_help": true,
+  "use_smartcase_search": true,
+  "multi_cursor_modifier": "cmd_or_ctrl",
+  "agent_ui_font_size": 12.0,
   "agent_servers": {},
   "agent": {
     "default_profile": "write",
@@ -70,7 +78,7 @@
   // "features": {
   //   "edit_prediction_provider": "supermaven"
   // },
-  "ui_font_size": 13,
+  "ui_font_size": 12.0,
   // "ui_font_family": "Geist Mono",
   // "ui_font_family": "IBM Plex Mono",
   // "ui_font_family": "Berkeley Mono Variable",
