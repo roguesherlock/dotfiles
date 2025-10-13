@@ -11,7 +11,7 @@
     "experimental.auto_microphone_volume": true,
     "experimental.rodio_audio": true
   },
-  "auto_signature_help": true,
+  "auto_signature_help": false,
   "use_smartcase_search": true,
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_ui_font_size": 12.0,

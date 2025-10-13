@@ -1,6 +1,6 @@
-# font-family = "Monaspace Argon Frozen"
+font-family = "Monaspace Argon Frozen"
 # font-family = "Monaspace Neon Frozen"
-# font-family = "Input Mono"
+# font-family = "Input Mono Narrow"
 # font-family = "Geist Mono"
 # font-family = "Berkeley Mono Variable"
 # font-family = "SF Mono"
@@ -15,7 +15,7 @@ adjust-cursor-thickness = 150%
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = Black Metal
+theme = Everforest Dark Hard
 macos-titlebar-style = tabs
 # macos-titlebar-style = transparent
 macos-option-as-alt = true

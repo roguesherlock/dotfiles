@@ -3,14 +3,16 @@ local M = {}
 -- colors, look at colors()
 M.config = {
   opts = {
-    enable_auto_switch = true,
+    enable_auto_switch = false,
     default_light = false,
     -- if enabled, would also set the theme when toggling the theme rather than just the background
     set_theme_on_auto_switch = true,
   },
   nvim = {
-    light = "modus",
-    dark = "modus",
+    -- light = "modus",
+    -- dark = "modus",
+    light = "everforest",
+    dark = "everforest",
     -- light = "tokyonight",
     -- dark = "tokyonight",
     -- light = "catppuccin-latte",
@@ -19,16 +21,20 @@ M.config = {
     -- dark = "default",
   },
   ghostty = {
-    light = "Github Light High Contrast",
-    dark = "Black Metal",
+    -- light = "Github Light High Contrast",
+    -- dark = "Black Metal",
+    light = "Everforest Dark Hard",
+    dark = "Everforest Dark Hard",
     -- light = "Catppuccin Latte",
     -- dark = "Catppuccin Frappe",
     -- light = "tokyonight-day",
     -- dark = "tokyonight",
   },
   kitty = {
-    light = "Modus Operandi",
-    dark = "Modus Vivendi",
+    light = "Everforest Dark Medium",
+    dark = "Everforest Dark Medium",
+    -- light = "Modus Operandi",
+    -- dark = "Modus Vivendi",
     -- light = "Tokyo Night Day",
     -- dark = "Tokyo Night",
     -- light = "Catppuccin-Latte",

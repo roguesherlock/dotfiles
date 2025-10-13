@@ -7,6 +7,11 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
+  {
+    "sainnhe/everforest",
+    -- event = "VeryLazy",
+    priority = 1000,
+  },
   -- {
   --   "darianmorat/gruvdark.nvim",
   --   priority = 1000,
