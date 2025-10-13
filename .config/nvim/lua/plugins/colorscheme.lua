@@ -7,16 +7,68 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
+  -- { "rose-pine/neovim", name = "rose-pine" },
+  -- {
+  --   "olimorris/onedarkpro.nvim",
+  --   priority = 1000, -- Ensure it loads first
+  --   event = "VeryLazy",
+  -- },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   priority = 1000,
+  --   event = "VeryLazy",
+  -- },
+  -- {
+  --   "rmehri01/onenord.nvim",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "nuvic/flexoki-nvim",
+  --   name = "flexoki",
+  --   priority = 1000,
+  --   event = "VeryLazy",
+  -- },
+  -- {
+  --   "bluz71/vim-moonfly-colors",
+  --   name = "moonfly",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "ramojus/mellifluous.nvim",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "yorickpeterse/nvim-grey",
+  --   priority = 1000,
+  -- },
+  -- { "ellisonleao/gruvbox.nvim", priority = 1000 },
+  -- {
+  --   "craftzdog/solarized-osaka.nvim",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "nvim-mini/mini.hues",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "everviolet/nvim",
+  --   name = "evergarden",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "sainnhe/edge",
+  --   priority = 1000,
+  --   event = "VeryLazy",
+  -- },
   {
     "sainnhe/everforest",
-    -- event = "VeryLazy",
     priority = 1000,
+    event = "VeryLazy",
   },
   -- {
   --   "darianmorat/gruvdark.nvim",
   --   priority = 1000,
   --   event = "VeryLazy",
-  --   opts = {},
   -- },
   -- {
   --   "tinted-theming/tinted-vim",
@@ -36,6 +88,12 @@ return {
   --   "sainnhe/gruvbox-material",
   --   event = "VeryLazy",
   --   priority = 1000,
+  -- },
+  -- {
+  --   "projekt0n/github-nvim-theme",
+  --   name = "github-theme",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
   -- },
   -- {
   --   "loctvl842/monokai-pro.nvim",
@@ -70,11 +128,11 @@ return {
   --   opts = {
   --     -- transparent = true,
   --     background = { -- map the value of 'background' option to a theme
-  --       dark = "zen", -- try "zen", "mist" or "pearl" !
+  --       -- dark = "zen", -- try "zen", "mist" or "pearl" !
   --       light = "pearl", -- try "zen", "mist" or "pearl" !
   --     },
   --     foreground = {
-  --       dark = "default", -- Use default colors in dark mode
+  --       -- dark = "default", -- Use default colors in dark mode
   --       light = "saturated", -- Use higher saturation in light mode
   --     },
   --   },
