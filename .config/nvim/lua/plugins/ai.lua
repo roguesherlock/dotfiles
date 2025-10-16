@@ -7,7 +7,7 @@ return {
       -- add any options here
       cli = {
         mux = {
-          backend = "zellij",
+          -- backend = "zellij",
           enabled = false,
         },
       },
@@ -27,17 +27,25 @@ return {
       {
         "<c-.>",
         function()
-          require("sidekick.cli").focus()
+          require("sidekick.cli").toggle()
         end,
-        desc = "Sidekick Switch Focus",
-        mode = { "n", "v" },
+        desc = "Sidekick Toggle CLI",
+        mode = { "n", "t", "i", "x" },
       },
       {
         "<leader>aa",
         function()
-          require("sidekick.cli").toggle({ focus = true })
+          require("sidekick.cli").toggle()
         end,
         desc = "Sidekick Toggle CLI",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>ao",
+        function()
+          require("sidekick.cli").toggle({ name = "codex", focus = true })
+        end,
+        desc = "Sidekick Codex Toggle",
         mode = { "n", "v" },
       },
       {
@@ -49,20 +57,59 @@ return {
         mode = { "n", "v" },
       },
       {
-        "<leader>ag",
+        "<leader>as",
         function()
-          require("sidekick.cli").toggle({ name = "grok", focus = true })
+          require("sidekick.cli").select()
         end,
-        desc = "Sidekick Grok Toggle",
-        mode = { "n", "v" },
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } })
+        desc = "Select CLI",
+      },
+      {
+        "<leader>ad",
+        function()
+          require("sidekick.cli").close()
+        end,
+        desc = "Detach a CLI Session",
+      },
+      {
+        "<leader>at",
+        function()
+          require("sidekick.cli").send({ msg = "{this}" })
+        end,
+        mode = { "x", "n" },
+        desc = "Send This",
+      },
+      {
+        "<leader>af",
+        function()
+          require("sidekick.cli").send({ msg = "{file}" })
+        end,
+        desc = "Send File",
+      },
+      {
+        "<leader>av",
+        function()
+          require("sidekick.cli").send({ msg = "{selection}" })
+        end,
+        mode = { "x" },
+        desc = "Send Visual Selection",
       },
       {
         "<leader>ap",
         function()
-          require("sidekick.cli").select_prompt()
+          require("sidekick.cli").prompt()
         end,
-        desc = "Sidekick Ask Prompt",
-        mode = { "n", "v" },
+        mode = { "n", "x" },
+        desc = "Sidekick Select Prompt",
+      },
+      {
+        "<leader>tns",
+        function()
+          require("sidekick.nes").toggle()
+        end,
+        mode = { "n" },
+        desc = "[T]oggle [N]ext Edit [S]uggestions",
       },
     },
   },

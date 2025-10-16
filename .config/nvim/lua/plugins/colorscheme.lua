@@ -7,6 +7,18 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
+  {
+    "lucasadelino/conifer.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {},
+  },
+  {
+    "aktersnurra/no-clown-fiesta.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {},
+  },
   -- { "rose-pine/neovim", name = "rose-pine" },
   -- {
   --   "olimorris/onedarkpro.nvim",
@@ -22,12 +34,12 @@ return {
   --   "rmehri01/onenord.nvim",
   --   priority = 1000,
   -- },
-  -- {
-  --   "nuvic/flexoki-nvim",
-  --   name = "flexoki",
-  --   priority = 1000,
-  --   event = "VeryLazy",
-  -- },
+  {
+    "nuvic/flexoki-nvim",
+    name = "flexoki",
+    priority = 1000,
+    -- event = "VeryLazy",
+  },
   -- {
   --   "bluz71/vim-moonfly-colors",
   --   name = "moonfly",
@@ -89,12 +101,27 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  -- {
-  --   "projekt0n/github-nvim-theme",
-  --   name = "github-theme",
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  -- },
+  {
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      local groups = {
+        all = {
+          StatusLineNC = {
+            bg = "bg0",
+            fg = "fg0",
+          },
+          StatusLine = {
+            bg = "bg0",
+            fg = "fg2",
+          },
+        },
+      }
+      require("github-theme").setup({ groups = groups })
+    end,
+  },
   -- {
   --   "loctvl842/monokai-pro.nvim",
   --   event = "VeryLazy",
@@ -141,6 +168,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
+    event = "VeryLazy",
     opts = {
       term_colors = true,
       auto_integrations = true,
@@ -168,7 +196,7 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     priority = 1000,
     opts = {
       day_brightness = 0.2,
@@ -176,7 +204,7 @@ return {
   },
   {
     "miikanissi/modus-themes.nvim",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     priority = 1000,
     opts = {
       -- transparent = true,
