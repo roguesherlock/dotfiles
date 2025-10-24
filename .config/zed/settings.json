@@ -39,6 +39,15 @@
     }
   },
   "context_servers": {
+    "next-devtools": {
+      "source": "custom",
+      "enabled": true,
+      "command": "bunx",
+      "args": [
+        "-y",
+        "next-devtools-mcp@latest"
+      ]
+    },
     "effect docs": {
       "source": "custom",
       "command": "bunx",

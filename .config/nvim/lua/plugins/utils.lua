@@ -103,9 +103,12 @@ return {
       git_auto_restore_on_branch_change = false,
       -- close_unsupported_windows = false,
       -- bypass_save_filetypes = { "snacks_terminal", "alpha", "lazy", "mason", "notify", "toggleterm", "OverseerList" },
+      args_allow_single_directory = false,
+      continue_restore_on_error = false,
       load_on_setup = true,
       preserve_buffer_on_restore = function(bufnr)
         local buf_type = vim.bo[bufnr].filetype
+        vim.notify(buf_type)
         return buf_type == "snacks_terminal"
       end,
     },

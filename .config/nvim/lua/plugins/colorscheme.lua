@@ -7,18 +7,30 @@ return {
       require("user.colorscheme").setup({})
     end,
   },
-  {
-    "lucasadelino/conifer.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    opts = {},
-  },
-  {
-    "aktersnurra/no-clown-fiesta.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    opts = {},
-  },
+  -- {
+  --   "embark-theme/vim",
+  --   name = "embark",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  -- },
+  -- {
+  --   "p00f/alabaster.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {},
+  -- },
+  -- {
+  --   "lucasadelino/conifer.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {},
+  -- },
+  -- {
+  --   "aktersnurra/no-clown-fiesta.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {},
+  -- },
   -- { "rose-pine/neovim", name = "rose-pine" },
   -- {
   --   "olimorris/onedarkpro.nvim",
@@ -38,6 +50,21 @@ return {
     "nuvic/flexoki-nvim",
     name = "flexoki",
     priority = 1000,
+    opts = {
+
+      -- _nc = "#1f1d30",
+      -- base = "#100f0f",
+      -- surface = "#1f1d2e",
+      -- overlay = "#1c1b1a",
+      -- muted = "#575653",
+      -- subtle = "#878580",
+      palette = {
+        moon = {
+          -- base = "#1c1b1a",
+          -- surface = "#1c1b1a",
+        },
+      },
+    },
     -- event = "VeryLazy",
   },
   -- {
@@ -73,10 +100,17 @@ return {
   --   event = "VeryLazy",
   -- },
   {
-    "sainnhe/everforest",
+    "neanias/everforest-nvim",
+    name = "everforest",
     priority = 1000,
-    event = "VeryLazy",
+    opts = {
+      background = "hard",
+    },
   },
+  -- {
+  --   "sainnhe/everforest",
+  --   priority = 1000,
+  -- },
   -- {
   --   "darianmorat/gruvdark.nvim",
   --   priority = 1000,
@@ -91,11 +125,10 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  -- {
-  --   "EdenEast/nightfox.nvim",
-  --   event = "VeryLazy",
-  --   priority = 1000,
-  -- },
+  {
+    "EdenEast/nightfox.nvim",
+    priority = 1000,
+  },
   -- {
   --   "sainnhe/gruvbox-material",
   --   event = "VeryLazy",
@@ -217,7 +250,7 @@ return {
       -- },
       on_colors = function(colors)
         -- colors.bg_main = colors.bg_dim
-        colors.bg_main = colors.bg_alt
+        -- colors.bg_main = colors.bg_alt
       end,
       on_highlights = function(h, c)
         local bg = c.bg_dim

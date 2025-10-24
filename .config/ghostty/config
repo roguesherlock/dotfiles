@@ -3,13 +3,13 @@
 # font-family = "Input Mono Narrow"
 # font-family = "Geist Mono"
 # font-family = "Berkeley Mono Variable"
-font-family = "SF Mono"
+# font-family = "SF Mono"
 # font-family = "Lilex"
-# font-family = "0xProto"
-font-size = 12
-font-thicken = true
-font-thicken-strength = 20
-adjust-cell-height = 70%
+font-family = "0xProto"
+font-size = 14
+# font-thicken = true
+# font-thicken-strength = 20
+adjust-cell-height = 50%
 adjust-underline-position = 4
 adjust-underline-thickness = 10%
 minimum-contrast=1
@@ -17,12 +17,12 @@ adjust-cursor-thickness = 150%
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = Github Dark Dimmed
+theme = Everforest Dark Hard
 macos-titlebar-style = tabs
 # macos-titlebar-style = transparent
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
-# window-colorspace = display-p3
+window-colorspace = display-p3
 window-save-state = always
 unfocused-split-opacity=0.85
 auto-update-channel=tip
@@ -31,10 +31,9 @@ quick-terminal-position = center
 quick-terminal-animation-duration = 0
 keybind = super+o=toggle_quick_terminal
 
-keybind = super+h=goto_split:previous
-keybind = super+j=goto_split:down
-keybind = super+k=goto_split:up
-keybind = super+l=goto_split:next
-keybind = super+l=goto_split:next
+keybind = performable:super+h=goto_split:previous
+keybind = performable:super+j=goto_split:down
+keybind = performable:super+k=goto_split:up
+keybind = performable:super+l=goto_split:next
 keybind = super+enter=toggle_split_zoom
 keybind = super+shift+enter=toggle_fullscreen

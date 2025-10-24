@@ -172,6 +172,10 @@ map("n", "<C-h>", function() vim.cmd("wincmd h"); auto_maximize_on_switch() end,
 map("n", "<C-l>", function() vim.cmd("wincmd l"); auto_maximize_on_switch() end, { desc = "Move focus to the right window (auto-maximize)" })
 map("n", "<C-j>", function() vim.cmd("wincmd j"); auto_maximize_on_switch() end, { desc = "Move focus to the lower window (auto-maximize)" })
 map("n", "<C-k>", function() vim.cmd("wincmd k"); auto_maximize_on_switch() end, { desc = "Move focus to the upper window (auto-maximize)" })
+-- map("n", "<D-h>", function() vim.cmd("wincmd h"); auto_maximize_on_switch() end, { desc = "Move focus to the left window (auto-maximize)" })
+-- map("n", "<D-l>", function() vim.cmd("wincmd l"); auto_maximize_on_switch() end, { desc = "Move focus to the right window (auto-maximize)" })
+-- map("n", "<D-j>", function() vim.cmd("wincmd j"); auto_maximize_on_switch() end, { desc = "Move focus to the lower window (auto-maximize)" })
+-- map("n", "<D-k>", function() vim.cmd("wincmd k"); auto_maximize_on_switch() end, { desc = "Move focus to the upper window (auto-maximize)" })
 -- stylua: ignore end
 
 -- Reset window maximization state when maximized window is closed
