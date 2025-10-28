@@ -47,11 +47,10 @@ return {
   --   priority = 1000,
   -- },
   {
-    "nuvic/flexoki-nvim",
+    "kepano/flexoki-neovim",
     name = "flexoki",
     priority = 1000,
     opts = {
-
       -- _nc = "#1f1d30",
       -- base = "#100f0f",
       -- surface = "#1f1d2e",
