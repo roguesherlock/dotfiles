@@ -50,20 +50,7 @@ return {
     "kepano/flexoki-neovim",
     name = "flexoki",
     priority = 1000,
-    opts = {
-      -- _nc = "#1f1d30",
-      -- base = "#100f0f",
-      -- surface = "#1f1d2e",
-      -- overlay = "#1c1b1a",
-      -- muted = "#575653",
-      -- subtle = "#878580",
-      palette = {
-        moon = {
-          -- base = "#1c1b1a",
-          -- surface = "#1c1b1a",
-        },
-      },
-    },
+    opts = {},
     -- event = "VeryLazy",
   },
   -- {
