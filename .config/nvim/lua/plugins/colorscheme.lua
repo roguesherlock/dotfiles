@@ -46,13 +46,13 @@ return {
   --   "rmehri01/onenord.nvim",
   --   priority = 1000,
   -- },
-  {
-    "kepano/flexoki-neovim",
-    name = "flexoki",
-    priority = 1000,
-    opts = {},
-    -- event = "VeryLazy",
-  },
+  -- {
+  --   "kepano/flexoki-neovim",
+  --   name = "flexoki",
+  --   priority = 1000,
+  --   opts = {},
+  --   -- event = "VeryLazy",
+  -- },
   -- {
   --   "bluz71/vim-moonfly-colors",
   --   name = "moonfly",

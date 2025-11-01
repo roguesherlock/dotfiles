@@ -9,10 +9,11 @@ M.config = {
     set_theme_on_auto_switch = true,
   },
   nvim = {
+    -- light = "github_light_default",
+    -- dark = "github_dark_dimmed",
     -- light = "modus",
     -- dark = "modus",
     light = "flexoki",
-    -- dark = "github_dark_dimmed",
     -- dark = "everforest",
     dark = "flexoki",
     -- light = "tokyonight",
@@ -36,7 +37,7 @@ M.config = {
     -- dark = "tokyonight",
   },
   kitty = {
-    -- light = "Github Light High Contrast",
+    -- light = "Github Light",
     -- dark = "Github Dark Dimmed",
     light = "Flexoki \\(Light\\)",
     dark = "Flexoki \\(Dark\\)",
@@ -224,10 +225,10 @@ end
 --- Works only on Neovim>=0.10.
 M.setup_termbg_sync = function(group)
   -- Set up reset
-  local reset = function()
-    io.stdout:write("\027]111\027\\")
-  end
-  vim.api.nvim_create_autocmd({ "VimLeavePre", "VimSuspend" }, { group = group, callback = reset })
+  -- local reset = function()
+  --   io.stdout:write("\027]111\027\\")
+  -- end
+  -- vim.api.nvim_create_autocmd({ "VimLeavePre", "VimSuspend" }, { group = group, callback = reset })
 
   -- Set up sync
   local sync = function()
@@ -247,30 +248,31 @@ M.setup_termbg_sync = function(group)
 
     -- Update other terminals
     if light then
+      M.set_ghostty_theme(M.config.ghostty.light)
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
       vim.fn.system("kitten @ load-config")
-      M.set_ghostty_theme(M.config.ghostty.light)
       M.set_zellij_theme(M.config.zellij.light)
       M.set_delta_theme(M.config.delta.light)
       M.set_yazi_theme(M.config.yazi.light)
       -- M.set_wezterm_theme(M.config.wezterm.light)
     else
+      M.set_ghostty_theme(M.config.ghostty.dark)
       vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
       vim.fn.system("kitten @ load-config")
-      M.set_ghostty_theme(M.config.ghostty.dark)
       M.set_zellij_theme(M.config.zellij.dark)
       M.set_delta_theme(M.config.delta.dark)
       M.set_yazi_theme(M.config.yazi.dark)
       -- M.set_wezterm_theme(M.config.wezterm.dark)
     end
 
-    local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-    if not normal.bg then
-      return reset()
-    end
+    -- TODO: There might be an issue with ghostty where if you had a neovim session before and then you close it, and then the terminal changes theme, the background color won't update until you restart ghostty
+    -- local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
+    -- if not normal.bg then
+    -- return reset()
+    -- end
     -- NOTE: use `io.stdout` instead of `io.write` to ensure correct target
     -- Otherwise after `io.output(file); file:close()` there is an error
-    io.stdout:write(string.format("\027]11;#%06x\007", normal.bg))
+    -- io.stdout:write(string.format("\027]11;#%06x\007", normal.bg))
   end
   vim.api.nvim_create_autocmd({ "VimResume", "ColorScheme" }, { group = group, callback = sync })
 

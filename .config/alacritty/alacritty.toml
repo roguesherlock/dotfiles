@@ -1,9 +1,9 @@
 [font]
-size = 14
-offset = { y = 1 }
+size = 12
+offset = { y = 12 }
 
 [font.normal]
-family = "Input Mono"
+family = "BlexMono Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]
