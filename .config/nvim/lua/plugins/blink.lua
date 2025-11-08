@@ -1,7 +1,7 @@
 return {
   {
     "saghen/blink.indent",
-    enabled = true,
+    enabled = false,
     opts = {
       static = {
         enabled = false,

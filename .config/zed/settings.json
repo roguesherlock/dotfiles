@@ -7,6 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "buffer_line_height": {
+    "custom": 2
+  },
+  "buffer_font_family": "SF Mono",
+  "ui_font_size": 13.0,
   "prettier": {
     "allowed": true
   },
@@ -14,7 +19,6 @@
     "show": false
   },
   "agent_buffer_font_size": 13.0,
-  "ui_font_family": "SF Mono",
   "audio": {
     "experimental.auto_microphone_volume": true,
     "experimental.rodio_audio": true
@@ -23,7 +27,11 @@
   "use_smartcase_search": true,
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_ui_font_size": 13.0,
-  "agent_servers": {},
+  "agent_servers": {
+    "claude": {
+      "default_mode": "bypassPermissions"
+    }
+  },
   "agent": {
     "default_profile": "write",
     "play_sound_when_agent_done": true,
@@ -43,20 +51,17 @@
       "source": "custom",
       "enabled": true,
       "command": "bunx",
-      "args": [
-        "-y",
-        "next-devtools-mcp@latest"
-      ]
+      "args": ["-y", "next-devtools-mcp@latest"]
     },
     "effect docs": {
       "source": "custom",
       "command": "bunx",
-      "args": ["-y", "effect-mcp"]
+      "args": ["-y", "effect-mcp@latest"]
     },
     "motion": {
       "source": "custom",
       "command": "bunx",
-      "args": ["-y", "motion-ai"]
+      "args": ["-y", "motion-ai@latest"]
     }
   },
   "theme": {
@@ -95,18 +100,16 @@
   // "features": {
   //   "edit_prediction_provider": "supermaven"
   // },
-  "ui_font_size": 13.0,
   // "ui_font_family": "Geist Mono",
   // "ui_font_family": "IBM Plex Mono",
   // "ui_font_family": "Berkeley Mono Variable",
   // "ui_font_family": "JetBrains Mono",
-  "buffer_font_size": 13,
+  "buffer_font_size": 12.0,
 
   // "buffer_font_family": "Geist Mono",
   // "buffer_font_family": "IBM Plex Mono",
   // "buffer_font_family": "Berkeley Mono Variable",
   // "buffer_font_family": "JetBrains Mono",
-  "buffer_font_family": "SF Mono",
   "buffer_font_fallbacks": ["Symbols Nerd Font Mono"],
   "vim_mode": true,
   "autosave": "on_focus_change",
@@ -115,8 +118,8 @@
   "scrollbar": {
     // "show": "system"
     // "show": "never"
-        "show": "never"
-    },
+    "show": "never"
+  },
   "git": {
     "inline_blame": {
       "enabled": false
