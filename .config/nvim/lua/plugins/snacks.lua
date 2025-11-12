@@ -9,7 +9,7 @@ return {
     dashboard = { enabled = false },
     explorer = { enabled = true },
     indent = {
-      enabled = true,
+      enabled = false,
       only_scope = true,
       hl = "LineNr",
       animate = {
@@ -17,10 +17,10 @@ return {
       },
       scope = {
         enabled = true,
-        underline = true,
+        underline = false,
       },
       chunk = {
-        enabled = true,
+        enabled = false,
       },
     },
     input = { enabled = false },

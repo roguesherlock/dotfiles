@@ -578,3 +578,4 @@ hl("GitSignsStagedTopdeleteCul", { link = "GitSignsStagedDelete" })
 hl("GitSignsStagedUntrackedCul", { link = "GitSignsStagedAdd" })
 
 hl("SnacksIndent", { fg = c.bg2 })
+hl("BlinkIndent", { fg = c.bg2 })

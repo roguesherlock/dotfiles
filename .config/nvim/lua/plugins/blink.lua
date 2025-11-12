@@ -1,12 +1,14 @@
 return {
   {
     "saghen/blink.indent",
-    enabled = false,
+    enabled = true,
     opts = {
       static = {
         enabled = false,
+        char = "│",
       },
       scope = {
+        char = "│",
         highlights = { "BlinkIndent" },
       },
     },
