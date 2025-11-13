@@ -163,6 +163,7 @@ install ~/Developer/dotfiles/.config/opencode ~/.config/opencode
 # warp
 mkdir -p ~/.warp
 install ~/Developer/dotfiles/.config/warp/keybindings.yaml ~/.warp/keybindings.yaml
+install ~/Developer/dotfiles/.config/warp/themes ~/.warp/themes
 
 # kanata
 # mkdir -p ~/.config/kanata/

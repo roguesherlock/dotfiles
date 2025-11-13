@@ -1,5 +1,9 @@
 ---
-"workspace:toggle_ai_assistant": none
-"pane_group:navigate_left": cmd-h
-"input:open_completion_suggestions": ctrl-space
+"pane_group:navigate_prev": cmd-h
+"ai_assistant_panel:focus_terminal_input": none
+"notebookview:focus_terminal_input": none
+"terminal:focus_input": none
 "editor_view:insert_autosuggestion": tab
+"workspace:toggle_ai_assistant": none
+"input:open_completion_suggestions": ctrl-space
+"pane_group:navigate_next": cmd-l
