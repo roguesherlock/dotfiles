@@ -7,10 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "buffer_line_height": {
-    "custom": 2
-  },
-  "buffer_font_family": "SF Mono",
+  "ui_font_family": "JetBrains Mono",
+  "buffer_line_height": "comfortable",
+  "buffer_font_family": "JetBrains Mono",
   "ui_font_size": 13.0,
   "prettier": {
     "allowed": true
@@ -23,7 +22,6 @@
     "experimental.auto_microphone_volume": true,
     "experimental.rodio_audio": true
   },
-  "auto_signature_help": false,
   "use_smartcase_search": true,
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_ui_font_size": 13.0,
@@ -38,12 +36,12 @@
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-5"
+      "provider": "openrouter",
+      "model": "anthropic/claude-sonnet-4.5"
     },
     "commit_message_model": {
-      "provider": "google",
-      "model": "gemini-2.5-flash-preview-05-20"
+      "provider": "openrouter",
+      "model": "x-ai/grok-code-fast-1"
     }
   },
   "context_servers": {
@@ -66,8 +64,8 @@
   },
   "theme": {
     "mode": "system",
-    "dark": "One Dark",
-    "light": "One Light"
+    "dark": "Flexoki Dark",
+    "light": "Flexoki Light"
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -86,13 +84,9 @@
     // "dock": "right"
   },
   "project_panel": {
-    "button": true,
-    "default_width": 240,
-    // "dock": "right",
     "file_icons": true,
     "folder_icons": false,
     "git_status": true,
-    "indent_size": 20,
     "auto_reveal_entries": true,
     "auto_fold_dirs": true
   },
@@ -100,24 +94,13 @@
   // "features": {
   //   "edit_prediction_provider": "supermaven"
   // },
-  // "ui_font_family": "Geist Mono",
-  // "ui_font_family": "IBM Plex Mono",
-  // "ui_font_family": "Berkeley Mono Variable",
-  // "ui_font_family": "JetBrains Mono",
-  "buffer_font_size": 12.0,
-
-  // "buffer_font_family": "Geist Mono",
-  // "buffer_font_family": "IBM Plex Mono",
-  // "buffer_font_family": "Berkeley Mono Variable",
-  // "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 13.0,
   "buffer_font_fallbacks": ["Symbols Nerd Font Mono"],
   "vim_mode": true,
   "autosave": "on_focus_change",
   "auto_update": true,
   "soft_wrap": "editor_width",
   "scrollbar": {
-    // "show": "system"
-    // "show": "never"
     "show": "never"
   },
   "git": {

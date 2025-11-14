@@ -6,10 +6,20 @@
 -- [] nicer window management experience. Want to zoom in/out, toggle between splits while still zommed in, etc
 -- [] better typescript error formatting
 
-require("config.options")
-require("config.keymaps")
+if not vim.g.vscode then
+  require("config.options")
+  require("config.keymaps")
+end
+
 require("core.lazy")
-require("core.lsp")
-require("config.autocmds")
+
+if not vim.g.vscode then
+  require("core.lsp")
+  require("config.autocmds")
+end
+
+require("core.vscode")
+
+
 -- require("user.picker").setup()
 -- require("user.term").setup()
