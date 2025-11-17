@@ -165,6 +165,15 @@ mkdir -p ~/.warp
 install ~/Developer/dotfiles/.config/warp/keybindings.yaml ~/.warp/keybindings.yaml
 install ~/Developer/dotfiles/.config/warp/themes ~/.warp/themes
 
+
+# claude
+mkdir -p ~/.claude/
+install ~/Developer/dotfiles/.config/claude/settings.json ~/.claude/settings.json
+install ~/Developer/dotfiles/.config/claude/CLAUDE.md ~/.claude/CLAUDE.md
+install ~/Developer/dotfiles/.config/claude/plugin.json ~/.claude/plugin.json
+install ~/Developer/dotfiles/.config/claude/agents ~/.claude/agents
+install ~/Developer/dotfiles/.config/claude/skills ~/.claude/skills
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd

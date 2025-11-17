@@ -1,0 +1,1 @@
+- please always use bun for package managment as well as script runner unless specified otherwise
