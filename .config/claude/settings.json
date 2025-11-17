@@ -2,6 +2,6 @@
   "alwaysThinkingEnabled": true,
   "cleanupPeriodDays": 60,
   "permissions": {
-    "defaultMode": "acceptEdits"
+    "defaultMode": "bypassPermissions"
   }
 }
