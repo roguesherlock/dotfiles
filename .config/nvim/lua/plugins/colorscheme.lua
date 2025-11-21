@@ -37,11 +37,11 @@ return {
   --   priority = 1000, -- Ensure it loads first
   --   event = "VeryLazy",
   -- },
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   priority = 1000,
-  --   event = "VeryLazy",
-  -- },
+  {
+    "rebelot/kanagawa.nvim",
+    priority = 1000,
+    event = "VeryLazy",
+  },
   -- {
   --   "rmehri01/onenord.nvim",
   --   priority = 1000,
@@ -113,6 +113,7 @@ return {
   -- },
   {
     "EdenEast/nightfox.nvim",
+    enabled = false,
     priority = 1000,
   },
   -- {
@@ -123,6 +124,7 @@ return {
   {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
+    enabled = false,
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
@@ -201,6 +203,7 @@ return {
         -- transparent = true, -- enable transparent floating windows
       },
       integrations = {
+        auto_integrations = true,
         native_lsp = {
           underlines = {
             errors = { "undercurl" },

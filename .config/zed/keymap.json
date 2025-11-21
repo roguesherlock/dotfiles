@@ -17,13 +17,15 @@
     }
   },
   {
+    "context": "Workspace",
     "bindings": {
       "cmd-1": "project_panel::ToggleFocus",
       "cmd-2": "git_panel::ToggleFocus",
       "cmd-3": "editor::ToggleFocus",
       "cmd-4": "agent::ToggleFocus",
       "cmd-5": "terminal_panel::Toggle",
-      "cmd-6": "debug_panel::ToggleFocus"
+      "cmd-6": "debug_panel::ToggleFocus",
+      "cmd-ctrl-o": "projects::OpenRecent"
     }
   },
   {
@@ -44,7 +46,17 @@
       "cmd-enter": "workspace::ToggleZoom",
       "j": ["vim::Down", { "display_lines": true }],
       "k": ["vim::Up", { "display_lines": true }],
-      "space g B": "editor::CopyPermalinkToLine"
+      "space g B": "editor::CopyPermalinkToLine",
+      "space a c": [
+        "agent::NewExternalAgentThread",
+        { "agent": "claude_code" }
+      ],
+      "space a g": ["agent::NewExternalAgentThread", { "agent": "gemini" }],
+      "space a o": [
+        "agent::NewExternalAgentThread",
+        { "agent": "native_agent" }
+      ],
+      "space a p": ["agent::NewExternalAgentThread", { "agent": "codex" }]
     }
   },
   {
@@ -67,13 +79,19 @@
         { "task_name": "lazygit", "reveal_target": "center" }
       ],
       "space g G": "git_panel::ToggleFocus",
-      "space w d": "pane::CloseAllItems",
-      "space w v": "pane::SplitVertical",
+      "w h": "workspace::ActivatePaneLeft",
+      "w l": "workspace::ActivatePaneRight",
+      "w j": "workspace::ActivatePaneDown",
+      "w k": "workspace::ActivatePaneUp",
+      "w q": "pane::CloseAllItems",
+      "w v": "pane::SplitVertical",
+      "w m": "workspace::ToggleZoom",
       "space x x": "diagnostics::DeployCurrentFile",
       "space x X": "diagnostics::Deploy",
       "space l R": "editor::RestartLanguageServer",
       "space l d": "editor::ToggleDiagnostics",
       "space t h": "editor::ToggleInlayHints",
+      "space b o": "pane::CloseAllItems",
       "shift-e": "editor::Hover",
       "[ [": "editor::GoToPreviousDocumentHighlight",
       "] ]": "editor::GoToNextDocumentHighlight",

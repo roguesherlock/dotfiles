@@ -7,6 +7,29 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "terminal": {
+    "line_height": {
+      "custom": 1.8
+    }
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_icon": false
+  },
+  "inlay_hints": {
+    "enabled": false
+  },
+  "indent_guides": {
+    "enabled": false,
+    "background_coloring": "disabled",
+    "coloring": "fixed"
+  },
+  "redact_private_values": true,
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "buffer_font_weight": 400.0,
   "ui_font_family": "JetBrains Mono",
   "buffer_line_height": {
@@ -40,7 +63,7 @@
     "model_parameters": [],
     "default_model": {
       "provider": "openrouter",
-      "model": "anthropic/claude-sonnet-4.5"
+      "model": "openai/gpt-5.1-codex"
     },
     "commit_message_model": {
       "provider": "openrouter",
@@ -67,8 +90,8 @@
   },
   "theme": {
     "mode": "system",
-    "dark": "Flexoki Dark",
-    "light": "Flexoki Light"
+    "dark": "One Dark",
+    "light": "One Light"
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -85,8 +108,10 @@
   },
   "git_panel": {
     // "dock": "right"
+    "default_width": 300.0
   },
   "project_panel": {
+    "default_width": 300.0,
     "file_icons": true,
     "folder_icons": false,
     "git_status": true,

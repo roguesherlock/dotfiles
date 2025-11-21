@@ -9,6 +9,9 @@ vim.g.colors_name = "flexoki"
 local p = {}
 
 -- Base
+-- p.black = "#000000"
+-- p.black = "#0c0a09"
+-- p.black = "#0a0a0a"
 p.black = "#100F0F"
 p.base950 = "#1C1B1A"
 p.base900 = "#282726"
@@ -159,8 +162,8 @@ if vim.o.background == "dark" then
   c.ui2 = p.base850
   c.ui3 = p.base800
   c.tx = p.base200
-  c.tx2 = p.base400
-  c.tx3 = p.base600
+  c.tx2 = p.base500
+  c.tx3 = p.base700
   c.red = p.red400
   c.red2 = p.red600
   c.red3 = p.red800
@@ -200,9 +203,9 @@ else
   c.ui = p.base100
   c.ui2 = p.base150
   c.ui3 = p.base200
-  c.tx = p.base800
+  c.tx = p.black
   c.tx2 = p.base600
-  c.tx3 = p.base400
+  c.tx3 = p.base300
   c.red = p.red600
   c.red2 = p.red400
   c.red3 = p.red200
