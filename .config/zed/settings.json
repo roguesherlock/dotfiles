@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "helix_mode": false,
   "terminal": {
     "line_height": {
       "custom": 1.8
@@ -57,6 +58,10 @@
     }
   },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "openrouter",
+      "model": "anthropic/claude-sonnet-4.5"
+    },
     "default_profile": "write",
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true,
@@ -72,18 +77,15 @@
   },
   "context_servers": {
     "next-devtools": {
-      "source": "custom",
       "enabled": true,
       "command": "bunx",
       "args": ["-y", "next-devtools-mcp@latest"]
     },
     "effect docs": {
-      "source": "custom",
       "command": "bunx",
       "args": ["-y", "effect-mcp@latest"]
     },
     "motion": {
-      "source": "custom",
       "command": "bunx",
       "args": ["-y", "motion-ai@latest"]
     }

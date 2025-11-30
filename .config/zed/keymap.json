@@ -17,7 +17,6 @@
     }
   },
   {
-    "context": "Workspace",
     "bindings": {
       "cmd-1": "project_panel::ToggleFocus",
       "cmd-2": "git_panel::ToggleFocus",
@@ -25,7 +24,8 @@
       "cmd-4": "agent::ToggleFocus",
       "cmd-5": "terminal_panel::Toggle",
       "cmd-6": "debug_panel::ToggleFocus",
-      "cmd-ctrl-o": "projects::OpenRecent"
+      "cmd-ctrl-o": "projects::OpenRecent",
+      "cmd-shift-o": "projects::OpenRecent"
     }
   },
   {
@@ -46,6 +46,7 @@
       "cmd-enter": "workspace::ToggleZoom",
       "j": ["vim::Down", { "display_lines": true }],
       "k": ["vim::Up", { "display_lines": true }],
+      "space space": "project_search::ToggleFocus",
       "space g B": "editor::CopyPermalinkToLine",
       "space a c": [
         "agent::NewExternalAgentThread",
@@ -57,6 +58,7 @@
         { "agent": "native_agent" }
       ],
       "space a p": ["agent::NewExternalAgentThread", { "agent": "codex" }]
+      // "space s s": "project_symbols::Toggle"
     }
   },
   {
