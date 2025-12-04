@@ -1,5 +1,17 @@
 [
   {
+    "bindings": {
+      "cmd-1": "project_panel::ToggleFocus",
+      "cmd-2": "git_panel::ToggleFocus",
+      "cmd-3": "editor::ToggleFocus",
+      "cmd-4": "agent::ToggleFocus",
+      "cmd-5": "terminal_panel::Toggle",
+      "cmd-6": "debug_panel::ToggleFocus",
+      "cmd-ctrl-o": "projects::OpenRecent",
+      "cmd-shift-o": "projects::OpenRecent"
+    }
+  },
+  {
     "context": "Editor && edit_prediction_conflict",
     "bindings": {
       // Here we bind tab to accept even when there's a language server completion
@@ -14,18 +26,6 @@
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown"
-    }
-  },
-  {
-    "bindings": {
-      "cmd-1": "project_panel::ToggleFocus",
-      "cmd-2": "git_panel::ToggleFocus",
-      "cmd-3": "editor::ToggleFocus",
-      "cmd-4": "agent::ToggleFocus",
-      "cmd-5": "terminal_panel::Toggle",
-      "cmd-6": "debug_panel::ToggleFocus",
-      "cmd-ctrl-o": "projects::OpenRecent",
-      "cmd-shift-o": "projects::OpenRecent"
     }
   },
   {
@@ -46,7 +46,6 @@
       "cmd-enter": "workspace::ToggleZoom",
       "j": ["vim::Down", { "display_lines": true }],
       "k": ["vim::Up", { "display_lines": true }],
-      "space space": "project_search::ToggleFocus",
       "space g B": "editor::CopyPermalinkToLine",
       "space a c": [
         "agent::NewExternalAgentThread",
@@ -58,14 +57,14 @@
         { "agent": "native_agent" }
       ],
       "space a p": ["agent::NewExternalAgentThread", { "agent": "codex" }]
-      // "space s s": "project_symbols::Toggle"
     }
   },
   {
     "context": "vim_mode == visual",
     "bindings": {
       "backspace": "vim::SelectSmallerSyntaxNode",
-      "shift-s": "vim::PushAddSurrounds"
+      "shift-s": "vim::PushAddSurrounds",
+      "p": ["workspace::SendKeystrokes", "p g v y"]
     }
   },
   {
@@ -73,14 +72,14 @@
     "bindings": {
       ",": "editor::ToggleFold",
       "g D": "editor::GoToDefinitionSplit",
-      "g b p": "pane::TogglePinTab",
-      "g b q": ["pane::CloseAllItems", { "close_pinned": false }],
+      "g b": "tab_switcher::Toggle",
       "space e": "project_panel::ToggleFocus",
       "space g g": [
         "task::Spawn",
         { "task_name": "lazygit", "reveal_target": "center" }
       ],
       "space g G": "git_panel::ToggleFocus",
+      "space g d": "git::FileHistory",
       "w h": "workspace::ActivatePaneLeft",
       "w l": "workspace::ActivatePaneRight",
       "w j": "workspace::ActivatePaneDown",
@@ -90,11 +89,14 @@
       "w m": "workspace::ToggleZoom",
       "space x x": "diagnostics::DeployCurrentFile",
       "space x X": "diagnostics::Deploy",
-      "space l R": "editor::RestartLanguageServer",
+      "space l r": "editor::RestartLanguageServer",
       "space l d": "editor::ToggleDiagnostics",
       "space t h": "editor::ToggleInlayHints",
-      "space b o": "pane::CloseAllItems",
-      "shift-e": "editor::Hover",
+      "space s s": "outline::Toggle",
+      "space b p": "pane::TogglePinTab",
+      "space b o": ["pane::CloseAllItems", { "close_pinned": false }],
+      "space b q": "pane::CloseAllItems",
+      "space R": "workspace::Reload",
       "[ [": "editor::GoToPreviousDocumentHighlight",
       "] ]": "editor::GoToNextDocumentHighlight",
       "[ e": ["editor::GoToPreviousDiagnostic", { "severity": "error" }],
@@ -109,6 +111,15 @@
       "ctrl-k": "editor::ShowSignatureHelp"
     }
   },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      // mini.ai plugin behavior
+      "q": "vim::MiniQuotes",
+      "b": "vim::MiniBrackets"
+    }
+  },
+
   {
     "context": "Terminal",
     "bindings": {

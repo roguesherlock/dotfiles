@@ -175,6 +175,7 @@ return {
       { "<leader>sM", "<cmd>FzfLua man_pages<cr>", desc = "[S]earch [M]an Pages" },
       { "<leader>ss", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "[S]earch [S]ymbols " },
       { "<leader>sS", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "[S]earch [S]ymbols " },
+      { "<leader>su", "<cmd>FzfLua undotree<cr>", desc = "[S]earch [U]ndotree " },
       { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "[S]earch current [W]ord", mode = { "n", "v" }, },
       { "<leader>sW", "<cmd>FzfLua grep_cWORD<cr>", desc = "[S]earch current [W]ord", mode = { "n", "v" }, },
       { "<leader>sv", "<cmd>FzfLua grep_visual<cr>", desc = "[S]earch [V]isual Selection", mode = { "n", "v" }, },

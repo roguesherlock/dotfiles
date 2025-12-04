@@ -1,9 +1,15 @@
 ---
-"pane_group:navigate_prev": cmd-h
-"ai_assistant_panel:focus_terminal_input": none
-"notebookview:focus_terminal_input": none
+"terminal:clear_blocks": shift-cmd-L
 "terminal:focus_input": none
 "editor_view:insert_autosuggestion": tab
-"workspace:toggle_ai_assistant": none
+"notebookview:focus_terminal_input": none
+"ai_assistant_panel:focus_terminal_input": none
+"pane_group:navigate_left": cmd-h
+"pane_group:navigate_down": cmd-j
+"pane_group:navigate_up": cmd-k
 "input:open_completion_suggestions": ctrl-space
-"pane_group:navigate_next": cmd-l
+"pane_group:navigate_right": cmd-l
+"workspace:toggle_left_panel": cmd-b
+"ai_assistant_panel:reset_context": ctrl-cmd-r
+"workspace:toggle_ai_assistant": none
+"pane_group:toggle_maximize_pane": cmd-enter

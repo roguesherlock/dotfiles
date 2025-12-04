@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "helix_mode": false,
   "terminal": {
     "line_height": {
@@ -25,7 +28,6 @@
     "background_coloring": "disabled",
     "coloring": "fixed"
   },
-  "redact_private_values": true,
   "icon_theme": {
     "mode": "system",
     "light": "Zed (Default)",
@@ -72,7 +74,7 @@
     },
     "commit_message_model": {
       "provider": "openrouter",
-      "model": "x-ai/grok-code-fast-1"
+      "model": "google/gemini-2.5-flash"
     }
   },
   "context_servers": {
@@ -127,6 +129,9 @@
   "buffer_font_size": 12.0,
   "buffer_font_fallbacks": ["Symbols Nerd Font Mono"],
   "vim_mode": true,
+  "vim": {
+    "use_smartcase_find": true
+  },
   "autosave": "on_focus_change",
   "auto_update": true,
   "soft_wrap": "editor_width",
