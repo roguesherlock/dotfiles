@@ -6,8 +6,8 @@
 # font-family = "CommitMono Nerd Font"
 # font-family = "JetBrains Mono"
 # font-family = "SF Mono"
-# font-family = "Lilex"
-font-family = "0xProto"
+font-family = "Lilex"
+# font-family = "0xProto"
 font-size = 12
 # font-thicken = true
 # font-thicken-strength = 20
@@ -28,7 +28,7 @@ macos-non-native-fullscreen = true
 window-save-state = always
 unfocused-split-opacity=0.85
 auto-update-channel=tip
-custom-shader=shaders/cursor_warp.glsl
+# custom-shader=shaders/cursor_warp.glsl
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
