@@ -8,16 +8,17 @@
       "cmd-5": "terminal_panel::Toggle",
       "cmd-6": "debug_panel::ToggleFocus",
       "cmd-ctrl-o": "projects::OpenRecent",
-      "cmd-shift-o": "projects::OpenRecent"
-    }
+      "cmd-shift-o": "projects::OpenRecent",
+      "cmd-/": "workspace::ToggleRightDock",
+    },
   },
   {
     "context": "Editor && edit_prediction_conflict",
     "bindings": {
       // Here we bind tab to accept even when there's a language server completion
       // or the cursor isn't at the correct indentation level
-      "tab": "editor::AcceptEditPrediction"
-    }
+      "tab": "editor::AcceptEditPrediction",
+    },
   },
   {
     "context": "Dock || Terminal || Editor || ProjectPanel || EmptyPane || SharedScreen || MarkdownPreview",
@@ -25,58 +26,41 @@
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown"
-    }
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
   },
   {
     "context": "Editor && VimControl && !VimWaiting && !VimObject",
     "bindings": {
       "alt-j": "editor::MoveLineDown",
       "alt-k": "editor::MoveLineUp",
-      "cmd-i": "assistant::InlineAssist"
-    }
+      "cmd-i": "assistant::InlineAssist",
+    },
   },
   {
     "context": "VimControl && !menu",
     "bindings": {
       // Put key bindings here if you want them to work in normal & visual mode.
-      "s": "vim::PushSneak",
-      "shift-s": "vim::PushSneakBackward",
       "ctrl-space": "vim::SelectLargerSyntaxNode",
       "cmd-enter": "workspace::ToggleZoom",
       "j": ["vim::Down", { "display_lines": true }],
       "k": ["vim::Up", { "display_lines": true }],
-      "space g B": "editor::CopyPermalinkToLine",
-      "space a c": [
-        "agent::NewExternalAgentThread",
-        { "agent": "claude_code" }
-      ],
-      "space a g": ["agent::NewExternalAgentThread", { "agent": "gemini" }],
-      "space a o": [
-        "agent::NewExternalAgentThread",
-        { "agent": "native_agent" }
-      ],
-      "space a p": ["agent::NewExternalAgentThread", { "agent": "codex" }]
-    }
+      "/": "buffer_search::Deploy",
+    },
   },
   {
-    "context": "vim_mode == visual",
+    "context": "EmptyPane || SharedScreen || (VimControl && vim_mode == normal && !menu)",
     "bindings": {
-      "backspace": "vim::SelectSmallerSyntaxNode",
-      "shift-s": "vim::PushAddSurrounds",
-      "p": ["workspace::SendKeystrokes", "p g v y"]
-    }
-  },
-  {
-    "context": "vim_mode == normal",
-    "bindings": {
-      ",": "editor::ToggleFold",
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward",
       "g D": "editor::GoToDefinitionSplit",
       "g b": "tab_switcher::Toggle",
+      "f": "tab_switcher::Toggle",
+      "space f": "file_finder::Toggle",
       "space e": "project_panel::ToggleFocus",
       "space g g": [
         "task::Spawn",
-        { "task_name": "lazygit", "reveal_target": "center" }
+        { "task_name": "lazygit", "revealitarget": "center" },
       ],
       "space g G": "git_panel::ToggleFocus",
       "space g d": "git::FileHistory",
@@ -87,6 +71,16 @@
       "w q": "pane::CloseAllItems",
       "w v": "pane::SplitVertical",
       "w m": "workspace::ToggleZoom",
+      "space a c": [
+        "agent::NewExternalAgentThread",
+        { "agent": "claude_code" },
+      ],
+      "space a g": ["agent::NewExternalAgentThread", { "agent": "gemini" }],
+      "space a o": [
+        "agent::NewExternalAgentThread",
+        { "agent": "native_agent" },
+      ],
+      "space a p": ["agent::NewExternalAgentThread", { "agent": "codex" }],
       "space x x": "diagnostics::DeployCurrentFile",
       "space x X": "diagnostics::Deploy",
       "space l r": "editor::RestartLanguageServer",
@@ -96,42 +90,65 @@
       "space b p": "pane::TogglePinTab",
       "space b o": ["pane::CloseAllItems", { "close_pinned": false }],
       "space b q": "pane::CloseAllItems",
+      "space g B": "editor::CopyPermalinkToLine",
       "space R": "workspace::Reload",
+    },
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      ",": "editor::ToggleFold",
       "[ [": "editor::GoToPreviousDocumentHighlight",
       "] ]": "editor::GoToNextDocumentHighlight",
       "[ e": ["editor::GoToPreviousDiagnostic", { "severity": "error" }],
-      "] e": ["editor::GoToDiagnostic", { "severity": "error" }]
-    }
+      "] e": ["editor::GoToDiagnostic", { "severity": "error" }],
+    },
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "backspace": "vim::SelectSmallerSyntaxNode",
+      "p": ["workspace::SendKeystrokes", "p g v y"],
+    },
   },
   {
     "context": "vim_mode == insert",
     "bindings": {
       "ctrl-space": "editor::ShowCompletions",
       "tab": "editor::AcceptEditPrediction",
-      "ctrl-k": "editor::ShowSignatureHelp"
-    }
+      "ctrl-k": "editor::ShowSignatureHelp",
+    },
   },
   {
     "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
     "bindings": {
       // mini.ai plugin behavior
       "q": "vim::MiniQuotes",
-      "b": "vim::MiniBrackets"
-    }
+      "b": "vim::MiniBrackets",
+    },
   },
-
   {
     "context": "Terminal",
     "bindings": {
       "cmd-enter": "workspace::ToggleZoom",
-      "cmd-t": "workspace::NewTerminal"
-    }
+      "cmd-t": "workspace::NewTerminal",
+      "cmd-1": ["pane::ActivateItem", 0],
+      "cmd-2": ["pane::ActivateItem", 1],
+      "cmd-3": ["pane::ActivateItem", 2],
+      "cmd-4": ["pane::ActivateItem", 3],
+      "cmd-5": ["pane::ActivateItem", 4],
+    },
   },
   {
-    "context": "Editor",
+    "context": "TabSwitcher > Picker",
     "bindings": {
-      "cmd-/": "workspace::ToggleRightDock"
-    }
+      "d": "tab_switcher::CloseSelectedItem",
+      "l": "menu::Confirm",
+      "q": "menu::Cancel",
+      "k": "menu::SelectPrevious",
+      "j": "menu::SelectNext",
+      "f": "menu::Confirm",
+    },
   },
   {
     "context": "GitPanel && menu",
@@ -140,8 +157,8 @@
       "ctrl-p": "git::Pull",
       "ctrl-shift-p": "git::Push",
       "ctrl-j": "git_panel::FocusEditor",
-      "q": "workspace::CloseActiveDock"
-    }
+      "q": "workspace::CloseActiveDock",
+    },
   },
   {
     "context": "GitPanel > Editor",
@@ -149,19 +166,20 @@
       "ctrl-c": "git::CheckoutBranch",
       "ctrl-p": "git::Pull",
       "ctrl-shift-p": "git::Push",
-      "ctrl-k": "git_panel::FocusChanges"
-    }
+      "ctrl-k": "git_panel::FocusChanges",
+    },
   },
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "q": "workspace::CloseActiveDock"
-    }
+      "q": "workspace::CloseActiveDock",
+      "a": "project_panel::NewFile",
+    },
   },
   {
     "context": "Diagnostics > Editor && vim_mode == normal",
     "bindings": {
-      "q": "pane::CloseActiveItem"
-    }
-  }
+      "q": "pane::CloseActiveItem",
+    },
+  },
 ]

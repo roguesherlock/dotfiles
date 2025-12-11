@@ -246,6 +246,7 @@ map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window w
 map("n", "<leader>tw", "<cmd>set wrap!<cr>", { desc = "[T]oggle [W]rap" })
 
 map("n", "E", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+map("n", "gh", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 
 map("n", "<leader>cx", ":.lua<CR>", { desc = "[C]ode E[x]ecute lua" })
 map("v", "<leader>cx", ":lua =<CR>", { desc = "[C]ode E[x]ecute lua" })
