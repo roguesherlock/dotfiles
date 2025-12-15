@@ -4,6 +4,7 @@ return {
     branch = "main",
     build = ":TSUpdate",
     lazy = false,
+    opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = {
         "bash",
@@ -35,7 +36,13 @@ return {
     },
     config = function(_, opts)
       local TS = require("nvim-treesitter")
-      TS.install(opts.ensure_installed)
+      -- install missing parsers
+      local install = vim.tbl_filter(function(lang)
+        return not TS.get_installed(lang)
+      end, opts.ensure_installed or {})
+      if #install > 0 then
+        TS.install(install, { summary = true }):wait(300000) -- max. 5 minutes
+      end
 
       -- local mr = require("mason-registry")
       -- mr.refresh(function()

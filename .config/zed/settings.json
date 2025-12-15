@@ -34,11 +34,9 @@
     "dark": "Zed (Default)",
   },
   "buffer_font_weight": 400.0,
-  "ui_font_family": "JetBrains Mono",
-  "buffer_line_height": {
-    "custom": 1.8,
-  },
-  "buffer_font_family": "SF Mono",
+  "ui_font_family": "Google Sans Code",
+  "buffer_line_height": "comfortable",
+  "buffer_font_family": "Google Sans Code",
   "ui_font_size": 13.0,
   "prettier": {
     "allowed": true,
@@ -128,7 +126,7 @@
   // "features": {
   //   "edit_prediction_provider": "supermaven"
   // },
-  "buffer_font_size": 12.0,
+  "buffer_font_size": 13.0,
   "buffer_font_fallbacks": ["Symbols Nerd Font Mono"],
   "vim_mode": true,
   "vim": {

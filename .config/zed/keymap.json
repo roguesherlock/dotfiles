@@ -88,10 +88,11 @@
       "space t h": "editor::ToggleInlayHints",
       "space s s": "outline::Toggle",
       "space b p": "pane::TogglePinTab",
-      "space b o": ["pane::CloseAllItems", { "close_pinned": false }],
+      "space b o": "pane::CloseOtherItems",
       "space b q": "pane::CloseAllItems",
       "space g B": "editor::CopyPermalinkToLine",
       "space R": "workspace::Reload",
+      "space z": "workspace::ToggleCenteredLayout",
     },
   },
   {
