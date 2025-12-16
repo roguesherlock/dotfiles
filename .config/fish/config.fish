@@ -55,3 +55,7 @@ fish_add_path /Users/akash/.opencode/bin
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/akash/.lmstudio/bin
 # End of LM Studio CLI section
+
+# ami
+set --export AMI_INSTALL "$HOME/.ami"
+set --export PATH $AMI_INSTALL/bin $PATH
