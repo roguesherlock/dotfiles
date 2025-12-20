@@ -90,6 +90,7 @@ return {
   },
   {
     "sindrets/diffview.nvim",
+    enabled = false,
     keys = {
       { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "[G]it [D]iffview [o]pen" },
       { "<leader>gdO", "<cmd>DiffviewFileHistory<cr>", desc = "[G]it [D]iffview [O]pen File History Panel" },
@@ -109,6 +110,16 @@ return {
           { "n", "q", function() require("diffview.actions").close() end, { desc = "Close" }, },
         },
       },
+    },
+  },
+  {
+    "esmuellert/vscode-diff.nvim",
+    branch = "main",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    cmd = "CodeDiff",
+    keys = {
+      { "<leader>gdd", "<cmd>CodeDiff<cr>", desc = "[g]it [d]iffview [d] open explorer" },
+      { "<leader>gdo", "<cmd>CodeDiff file HEAD<cr>", desc = "[g]it [d]iffview [o]pen file diff against index" },
     },
   },
 }

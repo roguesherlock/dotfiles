@@ -10,6 +10,10 @@
       "cmd-ctrl-o": "projects::OpenRecent",
       "cmd-shift-o": "projects::OpenRecent",
       "cmd-/": "workspace::ToggleRightDock",
+      "cmd-[": "window::ShowPreviousWindowTab",
+      "cmd-]": "window::ShowNextWindowTab",
+      "cmd-{": "window::ShowPreviousWindowTab",
+      "cmd-}": "window::ShowNextWindowTab",
     },
   },
   {
@@ -138,6 +142,13 @@
       "cmd-3": ["pane::ActivateItem", 2],
       "cmd-4": ["pane::ActivateItem", 3],
       "cmd-5": ["pane::ActivateItem", 4],
+    },
+  },
+  {
+    "context": "RecentProjects > Picker > Editor",
+    "bindings": {
+      "enter": "menu::SecondaryConfirm",
+      "cmd-enter": "menu::Confirm",
     },
   },
   {

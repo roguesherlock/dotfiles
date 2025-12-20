@@ -1,8 +1,3 @@
-vim.g.moonflyCursorColor = true
-vim.g.moonflyNormalPmenu = true
-vim.g.moonflyNormalFloat = true
-
-
 return {
   {
     dir = "~/.config/nvim/lua",
@@ -58,11 +53,11 @@ return {
   --   opts = {},
   --   -- event = "VeryLazy",
   -- },
-  {
-    "bluz71/vim-moonfly-colors",
-    name = "moonfly",
-    priority = 1000,
-  },
+  -- {
+  --   "bluz71/vim-moonfly-colors",
+  --   name = "moonfly",
+  --   priority = 1000,
+  -- },
   -- {
   --   "ramojus/mellifluous.nvim",
   --   priority = 1000,
@@ -203,9 +198,9 @@ return {
         light = "latte",
         dark = "frappe",
       },
-      transparent_background = true,
+      -- transparent_background = true,
       float = {
-        transparent = true, -- enable transparent floating windows
+        -- transparent = true, -- enable transparent floating windows
       },
       integrations = {
         auto_integrations = true,

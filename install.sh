@@ -174,6 +174,9 @@ install ~/Developer/dotfiles/.config/claude/plugin.json ~/.claude/plugin.json
 install ~/Developer/dotfiles/.config/claude/agents ~/.claude/agents
 install ~/Developer/dotfiles/.config/claude/skills ~/.claude/skills
 
+# prise
+install ~/Developer/dotfiles/.config/prise/init.lua ~/.config/prise/init.lua
+
 # kanata
 # mkdir -p ~/.config/kanata/
 # install ~/Developer/dotfiles/.config/kanata/kanata.kbd ~/.config/kanata/kanata.kbd

@@ -7,15 +7,19 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "buffer_font_size": 13.0,
+  "ui_font_size": 13.0,
+  "agent_buffer_font_size": 13.0,
+  "agent_ui_font_size": 13.0,
   "features": {
     "edit_prediction_provider": "zed",
   },
+  "use_system_window_tabs": true,
   "helix_mode": false,
   "terminal": {
     "line_height": {
       "custom": 1.8,
     },
-    "scroll_multiplier": 0,
     "alternate_scroll": "on",
   },
   "title_bar": {
@@ -39,14 +43,12 @@
   "ui_font_family": "Google Sans Code",
   "buffer_line_height": "comfortable",
   "buffer_font_family": "Google Sans Code",
-  "ui_font_size": 13.0,
   "prettier": {
     "allowed": true,
   },
   "tab_bar": {
     "show": false,
   },
-  "agent_buffer_font_size": 13.0,
   "audio": {
     "experimental.auto_microphone_volume": true,
     "experimental.rodio_audio": true,
@@ -56,28 +58,26 @@
     "regex": false,
   },
   "multi_cursor_modifier": "cmd_or_ctrl",
-  "agent_ui_font_size": 13.0,
   "agent_servers": {
     "claude": {
       "default_mode": "bypassPermissions",
     },
   },
   "agent": {
+    "commit_message_model": {
+      "provider": "openrouter",
+      "model": "x-ai/grok-code-fast-1",
+    },
     "inline_assistant_model": {
       "provider": "openrouter",
-      "model": "anthropic/claude-sonnet-4.5",
+      "model": "x-ai/grok-code-fast-1",
     },
     "default_profile": "write",
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true,
-    "model_parameters": [],
     "default_model": {
       "provider": "openrouter",
-      "model": "openai/gpt-5.1-codex",
-    },
-    "commit_message_model": {
-      "provider": "openrouter",
-      "model": "google/gemini-2.5-flash",
+      "model": "anthropic/claude-opus-4.5",
     },
   },
   "context_servers": {
@@ -89,6 +89,10 @@
     "effect docs": {
       "command": "bunx",
       "args": ["-y", "effect-mcp@latest"],
+    },
+    "chrome-devtools": {
+      "command": "bunx",
+      "args": ["-y", "chrome-devtools-mcp@latest"],
     },
     "motion": {
       "command": "bunx",
@@ -128,7 +132,6 @@
   // "features": {
   //   "edit_prediction_provider": "supermaven"
   // },
-  "buffer_font_size": 13.0,
   "buffer_font_fallbacks": ["Symbols Nerd Font Mono"],
   "vim_mode": true,
   "vim": {
