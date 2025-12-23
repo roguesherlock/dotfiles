@@ -8,6 +8,16 @@ return {
     end,
   },
   -- {
+  --   "adibhanna/yukinord.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  -- },
+  {
+    "nexxeln/vesper.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+  },
+  -- {
   --   "embark-theme/vim",
   --   name = "embark",
   --   event = "VeryLazy",
@@ -19,29 +29,29 @@ return {
   --   priority = 1000,
   --   opts = {},
   -- },
-  -- {
-  --   "lucasadelino/conifer.nvim",
-  --   event = "VeryLazy",
-  --   priority = 1000,
-  --   opts = {},
-  -- },
-  -- {
-  --   "aktersnurra/no-clown-fiesta.nvim",
-  --   event = "VeryLazy",
-  --   priority = 1000,
-  --   opts = {},
-  -- },
+  {
+    "lucasadelino/conifer.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {},
+  },
+  {
+    "aktersnurra/no-clown-fiesta.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {},
+  },
   -- { "rose-pine/neovim", name = "rose-pine" },
   -- {
   --   "olimorris/onedarkpro.nvim",
   --   priority = 1000, -- Ensure it loads first
   --   event = "VeryLazy",
   -- },
-  {
-    "rebelot/kanagawa.nvim",
-    priority = 1000,
-    event = "VeryLazy",
-  },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   priority = 1000,
+  --   event = "VeryLazy",
+  -- },
   -- {
   --   "rmehri01/onenord.nvim",
   --   priority = 1000,
@@ -111,38 +121,38 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  {
-    "EdenEast/nightfox.nvim",
-    enabled = false,
-    priority = 1000,
-  },
+  -- {
+  --   "EdenEast/nightfox.nvim",
+  --   enabled = false,
+  --   priority = 1000,
+  -- },
   -- {
   --   "sainnhe/gruvbox-material",
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  {
-    "projekt0n/github-nvim-theme",
-    name = "github-theme",
-    enabled = false,
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      local groups = {
-        all = {
-          StatusLineNC = {
-            bg = "bg0",
-            fg = "fg0",
-          },
-          StatusLine = {
-            bg = "bg0",
-            fg = "fg2",
-          },
-        },
-      }
-      require("github-theme").setup({ groups = groups })
-    end,
-  },
+  -- {
+  --   "projekt0n/github-nvim-theme",
+  --   name = "github-theme",
+  --   enabled = false,
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     local groups = {
+  --       all = {
+  --         StatusLineNC = {
+  --           bg = "bg0",
+  --           fg = "fg0",
+  --         },
+  --         StatusLine = {
+  --           bg = "bg0",
+  --           fg = "fg2",
+  --         },
+  --       },
+  --     }
+  --     require("github-theme").setup({ groups = groups })
+  --   end,
+  -- },
   -- {
   --   "loctvl842/monokai-pro.nvim",
   --   event = "VeryLazy",
@@ -169,22 +179,22 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  -- {
-  --   "webhooked/kanso.nvim",
-  --   event = "VeryLazy",
-  --   priority = 1000,
-  --   opts = {
-  --     -- transparent = true,
-  --     background = { -- map the value of 'background' option to a theme
-  --       -- dark = "zen", -- try "zen", "mist" or "pearl" !
-  --       light = "pearl", -- try "zen", "mist" or "pearl" !
-  --     },
-  --     foreground = {
-  --       -- dark = "default", -- Use default colors in dark mode
-  --       light = "saturated", -- Use higher saturation in light mode
-  --     },
-  --   },
-  -- },
+  {
+    "webhooked/kanso.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {
+      -- transparent = true,
+      background = { -- map the value of 'background' option to a theme
+        dark = "mist", -- try "zen", "mist" or "pearl" !
+        light = "pearl", -- try "zen", "mist" or "pearl" !
+      },
+      foreground = {
+        -- dark = "default", -- Use default colors in dark mode
+        light = "saturated", -- Use higher saturation in light mode
+      },
+    },
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -195,7 +205,7 @@ return {
       auto_integrations = true,
       -- latte, frappe, macchiato, mocha
       background = { -- :h background
-        light = "latte",
+        light = "frappe",
         dark = "frappe",
       },
       -- transparent_background = true,
@@ -229,7 +239,7 @@ return {
     event = "VeryLazy",
     priority = 1000,
     opts = {
-      transparent = true,
+      -- transparent = true,
       line_nr_column_background = false,
       sign_column_background = false,
       -- styles = {
@@ -277,59 +287,59 @@ return {
     },
   },
   -- { "savq/melange-nvim", lazy = false, priority = 1000 },
-  {
-    "sainnhe/gruvbox-material",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_enable_italic = true
-      -- Fonts
-      vim.g.gruvbox_material_enable_bold = true
-      vim.g.gruvbox_material_transparent_background = true
-      -- Themes
-      vim.g.gruvbox_material_foreground = "mix"
-      vim.g.gruvbox_material_background = "hard"
-      vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
-      vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
-      -- vim.g.gruvbox_material_diagnostic_virtual_text = "highlighted"
-      -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
-      vim.g.gruvbox_material_current_word = "grey background"
-
-      local configuration = vim.fn["gruvbox_material#get_configuration"]()
-      local palette = vim.fn["gruvbox_material#get_palette"](
-        configuration.background,
-        configuration.foreground,
-        configuration.colors_override
-      )
-
-      -- vim.cmd.colorscheme("gruvbox-material")
-
-      local highlights_groups = {
-        FoldColumn = { bg = "none" },
-        SignColumn = { bg = "none" },
-        Normal = { bg = "none" },
-        NormalNC = { bg = "none" },
-        NormalFloat = { bg = "none" },
-        FloatBorder = { bg = "none" },
-        FloatTitle = { bg = "none", fg = palette.orange[1] },
-        TelescopeBorder = { bg = "none" },
-        TelescopeNormal = { fg = "none" },
-        TelescopePromptNormal = { bg = "none" },
-        TelescopeResultsNormal = { bg = "none" },
-        TelescopeSelection = { bg = palette.bg3[1] },
-        Visual = { bg = palette.bg_visual_red[1] },
-        Cursor = { bg = palette.bg_red[1], fg = palette.bg_dim[1] },
-        ColorColumn = { bg = palette.bg_visual_blue[1] },
-        CursorLine = { bg = palette.bg3[1], blend = 25 },
-        GitSignsAdd = { fg = palette.green[1], bg = "none" },
-        GitSignsChange = { fg = palette.yellow[1], bg = "none" },
-        GitSignsDelete = { fg = palette.red[1], bg = "none" },
-      }
-
-      for group, styles in pairs(highlights_groups) do
-        vim.api.nvim_set_hl(0, group, styles)
-      end
-    end,
-  },
+  -- {
+  --   "sainnhe/gruvbox-material",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.g.gruvbox_material_better_performance = 1
+  --     vim.g.gruvbox_material_enable_italic = true
+  --     -- Fonts
+  --     vim.g.gruvbox_material_enable_bold = true
+  --     vim.g.gruvbox_material_transparent_background = true
+  --     -- Themes
+  --     vim.g.gruvbox_material_foreground = "mix"
+  --     vim.g.gruvbox_material_background = "hard"
+  --     vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
+  --     vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
+  --     -- vim.g.gruvbox_material_diagnostic_virtual_text = "highlighted"
+  --     -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
+  --     vim.g.gruvbox_material_current_word = "grey background"
+  --
+  --     local configuration = vim.fn["gruvbox_material#get_configuration"]()
+  --     local palette = vim.fn["gruvbox_material#get_palette"](
+  --       configuration.background,
+  --       configuration.foreground,
+  --       configuration.colors_override
+  --     )
+  --
+  --     -- vim.cmd.colorscheme("gruvbox-material")
+  --
+  --     local highlights_groups = {
+  --       FoldColumn = { bg = "none" },
+  --       SignColumn = { bg = "none" },
+  --       Normal = { bg = "none" },
+  --       NormalNC = { bg = "none" },
+  --       NormalFloat = { bg = "none" },
+  --       FloatBorder = { bg = "none" },
+  --       FloatTitle = { bg = "none", fg = palette.orange[1] },
+  --       TelescopeBorder = { bg = "none" },
+  --       TelescopeNormal = { fg = "none" },
+  --       TelescopePromptNormal = { bg = "none" },
+  --       TelescopeResultsNormal = { bg = "none" },
+  --       TelescopeSelection = { bg = palette.bg3[1] },
+  --       Visual = { bg = palette.bg_visual_red[1] },
+  --       Cursor = { bg = palette.bg_red[1], fg = palette.bg_dim[1] },
+  --       ColorColumn = { bg = palette.bg_visual_blue[1] },
+  --       CursorLine = { bg = palette.bg3[1], blend = 25 },
+  --       GitSignsAdd = { fg = palette.green[1], bg = "none" },
+  --       GitSignsChange = { fg = palette.yellow[1], bg = "none" },
+  --       GitSignsDelete = { fg = palette.red[1], bg = "none" },
+  --     }
+  --
+  --     for group, styles in pairs(highlights_groups) do
+  --       vim.api.nvim_set_hl(0, group, styles)
+  --     end
+  --   end,
+  -- },
 }

@@ -7,21 +7,26 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "buffer_font_size": 13.0,
   "ui_font_size": 13.0,
+  "ui_font_family": "SF Mono",
   "agent_buffer_font_size": 13.0,
   "agent_ui_font_size": 13.0,
-  "features": {
-    "edit_prediction_provider": "zed",
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": "SF Mono",
+  "buffer_font_size": 13.0,
+  "buffer_line_height": {
+    "custom": 1.8,
   },
-  "use_system_window_tabs": true,
-  "helix_mode": false,
   "terminal": {
     "line_height": {
       "custom": 1.8,
     },
     "alternate_scroll": "on",
   },
+  "features": {
+    "edit_prediction_provider": "zed",
+  },
+  "use_system_window_tabs": true,
   "title_bar": {
     "show_menus": false,
     "show_branch_icon": false,
@@ -34,15 +39,6 @@
     "background_coloring": "disabled",
     "coloring": "fixed",
   },
-  "icon_theme": {
-    "mode": "system",
-    "light": "Zed (Default)",
-    "dark": "Zed (Default)",
-  },
-  "buffer_font_weight": 400.0,
-  "ui_font_family": "Google Sans Code",
-  "buffer_line_height": "comfortable",
-  "buffer_font_family": "Google Sans Code",
   "prettier": {
     "allowed": true,
   },
@@ -76,29 +72,28 @@
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true,
     "default_model": {
-      "provider": "openrouter",
-      "model": "anthropic/claude-opus-4.5",
+      "provider": "zed.dev",
+      "model": "claude-opus-4-5",
     },
   },
-  "context_servers": {
-    "next-devtools": {
-      "enabled": true,
-      "command": "bunx",
-      "args": ["-y", "next-devtools-mcp@latest"],
-    },
-    "effect docs": {
-      "command": "bunx",
-      "args": ["-y", "effect-mcp@latest"],
-    },
-    "chrome-devtools": {
-      "command": "bunx",
-      "args": ["-y", "chrome-devtools-mcp@latest"],
-    },
-    "motion": {
-      "command": "bunx",
-      "args": ["-y", "motion-ai@latest"],
-    },
-  },
+  // "context_servers": {
+  //   "next-devtools": {
+  //     "command": "bunx",
+  //     "args": ["-y", "next-devtools-mcp@latest"],
+  //   },
+  //   "effect docs": {
+  //     "command": "bunx",
+  //     "args": ["-y", "effect-mcp@latest"],
+  //   },
+  //   "chrome-devtools": {
+  //     "command": "bunx",
+  //     "args": ["-y", "chrome-devtools-mcp@latest"],
+  //   },
+  //   "motion": {
+  //     "command": "bunx",
+  //     "args": ["-y", "motion-ai@latest"],
+  //   },
+  // },
   "theme": {
     "mode": "system",
     "dark": "One Dark",
@@ -129,14 +124,12 @@
     "auto_fold_dirs": true,
   },
   "excerpt_context_lines": 5,
-  // "features": {
-  //   "edit_prediction_provider": "supermaven"
-  // },
   "buffer_font_fallbacks": ["Symbols Nerd Font Mono"],
   "vim_mode": true,
   "vim": {
     "use_smartcase_find": true,
   },
+  "which_key": { "enabled": true },
   "autosave": "on_focus_change",
   "auto_update": true,
   "soft_wrap": "editor_width",
@@ -166,28 +159,6 @@
           },
           "suggest": {
             "completeFunctionCalls": true,
-          },
-          "inlayHints": {
-            "parameterNames": {
-              "enabled": "all",
-              "suppressWhenArgumentMatchesName": false,
-            },
-            "parameterTypes": {
-              "enabled": true,
-            },
-            "variableTypes": {
-              "enabled": true,
-              "suppressWhenTypeMatchesName": true,
-            },
-            "propertyDeclarationTypes": {
-              "enabled": true,
-            },
-            "functionLikeReturnTypes": {
-              "enabled": true,
-            },
-            "enumMemberValues": {
-              "enabled": true,
-            },
           },
           // "preferGoToSourceDefinition": true
         },

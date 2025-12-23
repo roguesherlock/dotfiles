@@ -20,23 +20,30 @@ return {
       require("snipe").setup({
         ui = {
           position = "center",
+          text_align = "file-first",
+          open_win_override = {
+            -- title = "My Window Title",
+            border = "rounded", -- use "rounded" for rounded border
+          },
         },
         hints = {
           -- Charaters to use for hints (NOTE: make sure they don't collide with the navigation keymaps)
-          dictionary = "sadflewvrcmnpghioty",
+          dictionary = "sadfewvrcmnpghioty",
         },
         navigate = {
+          under_cursor = "l",
           next_page = "<c-n>",
           prev_page = "<c-p>",
           close_buffer = "<c-d>",
           open_vsplit = "<c-v>",
           open_hsplit = "<c-h>",
           cancel_snipe = "q",
+          sort = "last",
         },
       })
 
       local map = require("user.util").map
-      map("n", "gb", function()
+      map("n", "f", function()
         require("snipe").open_buffer_menu()
       end, { desc = "Open Snipe buffer menu" })
     end,
