@@ -12,11 +12,11 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  {
-    "nexxeln/vesper.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-  },
+  -- {
+  --   "nexxeln/vesper.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  -- },
   -- {
   --   "embark-theme/vim",
   --   name = "embark",
@@ -29,18 +29,18 @@ return {
   --   priority = 1000,
   --   opts = {},
   -- },
-  {
-    "lucasadelino/conifer.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    opts = {},
-  },
-  {
-    "aktersnurra/no-clown-fiesta.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    opts = {},
-  },
+  -- {
+  --   "lucasadelino/conifer.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {},
+  -- },
+  -- {
+  --   "aktersnurra/no-clown-fiesta.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {},
+  -- },
   -- { "rose-pine/neovim", name = "rose-pine" },
   -- {
   --   "olimorris/onedarkpro.nvim",
