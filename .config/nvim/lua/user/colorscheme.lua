@@ -180,7 +180,7 @@ function M.set_zellij_theme(theme)
 end
 
 function M.set_delta_theme(theme)
-  local config_path = vim.fn.expand("~/.gitconfig")
+  local config_path = vim.fn.expand("~/.config/git/config")
   local real_path = vim.fn.resolve(config_path)
   local cmd = string.format("sed -i'.bak' 's/features = .*/features = %s/' %s", theme, real_path)
 
