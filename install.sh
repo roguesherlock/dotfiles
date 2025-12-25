@@ -89,7 +89,7 @@ install ~/Developer/dotfiles/.gnupg/gpg.conf ~/.gnupg/gpg.conf
 
 # git
 if isDarwin; then
-  install ~/Developer/dotfiles/.gitconfig ~/.gitconfig
+  install ~/Developer/dotfiles/.config/git ~/.config/git
 elif isLinux; then
   install ~/Developer/dotfiles/.gitconfig-linux ~/.gitconfig
 fi

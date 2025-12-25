@@ -1,7 +1,8 @@
 {
-  "alwaysThinkingEnabled": true,
   "cleanupPeriodDays": 60,
   "permissions": {
     "defaultMode": "bypassPermissions"
-  }
+  },
+  "alwaysThinkingEnabled": true,
+  "model": "opus"
 }

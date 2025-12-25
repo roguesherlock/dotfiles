@@ -43,8 +43,10 @@ side-by-side = false
 line-numbers = true
 features = catppuccin-frappe
 
-[merge]
-conflictstyle = zdiff3
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
 
 [diff]
 colorMoved = default
@@ -65,4 +67,4 @@ user = roguesherlock
 gpgsign = true
 
 [credential]
-helper = osxkeychain 
+helper = osxkeychain
