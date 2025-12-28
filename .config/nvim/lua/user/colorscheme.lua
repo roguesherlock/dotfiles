@@ -51,8 +51,8 @@ M.config = {
     -- dark = "Tokyo Night",
     -- light = "Catppuccin-Latte",
     -- dark = "Catppuccin-Frappe",
-    light = "kanso_pearl",
-    dark = "kanso_mist",
+    light = "Kanso Pearl",
+    dark = "Kanso Mist",
   },
   wezterm = {
     light = "Modus Operandi (Gogh)",
