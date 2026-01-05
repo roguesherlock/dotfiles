@@ -3,6 +3,9 @@
   "permissions": {
     "defaultMode": "bypassPermissions"
   },
+  "model": "opus",
   "alwaysThinkingEnabled": true,
-  "model": "opus"
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true
+  }
 }

@@ -40,11 +40,12 @@ end
 local config = wezterm.config_builder()
 
 -- config.font = wezterm.font("Geist Mono", { weight = 480 })
-config.font = wezterm.font("Berkeley Mono Variable")
-config.font_size = 14.0
-config.line_height = 1.2
+-- config.font = wezterm.font("Berkeley Mono Variable")
+config.font = wezterm.font("SF Mono")
+config.font_size = 12.0
+config.line_height = 1.8
 config.window_frame = {
-	font = wezterm.font({ family = "Inter Display", weight = 500 }),
+	font = wezterm.font({ family = "SF Mono", weight = 500 }),
 	font_size = 11,
 }
 
@@ -85,24 +86,24 @@ config.window_background_opacity = 0.80
 config.macos_window_background_blur = 26
 
 -- top bar
-local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
-bar.apply_to_config(config, {
-	modules = {
-		workspace = {
-			color = 6,
-		},
-		zoom = {
-			enabled = true,
-		},
-		hostname = {
-			enabled = false,
-			color = 7,
-		},
-		username = {
-			enabled = false,
-		},
-	},
-})
+-- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+-- bar.apply_to_config(config, {
+-- 	modules = {
+-- 		workspace = {
+-- 			color = 6,
+-- 		},
+-- 		zoom = {
+-- 			enabled = true,
+-- 		},
+-- 		hostname = {
+-- 			enabled = false,
+-- 			color = 7,
+-- 		},
+-- 		username = {
+-- 			enabled = false,
+-- 		},
+-- 	},
+-- })
 
 -- session management
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")

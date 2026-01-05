@@ -59,19 +59,71 @@ local vue_plugin = {
 }
 
 local lsps = {
+  -- {
+  --   "tsgo",
+  --   {
+  --     filetypes = {
+  --       "javascript",
+  --       "javascriptreact",
+  --       "javascript.jsx",
+  --       "typescript",
+  --       "typescriptreact",
+  --       "typescript.tsx",
+  --     },
+  --     root_markers = {
+  --       "tsconfig.json",
+  --       "jsconfig.json",
+  --       "package.json",
+  --       ".git",
+  --       "tsconfig.base.json",
+  --     },
+  --   },
+  -- },
   {
     "vtsls",
     {
       settings = {
+        complete_function_calls = true,
         vtsls = {
+          enableMoveToFileCodeAction = true,
+          autoUseWorkspaceTsdk = true,
+          experimental = {
+            maxInlayHintLength = 30,
+            completion = {
+              enableServerSideFuzzyMatch = true,
+            },
+          },
           tsserver = {
+            maxTsServerMemory = 16184,
             globalPlugins = {
               vue_plugin,
             },
           },
         },
+        typescript = {
+          updateImportsOnFileMove = { enabled = "always" },
+          suggest = {
+            completeFunctionCalls = true,
+          },
+          inlayHints = {
+            enumMemberValues = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            parameterNames = { enabled = "literals" },
+            parameterTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            variableTypes = { enabled = false },
+          },
+        },
       },
-      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "vue",
+      },
     },
   },
   {
@@ -376,6 +428,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
 
+    -- -- Disable semantic tokens (can cause delayed highlighting on scroll)
+    -- client.server_capabilities.semanticTokensProvider = nil
+    --
     on_attach(client, event.buf)
   end,
 })

@@ -76,24 +76,28 @@
       "model": "claude-opus-4-5",
     },
   },
-  // "context_servers": {
-  //   "next-devtools": {
-  //     "command": "bunx",
-  //     "args": ["-y", "next-devtools-mcp@latest"],
-  //   },
-  //   "effect docs": {
-  //     "command": "bunx",
-  //     "args": ["-y", "effect-mcp@latest"],
-  //   },
-  //   "chrome-devtools": {
-  //     "command": "bunx",
-  //     "args": ["-y", "chrome-devtools-mcp@latest"],
-  //   },
-  //   "motion": {
-  //     "command": "bunx",
-  //     "args": ["-y", "motion-ai@latest"],
-  //   },
-  // },
+  "context_servers": {
+    "playwriter": {
+      "command": "bunx",
+      "args": ["-y", "playwriter@latest"],
+    },
+    //   "next-devtools": {
+    //     "command": "bunx",
+    //     "args": ["-y", "next-devtools-mcp@latest"],
+    //   },
+    "effect docs": {
+      "command": "bunx",
+      "args": ["-y", "effect-mcp@latest"],
+    },
+    //   "chrome-devtools": {
+    //     "command": "bunx",
+    //     "args": ["-y", "chrome-devtools-mcp@latest"],
+    //   },
+    //   "motion": {
+    //     "command": "bunx",
+    //     "args": ["-y", "motion-ai@latest"],
+    //   },
+  },
   "theme": {
     "mode": "system",
     "dark": "One Dark",

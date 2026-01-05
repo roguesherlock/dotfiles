@@ -38,6 +38,13 @@ local one_light = {
 
 return {
   {
+    "nvim-mini/mini.hues",
+    enabled = false,
+    -- opts = {
+    --   saturation = "high",
+    -- },
+  },
+  {
     "nvim-mini/mini.base16",
     enabled = false,
     opts = {

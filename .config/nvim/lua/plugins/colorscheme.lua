@@ -8,6 +8,18 @@ return {
     end,
   },
   -- {
+  --   "uhs-robert/oasis.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     light_intensity = 1,
+  --     contrast = {
+  --       -- Note: Light themes obey the targets below. All dark themes target 7.0 by default with only a couple of exceptions that dip to 6.5.
+  --       min_ratio = 6.8,
+  --     },
+  --   },
+  -- },
+  -- {
   --   "adibhanna/yukinord.nvim",
   --   event = "VeryLazy",
   --   priority = 1000,
