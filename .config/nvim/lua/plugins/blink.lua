@@ -19,6 +19,9 @@ return {
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
     opts = {
+      mappings = {
+        cmdline = false,
+      },
       highlights = {
         enabled = false,
       },

@@ -8,6 +8,20 @@ return {
     end,
   },
   -- {
+  --   "serhez/teide.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  -- },
+  -- {
+  --   "oskarnurm/koda.nvim",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     -- require("koda").setup({ transparent = true })
+  --   end,
+  -- },
+  -- {
   --   "uhs-robert/oasis.nvim",
   --   lazy = false,
   --   priority = 1000,
@@ -109,6 +123,7 @@ return {
   -- },
   {
     "neanias/everforest-nvim",
+    enabled = false,
     name = "everforest",
     priority = 1000,
     opts = {
@@ -243,7 +258,7 @@ return {
     event = "VeryLazy",
     priority = 1000,
     opts = {
-      day_brightness = 0.2,
+      -- day_brightness = 0.4,
     },
   },
   {

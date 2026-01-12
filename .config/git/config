@@ -41,7 +41,7 @@ path = ~/.config/delta/themes/catppuccin.gitconfig
 navigate = true    # use n and N to move between diff sections
 side-by-side = false
 line-numbers = true
-features = catppuccin-latte
+features = catppuccin-frappe
 
 [merge "mergiraf"]
     name = mergiraf

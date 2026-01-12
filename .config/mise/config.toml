@@ -1,5 +1,4 @@
 [tools]
-neovim = "nightly"
 ni = "latest"
 node = "latest"
 # neovim = "nightly"

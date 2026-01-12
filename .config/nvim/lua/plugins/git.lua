@@ -113,7 +113,7 @@ return {
     },
   },
   {
-    "esmuellert/vscode-diff.nvim",
+    "esmuellert/codediff.nvim",
     branch = "main",
     dependencies = { "MunifTanjim/nui.nvim" },
     cmd = "CodeDiff",

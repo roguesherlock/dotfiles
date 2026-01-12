@@ -12,9 +12,11 @@ return {
     end,
   },
 
+  { "serhez/bento.nvim", opts = {} },
   -- Snipe for buffer navigation
   {
     "leath-dub/snipe.nvim",
+    enabled = false,
     event = "VeryLazy",
     config = function()
       require("snipe").setup({

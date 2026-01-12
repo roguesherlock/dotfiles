@@ -28,8 +28,8 @@ M.config = {
     -- dark = "oasis",
   },
   ghostty = {
-    -- light = "Flexoki Light",
-    -- dark = "Flexoki Dark",
+    light = "Flexoki Light",
+    dark = "Flexoki Dark",
     -- light = "Github Light High Contrast",
     -- dark = "Github Dark Dimmed",
     -- dark = "Black Metal",
@@ -37,8 +37,8 @@ M.config = {
     -- dark = "Everforest Dark Hard",
     -- light = "Catppuccin Latte",
     -- dark = "Catppuccin Frappe",
-    light = "kanso-pearl",
-    dark = "kanso-mist",
+    -- light = "kanso-pearl",
+    -- dark = "kanso-mist",
   },
   kitty = {
     -- light = "Github Light",

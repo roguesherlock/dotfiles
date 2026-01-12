@@ -58,9 +58,9 @@ const float SPRING_DAMPING = 0.9;
 // }
 
 // EaseOutCirc
-float ease(float x) {
-    return sqrt(1.0 - pow(x - 1.0, 2.0));
-}
+// float ease(float x) {
+//     return sqrt(1.0 - pow(x - 1.0, 2.0));
+// }
 
 // // EaseOutBack
 // float ease(float x) {
@@ -75,13 +75,13 @@ float ease(float x) {
 // }
 
 // // Parametric Spring
-// float ease(float x) {
-//     x = clamp(x, 0.0, 1.0);
-//     float decay = exp(-SPRING_DAMPING * SPRING_STIFFNESS * x);
-//     float freq = sqrt(SPRING_STIFFNESS * (1.0 - SPRING_DAMPING * SPRING_DAMPING));
-//     float osc = cos(freq * 6.283185 * x) + (SPRING_DAMPING * sqrt(SPRING_STIFFNESS) / freq) * sin(freq * 6.283185 * x);
-//     return 1.0 - decay * osc;
-// }
+float ease(float x) {
+    x = clamp(x, 0.0, 1.0);
+    float decay = exp(-SPRING_DAMPING * SPRING_STIFFNESS * x);
+    float freq = sqrt(SPRING_STIFFNESS * (1.0 - SPRING_DAMPING * SPRING_DAMPING));
+    float osc = cos(freq * 6.283185 * x) + (SPRING_DAMPING * sqrt(SPRING_STIFFNESS) / freq) * sin(freq * 6.283185 * x);
+    return 1.0 - decay * osc;
+}
 
 float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
 {
