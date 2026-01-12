@@ -110,6 +110,11 @@ return {
       registers = cursor_dropdown({
         winopts = { title = title("registers", ""), width = 0.6 },
       }),
+      grep = dropdown({
+        winopts = { title = title("grep", "") },
+        -- Use --fixed-strings to interpret pattern as literal string, not regex
+        rg_opts = "--column --line-number --no-heading --color=always --smart-case --fixed-strings -e",
+      }),
       git = {
         files = dropdown({
           cmd = "git ls-files --others --cached --exclude-standard",
@@ -165,7 +170,8 @@ return {
       { "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "[S]earch [d]iagnostics" },
       { "<leader>sD", "<cmd>FzfLua diagnostics_workspace<cr>", desc = "[S]earch [D]iagnostics in workspace" },
       { "<leader>sf", "<cmd>FzfLua git_files<cr>", desc = "[S]earch Git [F]iles" },
-      { "<leader>sg", "<cmd>FzfLua live_grep_resume<cr>", desc = "[S]earch by [G]rep" },
+      { "<leader>sg", "<cmd>FzfLua live_grep_resume<cr>", desc = "[S]earch by [G]rep (literal)" },
+      { "<leader>sG", function() require("fzf-lua").live_grep_resume({ rg_opts = "--column --line-number --no-heading --color=always --smart-case -e" }) end, desc = "[S]earch by [G]rep (regex)" },
       { "<leader>sh", "<cmd>FzfLua helptags<cr>", desc = "[S]earch [H]elp" },
       { "<leader>sH", "<cmd>FzfLua highlights<cr>", desc = "[S]earch [H]ighlights" },
       { "<leader>sj", "<cmd>FzfLua jumps<cr>", desc = "[S]earch [J]umps" },
