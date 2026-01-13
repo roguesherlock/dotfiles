@@ -111,7 +111,10 @@ return {
         winopts = { title = title("registers", ""), width = 0.6 },
       }),
       grep = dropdown({
-        winopts = { title = title("grep", "") },
+        winopts = {
+          title = title("grep", ""),
+          preview = { hidden = false, layout = "vertical", vertical = "down:45%" },
+        },
         -- Use --fixed-strings to interpret pattern as literal string, not regex
         rg_opts = "--column --line-number --no-heading --color=always --smart-case --fixed-strings -e",
       }),
@@ -188,7 +191,7 @@ return {
       { '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "[S]earch [R]egisters" },
       { "<leader>s.", "<cmd>FzfLua resume<cr>", desc = '[S]earch [R]esume' },
       { "<leader>st", "<cmd>FzfLua colorschemes<cr>", desc = '[S]earch [T]hemes' },
-      -- { "<leader><leader>", "<cmd>FzfLua combine pickers=buffers;frecency;lsp_live_workspace_symbols<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
+      { "<leader><leader>", "<cmd>FzfLua combine pickers=buffers;frecency;lsp_live_workspace_symbols<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
       { "<d-p>", "<cmd>FzfLua combine pickers=buffers;frecency;lsp_live_workspace_symbols<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
       -- { "<d-p>", "<cmd>FzfLua global<cr>", desc = "Search files, buffers, buffer symbols, workspace symbols etc.", },
       { "<leader>s?", "<cmd>FzfLua builtin<cr>", desc = "[S]earch [B]uiltin Commands" },

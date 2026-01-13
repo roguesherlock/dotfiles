@@ -41,11 +41,13 @@ local config = wezterm.config_builder()
 
 -- config.font = wezterm.font("Geist Mono", { weight = 480 })
 -- config.font = wezterm.font("Berkeley Mono Variable")
-config.font = wezterm.font("SF Mono")
-config.font_size = 12.0
-config.line_height = 1.8
+-- config.font = wezterm.font("SF Mono")
+config.font = wezterm.font("0xProto")
+config.font_size = 13.0
+config.line_height = 1.6
 config.window_frame = {
-	font = wezterm.font({ family = "SF Mono", weight = 500 }),
+	-- font = wezterm.font({ family = "SF Mono", weight = 500 }),
+	font = wezterm.font({ family = "0xProto" }),
 	font_size = 11,
 }
 

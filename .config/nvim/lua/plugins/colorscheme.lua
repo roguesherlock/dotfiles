@@ -121,15 +121,15 @@ return {
   --   priority = 1000,
   --   event = "VeryLazy",
   -- },
-  {
-    "neanias/everforest-nvim",
-    enabled = false,
-    name = "everforest",
-    priority = 1000,
-    opts = {
-      background = "hard",
-    },
-  },
+  -- {
+  --   "neanias/everforest-nvim",
+  --   enabled = false,
+  --   name = "everforest",
+  --   priority = 1000,
+  --   opts = {
+  --     background = "hard",
+  --   },
+  -- },
   -- {
   --   "sainnhe/everforest",
   --   priority = 1000,
@@ -153,16 +153,14 @@ return {
   --   enabled = false,
   --   priority = 1000,
   -- },
-  -- {
-  --   "sainnhe/gruvbox-material",
-  --   event = "VeryLazy",
-  --   priority = 1000,
-  -- },
+  {
+    "sainnhe/gruvbox-material",
+    event = "VeryLazy",
+    priority = 1000,
+  },
   -- {
   --   "projekt0n/github-nvim-theme",
   --   name = "github-theme",
-  --   enabled = false,
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   --   priority = 1000, -- make sure to load this before all the other start plugins
   --   config = function()
   --     local groups = {
@@ -206,22 +204,22 @@ return {
   --   event = "VeryLazy",
   --   priority = 1000,
   -- },
-  {
-    "webhooked/kanso.nvim",
-    event = "VeryLazy",
-    priority = 1000,
-    opts = {
-      -- transparent = true,
-      background = { -- map the value of 'background' option to a theme
-        dark = "mist", -- try "zen", "mist" or "pearl" !
-        light = "pearl", -- try "zen", "mist" or "pearl" !
-      },
-      foreground = {
-        -- dark = "default", -- Use default colors in dark mode
-        light = "saturated", -- Use higher saturation in light mode
-      },
-    },
-  },
+  -- {
+  --   "webhooked/kanso.nvim",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  --   opts = {
+  --     -- transparent = true,
+  --     background = { -- map the value of 'background' option to a theme
+  --       dark = "mist", -- try "zen", "mist" or "pearl" !
+  --       light = "pearl", -- try "zen", "mist" or "pearl" !
+  --     },
+  --     foreground = {
+  --       -- dark = "default", -- Use default colors in dark mode
+  --       light = "saturated", -- Use higher saturation in light mode
+  --     },
+  --   },
+  -- },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -232,8 +230,15 @@ return {
       auto_integrations = true,
       -- latte, frappe, macchiato, mocha
       background = { -- :h background
-        light = "frappe",
+        light = "latte",
         dark = "frappe",
+      },
+      color_overrides = {
+        latte = {
+          base = "#ffffff", -- pure white background
+          mantle = "#f5f5f5", -- slightly off-white for sidebars
+          crust = "#efefef", -- for status lines etc.
+        },
       },
       -- transparent_background = true,
       float = {
