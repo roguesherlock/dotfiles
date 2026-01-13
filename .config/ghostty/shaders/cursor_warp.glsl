@@ -120,12 +120,12 @@ float getSdfConvexQuad(in vec2 p, in vec2 v1, in vec2 v2, in vec2 v3, in vec2 v4
     return s * sqrt(d);
 }
 
-vec2 normalize(vec2 value, float isPosition) {
+vec2 normalizeToScreen(vec2 value, float isPosition) {
     return (value * 2.0 - (iResolution.xy * isPosition)) / iResolution.y;
 }
 
-float antialising(float distance, float blurAmount) {
-  return 1. - smoothstep(0., normalize(vec2(blurAmount, blurAmount), 0.).x, distance);
+float antialiasing(float distance, float blurAmount) {
+  return 1. - smoothstep(0., normalizeToScreen(vec2(blurAmount, blurAmount), 0.).x, distance);
 }
 
 // Determines animation duration based on a corner's alignment with the move direction(dot product)
@@ -150,11 +150,11 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     #endif
 
     // normalization & setup(-1, 1 coords)
-    vec2 vu = normalize(fragCoord, 1.);
+    vec2 vu = normalizeToScreen(fragCoord, 1.);
     vec2 offsetFactor = vec2(-.5, 0.5);
 
-    vec4 currentCursor = vec4(normalize(iCurrentCursor.xy, 1.), normalize(iCurrentCursor.zw, 0.));
-    vec4 previousCursor = vec4(normalize(iPreviousCursor.xy, 1.), normalize(iPreviousCursor.zw, 0.));
+    vec4 currentCursor = vec4(normalizeToScreen(iCurrentCursor.xy, 1.), normalizeToScreen(iCurrentCursor.zw, 0.));
+    vec4 previousCursor = vec4(normalizeToScreen(iPreviousCursor.xy, 1.), normalizeToScreen(iPreviousCursor.zw, 0.));
 
     vec2 centerCC = currentCursor.xy - (currentCursor.zw * offsetFactor);
     vec2 halfSizeCC = currentCursor.zw * 0.5;
@@ -274,11 +274,11 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
         
         float effectiveBlur = BLUR;
         if (BLUR < 2.5) {
-          // no antialising on horizontal/vertical movement, fixes 'pulse' like thing on end cursor
+          // no antialiasing on horizontal/vertical movement, fixes 'pulse' like thing on end cursor
           float isDiagonal = abs(s.x) * abs(s.y); // 1.0 if diagonal, 0.0 if H/V
-          float effectiveBlur = mix(0.0, BLUR, isDiagonal);
+          effectiveBlur = mix(0.0, BLUR, isDiagonal);
         }
-        float shapeAlpha = antialising(sdfTrail, effectiveBlur); // shape mask
+        float shapeAlpha = antialiasing(sdfTrail, effectiveBlur); // shape mask
 
         if (FADE_ENABLED > 0.5) {
             // apply fade gradient along the trail
