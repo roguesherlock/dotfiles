@@ -8,6 +8,7 @@ return {
       cli = {
         mux = {
           backend = "zellij",
+          enabled = true,
           -- enabled = false,
         },
       },

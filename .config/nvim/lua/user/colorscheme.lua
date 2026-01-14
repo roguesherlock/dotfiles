@@ -61,10 +61,12 @@ M.config = {
     dark = "Modus Vivendi (Gogh)",
   },
   zellij = {
-    light = "modus_operandi",
-    dark = "modus_vivendi",
+    -- light = "modus_operandi",
+    -- dark = "modus_vivendi",
     -- light = "tokyo-night-light",
     -- dark = "tokyo-night",
+    light = "catppuccin-latte",
+    dark = "catppuccin-frappe",
   },
   delta = {
     light = "catppuccin-latte",

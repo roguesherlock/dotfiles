@@ -4,6 +4,8 @@
     "defaultMode": "bypassPermissions"
   },
   "model": "opus",
-  "enabledPlugins": {},
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
   "alwaysThinkingEnabled": true
 }

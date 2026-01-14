@@ -31,8 +31,16 @@ keybinds clear-defaults=true {
 
     shared_except "locked" "search" {
         bind "Super n" { NewPane "Right"; }                                    // Cmd N
-        bind "Super d" { NewPane "Right"; }                                    // Cmd D
-        bind "Super shift n" { NewPane "Down"; }                               // Cmd Shift N
+        bind "Super d" { NewPane "stacked"; }                                  // Cmd D - Stacked pane
+        bind "Super shift d" { NewPane "Down"; }                               // Cmd Shift D - Pane below
+        bind "Super shift n" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }                                                                      // Cmd Shift N - New session
+        bind "Super shift l" { NextSwapLayout; }                               // Cmd Shift L - Cycle layouts
         bind "Super r" { SwitchToMode "RenamePane"; PaneNameInput 0; }         // Cmd R
         bind "Super b" { TogglePaneFrames; SwitchToMode "Normal"; }            // Cmd B
         bind "Super m" { ToggleFocusFullscreen; SwitchToMode "Normal"; }       // Cmd M
@@ -71,6 +79,24 @@ keybinds clear-defaults=true {
             SwitchToMode "Normal"
         }                                              // Alt p
 
+        // New in v0.44.0
+        bind "Alt a" {
+            LaunchOrFocusPlugin "about" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }                                              // Alt a - About
+        bind "Alt l" {
+            LaunchOrFocusPlugin "layout-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }                                              // Alt l - Layout Manager
+        bind "Alt i" { TogglePanePinned; }             // Alt i - Pin pane
+        bind "Alt g" { TogglePaneInGroup; }            // Alt g - Toggle pane in group
+        bind "Alt shift g" { ToggleGroupMarking; }     // Alt Shift g - Toggle group marking
         bind "Ctrl shift left" { Resize "Left"; }      // Ctrl Shift ←
         bind "Ctrl shift right" { Resize "Right"; }    // Ctrl Shift →
         bind "Ctrl shift up" { Resize "Up"; }          // Ctrl Shift ↑
@@ -347,6 +373,11 @@ plugins {
     }
     configuration location="zellij:configuration"
     plugin-manager location="zellij:plugin-manager"
+    // New in v0.44.0
+    about location="zellij:about"
+    sequence location="zellij:sequence"
+    // layout-manager location="zellij:layout-manager"
+    share location="zellij:share"
 }
 
 // Plugins to load in the background when a new session starts
@@ -440,7 +471,7 @@ serialize_pane_viewport true
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "modus_vivendi"
+theme "catppuccin-frappe"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -538,3 +569,54 @@ scroll_buffer_size 20000
 // Default: true (if the host terminal supports it)
 //
 // support_kitty_keyboard_protocol false
+
+// ============================================================================
+// New options in v0.44.0
+// ============================================================================
+
+// Whether to stack panes when resizing beyond a certain size
+// Default: true
+//
+// stacked_resize false
+
+// Whether to show release notes on first version run
+// Default: true
+//
+// show_release_notes false
+
+// Whether to enable mouse hover effects and pane grouping functionality
+// Default: true
+//
+// advanced_mouse_actions false
+
+// Whether to make sure a local web server is running when a new Zellij session starts.
+// This web server will allow creating new sessions and attaching to existing ones that have
+// opted in to being shared in the browser.
+// When enabled, navigate to http://127.0.0.1:8082
+// (Requires restart)
+// Default: false
+//
+// web_server true
+
+// Whether to allow sessions started in the terminal to be shared through a local web server
+// Possible values: "on", "off", "disabled"
+// Default: "off"
+//
+// web_sharing "on"
+
+// The ip address the web server should listen on when it starts
+// Default: "127.0.0.1"
+// (Requires restart)
+//
+// web_server_ip "127.0.0.1"
+
+// The port the web server should listen on when it starts
+// Default: 8082
+// (Requires restart)
+//
+// web_server_port 8082
+
+// Web client configuration
+// web_client {
+//     font "monospace"
+// }

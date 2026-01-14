@@ -3,6 +3,7 @@
     // "oh-my-opencode",
     "opencode-antigravity-auth@1.2.8",
     "opencode-openai-codex-auth"
+    // "opencode-zellij-namer"
   ],
   "provider": {
     "google": {
