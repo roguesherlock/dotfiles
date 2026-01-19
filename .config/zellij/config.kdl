@@ -47,26 +47,26 @@ keybinds clear-defaults=true {
         bind "Super enter" { ToggleFocusFullscreen; SwitchToMode "Normal"; }       // Cmd Enter
         bind "Super o" { ToggleFloatingPanes; }                                // Cmd O
         bind "Super shift o" { TogglePaneEmbedOrFloating; }                    // Cmd Shift O
-        bind "Super p" {
-            LaunchOrFocusPlugin "zessionizer" {
-                floating true
-                move_to_focused_tab true
-            };
-            SwitchToMode "Normal"
-        }                                                                // Cmd p
+        // bind "Super p" {
+        //     LaunchOrFocusPlugin "zessionizer" {
+        //         floating true
+        //         move_to_focused_tab true
+        //     };
+        //     SwitchToMode "Normal"
+        // }                                                                // Cmd p
         bind "Super shift p" {
             LaunchOrFocusPlugin "zellij:sequence" {
                 floating true
             };
             SwitchToMode "Normal"
         }                                                                // Cmd Shift p
-        // bind "Super p" {
-        //     LaunchOrFocusPlugin "session-manager" {
-        //         floating true
-        //         move_to_focused_tab true
-        //     };
-        //     SwitchToMode "Normal"
-        // }                                                                // Cmd p
+        bind "Super p" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }                                                                // Cmd p
         bind "Super w" { CloseFocus; SwitchToMode "Normal"; }            // Cmd W
 
         bind "Super h" { MoveFocusOrTab "Left"; }     // Cmd h
@@ -190,10 +190,10 @@ plugins {
     sequence location="zellij:sequence"
     // layout-manager location="zellij:layout-manager"
     share location="zellij:share"
-    zessionizer location="file:~/.config/zellij/plugins/zessionizer.wasm" {
-        scan_paths "~/Developer"
-        cwd "/Users/akash"
-    }
+    // zessionizer location="file:~/.config/zellij/plugins/zessionizer.wasm" {
+    //     scan_paths "~/Developer"
+    //     cwd "/Users/akash"
+    // }
 }
 
 // Plugins to load in the background when a new session starts

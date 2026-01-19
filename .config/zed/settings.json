@@ -56,6 +56,9 @@
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_servers": {
     "claude": {
+      "favorite_models": [
+        "opus"
+      ],
       "default_mode": "bypassPermissions",
     },
   },

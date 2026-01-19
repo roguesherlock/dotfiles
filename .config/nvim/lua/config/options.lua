@@ -10,6 +10,15 @@ vim.g.maplocalleader = "\\"
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+vim.opt.guicursor = {
+  "n-v-c:block", -- Normal, visual, command-line: block cursor
+  "i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
+  "r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height
+  "o:hor50", -- Operator-pending: horizontal bar cursor with 50% height
+  "a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
+  "sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
+}
+
 -- Disable line wrapping by default
 vim.opt.wrap = false
 

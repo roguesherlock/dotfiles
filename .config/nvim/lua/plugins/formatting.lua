@@ -7,19 +7,21 @@ return {
     config = function()
       local map = require("user.util").map
 
+      local javascript_formatter = { "oxfmt", "biome", "prettier", stop_after_first = true }
+
       -- use deno_fmt if in deno project, otherwise prettier
-      local javascript_formatter = function(bufnr)
-        local lsp_clients = vim.lsp.get_clients()
-        for _, client in pairs(lsp_clients) do
-          if client.name == "denols" then
-            return { "deno_fmt" }
-          end
-          if client.name == "biome" then
-            return { "biome" }
-          end
-        end
-        return { "prettier" }
-      end
+      -- local javascript_formatter = function(bufnr)
+      --   local lsp_clients = vim.lsp.get_clients()
+      --   for _, client in pairs(lsp_clients) do
+      --     if client.name == "denols" then
+      --       return { "deno_fmt" }
+      --     end
+      --     if client.name == "biome" then
+      --       return { "biome" }
+      --     end
+      --   end
+      --   return { "prettier" }
+      -- end
 
       require("conform").setup({
         format_on_save = function(bufnr)
@@ -59,6 +61,26 @@ return {
           markdown = javascript_formatter,
           yaml = javascript_formatter,
           php = { "pint" },
+        },
+        formatters = {
+          oxfmt = {
+            condition = function(_, ctx)
+              return vim.fs.find({ ".oxfmtrc.json", ".oxfmtrc.jsonc" }, {
+                path = ctx.filename,
+                upward = true,
+                stop = vim.uv.os_homedir(),
+              })[1] ~= nil
+            end,
+          },
+          biome = {
+            condition = function(_, ctx)
+              return vim.fs.find({ "biome.json", "biome.jsonc" }, {
+                path = ctx.filename,
+                upward = true,
+                stop = vim.uv.os_homedir(),
+              })[1] ~= nil
+            end,
+          },
         },
       })
 

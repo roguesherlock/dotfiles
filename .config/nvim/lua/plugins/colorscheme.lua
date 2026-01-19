@@ -153,10 +153,16 @@ return {
   --   enabled = false,
   --   priority = 1000,
   -- },
+  -- {
+  --   "sainnhe/gruvbox-material",
+  --   event = "VeryLazy",
+  --   priority = 1000,
+  -- },
   {
-    "sainnhe/gruvbox-material",
-    event = "VeryLazy",
+    "https://gitlab.com/motaz-shokry/gruvbox.nvim",
+    name = "gruvbox",
     priority = 1000,
+    opts = {},
   },
   -- {
   --   "projekt0n/github-nvim-theme",

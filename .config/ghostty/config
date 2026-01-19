@@ -9,8 +9,8 @@ font-family = "SF Mono"
 # font-family = "Google Sans Code"
 # font-family = "Lilex"
 # font-family = "0xProto"
-font-size = 13
-# font-thicken = true
+font-size = 12
+font-thicken = true
 # font-thicken-strength = 20
 adjust-cell-height = 50%
 adjust-underline-position = 5
@@ -20,7 +20,7 @@ cursor-color = cell-foreground
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = Catppuccin Frappe
+theme = Flexoki Dark
 macos-titlebar-style = tabs
 # macos-titlebar-style = transparent
 macos-option-as-alt = true
@@ -88,4 +88,3 @@ keybind = alt+right=esc:f
 
 # Inspector
 keybind = super+alt+i=inspector:toggle
-
