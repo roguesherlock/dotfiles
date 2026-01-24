@@ -7,13 +7,12 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "ui_font_size": 13.0,
-  "ui_font_family": "SF Mono",
-  "agent_buffer_font_size": 13.0,
-  "agent_ui_font_size": 13.0,
-  "buffer_font_weight": 400.0,
-  "buffer_font_family": "SF Mono",
-  "buffer_font_size": 13.0,
+  "agent_ui_font_size": 12.0,
+  "agent_buffer_font_size": 12.0,
+  "ui_font_size": 12.0,
+  "ui_font_family": "Google Sans Code",
+  "buffer_font_family": "Google Sans Code",
+  "buffer_font_size": 12.0,
   "buffer_line_height": {
     "custom": 1.8,
   },
@@ -21,7 +20,6 @@
     "line_height": {
       "custom": 1.8,
     },
-    "alternate_scroll": "on",
   },
   "features": {
     "edit_prediction_provider": "zed",
@@ -56,9 +54,7 @@
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_servers": {
     "claude": {
-      "favorite_models": [
-        "opus"
-      ],
+      "favorite_models": ["opus"],
       "default_mode": "bypassPermissions",
     },
   },
@@ -152,6 +148,17 @@
     "breadcrumbs": true,
     "selections_menu": false,
     "quick_actions": false,
+  },
+  "languages": {
+    "TypeScript": {
+      "language_servers": ["vtsls", "!eslint", "!typescript-language-server"],
+    },
+    "TSX": {
+      "language_servers": ["vtsls", "!eslint", "!typescript-language-server"],
+    },
+    "JavaScript": {
+      "language_servers": ["vtsls", "!eslint", "!typescript-language-server"],
+    },
   },
   "lsp": {
     "vtsls": {

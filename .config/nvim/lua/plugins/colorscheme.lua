@@ -241,9 +241,9 @@ return {
       },
       color_overrides = {
         latte = {
-          base = "#ffffff", -- pure white background
-          mantle = "#f5f5f5", -- slightly off-white for sidebars
-          crust = "#efefef", -- for status lines etc.
+          -- base = "#ffffff", -- pure white background
+          -- mantle = "#f5f5f5", -- slightly off-white for sidebars
+          -- crust = "#efefef", -- for status lines etc.
         },
       },
       -- transparent_background = true,

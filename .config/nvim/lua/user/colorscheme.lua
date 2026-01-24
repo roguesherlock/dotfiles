@@ -13,12 +13,12 @@ M.config = {
     -- dark = "github_dark_dimmed",
     -- light = "modus",
     -- dark = "modus",
-    light = "flexoki",
-    dark = "flexoki",
+    -- light = "flexoki",
+    -- dark = "flexoki",
     -- light = "tokyonight",
     -- dark = "tokyonight",
-    -- light = "catppuccin-latte",
-    -- dark = "catppuccin-frappe",
+    light = "catppuccin-latte",
+    dark = "catppuccin-frappe",
     -- light = "default",
     -- dark = "default",
     -- dark = "gruvbox-material",
@@ -28,31 +28,31 @@ M.config = {
     -- dark = "oasis",
   },
   ghostty = {
-    light = "Flexoki Light",
-    dark = "Flexoki Dark",
+    -- light = "Flexoki Light",
+    -- dark = "Flexoki Dark",
     -- light = "Github Light High Contrast",
     -- dark = "Github Dark Dimmed",
     -- dark = "Black Metal",
     -- light = "Everforest Dark Hard",
     -- dark = "Everforest Dark Hard",
-    -- light = "Catppuccin Latte",
-    -- dark = "Catppuccin Frappe",
+    light = "Catppuccin Latte",
+    dark = "Catppuccin Frappe",
     -- light = "kanso-pearl",
     -- dark = "kanso-mist",
   },
   kitty = {
     -- light = "Github Light",
     -- dark = "Github Dark Dimmed",
-    light = "Flexoki \\(Light\\)",
-    dark = "Flexoki \\(Dark\\)",
+    -- light = "Flexoki \\(Light\\)",
+    -- dark = "Flexoki \\(Dark\\)",
     -- light = "Everforest Dark Medium",
     -- dark = "Everforest Dark Hard",
     -- light = "Modus Operandi",
     -- dark = "Modus Vivendi",
     -- light = "Tokyo Night Day",
     -- dark = "Tokyo Night",
-    -- light = "Catppuccin-Latte",
-    -- dark = "Catppuccin-Frappe",
+    light = "Catppuccin-Latte",
+    dark = "Catppuccin-Frappe",
     -- light = "Kanso Pearl",
     -- dark = "Kanso Mist",
   },
@@ -65,10 +65,10 @@ M.config = {
     -- dark = "modus_vivendi",
     -- light = "tokyo-night-light",
     -- dark = "tokyo-night",
-    -- light = "catppuccin-latte",
-    -- dark = "catppuccin-frappe",
-    light = "flexoki-light",
-    dark = "flexoki-dark",
+    light = "catppuccin-latte",
+    dark = "catppuccin-frappe",
+    -- light = "flexoki-light",
+    -- dark = "flexoki-dark",
   },
   delta = {
     light = "catppuccin-latte",
@@ -178,11 +178,8 @@ end
 function M.set_zellij_theme(theme)
   local config_path = vim.fn.expand("~/.config/zellij/config.kdl")
   local real_path = vim.fn.resolve(config_path)
-  local cmd = string.format('sed -i\'.bak\' \'s/theme "[^"]*"/theme "%s"/\' %s', theme, real_path)
-  local result = vim.fn.system({ "bash", "-c", cmd })
-  if vim.v.shell_error ~= 0 then
-    vim.notify("Error updating Zellij theme: " .. result, vim.log.levels.WARN)
-  end
+  local cmd = string.format([[ex -sc '%%s/theme "[^"]*"/theme "%s"/|x' %s 2>/dev/null]], theme, real_path)
+  vim.fn.system(cmd)
 end
 
 function M.set_delta_theme(theme)
@@ -257,18 +254,20 @@ M.setup_termbg_sync = function(group)
     -- M.set_ghostty_theme(M.config.ghostty)
 
     -- Update other terminals
+    local kitty_socket = "unix:/tmp/kitty"
+    local kitten = "/Applications/kitty.app/Contents/MacOS/kitten"
     if light then
       M.set_ghostty_theme(M.config.ghostty.light)
-      vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.light)
-      vim.fn.system("kitten @ load-config")
+      vim.fn.system(kitten .. " themes --reload-in=all " .. M.config.kitty.light)
+      vim.fn.system(kitten .. " @ --to " .. kitty_socket .. " load-config")
       M.set_zellij_theme(M.config.zellij.light)
       M.set_delta_theme(M.config.delta.light)
       M.set_yazi_theme(M.config.yazi.light)
       -- M.set_wezterm_theme(M.config.wezterm.light)
     else
       M.set_ghostty_theme(M.config.ghostty.dark)
-      vim.fn.system("kitty +kitten themes --reload-in=all " .. M.config.kitty.dark)
-      vim.fn.system("kitten @ load-config")
+      vim.fn.system(kitten .. " themes --reload-in=all " .. M.config.kitty.dark)
+      vim.fn.system(kitten .. " @ --to " .. kitty_socket .. " load-config")
       M.set_zellij_theme(M.config.zellij.dark)
       M.set_delta_theme(M.config.delta.dark)
       M.set_yazi_theme(M.config.yazi.dark)

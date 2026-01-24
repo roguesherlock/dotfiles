@@ -204,7 +204,7 @@ load_plugins {
 
 pane_frames false
 serialize_pane_viewport true
-theme "flexoki-dark"
+theme "catppuccin-frappe"
 theme_dir "/Users/akash/.config/zellij/themes/"
 default_layout "compact"
 scroll_buffer_size 20000

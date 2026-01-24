@@ -11,7 +11,7 @@ font-family = "SF Mono"
 # font-family = "0xProto"
 font-size = 12
 font-thicken = true
-# font-thicken-strength = 20
+font-thicken-strength = 20
 adjust-cell-height = 50%
 adjust-underline-position = 5
 adjust-underline-thickness = 30%
@@ -20,7 +20,7 @@ cursor-color = cell-foreground
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
-theme = Flexoki Dark
+theme = Catppuccin Frappe
 macos-titlebar-style = tabs
 # macos-titlebar-style = transparent
 macos-option-as-alt = true
@@ -46,45 +46,46 @@ keybind = super+shift+enter=toggle_fullscreen
 
 
 # Clear all keybinds (for zellij compatibility), then add back essentials
-keybind = clear
-
-keybind = performable:super+h=goto_split:previous
-keybind = performable:super+j=goto_split:down
-keybind = performable:super+k=goto_split:up
-keybind = performable:super+l=goto_split:next
-keybind = super+shift+enter=toggle_fullscreen
-
-# Copy/Paste
-keybind = super+c=copy_to_clipboard:mixed
-keybind = super+v=paste_from_clipboard
-keybind = super+shift+v=paste_from_selection
-
-# Config management
-keybind = super+comma=open_config
-keybind = super+shift+comma=reload_config
-
-# Font size
-keybind = super+equal=increase_font_size:1
-keybind = super+plus=increase_font_size:1
-keybind = super+minus=decrease_font_size:1
-keybind = super+zero=reset_font_size
-
-# Text selection with keyboard
-keybind = shift+left=adjust_selection:left
-keybind = shift+right=adjust_selection:right
-keybind = shift+up=adjust_selection:up
-keybind = shift+down=adjust_selection:down
-keybind = shift+home=adjust_selection:home
-keybind = shift+end=adjust_selection:end
-
-# Shell line editing
-keybind = super+left=text:\x01
-keybind = super+right=text:\x05
-keybind = super+backspace=text:\x15
-
-# Word navigation
-keybind = alt+left=esc:b
-keybind = alt+right=esc:f
-
-# Inspector
-keybind = super+alt+i=inspector:toggle
+# keybind = clear
+#
+# keybind = performable:super+h=goto_split:previous
+# keybind = performable:super+j=goto_split:down
+# keybind = performable:super+k=goto_split:up
+# keybind = performable:super+l=goto_split:next
+# keybind = super+shift+enter=toggle_fullscreen
+#
+# # Copy/Paste
+# keybind = super+c=copy_to_clipboard:mixed
+# keybind = super+v=paste_from_clipboard
+# keybind = super+shift+v=paste_from_selection
+#
+# # Config management
+# keybind = super+comma=open_config
+# keybind = super+shift+comma=reload_config
+#
+# # Font size
+# keybind = super+equal=increase_font_size:1
+# keybind = super+plus=increase_font_size:1
+# keybind = super+minus=decrease_font_size:1
+# keybind = super+zero=reset_font_size
+#
+# # Text selection with keyboard
+# keybind = shift+left=adjust_selection:left
+# keybind = shift+right=adjust_selection:right
+# keybind = shift+up=adjust_selection:up
+# keybind = shift+down=adjust_selection:down
+# keybind = shift+home=adjust_selection:home
+# keybind = shift+end=adjust_selection:end
+#
+# # Shell line editing
+# keybind = super+left=text:\x01
+# keybind = super+right=text:\x05
+# keybind = super+backspace=text:\x15
+#
+# # Word navigation
+# keybind = alt+left=esc:b
+# keybind = alt+right=esc:f
+#
+# # Inspector
+# keybind = super+alt+i=inspector:toggle
+#

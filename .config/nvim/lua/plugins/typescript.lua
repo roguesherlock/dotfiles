@@ -18,6 +18,7 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
+    enabled = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "marilari88/twoslash-queries.nvim",

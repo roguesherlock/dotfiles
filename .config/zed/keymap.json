@@ -25,7 +25,7 @@
     },
   },
   {
-    "context": "Dock || Terminal || Editor || ProjectPanel || EmptyPane || SharedScreen || MarkdownPreview",
+    "context": "Dock || Terminal || Editor || ProjectPanel || EmptyPane || SharedScreen || MarkdownPreview || AgentPanel",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
@@ -142,6 +142,18 @@
       "cmd-3": ["pane::ActivateItem", 2],
       "cmd-4": ["pane::ActivateItem", 3],
       "cmd-5": ["pane::ActivateItem", 4],
+    },
+  },
+  {
+    "context": "AgentPanel > AcpThread",
+    "bindings": {
+      "cmd-enter": "workspace::ToggleZoom",
+    },
+  },
+  {
+    "context": "AgentPanel > AcpThread > Editor",
+    "bindings": {
+      "cmd-enter": "workspace::ToggleZoom",
     },
   },
   {
