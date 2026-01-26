@@ -1,19 +1,19 @@
 set -l os_type (uname -s)
 export GPG_TTY=(tty)
 
-# function __fish_update_zellij_tabname_prompt --on-event fish_prompt
-#     if test -n "$ZELLIJ"
-#         zellij action rename-tab "fish $(prompt_pwd)"
-#     end
-# end
+function __fish_update_zellij_tabname_prompt --on-event fish_prompt
+    if set -q ZELLIJ
+        zellij action rename-tab "fish $(prompt_pwd)"
+    end
+end
 
-# function __fish_update_zellij_tabname_preexec --on-event fish_preexec
-#     if test -n "$ZELLIJ"
-#         # zellij action rename-tab "$argv"
-#         set cmd "$(string split " " $argv[1])"
-#         zellij action rename-tab "$cmd $(prompt_pwd)"
-#     end
-# end
+function __fish_update_zellij_tabname_preexec --on-event fish_preexec
+    if set -q ZELLIJ
+        # zellij action rename-tab "$argv"
+        set cmd "$(string split " " $argv[1])"
+        zellij action rename-tab "$cmd $(prompt_pwd)"
+    end
+end
 
 if status is-interactive
     # aliases
