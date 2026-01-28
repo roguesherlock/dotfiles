@@ -166,6 +166,10 @@ install ~/Developer/dotfiles/.config/warp/keybindings.yaml ~/.warp/keybindings.y
 install ~/Developer/dotfiles/.config/warp/themes ~/.warp/themes
 
 
+# local bin scripts
+mkdir -p ~/.local/bin
+install ~/Developer/dotfiles/bin/powermon ~/.local/bin/powermon
+
 # claude
 mkdir -p ~/.claude/
 install ~/Developer/dotfiles/.config/claude/settings.json ~/.claude/settings.json

@@ -32,7 +32,7 @@ unfocused-split-opacity=0.75
 auto-update-channel=tip
 # background-opacity=0.85
 # background-blur=true
-custom-shader=shaders/cursor_warp.glsl
+# custom-shader=shaders/cursor_warp.glsl  # disabled - battery drain
 
 quick-terminal-position = center
 quick-terminal-animation-duration = 0

@@ -1,0 +1,175 @@
+#!/bin/bash
+
+# powermon - Simple power monitoring utility for macOS
+# Usage: powermon [--watch]
+
+BOLD='\033[1m'
+DIM='\033[2m'
+GREEN='\033[32m'
+YELLOW='\033[33m'
+RED='\033[31m'
+CYAN='\033[36m'
+RESET='\033[0m'
+
+print_header() {
+    echo -e "\n${BOLD}${CYAN}$1${RESET}"
+    echo -e "${DIM}$(printf '─%.0s' {1..50})${RESET}"
+}
+
+# Check if running with sudo for full power data
+HAVE_SUDO=false
+if sudo -n true 2>/dev/null; then
+    HAVE_SUDO=true
+fi
+
+# Fix terminal type for non-standard terminals
+export TERM=xterm-256color
+
+clear
+echo -e "${BOLD}⚡ Power Monitor${RESET} - $(date '+%Y-%m-%d %H:%M:%S')"
+
+# Battery status
+print_header "Battery Status"
+battery_info=$(pmset -g batt)
+percent=$(echo "$battery_info" | grep -o '[0-9]*%' | head -1)
+charging=$(echo "$battery_info" | grep -o "AC Power\|Battery Power" | head -1)
+time_remaining=$(echo "$battery_info" | grep -o '[0-9]*:[0-9]*' | head -1)
+
+# Get battery health
+max_capacity=$(system_profiler SPPowerDataType 2>/dev/null | grep "Maximum Capacity" | awk '{print $3}')
+cycle_count=$(system_profiler SPPowerDataType 2>/dev/null | grep "Cycle Count" | awk '{print $3}')
+
+echo -e "Charge:      ${BOLD}$percent${RESET} ($charging)"
+[ -n "$time_remaining" ] && echo -e "Remaining:   $time_remaining"
+[ -n "$max_capacity" ] && echo -e "Health:      $max_capacity (${cycle_count} cycles)"
+
+# Actual power draw (requires sudo for accurate data)
+print_header "Power Draw"
+if $HAVE_SUDO; then
+    power_data=$(sudo powermetrics --samplers cpu_power,gpu_power -i 2000 -n 1 2>/dev/null)
+    cpu_power=$(echo "$power_data" | grep "^CPU Power:" | awk '{print $3}')
+    gpu_power=$(echo "$power_data" | grep "^GPU Power:" | head -1 | awk '{print $3}')
+    combined=$(echo "$power_data" | grep "Combined Power" | grep -o '[0-9]*' | head -1)
+
+    # Color code based on power draw
+    if [ -n "$combined" ]; then
+        combined_int=${combined%.*}
+        if [ "$combined_int" -lt 3000 ]; then
+            color=$GREEN
+        elif [ "$combined_int" -lt 8000 ]; then
+            color=$YELLOW
+        else
+            color=$RED
+        fi
+        echo -e "CPU:         ${cpu_power} mW"
+        echo -e "GPU:         ${gpu_power} mW"
+        echo -e "Total:       ${color}${BOLD}${combined} mW${RESET}"
+        echo -e "${DIM}(Good: <3W | Medium: 3-8W | High: >8W)${RESET}"
+    fi
+else
+    echo -e "${DIM}Run with sudo for actual power measurements${RESET}"
+    echo -e "${DIM}  sudo powermon${RESET}"
+fi
+
+# Top processes by energy (using top's built-in power estimation)
+print_header "Top 10 by CPU %"
+echo -e "${DIM}PID     CPU%    MEM%    APP${RESET}"
+ps -Arco pid,%cpu,%mem,comm | head -11 | tail -10 | while read line; do
+    pid=$(echo $line | awk '{print $1}')
+    cpu=$(echo $line | awk '{print $2}')
+    mem=$(echo $line | awk '{print $3}')
+    app=$(echo $line | awk '{print $4}')
+
+    # Color based on CPU usage
+    cpu_int=${cpu%.*}
+    if [ "$cpu_int" -gt 30 ]; then
+        color=$RED
+    elif [ "$cpu_int" -gt 10 ]; then
+        color=$YELLOW
+    else
+        color=$RESET
+    fi
+    printf "${color}%-7s %-7s %-7s %s${RESET}\n" "$pid" "$cpu" "$mem" "$app"
+done
+
+# Wake-ups (idle wake ups are a hidden battery killer)
+# powermetrics columns: Name, PID, CPU ms/s, User%, Deadlines(<2ms), Deadlines(2-5ms), Wakeups(Intr), Wakeups(Pkg idle)
+print_header "Top 10 by Idle Wake Ups"
+echo -e "${DIM}WAKEUPS  APP${RESET}"
+if $HAVE_SUDO; then
+    sudo powermetrics --samplers tasks -i 2000 -n 1 2>/dev/null | \
+        awk 'NR>1 && /^[A-Za-z]/ && !/^(ALL_TASKS|DEAD_TASKS|kernel_task|Name|Boot|Machine|OS)/ {print $7, $1}' | \
+        sort -rn | \
+        head -10 | \
+        while read wakeups app; do
+            wakeups_int=${wakeups%.*}
+            if [ "$wakeups_int" -gt 100 ]; then
+                color=$RED
+            elif [ "$wakeups_int" -gt 20 ]; then
+                color=$YELLOW
+            else
+                color=$RESET
+            fi
+            printf "${color}%-8s %s${RESET}\n" "$wakeups" "$app"
+        done
+else
+    # Fallback without sudo - use Activity Monitor's idle wake up equivalent
+    echo -e "${DIM}Run with sudo for wake-up data${RESET}"
+fi
+
+# GPU usage
+print_header "GPU Status"
+if $HAVE_SUDO; then
+    gpu_active=$(sudo powermetrics --samplers gpu_power -i 2000 -n 1 2>/dev/null | grep "GPU HW active residency" | head -1 | grep -o '[0-9.]*%' | head -1)
+    if [ -n "$gpu_active" ]; then
+        gpu_int=${gpu_active%.*}
+        if [ "$gpu_int" -gt 50 ]; then
+            color=$RED
+        elif [ "$gpu_int" -gt 20 ]; then
+            color=$YELLOW
+        else
+            color=$GREEN
+        fi
+        echo -e "GPU Active:  ${color}${gpu_active}${RESET}"
+    fi
+else
+    echo -e "${DIM}Run with sudo for GPU data${RESET}"
+fi
+
+# Memory pressure
+print_header "Memory Pressure"
+pressure=$(memory_pressure 2>/dev/null | grep "System-wide memory free percentage" | awk '{print $5}')
+if [ -n "$pressure" ]; then
+    pressure_int=${pressure%\%}
+    if [ "$pressure_int" -lt 20 ]; then
+        color=$RED
+        status="(High pressure - swapping likely)"
+    elif [ "$pressure_int" -lt 40 ]; then
+        color=$YELLOW
+        status="(Moderate)"
+    else
+        color=$GREEN
+        status="(Good)"
+    fi
+    echo -e "Free Memory: ${color}${pressure}${RESET} $status"
+fi
+
+# Thermal state
+print_header "Thermal State"
+thermal=$(pmset -g therm 2>/dev/null | grep "CPU_Speed_Limit" | awk '{print $3}')
+if [ -n "$thermal" ] && [ "$thermal" -lt 100 ]; then
+    echo -e "${RED}CPU Throttled to ${thermal}%${RESET} (thermal pressure)"
+else
+    echo -e "${GREEN}Normal${RESET} (no throttling)"
+fi
+
+# Assertions preventing sleep
+assertions=$(pmset -g assertions 2>/dev/null | grep "PreventUserIdleSystemSleep" | grep -c "1")
+if [ "$assertions" -gt 0 ]; then
+    print_header "Sleep Prevention"
+    echo -e "${YELLOW}Something is preventing sleep:${RESET}"
+    pmset -g assertions 2>/dev/null | grep -A1 "PreventUserIdleSystemSleep.*\[" | grep "named" | sed 's/.*named: "/  → /' | sed 's/".*//' | head -5
+fi
+
+echo -e "\n${DIM}Tip: Run 'sudo powermon' for complete power data${RESET}"
+echo ""
