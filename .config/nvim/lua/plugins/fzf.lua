@@ -79,8 +79,10 @@ return {
     -- config.defaults.actions.files["ctrl-t"] = require("trouble.sources.fzf").actions.open
 
     return {
+      fzf_bin = "sk",
       fzf_colors = true,
       fzf_opts = {
+        ["--algo"] = "frizbee",
         ["--no-scrollbar"] = true,
         ["--layout"] = "reverse",
       },
