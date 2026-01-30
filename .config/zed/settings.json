@@ -53,6 +53,9 @@
   },
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    },
     "claude": {
       "favorite_models": ["opus"],
       "default_mode": "bypassPermissions",
@@ -116,9 +119,11 @@
     "button": false,
   },
   "git_panel": {
+    "tree_view": true,
     "default_width": 300.0,
   },
   "project_panel": {
+    "bold_folder_labels": false,
     "default_width": 300.0,
     "file_icons": true,
     "folder_icons": false,

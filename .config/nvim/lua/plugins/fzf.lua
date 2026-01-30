@@ -92,19 +92,22 @@ return {
       },
       global = dropdown({
         winopts = { title = title("Search", "") },
-        line_query = true,
+        -- TODO: not supported sk fuzzy search
+        -- line_query = true,
       }),
       files = dropdown({
         cwd_prompt = false,
         multiprocess = true,
-        line_query = true,
+        -- TODO: not supported sk fuzzy search
+        -- line_query = true,
         winopts = { title = title("files", "") },
       }),
       buffers = dropdown({
         cwd_prompt = false,
         prompt = "",
         winopts = { title = title("buffers", "󰈙") },
-        line_query = true,
+        -- TODO: not supported sk fuzzy search
+        -- line_query = true,
       }),
       keymaps = dropdown({
         winopts = { title = title("keymaps", "") },
