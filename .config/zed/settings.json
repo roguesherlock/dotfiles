@@ -54,7 +54,7 @@
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_servers": {
     "opencode": {
-      "type": "registry"
+      "type": "registry",
     },
     "claude": {
       "favorite_models": ["opus"],
@@ -79,18 +79,18 @@
     },
   },
   "context_servers": {
-    "playwriter": {
-      "command": "bunx",
-      "args": ["-y", "playwriter@latest"],
-    },
+    // "playwriter": {
+    //   "command": "bunx",
+    //   "args": ["-y", "playwriter@latest"],
+    // },
     //   "next-devtools": {
     //     "command": "bunx",
     //     "args": ["-y", "next-devtools-mcp@latest"],
     //   },
-    "effect docs": {
-      "command": "bunx",
-      "args": ["-y", "effect-mcp@latest"],
-    },
+    // "effect docs": {
+    //   "command": "bunx",
+    //   "args": ["-y", "effect-mcp@latest"],
+    // },
     //   "chrome-devtools": {
     //     "command": "bunx",
     //     "args": ["-y", "chrome-devtools-mcp@latest"],
@@ -123,7 +123,6 @@
     "default_width": 300.0,
   },
   "project_panel": {
-    "bold_folder_labels": false,
     "default_width": 300.0,
     "file_icons": true,
     "folder_icons": false,
