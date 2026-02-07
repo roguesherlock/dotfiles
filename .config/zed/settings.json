@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "provider": "mercury",
+  },
   "agent_ui_font_size": 12.0,
   "agent_buffer_font_size": 12.0,
   "ui_font_size": 12.0,
@@ -20,9 +23,6 @@
     "line_height": {
       "custom": 1.8,
     },
-  },
-  "features": {
-    "edit_prediction_provider": "zed",
   },
   "use_system_window_tabs": true,
   "title_bar": {

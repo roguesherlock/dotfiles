@@ -1,15 +1,16 @@
 ---
+"terminal:focus_input": none
+"pane_group:navigate_up": cmd-k
+"pane_group:toggle_maximize_pane": cmd-enter
+"ai_assistant_panel:reset_context": ctrl-cmd-r
+"terminal:clear_blocks": shift-cmd-L
+"pane_group:navigate_down": cmd-j
+"notebookview:focus_terminal_input": none
+"pane_group:navigate_next": cmd-l
+"workspace:toggle_left_panel": cmd-b
+"pane_group:navigate_prev": cmd-h
+"workspace:toggle_maximize_code_review_panel": cmd-enter
 "input:open_completion_suggestions": ctrl-space
 "ai_assistant_panel:focus_terminal_input": none
-"notebookview:focus_terminal_input": none
-"pane_group:toggle_maximize_pane": cmd-enter
 "editor_view:insert_autosuggestion": tab
-"terminal:focus_input": none
-"pane_group:navigate_down": cmd-j
-"terminal:clear_blocks": shift-cmd-L
-"pane_group:navigate_up": cmd-k
-"pane_group:navigate_prev": cmd-h
-"ai_assistant_panel:reset_context": ctrl-cmd-r
-"pane_group:navigate_next": cmd-l
 "workspace:toggle_ai_assistant": none
-"workspace:toggle_left_panel": cmd-b

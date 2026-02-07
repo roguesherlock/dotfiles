@@ -145,6 +145,8 @@
       "cmd-3": ["pane::ActivateItem", 2],
       "cmd-4": ["pane::ActivateItem", 3],
       "cmd-5": ["pane::ActivateItem", 4],
+      "cmd-[": "pane::ActivatePreviousItem",
+      "cmd-]": "pane::ActivateNextItem",
     },
   },
   {
