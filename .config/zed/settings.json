@@ -62,6 +62,9 @@
     },
   },
   "agent": {
+    "tool_permissions": {
+      "default": "allow",
+    },
     "commit_message_model": {
       "provider": "openrouter",
       "model": "x-ai/grok-code-fast-1",
@@ -72,7 +75,6 @@
     },
     "default_profile": "write",
     "play_sound_when_agent_done": true,
-    "always_allow_tool_actions": true,
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-opus-4-5",

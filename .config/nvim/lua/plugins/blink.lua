@@ -15,7 +15,7 @@ return {
   },
   {
     "saghen/blink.pairs",
-    build = "cargo build --release",
+    dependencies = "saghen/blink.download",
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
     opts = {

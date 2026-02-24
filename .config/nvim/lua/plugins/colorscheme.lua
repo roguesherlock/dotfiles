@@ -8,6 +8,14 @@ return {
     end,
   },
   -- {
+  --   "funnyVariable/blank.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd("colorscheme blank")
+  --   end,
+  -- },
+  -- {
   --   "serhez/teide.nvim",
   --   lazy = false,
   --   priority = 1000,

@@ -60,8 +60,8 @@
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
       "g D": "editor::GoToDefinitionSplit",
-      "g b": "tab_switcher::Toggle",
-      "f": "tab_switcher::Toggle",
+      "g b": "tab_switcher::OpenInActivePane",
+      "f": "tab_switcher::OpenInActivePane",
       "space f": "file_finder::Toggle",
       "space e": "project_panel::ToggleFocus",
       "space g g": [
