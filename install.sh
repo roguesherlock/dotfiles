@@ -178,6 +178,13 @@ install ~/Developer/dotfiles/.config/claude/plugin.json ~/.claude/plugin.json
 install ~/Developer/dotfiles/.config/claude/agents ~/.claude/agents
 install ~/Developer/dotfiles/.config/claude/skills ~/.claude/skills
 
+# codex
+mkdir -p ~/.codex/
+install ~/Developer/dotfiles/.config/codex/config.toml ~/.codex/config.toml
+install ~/Developer/dotfiles/.config/codex/AGENTS.md ~/.codex/AGENTS.md
+install ~/Developer/dotfiles/.config/codex/rules ~/.codex/rules
+install ~/Developer/dotfiles/.config/codex/skills ~/.codex/skills
+
 # prise
 install ~/Developer/dotfiles/.config/prise/init.lua ~/.config/prise/init.lua
 

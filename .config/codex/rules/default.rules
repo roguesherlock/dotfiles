@@ -1,0 +1,4 @@
+prefix_rule(pattern=["top", "-l", "1"], decision="allow")
+prefix_rule(pattern=["gh", "pr", "view", "157", "--repo", "activitysource/pcplatform", "--json", "number,title,url,headRefName,baseRefName,headRefOid,baseRefOid,author,state,isDraft,mergeable"], decision="allow")
+prefix_rule(pattern=["git", "switch", "-c", "feature/admin-partner-tabs-details", "--track", "origin/feature/admin-partner-tabs-details"], decision="allow")
+prefix_rule(pattern=["gh", "pr", "view", "157", "--repo", "activitysource/pcplatform", "--json", "files,commits"], decision="allow")

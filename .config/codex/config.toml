@@ -1,0 +1,73 @@
+model = "gpt-5.3-codex"
+model_reasoning_effort = "high"
+personality = "friendly"
+
+approval_policy = "untrusted"
+sandbox_mode = "danger-full-access"
+web_search = "live"
+
+
+[mcp_servers.next-devtools]
+command = "bunx"
+args = ["-y", "next-devtools-mcp@latest"]
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+
+
+[projects."/Users/akash/Developer/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/pcplatform"]
+trust_level = "trusted"
+
+[projects."/Users/akash"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/fg-tasks"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/potionpapers"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/semann-slattery-com"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/invoices"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/web-tools"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/akashpomal.com"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/rgconnect"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/semannslattery.com"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/momentum"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/neovim"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/replicache-rpc"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/fluent-ai"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/cms-semannslattery-com"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/www-semannslattery-com"]
+trust_level = "trusted"
+
+[notice]
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+
+[notice.model_migrations]
+"gpt-5.1-codex-max" = "gpt-5.2-codex"
