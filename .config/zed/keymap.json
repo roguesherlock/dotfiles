@@ -19,7 +19,7 @@
     },
   },
   {
-    "context": "Editor && edit_prediction_conflict",
+    "context": "Editor && (edit_prediction && (showing_completions || in_leading_whitespace))",
     "bindings": {
       // Here we bind tab to accept even when there's a language server completion
       // or the cursor isn't at the correct indentation level
@@ -80,14 +80,16 @@
       "w m": "workspace::ToggleZoom",
       "space a c": [
         "agent::NewExternalAgentThread",
-        { "agent": "claude_code" },
+        { "agent": { "custom": { "name": "claude-acp" } } },
       ],
-      "space a g": ["agent::NewExternalAgentThread", { "agent": "gemini" }],
       "space a o": [
         "agent::NewExternalAgentThread",
         { "agent": "native_agent" },
       ],
-      "space a p": ["agent::NewExternalAgentThread", { "agent": "codex" }],
+      "space a p": [
+        "agent::NewExternalAgentThread",
+        { "agent": { "custom": { "name": "codex-acp" } } },
+      ],
       "space x x": "diagnostics::DeployCurrentFile",
       "space x X": "diagnostics::Deploy",
       "space l r": "editor::RestartLanguageServer",

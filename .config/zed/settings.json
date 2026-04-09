@@ -7,8 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "outline_panel": {
+    "dock": "right"
+  },
   "edit_predictions": {
-    "provider": "mercury",
+    "provider": "zed",
   },
   "agent_ui_font_size": 12.0,
   "agent_buffer_font_size": 12.0,
@@ -43,25 +46,23 @@
   "tab_bar": {
     "show": false,
   },
-  "audio": {
-    "experimental.auto_microphone_volume": true,
-    "experimental.rodio_audio": true,
-  },
   "use_smartcase_search": true,
   "search": {
     "regex": false,
   },
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+      "default_mode": "bypassPermissions",
+      "favorite_models": ["opus"],
+    },
     "opencode": {
       "type": "registry",
     },
-    "claude": {
-      "favorite_models": ["opus"],
-      "default_mode": "bypassPermissions",
-    },
   },
   "agent": {
+    "dock": "left",
     "tool_permissions": {
       "default": "allow",
     },
@@ -74,7 +75,7 @@
       "model": "x-ai/grok-code-fast-1",
     },
     "default_profile": "write",
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-opus-4-5",
@@ -118,13 +119,16 @@
     },
   },
   "collaboration_panel": {
+    "dock": "right",
     "button": false,
   },
   "git_panel": {
+    "dock": "right",
     "tree_view": true,
     "default_width": 300.0,
   },
   "project_panel": {
+    "dock": "right",
     "default_width": 300.0,
     "file_icons": true,
     "folder_icons": false,
@@ -157,13 +161,28 @@
   },
   "languages": {
     "TypeScript": {
-      "language_servers": ["vtsls", "!eslint", "!typescript-language-server"],
+      "language_servers": [
+        "vtsls",
+        "tailwindcss-language-server",
+        "!eslint",
+        "!typescript-language-server",
+      ],
     },
     "TSX": {
-      "language_servers": ["vtsls", "!eslint", "!typescript-language-server"],
+      "language_servers": [
+        "vtsls",
+        "tailwindcss-language-server",
+        "!eslint",
+        "!typescript-language-server",
+      ],
     },
     "JavaScript": {
-      "language_servers": ["vtsls", "!eslint", "!typescript-language-server"],
+      "language_servers": [
+        "vtsls",
+        "tailwindcss-language-server",
+        "!eslint",
+        "!typescript-language-server",
+      ],
     },
   },
   "lsp": {
@@ -187,6 +206,14 @@
           "completion": {
             "enableServerSideFuzzyMatch": true,
           },
+        },
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": ["cva", "cx", "cn"],
+        "experimental": {
+          "classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"],
         },
       },
     },
