@@ -70,3 +70,6 @@ set -gx PATH $PATH /Users/akash/.lmstudio/bin
 # End of LM Studio CLI section
 
 fish_add_path $HOME/.local/bin
+
+# Vite+ bin (https://viteplus.dev)
+source "$HOME/.vite-plus/env.fish"
