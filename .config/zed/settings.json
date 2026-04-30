@@ -7,22 +7,31 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "document_symbols": "on",
+  "document_folding_ranges": "on",
+  "semantic_tokens": "combined",
+  "agent_buffer_font_size": 12.0,
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "diff_view_style": "split",
   "outline_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "edit_predictions": {
     "provider": "zed",
   },
-  "agent_ui_font_size": 12.0,
-  "agent_buffer_font_size": 12.0,
   "ui_font_size": 12.0,
   "ui_font_family": "SF Mono",
-  "buffer_font_family": "SF Mono",
+  "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 12.0,
   "buffer_line_height": {
-    "custom": 1.8,
+    "custom": 1.7999999523162842
   },
   "terminal": {
+    "bell": "system",
     "line_height": {
       "custom": 1.8,
     },
@@ -30,7 +39,6 @@
   "use_system_window_tabs": true,
   "title_bar": {
     "show_menus": false,
-    "show_branch_icon": false,
   },
   "inlay_hints": {
     "enabled": false,
@@ -52,6 +60,12 @@
   },
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_servers": {
+    "cursor": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    },
     "claude-acp": {
       "type": "registry",
       "default_mode": "bypassPermissions",
@@ -62,6 +76,8 @@
     },
   },
   "agent": {
+    "thinking_display": "preview",
+    "sidebar_side": "left",
     "dock": "left",
     "tool_permissions": {
       "default": "allow",
@@ -119,7 +135,7 @@
     },
   },
   "collaboration_panel": {
-    "dock": "right",
+    "dock": "left",
     "button": false,
   },
   "git_panel": {

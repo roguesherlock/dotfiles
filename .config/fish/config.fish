@@ -73,3 +73,6 @@ fish_add_path $HOME/.local/bin
 
 # Vite+ bin (https://viteplus.dev)
 source "$HOME/.vite-plus/env.fish"
+
+# Added by Antigravity
+fish_add_path /Users/akash/.antigravity/antigravity/bin
