@@ -67,6 +67,7 @@ fish_add_path /Users/akash/.opencode/bin
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/akash/.lmstudio/bin
+
 # End of LM Studio CLI section
 
 fish_add_path $HOME/.local/bin

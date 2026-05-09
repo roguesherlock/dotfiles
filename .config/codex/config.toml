@@ -1,5 +1,5 @@
 model = "gpt-5.5"
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 personality = "friendly"
 
 approval_policy = "never"
@@ -9,24 +9,28 @@ web_search = "live"
 [mcp_servers.next-devtools]
 command = "bunx"
 args = ["-y", "next-devtools-mcp@latest"]
+enabled = false
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
 
 [mcp_servers.paper]
 url = "http://127.0.0.1:29979/mcp"
+enabled = false
 
 [mcp_servers.figma]
 url = "https://mcp.figma.com/mcp"
+enabled = false
 
 [mcp_servers.laravel-boost]
 command = "php"
 args = ["artisan", "boost:mcp"]
+enabled = false
 
 [mcp_servers.chrome_devtools]
 args = ["chrome-devtools-mcp@latest", "--auto-connect=true"]
 command = "bunx"
-enabled = true
+enabled = false
 
 
 [projects."/Users/akash/Developer/dotfiles"]
@@ -80,6 +84,24 @@ trust_level = "trusted"
 [projects."/Users/akash/Developer/www-semannslattery-com"]
 trust_level = "trusted"
 
+[projects."/Users/akash/Developer/wp-nanoplatform-com"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-03/can-you-help-me-build-a"]
+trust_level = "trusted"
+
+[projects."/"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/web-tools-wordpress-plugin"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-06/can-you-help-me-understand-why"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/www-omikastechsolve-com"]
+trust_level = "trusted"
+
 [notice]
 "hide_gpt-5.1-codex-max_migration_prompt" = true
 
@@ -88,6 +110,7 @@ trust_level = "trusted"
 
 [features]
 multi_agent = true
+memories = true
 
 [plugins."google-calendar@openai-curated"]
 enabled = true
@@ -99,9 +122,6 @@ enabled = true
 enabled = true
 
 [plugins."google-drive@openai-curated"]
-enabled = true
-
-[plugins."browser-use@openai-bundled"]
 enabled = true
 
 [plugins."documents@openai-primary-runtime"]
@@ -125,16 +145,29 @@ enabled = true
 [plugins."sentry@openai-curated"]
 enabled = true
 
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
 [marketplaces.openai-bundled]
-last_updated = "2026-04-30T11:53:11Z"
+last_updated = "2026-05-09T02:51:43Z"
 source_type = "local"
 source = "/Users/akash/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-04-27T18:11:30Z"
+last_updated = "2026-05-07T15:53:05Z"
 source_type = "local"
 source = "/Users/akash/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
 
 [mcp_servers.uidotsh]
 url = "https://ui.sh/mcp?agent=codex"
 http_headers = { Authorization = "Bearer CXEqI2XttgN1PleD66AbKjqSMBxGrbED" }
+
+[mcp_servers.sentry]
+enabled = true
+url = "https://mcp.sentry.dev/mcp"

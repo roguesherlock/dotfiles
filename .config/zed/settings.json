@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "cli_default_open_behavior": "existing_window",
   "document_symbols": "on",
   "document_folding_ranges": "on",
   "semantic_tokens": "combined",
@@ -14,7 +15,7 @@
   "icon_theme": {
     "mode": "system",
     "light": "Zed (Default)",
-    "dark": "Zed (Default)"
+    "dark": "Zed (Default)",
   },
   "diff_view_style": "split",
   "outline_panel": {
@@ -24,11 +25,11 @@
     "provider": "zed",
   },
   "ui_font_size": 12.0,
-  "ui_font_family": "SF Mono",
-  "buffer_font_family": "JetBrains Mono",
+  "ui_font_family": "Lilex",
+  "buffer_font_family": "Lilex",
   "buffer_font_size": 12.0,
   "buffer_line_height": {
-    "custom": 1.7999999523162842
+    "custom": 1.8,
   },
   "terminal": {
     "bell": "system",
@@ -60,11 +61,14 @@
   },
   "multi_cursor_modifier": "cmd_or_ctrl",
   "agent_servers": {
+    "pi-acp": {
+      "type": "registry",
+    },
     "cursor": {
-      "type": "registry"
+      "type": "registry",
     },
     "codex-acp": {
-      "type": "registry"
+      "type": "registry",
     },
     "claude-acp": {
       "type": "registry",
@@ -84,17 +88,17 @@
     },
     "commit_message_model": {
       "provider": "openrouter",
-      "model": "x-ai/grok-code-fast-1",
+      "model": "moonshotai/kimi-k2.6",
     },
     "inline_assistant_model": {
       "provider": "openrouter",
-      "model": "x-ai/grok-code-fast-1",
+      "model": "moonshotai/kimi-k2.6",
     },
     "default_profile": "write",
     "play_sound_when_agent_done": "always",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-opus-4-5",
+      "model": "openai-gpt-5-5",
     },
   },
   "context_servers": {
@@ -135,7 +139,7 @@
     },
   },
   "collaboration_panel": {
-    "dock": "left",
+    "dock": "right",
     "button": false,
   },
   "git_panel": {
