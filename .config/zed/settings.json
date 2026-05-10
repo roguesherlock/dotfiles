@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "disable_ai": true,
   "cli_default_open_behavior": "existing_window",
   "document_symbols": "on",
   "document_folding_ranges": "on",
@@ -19,7 +20,7 @@
   },
   "diff_view_style": "split",
   "outline_panel": {
-    "dock": "right",
+    "dock": "left",
   },
   "edit_predictions": {
     "provider": "zed",
@@ -139,16 +140,16 @@
     },
   },
   "collaboration_panel": {
-    "dock": "right",
+    "dock": "left",
     "button": false,
   },
   "git_panel": {
-    "dock": "right",
+    "dock": "left",
     "tree_view": true,
     "default_width": 300.0,
   },
   "project_panel": {
-    "dock": "right",
+    "dock": "left",
     "default_width": 300.0,
     "file_icons": true,
     "folder_icons": false,
