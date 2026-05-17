@@ -82,7 +82,7 @@ return {
       fzf_bin = "sk",
       fzf_colors = true,
       fzf_opts = {
-        ["--algo"] = "frizbee",
+        ["--algo"] = "arinae",
         ["--no-scrollbar"] = true,
         ["--layout"] = "reverse",
       },

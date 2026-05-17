@@ -1,10 +1,12 @@
 model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
+model_reasoning_effort = "high"
 personality = "friendly"
 
 approval_policy = "never"
 sandbox_mode = "danger-full-access"
 web_search = "live"
+
+notify = ["/Users/akash/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 
 [mcp_servers.next-devtools]
 command = "bunx"
@@ -102,6 +104,39 @@ trust_level = "trusted"
 [projects."/Users/akash/Developer/www-omikastechsolve-com"]
 trust_level = "trusted"
 
+[projects."/Users/akash/Documents/Codex/2026-05-11/can-you-help-me-compress-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-12/i-have-these-two-images-can"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-13/here-s-what-my-boss-was"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/happy-boy"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-15/what-do-you-think-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-16/can-you-please-help-me-find"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-16/what-d-you-make-of-these"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/opencode"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-17/can-you-help-me-understand-what"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-17/what-d-you-make-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-17/can-you-help-me-outline-all"]
+trust_level = "trusted"
+
 [notice]
 "hide_gpt-5.1-codex-max_migration_prompt" = true
 
@@ -111,6 +146,7 @@ trust_level = "trusted"
 [features]
 multi_agent = true
 memories = true
+chronicle = true
 
 [plugins."google-calendar@openai-curated"]
 enabled = true
@@ -145,19 +181,19 @@ enabled = true
 [plugins."sentry@openai-curated"]
 enabled = true
 
-[plugins."browser-use@openai-bundled"]
+[plugins."browser@openai-bundled"]
 enabled = true
 
 [plugins."chrome@openai-bundled"]
 enabled = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-09T02:51:43Z"
+last_updated = "2026-05-17T04:11:36Z"
 source_type = "local"
 source = "/Users/akash/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-05-07T15:53:05Z"
+last_updated = "2026-05-16T04:11:37Z"
 source_type = "local"
 source = "/Users/akash/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
