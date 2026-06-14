@@ -7,6 +7,7 @@ sandbox_mode = "danger-full-access"
 web_search = "live"
 
 notify = ["/Users/akash/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+service_tier = "default"
 
 [mcp_servers.next-devtools]
 command = "bunx"
@@ -18,7 +19,7 @@ url = "https://mcp.linear.app/mcp"
 
 [mcp_servers.paper]
 url = "http://127.0.0.1:29979/mcp"
-enabled = false
+enabled = true
 
 [mcp_servers.figma]
 url = "https://mcp.figma.com/mcp"
@@ -137,6 +138,96 @@ trust_level = "trusted"
 [projects."/Users/akash/Documents/Codex/2026-05-17/can-you-help-me-outline-all"]
 trust_level = "trusted"
 
+[projects."/Users/akash/Documents/Codex/2026-05-19/can-you-help-me-understand-what"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-20/what-d-you-make-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-23/what-d-you-think-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-23/i-just-saw-this-tweet-today"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-23/what-patterns-can-we-learn-from"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-25/how-do-you-only-update-specific"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-26/look-back-over-my-recent-work"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-26/my-macbook-is-always-hot-and"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-27/we-need-to-move-our-prototype"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-27/we-re-using-better-auth-with"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-27/can-you-help-me-write-a"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-30/what-s-this-talking-about-https"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-30/files-mentioned-by-the-user-note"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-05-30/i-have-had-this-recurring-problem"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/landersystems-com"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-02/can-you-check-the-pnr-status"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/petiterestaurant.com.au"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-02/what-d-you-make-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/conductor/repos/Quickstart"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Library/Application Support/com.conductor.app/bin"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-03/can-you-help-me-figure-out"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Developer/reading-steiner"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-05/what-d-you-make-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-06/what-s-this-about-https-every"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-06/files-mentioned-by-the-user-pasted"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-08/what-do-you-think-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-11/what-have-you-learned-so-far"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-12/my-boss-wants-me-to-file"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/blistt marketing website"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-14/can-you-help-me-build-a"]
+trust_level = "trusted"
+
 [notice]
 "hide_gpt-5.1-codex-max_migration_prompt" = true
 
@@ -147,6 +238,7 @@ trust_level = "trusted"
 multi_agent = true
 memories = true
 chronicle = true
+js_repl = false
 
 [plugins."google-calendar@openai-curated"]
 enabled = true
@@ -169,9 +261,6 @@ enabled = true
 [plugins."presentations@openai-primary-runtime"]
 enabled = true
 
-[plugins."computer-use@openai-bundled"]
-enabled = true
-
 [plugins."slack@openai-curated"]
 enabled = true
 
@@ -181,6 +270,15 @@ enabled = true
 [plugins."sentry@openai-curated"]
 enabled = true
 
+[plugins."posthog@openai-curated"]
+enabled = true
+
+[plugins."convex@openai-curated"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
 [plugins."browser@openai-bundled"]
 enabled = true
 
@@ -188,17 +286,70 @@ enabled = true
 enabled = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-17T04:11:36Z"
+last_updated = "2026-06-14T03:48:59Z"
 source_type = "local"
 source = "/Users/akash/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-05-16T04:11:37Z"
+last_updated = "2026-06-01T18:11:58Z"
 source_type = "local"
 source = "/Users/akash/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+
+[desktop]
+appearanceLightCodeThemeId = "codex"
+sansFontSize = 13
+codeFontSize = 12
+useFontSmoothing = true
+usePointerCursors = false
+followUpQueueMode = "steer"
+preventSleepWhileRunning = true
+keepRemoteControlAwakeWhilePluggedIn = true
+git-show-sidebar-pr-icons = true
+notifications-turn-mode = "always"
+selected-avatar-id = "codex"
+hotkey-window-projectless-default-enabled = true
+dock-icon-preference = "app-default"
+
+[desktop.appearanceLightChromeTheme]
+accent = "#0169cc"
+contrast = 45
+ink = "#0d0d0d"
+opaqueWindows = true
+surface = "#ffffff"
+
+[desktop.appearanceLightChromeTheme.fonts]
+code = "Berkeley Mono Variable"
+ui = "Berkeley Mono Variable"
+
+[desktop.appearanceLightChromeTheme.semanticColors]
+diffAdded = "#00a240"
+diffRemoved = "#e02e2a"
+skill = "#751ed9"
+
+[desktop.appearanceDarkChromeTheme]
+accent = "#339cff"
+contrast = 60
+ink = "#ffffff"
+opaqueWindows = true
+surface = "#181818"
+
+[desktop.appearanceDarkChromeTheme.fonts]
+code = "Berkeley Mono Variable"
+ui = "Berkeley Mono Variable"
+
+[desktop.appearanceDarkChromeTheme.semanticColors]
+diffAdded = "#40c977"
+diffRemoved = "#fa423e"
+skill = "#ad7bf9"
+
+[desktop.open-in-target-preferences]
+global = "zed"
+
+[desktop.open-in-target-preferences.perPath]
+"/Users/akash/Developer/cms-semannslattery-com" = "zed"
 
 [mcp_servers.uidotsh]
 url = "https://ui.sh/mcp?agent=codex"
@@ -207,3 +358,26 @@ http_headers = { Authorization = "Bearer CXEqI2XttgN1PleD66AbKjqSMBxGrbED" }
 [mcp_servers.sentry]
 enabled = true
 url = "https://mcp.sentry.dev/mcp"
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/akash/.codex"
+CODEX_HOME = "/Users/akash/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "27dca86fd6b571c49414a4b78e46b57bcf683a46cd1319799c11fbb6cfae3110"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.609.41114"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+
+[mcp_servers.https-secure-pcplatform-test-mcp-oracle]
+enabled = false
+url = "https://secure.pcplatform.test/mcp/oracle"
