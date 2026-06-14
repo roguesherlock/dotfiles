@@ -15,8 +15,26 @@ return {
   },
   {
     "saghen/blink.pairs",
-    version = "*",
-    dependencies = "saghen/blink.download",
+    version = "v0.6.0",
+    dependencies = "saghen/blink.lib",
+    build = function(plugin)
+      local native = require("blink.lib.native")
+      local platform = native.platform()
+      assert(platform.triple ~= nil, "Unsupported platform for blink.pairs native library")
+
+      local commit = native.try_git_commit(plugin.dir)
+      assert(commit ~= nil, "Could not determine blink.pairs git commit")
+
+      local library_path = native.library_path(plugin.dir, "blink_pairs_parser", commit)
+      local download_url = ("https://github.com/saghen/blink.pairs/releases/download/v0.6.0/%s%s"):format(
+        platform.triple,
+        platform.lib_extension
+      )
+
+      local result = vim.system({ "curl", "-fL", "--create-dirs", "-o", library_path, download_url }):wait(60000)
+      assert(result.code == 0, result.stderr)
+      assert(native.resolve("blink_pairs_parser", commit) ~= nil, "Failed to load downloaded blink.pairs library")
+    end,
     --- @module 'blink.pairs'
     --- @type blink.pairs.Config
     opts = {

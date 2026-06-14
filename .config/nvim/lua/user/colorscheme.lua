@@ -152,12 +152,8 @@ function M.set_ghostty_theme(theme)
   local config_path = vim.fn.expand("~/.config/ghostty/config")
   local real_path = vim.fn.resolve(config_path)
   local cmd = ""
-  if type(theme) == "string" then
-    cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", theme, real_path)
-  else
-    local light_dark_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
-    cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", light_dark_theme, real_path)
-  end
+  local ghostty_theme = string.format("light:%s,dark:%s", theme.light, theme.dark)
+  cmd = string.format("sed -i'.bak' 's/^[ ]*theme[ ]*=.*$/theme = %s/' %s", ghostty_theme, real_path)
 
   local result = vim.fn.system({ "bash", "-c", cmd })
   -- Get Ghostty PID(s) from system command
@@ -252,14 +248,12 @@ M.setup_termbg_sync = function(group)
     vim.cmd([[ highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl ]])
 
     -- Update Ghostty
-    -- TODO: there's a bug in ghostty which causes new tabs to not respect the theme change when using auto light/dark themes
-    -- M.set_ghostty_theme(M.config.ghostty)
+    M.set_ghostty_theme(M.config.ghostty)
 
     -- Update other terminals
     local kitty_socket = "unix:/tmp/kitty"
     local kitten = "/Applications/kitty.app/Contents/MacOS/kitten"
     if light then
-      M.set_ghostty_theme(M.config.ghostty.light)
       vim.fn.system(kitten .. " themes --reload-in=all " .. M.config.kitty.light)
       vim.fn.system(kitten .. " @ --to " .. kitty_socket .. " load-config")
       M.set_zellij_theme(M.config.zellij.light)
@@ -267,7 +261,6 @@ M.setup_termbg_sync = function(group)
       M.set_yazi_theme(M.config.yazi.light)
       -- M.set_wezterm_theme(M.config.wezterm.light)
     else
-      M.set_ghostty_theme(M.config.ghostty.dark)
       vim.fn.system(kitten .. " themes --reload-in=all " .. M.config.kitty.dark)
       vim.fn.system(kitten .. " @ --to " .. kitty_socket .. " load-config")
       M.set_zellij_theme(M.config.zellij.dark)
