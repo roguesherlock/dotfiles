@@ -3,11 +3,25 @@
   "permissions": {
     "defaultMode": "bypassPermissions"
   },
+  "enableWorkflows": true,
   "enabledPlugins": {
-    "figma@claude-plugins-official": true
+    "figma@claude-plugins-official": false,
+    "paper-desktop@paper": true
+  },
+  "extraKnownMarketplaces": {
+    "paper": {
+      "source": {
+        "source": "github",
+        "repo": "paper-design/agent-plugins"
+      }
+    }
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "model": "opus"
+  "theme": "auto",
+  "editorMode": "normal",
+  "autoCompactEnabled": true,
+  "agentPushNotifEnabled": true
 }
