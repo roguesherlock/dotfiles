@@ -26,13 +26,14 @@
     "provider": "zed",
   },
   "ui_font_size": 12.0,
-  "ui_font_family": "Lilex",
-  "buffer_font_family": "Lilex",
+  "ui_font_family": "Berkeley Mono Variable",
+  "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_size": 12.0,
   "buffer_line_height": {
     "custom": 1.8,
   },
   "terminal": {
+    "font_family": "Berkeley Mono Variable",
     "bell": "system",
     "line_height": {
       "custom": 1.8,
