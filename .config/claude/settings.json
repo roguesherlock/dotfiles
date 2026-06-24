@@ -3,6 +3,7 @@
   "permissions": {
     "defaultMode": "bypassPermissions"
   },
+  "model": "opus",
   "enableWorkflows": true,
   "enabledPlugins": {
     "figma@claude-plugins-official": false,
@@ -23,5 +24,6 @@
   "theme": "auto",
   "editorMode": "normal",
   "autoCompactEnabled": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "skipWorkflowUsageWarning": true
 }

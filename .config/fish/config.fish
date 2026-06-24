@@ -77,3 +77,7 @@ source "$HOME/.vite-plus/env.fish"
 
 # Added by Antigravity
 fish_add_path /Users/akash/.antigravity/antigravity/bin
+
+# >>> grok installer >>>
+fish_add_path $HOME/.grok/bin
+# <<< grok installer <<<

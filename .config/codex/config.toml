@@ -1,13 +1,15 @@
 model = "gpt-5.5"
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 personality = "friendly"
 
 approval_policy = "never"
 sandbox_mode = "danger-full-access"
 web_search = "live"
 
-notify = ["/Users/akash/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 service_tier = "default"
+
+
+notify = ["/Users/akash/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 
 [mcp_servers.next-devtools]
 command = "bunx"
@@ -228,6 +230,33 @@ trust_level = "trusted"
 [projects."/Users/akash/Documents/Codex/2026-06-14/can-you-help-me-build-a"]
 trust_level = "trusted"
 
+[projects."/Users/akash/Documents/Codex/2026-06-15/our-petite-production-website-is-crashing"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-15/if-i-am-installing-posthog-into"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-16/i-have-mapped-caps-lock-key"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-17/looks-like-one-of-our-keys"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-17/can-you-please-check-all-the"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-18/what-d-you-make-of-this"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-20/do-you-know-what-watch-i"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-22/ball-park-how-much-estimate-should"]
+trust_level = "trusted"
+
+[projects."/Users/akash/Documents/Codex/2026-06-23/can"]
+trust_level = "trusted"
+
 [notice]
 "hide_gpt-5.1-codex-max_migration_prompt" = true
 
@@ -276,7 +305,7 @@ enabled = true
 [plugins."convex@openai-curated"]
 enabled = true
 
-[plugins."computer-use@openai-bundled"]
+[plugins."pdf@openai-primary-runtime"]
 enabled = true
 
 [plugins."browser@openai-bundled"]
@@ -285,13 +314,19 @@ enabled = true
 [plugins."chrome@openai-bundled"]
 enabled = true
 
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
 [marketplaces.openai-bundled]
-last_updated = "2026-06-14T03:48:59Z"
+last_updated = "2026-06-24T13:29:11Z"
 source_type = "local"
 source = "/Users/akash/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-06-01T18:11:58Z"
+last_updated = "2026-06-24T06:12:03Z"
 source_type = "local"
 source = "/Users/akash/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -300,8 +335,8 @@ source = "/Users/akash/.cache/codex-runtimes/codex-primary-runtime/plugins/opena
 
 [desktop]
 appearanceLightCodeThemeId = "codex"
-sansFontSize = 13
-codeFontSize = 12
+sansFontSize = 14
+codeFontSize = 13
 useFontSmoothing = true
 usePointerCursors = false
 followUpQueueMode = "steer"
@@ -370,14 +405,21 @@ NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_nod
 NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/akash/.codex"
 CODEX_HOME = "/Users/akash/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "27dca86fd6b571c49414a4b78e46b57bcf683a46cd1319799c11fbb6cfae3110"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "5504c0782b5c86b7dd08314045b9843e973a230e1be8f7e2e0ba3716fc63c55e"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.609.41114"
+BROWSER_USE_CODEX_APP_VERSION = "26.616.81150"
 CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
 
 [mcp_servers.https-secure-pcplatform-test-mcp-oracle]
 enabled = false
 url = "https://secure.pcplatform.test/mcp/oracle"
+
+[mcp_servers.basehub]
+enabled = true
+url = "https://basehub.com/api/mcp"
+
+[mcp_servers.basehub.http_headers]
+Authorization = "Bearer bshb_mcp_d2xs3kirKVSpgeyDXvC6i2oheklu0NkgqpBxRhnGZUELhzrkmxYgNwEQORRnUUPu"
