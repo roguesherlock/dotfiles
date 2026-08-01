@@ -210,6 +210,11 @@
   "lsp": {
     "vtsls": {
       "settings": {
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
         "typescript": {
           "tsserver": { "maxTsServerMemory": 16184 },
           "preferences": {

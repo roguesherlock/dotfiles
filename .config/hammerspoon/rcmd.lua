@@ -2,8 +2,6 @@ RCMD_SCRIPT_VERSION = 0.21
 
 RCMD_SCRIPT_VERSION = 0.22
 
-RCMD_LOG_TMP_DIR = "/tmp/rcmd-script-logs"
-hs.fs.mkdir(RCMD_LOG_TMP_DIR)
 hs.window.filter.allowedWindowRoles = {"AXFloatingWindow", "AXStandardWindow", "AXSystemDialog", "AXSystemFloatingWindow"}
 
 function rcmdMap(tbl, f)
@@ -212,23 +210,10 @@ function rcmdCallbackWS(message)
     elseif params.cmd == "launch" then
         if params.app then
             if params.args then
-                local t = hs.task.new(
-                    params.app,
-                    function(exitCode, stdOut, stdErr)
-                        if params.name then
-                            io.open(RCMD_LOG_TMP_DIR .. "/" .. params.name, "w"):write(tostring(exitCode) .. "\n" .. stdOut .. "\n" .. stdErr):close()
-                        end
-                    end,
-                    params.args)
+                local t = hs.task.new(params.app, function() end, params.args)
                 t:start()
             else
-                local t = hs.task.new(
-                    params.app,
-                    function(exitCode, stdOut, stdErr)
-                        if params.name then
-                            io.open(RCMD_LOG_TMP_DIR .. "/" .. params.name, "w"):write(tostring(exitCode) .. "\n" .. stdOut .. "\n" .. stdErr):close()
-                        end
-                    end)
+                local t = hs.task.new(params.app, function() end)
                 t:start()
             end
         end
