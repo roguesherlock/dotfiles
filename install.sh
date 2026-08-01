@@ -157,9 +157,6 @@ mkdir -p ~/.config/zed
 install ~/Developer/dotfiles/.config/zed/settings.json ~/.config/zed/settings.json
 install ~/Developer/dotfiles/.config/zed/keymap.json ~/.config/zed/keymap.json
 
-# opencode
-install ~/Developer/dotfiles/.config/opencode ~/.config/opencode
-
 # warp
 mkdir -p ~/.warp
 install ~/Developer/dotfiles/.config/warp/keybindings.yaml ~/.warp/keybindings.yaml
@@ -169,21 +166,6 @@ install ~/Developer/dotfiles/.config/warp/themes ~/.warp/themes
 # local bin scripts
 mkdir -p ~/.local/bin
 install ~/Developer/dotfiles/bin/powermon ~/.local/bin/powermon
-
-# claude
-mkdir -p ~/.claude/
-install ~/Developer/dotfiles/.config/claude/settings.json ~/.claude/settings.json
-install ~/Developer/dotfiles/.config/claude/CLAUDE.md ~/.claude/CLAUDE.md
-install ~/Developer/dotfiles/.config/claude/plugin.json ~/.claude/plugin.json
-install ~/Developer/dotfiles/.config/claude/agents ~/.claude/agents
-install ~/Developer/dotfiles/.config/claude/skills ~/.claude/skills
-
-# codex
-mkdir -p ~/.codex/
-install ~/Developer/dotfiles/.config/codex/config.toml ~/.codex/config.toml
-install ~/Developer/dotfiles/.config/codex/AGENTS.md ~/.codex/AGENTS.md
-install ~/Developer/dotfiles/.config/codex/rules ~/.codex/rules
-install ~/Developer/dotfiles/.config/codex/skills ~/.codex/skills
 
 # prise
 install ~/Developer/dotfiles/.config/prise/init.lua ~/.config/prise/init.lua
