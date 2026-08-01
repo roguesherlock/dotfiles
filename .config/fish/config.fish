@@ -1,19 +1,19 @@
 set -l os_type (uname -s)
 export GPG_TTY=(tty)
 
-function __fish_update_zellij_tabname_prompt --on-event fish_prompt
-    if set -q ZELLIJ
-        zellij action rename-tab "fish $(prompt_pwd)"
-    end
-end
-
-function __fish_update_zellij_tabname_preexec --on-event fish_preexec
-    if set -q ZELLIJ
-        # zellij action rename-tab "$argv"
-        set cmd "$(string split " " $argv[1])"
-        zellij action rename-tab "$cmd $(prompt_pwd)"
-    end
-end
+# function __fish_update_zellij_tabname_prompt --on-event fish_prompt
+#     if set -q ZELLIJ
+#         zellij action rename-tab "fish $(prompt_pwd)"
+#     end
+# end
+#
+# function __fish_update_zellij_tabname_preexec --on-event fish_preexec
+#     if set -q ZELLIJ
+#         # zellij action rename-tab "$argv"
+#         set cmd "$(string split " " $argv[1])"
+#         zellij action rename-tab "$cmd $(prompt_pwd)"
+#     end
+# end
 
 if status is-interactive
     # aliases
@@ -62,21 +62,10 @@ end
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
-# opencode
-fish_add_path /Users/akash/.opencode/bin
-
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/akash/.lmstudio/bin
-
-# End of LM Studio CLI section
-
 fish_add_path $HOME/.local/bin
 
 # Vite+ bin (https://viteplus.dev)
 source "$HOME/.vite-plus/env.fish"
-
-# Added by Antigravity
-fish_add_path /Users/akash/.antigravity/antigravity/bin
 
 # >>> grok installer >>>
 fish_add_path $HOME/.grok/bin
