@@ -121,5 +121,16 @@ return {
       { "<leader>gdd", "<cmd>CodeDiff<cr>", desc = "[g]it [d]iffview [d] open explorer" },
       { "<leader>gdo", "<cmd>CodeDiff file HEAD<cr>", desc = "[g]it [d]iffview [o]pen file diff against index" },
     },
+    opts = {
+      explorer = {
+        auto_open_on_cursor = true,
+      },
+      keymaps = {
+        explorer = {
+          -- Let <LeftMouse> position the cursor, then select on the same click's release.
+          select = { "<CR>", "<LeftRelease>" },
+        },
+      },
+    },
   },
 }

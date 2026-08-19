@@ -172,8 +172,10 @@
   {
     "context": "RecentProjects > Picker > Editor",
     "bindings": {
-      "enter": "menu::SecondaryConfirm",
-      "cmd-enter": "menu::Confirm",
+      // "enter": "menu::SecondaryConfirm",
+      // "cmd-enter": "menu::Confirm",
+      "enter": "menu::Confirm",
+      "cmd-enter": "menu::SecondaryConfirm",
     },
   },
   {

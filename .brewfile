@@ -24,7 +24,6 @@ brew "difftastic"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Functional metaprogramming aware language built on Erlang VM
-brew "elixir"
 # Modern, maintained replacement for ls
 brew "eza"
 # Validating, recursive, caching DNS resolver
@@ -90,7 +89,6 @@ brew "yt-dlp"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
 # Programming language designed for robustness, optimality, and clarity
-brew "zig"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 cask "font-commit-mono"

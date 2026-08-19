@@ -46,12 +46,13 @@ return {
     keys = {
       { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit", },
       { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal", mode = { "n", "t" }, },
+      { "<d-j>", function() Snacks.terminal() end, desc = "Toggle Terminal", mode = { "n", "t" }, },
       -- { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History", },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer", },
       { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" }, },
       { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer", },
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
-      { "<leader>E", function() Snacks.explorer() end, desc = "Explorer Snacks (cwd)",
-    },
+      { "<leader>E", function() Snacks.explorer() end, desc = "Explorer Snacks (cwd)" },
+      { "<d-b>", function() Snacks.explorer() end, desc = "Explorer Snacks (cwd)"},
     },
 }
